@@ -1,6 +1,6 @@
 body {
   background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  color: var(--color-fg-primary);
 
   display: grid;
   grid-template-columns: 16rem 1fr;
