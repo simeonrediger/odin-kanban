@@ -22,6 +22,10 @@ textarea {
   font-size: 1em;
 }
 
+button {
+  cursor: pointer;
+}
+
 textarea {
   font-family: inherit;
 }
