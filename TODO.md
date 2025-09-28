@@ -1,0 +1,43 @@
+# Assignment
+- Tasks
+    - are objects
+    - are created
+        - dynamically
+    -   - with factories or constructors/classes
+    - at least have a
+        - title
+        - description
+        - due date
+        - and priority
+    - may also include
+        - notes
+        - or a checklist
+- Projects/Lists (Project > List > Task)
+    - are groups of tasks
+    - can be created by users
+    - can be selected by users for tasks to go into
+    - has a default instance
+- Keep application and presentation logic in separate modules
+- Interface
+    - View all projects
+    - View all tasks in each project
+        - Probably just the titles
+        - and due dates
+        - maybe priority color-coding
+    - Expand a single task to see/edit its details
+    - Delete a task
+- Consider installing date-fns
+    - for formatting and manipulating dates and times
+- Persistence
+    - Use the Web Storage API
+    - Create a function that saves projects (and tasks) to `localStorage`
+        - for each new project created
+        - for each task created
+    - Create a function that gets data from `localStorage` on page load
+    - Make sure the app doesn't crash if there is no data to get
+    - You can inspect `localStorage` in dev tools
+    - Remember that `localStorage` uses JSON to send and store data
+        - Functions cannot be stored in JSON data
+        - Figure out how to add methods back to objects once you fetch them
+
+# Other
