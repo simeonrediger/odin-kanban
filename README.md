@@ -1,2 +1,1 @@
-# Webpack Template
-Complete setup with `node setup.js`
+# Odin To-do List
