@@ -13,7 +13,7 @@ function addProject(project) {
     if (isNotProject || projectNameAlreadyExists) {
 
         if (isNotProject) {
-            throw new ValueError(
+            throw new TypeError(
                 "Project must be an instance of 'Project'"
             );
         }
