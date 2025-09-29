@@ -9,6 +9,10 @@ export default class List {
             throw new InvalidNameError(name);
         }
 
+        if (!Array.isArray(tasks)) {
+            throw new TypeError('Not an Array');
+        }
+
         this.name = name.trim();
         this.tasks = tasks;
     }
