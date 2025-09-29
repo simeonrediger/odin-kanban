@@ -1,4 +1,5 @@
 import Project from './project.js';
+import DuplicateNameError from '../errors/duplicate-name-error.js';
 
 export default (function() {
     const projects = [];
@@ -19,9 +20,7 @@ export default (function() {
             }
 
             if (projectNameAlreadyExists) {
-                throw new Error(
-                    `Existing project already has name '${project.name}'`
-                );
+                throw new DuplicateNameError(project.name);
             }
         }
 
