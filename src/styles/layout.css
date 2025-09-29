@@ -33,7 +33,7 @@ body {
   font-size: 1.25rem;
 }
 
-.project {
+.project-container {
   padding: 1.25rem;
 
   display: grid;
