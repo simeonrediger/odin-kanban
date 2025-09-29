@@ -1,1 +1,1 @@
-import defaultProject from './data/default-project.js';
+import defaultWorkspace from './data/default-workspace.js';
