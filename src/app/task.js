@@ -4,6 +4,7 @@ import InvalidNameError from '../errors/invalid-name-error.js';
 export default class Task {
 
     constructor(name) {
+        name = name.trim();
 
         if (!isValidName(name)) {
             throw new InvalidNameError(name);
