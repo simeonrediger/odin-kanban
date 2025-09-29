@@ -1,8 +1,15 @@
+import isValidName from '../validation/is-valid-name.js';
+import InvalidNameError from '../errors/invalid-name-error.js';
 import List from './list.js';
 
 export default class Project {
 
     constructor(name, lists) {
+
+        if (!isValidName(name)) {
+            throw new InvalidNameError(name);
+        }
+
         this.name = name;
         this.lists = lists;
     }
