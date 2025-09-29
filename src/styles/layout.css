@@ -10,6 +10,12 @@ body {
 .sidebar {
   background-color: var(--color-bg-secondary);
   padding: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content;
+  grid-auto-rows: 1fr;
+  gap: 1rem;
 }
 
 .page-title {
