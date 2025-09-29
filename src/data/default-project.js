@@ -2,7 +2,7 @@ import Project from '../app/project.js';
 import List from '../app/list.js';
 import Task from '../app/task.js';
 
-export default new Project('Project Name', [
+export default new Project('Project 1', [
     new List('List A', [
         new Task('Task A1'),
         new Task('Task A2'),
