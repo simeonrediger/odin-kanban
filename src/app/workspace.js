@@ -5,13 +5,12 @@ export default (function() {
     let activeProject;
 
     function addProject(project) {
+        const isNotProject = !(project instanceof Project);
+        const projectNameAlreadyExists = projects.some(
+            existingProject => project.name === existingProject.name
+        );
 
-        if (
-            !(project instanceof Project)
-            || projects.some(
-                existingProject => project.name === existingProject.name
-            )
-        ) {
+        if (isNotProject || projectNameAlreadyExists) {
             return;
         }
 
