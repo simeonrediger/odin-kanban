@@ -10,6 +10,10 @@ export default class Project {
             throw new InvalidNameError(name);
         }
 
+        if (!Array.isArray(lists)) {
+            throw new TypeError('Not an Array');
+        }
+
         this.name = name.trim();
         this.lists = lists;
     }
