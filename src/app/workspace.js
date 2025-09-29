@@ -13,9 +13,7 @@ function addProject(project) {
     if (isNotProject || projectNameAlreadyExists) {
 
         if (isNotProject) {
-            throw new TypeError(
-                "Project must be an instance of 'Project'"
-            );
+            throw new TypeError(`Not an instance of '${Project.name}'`);
         }
 
         if (projectNameAlreadyExists) {
