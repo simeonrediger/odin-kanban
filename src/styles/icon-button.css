@@ -1,0 +1,11 @@
+.icon-button {
+  background-color: transparent;
+  color: var(--color-fg-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.icon {
+  display: inline-block;
+}

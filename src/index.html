@@ -14,9 +14,11 @@
       <div class='project-list-container'>
         <h2 class='project-list-label'>Projects</h2>
         <button
-          id='add-project-button'
+          id='add-project-button' class='icon-button'
           title='Add project' aria-label='Add project'
-        >Add project</button>
+        >
+          <img class='icon' src='./assets/icons/create-new-folder.svg'>
+        </button>
         <nav>
           <ul class='project-list'></ul>
         </nav>
@@ -24,7 +26,10 @@
     </aside>
     <main class='project'>
       <h3 class='project-title'></h3>
-      <button id='add-list-button'>Add list</button>
+      <button id='add-list-button' class='icon-button'>
+        <img class='icon' src='./assets/icons/create-new-list.svg'>
+        <div>Add list</div>
+      </button>
       <div class='lists'></div>
     </main>
   </body>

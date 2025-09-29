@@ -3,10 +3,12 @@ html {
   --gray-dark-4: #181818;
   --gray-dark-3: #222;
   --gray: #383838;
+  --gray-light-15: #bbb;
   --white: #ccc;
 
   --color-bg-primary: var(--gray-dark-4);
   --color-bg-secondary: var(--gray-dark-3);
 
   --color-fg-primary: var(--white);
+  --color-fg-secondary: var(--gray-light-15);
 }
