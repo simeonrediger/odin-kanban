@@ -14,13 +14,13 @@ export default (function() {
 
             if (isNotProject) {
                 throw new ValueError(
-                    "Project must be an instance of 'Project'."
+                    "Project must be an instance of 'Project'"
                 );
             }
 
             if (projectNameAlreadyExists) {
                 throw new Error(
-                    `Existing project already has name '${project.name}'.`
+                    `Existing project already has name '${project.name}'`
                 );
             }
         }
