@@ -1,4 +1,4 @@
-export default class {
+export default class Project {
 
     constructor(name, lists) {
         this.name = name;

@@ -1,7 +1,7 @@
 import Project from './project.js';
 import DuplicateNameError from '../errors/duplicate-name-error.js';
 
-export default (function() {
+export default (function workspace() {
     const projects = [];
     let activeProject;
 
