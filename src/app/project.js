@@ -5,13 +5,12 @@ import List from './list.js';
 export default class Project {
 
     constructor(name, lists) {
-        name = name.trim();
 
         if (!isValidName(name)) {
             throw new InvalidNameError(name);
         }
 
-        this.name = name;
+        this.name = name.trim();
         this.lists = lists;
     }
 
