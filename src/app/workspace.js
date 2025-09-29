@@ -8,7 +8,9 @@ export default (function() {
 
         if (
             !(project instanceof Project)
-            || projects.includes(project)
+            || projects.some(
+                existingProject => project.name === existingProject.name
+            )
         ) {
             return;
         }
