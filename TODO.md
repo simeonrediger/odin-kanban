@@ -48,3 +48,18 @@
 - `public/` for non-imported assets; `assets/` for imported assets
     - `create-new-list.svg` dynamic or hidden/unhidden?
 - Maybe use `validation/` for global/shared validation (or `validators/`?)
+
+# Design
+- How should name validation work if it's for JSON compatibility? (SRP?)
+    - Is that actually the core validation purpose?
+    - If so, what about injecting storage and input into a validator?
+- Should each class in the task hierarchy validate its own name?
+    - `Project` validates `Project` name
+    - `List` validates `List` name
+    - `Task` validates `Task` name
+- Or should a parent validate its children's names?
+    - `workspace` validates names in `projects`
+    - `Project` validates names in `lists`
+    - `List` validates names in `tasks`
+- Or should the topmost class validate all names?
+    - `workspace` validates names in `projects`, `lists`, and `tasks`
