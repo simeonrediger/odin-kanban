@@ -1,6 +1,6 @@
-import Project from '../app/project.js';
-import List from '../app/list.js';
-import Task from '../app/task.js';
+import Project from '../models/project.js';
+import List from '../models/list.js';
+import Task from '../models/task.js';
 
 export default new Project('Project 1', [
     new List('List A', [
