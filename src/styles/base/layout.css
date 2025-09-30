@@ -22,18 +22,18 @@ body {
   font-size: 1.5rem;
 }
 
-.project-list-container {
+.board-list-container {
   display: grid;
   grid-template-columns: 1fr max-content;
   grid-template-rows: max-content 1fr;
   gap: 0.5rem 1rem;
 }
 
-.project-list-label {
+.board-list-label {
   font-size: 1.25rem;
 }
 
-.project-container {
+.board-container {
   padding: 1.25rem;
 
   display: grid;
@@ -42,7 +42,7 @@ body {
   gap: 1rem 2rem;
 }
 
-.project-title {
+.board-title {
   font-size: 1.25rem;
 }
 

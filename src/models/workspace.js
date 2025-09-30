@@ -1,17 +1,17 @@
-const projects = [];
-let activeProject;
+const boards = [];
+let activeBoard;
 
-function addProject(project) {
-    projects.push(project);
+function addBoard(board) {
+    boards.push(board);
 }
 
-function getActiveProject() {
+function getActiveBoard() {
 
-    if (activeProject) {
-        return activeProject;
+    if (activeBoard) {
+        return activeBoard;
 
-    } else if (projects.length >= 1) {
-        return projects[0];
+    } else if (boards.length >= 1) {
+        return boards[0];
 
     } else {
         return null;
@@ -19,8 +19,8 @@ function getActiveProject() {
 }
 
 const workspace = {
-    addProject,
-    getActiveProject,
+    addBoard,
+    getActiveBoard,
 };
 
 export default workspace;

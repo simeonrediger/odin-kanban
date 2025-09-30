@@ -1,4 +1,4 @@
-export default class Project {
+export default class Board {
 
     constructor(name, lists) {
         this.name = name.trim();

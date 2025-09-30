@@ -1,8 +1,8 @@
-import Project from '../models/project.js';
+import Board from '../models/board.js';
 import List from '../models/list.js';
 import Task from '../models/task.js';
 
-export default new Project('Project 1', [
+export default new Board('Board 1', [
     new List('List A', [
         new Task('Task A1'),
         new Task('Task A2'),

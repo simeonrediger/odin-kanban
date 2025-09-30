@@ -54,12 +54,12 @@
     - Is that actually the core validation purpose?
     - If so, what about injecting storage and input into a validator?
 - Should each class in the task hierarchy validate its own name?
-    - `Project` validates `Project` name
+    - `Board` validates `Board` name
     - `List` validates `List` name
     - `Task` validates `Task` name
 - Or should a parent validate its children's names?
-    - `workspace` validates names in `projects`
-    - `Project` validates names in `lists`
+    - `workspace` validates names in `boards`
+    - `Board` validates names in `lists`
     - `List` validates names in `tasks`
 - Or should the topmost class validate all names?
-    - `workspace` validates names in `projects`, `lists`, and `tasks`
+    - `workspace` validates names in `boards`, `lists`, and `tasks`
