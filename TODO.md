@@ -47,3 +47,4 @@
 - `utils/` for generic helper functions
 - `public/` for non-imported assets; `assets/` for imported assets
     - `create-new-list.svg` dynamic or hidden/unhidden?
+- Maybe use `validation/` for global/shared validation (or `validators/`?)
