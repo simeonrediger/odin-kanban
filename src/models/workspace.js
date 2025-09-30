@@ -1,5 +1,4 @@
 import Project from './project.js';
-import DuplicateNameError from '../errors/duplicate-name-error.js';
 
 const projects = [];
 let activeProject;
