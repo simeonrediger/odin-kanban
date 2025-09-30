@@ -11,7 +11,7 @@ export default class Project {
         }
 
         if (!Array.isArray(lists)) {
-            throw new TypeError('Not an Array');
+            throw new TypeError("Expected 'lists' to be an array");
         }
 
         this.name = name.trim();
