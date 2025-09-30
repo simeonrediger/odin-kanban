@@ -4,4 +4,8 @@ export default class List {
         this.name = name.trim();
         this.tasks = tasks;
     }
+
+    addTask(task) {
+        this.tasks.push(task);
+    }
 }
