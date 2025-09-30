@@ -5,22 +5,6 @@ const projects = [];
 let activeProject;
 
 function addProject(project) {
-    const isNotProject = !(project instanceof Project);
-    const projectNameAlreadyExists = projects.some(
-        existingProject => project.name === existingProject.name
-    );
-
-    if (isNotProject || projectNameAlreadyExists) {
-
-        if (isNotProject) {
-            throw new TypeError(`Not an instance of ${Project.name}`);
-        }
-
-        if (projectNameAlreadyExists) {
-            throw new DuplicateNameError(project.name);
-        }
-    }
-
     projects.push(project);
 }
 
