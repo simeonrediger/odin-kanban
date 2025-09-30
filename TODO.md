@@ -40,4 +40,10 @@
         - Functions cannot be stored in JSON data
         - Figure out how to add methods back to objects once you fetch them
 
-# Other
+# Organization
+- Use subdirectories and barrel modules as complexity increases
+- `services/storage.js` for `localStorage`
+- `components/` for UI component JS and CSS
+- `utils/` for generic helper functions
+- `public/` for non-imported assets; `assets/` for imported assets
+    - `create-new-list.svg` dynamic or hidden/unhidden?
