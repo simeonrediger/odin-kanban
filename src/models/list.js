@@ -6,7 +6,7 @@ export default class List {
     constructor(name, tasks) {
 
         if (!isValidName(name)) {
-            throw new InvalidNameError(name);
+            throw new InvalidNameError(name, this.constructor.name);
         }
 
         if (!Array.isArray(tasks)) {

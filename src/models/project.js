@@ -7,7 +7,7 @@ export default class Project {
     constructor(name, lists) {
 
         if (!isValidName(name)) {
-            throw new InvalidNameError(name);
+            throw new InvalidNameError(name, this.constructor.name);
         }
 
         if (!Array.isArray(lists)) {

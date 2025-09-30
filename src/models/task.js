@@ -6,7 +6,7 @@ export default class Task {
     constructor(name) {
 
         if (!isValidName(name)) {
-            throw new InvalidNameError(name);
+            throw new InvalidNameError(name, this.constructor.name);
         }
 
         this.name = name.trim();
