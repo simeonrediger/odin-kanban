@@ -7,6 +7,10 @@ function addBoard(board) {
     boards.push(board);
 }
 
+function removeBoard(targetBoard) {
+    boards.splice(boards.indexOf(targetBoard), 1);
+}
+
 function getActiveBoard() {
 
     if (activeBoard) {
@@ -23,6 +27,7 @@ function getActiveBoard() {
 const workspace = {
     getBoards: () => deepFreeze(boards),
     addBoard,
+    removeBoard,
     getActiveBoard,
 };
 
