@@ -8,4 +8,8 @@ export default class List {
     addTask(task) {
         this.tasks.push(task);
     }
+
+    removeTask(targetTask) {
+        this.tasks.splice(this.tasks.indexOf(targetTask), 1);
+    }
 }
