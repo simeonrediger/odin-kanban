@@ -1,5 +1,3 @@
-import List from './list.js';
-
 export default class Project {
 
     constructor(name, lists) {
