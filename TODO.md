@@ -45,6 +45,7 @@
 - `services/storage.js` for `localStorage`
 - `components/` for UI component JS and CSS
 - `utils/` for generic helper functions
+    - Colocate?
 - `public/` for non-imported assets; `assets/` for imported assets
     - `create-new-list.svg` dynamic or hidden/unhidden?
 - Maybe use `validation/` for global/shared validation (or `validators/`?)
