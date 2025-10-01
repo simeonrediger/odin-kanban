@@ -1,8 +1,7 @@
 export default class Board {
-    #name;
 
     constructor(name, lists) {
-        this.#name = name.trim();
+        this.name = name.trim();
         this.lists = lists;
     }
 
@@ -12,13 +11,5 @@ export default class Board {
 
     removeList(targetList) {
         this.lists.splice(this.lists.indexOf(targetList), 1);
-    }
-
-    get name() {
-        return this.#name;
-    }
-
-    set name(name) {
-        this.#name = name;
     }
 }
