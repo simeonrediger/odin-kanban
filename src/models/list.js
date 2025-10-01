@@ -1,7 +1,8 @@
 export default class List {
+    #name;
 
     constructor(name, tasks) {
-        this.name = name.trim();
+        this.#name = name.trim();
         this.tasks = tasks;
     }
 
@@ -13,7 +14,7 @@ export default class List {
         this.tasks.splice(this.tasks.indexOf(targetTask), 1);
     }
 
-    setName(name) {
-        this.name = name;
+    set name(name) {
+        this.#name = name;
     }
 }

@@ -1,10 +1,11 @@
 export default class Task {
+    #name;
 
     constructor(name) {
-        this.name = name.trim();
+        this.#name = name.trim();
     }
 
-    setName(name) {
-        this.name = name;
+    set name(name) {
+        this.#name = name;
     }
 }
