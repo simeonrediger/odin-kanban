@@ -3,7 +3,7 @@ export default class Task {
     description;
     dueDate;
     priorityLevel;
-    isCompleted;
+    isDone;
 
     constructor(name) {
         this.name = name;
