@@ -14,6 +14,10 @@ export default class List {
         this.tasks.splice(this.tasks.indexOf(targetTask), 1);
     }
 
+    get name() {
+        return this.#name;
+    }
+
     set name(name) {
         this.#name = name;
     }

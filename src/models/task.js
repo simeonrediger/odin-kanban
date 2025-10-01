@@ -5,6 +5,10 @@ export default class Task {
         this.#name = name.trim();
     }
 
+    get name() {
+        return this.#name;
+    }
+
     set name(name) {
         this.#name = name;
     }

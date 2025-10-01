@@ -14,6 +14,10 @@ export default class Board {
         this.lists.splice(this.lists.indexOf(targetList), 1);
     }
 
+    get name() {
+        return this.#name;
+    }
+
     set name(name) {
         this.#name = name;
     }
