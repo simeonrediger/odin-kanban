@@ -12,4 +12,8 @@ export default class List {
     removeTask(targetTask) {
         this.tasks.splice(this.tasks.indexOf(targetTask), 1);
     }
+
+    setName(name) {
+        this.name = name;
+    }
 }

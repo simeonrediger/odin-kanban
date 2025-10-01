@@ -12,4 +12,8 @@ export default class Board {
     removeList(targetList) {
         this.lists.splice(this.lists.indexOf(targetList), 1);
     }
+
+    setName(name) {
+        this.name = name;
+    }
 }
