@@ -1,4 +1,6 @@
 export default class List {
+    name;
+    tasks;
 
     constructor(name, tasks) {
         this.name = name.trim();

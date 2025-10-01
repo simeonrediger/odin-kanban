@@ -1,4 +1,6 @@
 export default class Board {
+    name;
+    lists;
 
     constructor(name, lists) {
         this.name = name.trim();
