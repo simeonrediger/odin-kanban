@@ -6,6 +6,6 @@ export default class Task {
     isCompleted;
 
     constructor(name) {
-        this.name = name.trim();
+        this.name = name;
     }
 }

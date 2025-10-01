@@ -3,7 +3,7 @@ export default class Board {
     lists;
 
     constructor(name, lists) {
-        this.name = name.trim();
+        this.name = name;
         this.lists = lists;
     }
 

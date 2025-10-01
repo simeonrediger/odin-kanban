@@ -3,7 +3,7 @@ export default class List {
     tasks;
 
     constructor(name, tasks) {
-        this.name = name.trim();
+        this.name = name;
         this.tasks = tasks;
     }
 
