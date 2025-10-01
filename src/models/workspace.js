@@ -1,5 +1,3 @@
-import deepFreeze from '../utils/deep-freeze.js';
-
 const boards = [];
 let activeBoard;
 
@@ -25,7 +23,7 @@ function getActiveBoard() {
 }
 
 const workspace = {
-    getBoards: () => deepFreeze(boards),
+    boards,
     addBoard,
     removeBoard,
     getActiveBoard,
