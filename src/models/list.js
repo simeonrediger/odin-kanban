@@ -12,12 +12,12 @@ export default class List {
 
     addTask(task) {
         assert.instanceOf(Task, task, "'task'");
-        this.tasks.push(task);
+        this.#tasks.push(task);
     }
 
     removeTask(targetTask) {
         assert.instanceOf(Task, targetTask, "'targetTask'");
-        this.tasks.splice(this.tasks.indexOf(targetTask), 1);
+        this.#tasks.splice(this.tasks.indexOf(targetTask), 1);
     }
 
     get name() {
