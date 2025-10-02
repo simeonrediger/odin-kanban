@@ -12,12 +12,12 @@ export default class Board {
 
     addList(list) {
         assert.instanceOf(List, list, "'list'");
-        this.lists.push(list);
+        this.#lists.push(list);
     }
 
     removeList(targetList) {
         assert.instanceOf(List, targetList, "'targetList'");
-        this.lists.splice(this.lists.indexOf(targetList), 1);
+        this.#lists.splice(this.lists.indexOf(targetList), 1);
     }
 
     get name() {
