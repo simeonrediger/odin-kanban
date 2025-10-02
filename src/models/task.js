@@ -18,6 +18,7 @@ export default class Task {
 
     constructor(name) {
         this.name = name;
+        Object.freeze(this);
     }
 
     get name() {
