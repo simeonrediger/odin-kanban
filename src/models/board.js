@@ -2,13 +2,10 @@ import assert from '../utils/assert.js';
 import List from './list.js';
 
 export default class Board {
-    name;
-    lists;
+    #name;
+    #lists;
 
     constructor(name, lists) {
-        assert.string(name, `${this.constructor.name} 'name'`);
-        assert.array(lists, `${this.constructor.name} 'lists'`);
-
         this.name = name;
         this.lists = lists;
     }
@@ -21,5 +18,23 @@ export default class Board {
     removeList(targetList) {
         assert.instanceOf(List, targetList, "'targetList'");
         this.lists.splice(this.lists.indexOf(targetList), 1);
+    }
+
+    get name() {
+        return this.#name;
+    }
+
+    set name(name) {
+        assert.string(name);
+        this.#name = name;
+    }
+
+    get lists() {
+        return this.#lists;
+    }
+
+    set lists(lists) {
+        assert.array(lists, "'lists'");
+        this.#lists = lists;
     }
 }

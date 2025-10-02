@@ -2,13 +2,10 @@ import assert from '../utils/assert.js';
 import Task from './task.js';
 
 export default class List {
-    name;
-    tasks;
+    #name;
+    #tasks;
 
     constructor(name, tasks) {
-        assert.string(name, `${this.constructor.name} 'name'`);
-        assert.array(tasks, `${this.constructor.name} 'tasks'`);
-
         this.name = name;
         this.tasks = tasks;
     }
@@ -21,5 +18,23 @@ export default class List {
     removeTask(targetTask) {
         assert.instanceOf(Task, targetTask, "'targetTask'");
         this.tasks.splice(this.tasks.indexOf(targetTask), 1);
+    }
+
+    get name() {
+        return this.#name;
+    }
+
+    set name(name) {
+        assert.string(name);
+        this.#name = name;
+    }
+
+    get tasks() {
+        return this.#tasks;
+    }
+
+    set tasks(tasks) {
+        assert.array(tasks, "'tasks'");
+        this.#tasks = tasks;
     }
 }

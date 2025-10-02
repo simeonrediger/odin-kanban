@@ -23,6 +23,14 @@ function assertFunction(value, name = defaultName) {
     assertType('function', value, name);
 }
 
+function assertInValues(value, object, name = defaultName, objectName) {
+    assertObject(object, "'object'");
+
+    if (!Object.values(object).includes(value)) {
+        throw new TypeError(`${name} value does not exist`);
+    }
+}
+
 function assertInstanceOf(constructor, value, name = defaultName) {
     assertFunction(constructor, "'constructor'");
 
@@ -33,6 +41,13 @@ function assertInstanceOf(constructor, value, name = defaultName) {
         throw new TypeError(
             `${name} must be an instance of ${constructorPhrase}`
         );
+    }
+}
+
+function assertObject(value, name) {
+
+    if (!(typeof value === 'object') || value === null) {
+        throw new TypeError(`${name} must be an object`);
     }
 }
 
@@ -51,10 +66,19 @@ function assertType(type, value, name = defaultName) {
     }
 }
 
+function assertValidDate(value, name = defaultName) {
+
+    if (!(value instanceof Date) || isNaN(value)) {
+        throw new TypeError(`${name} must be a valid Date`);
+    }
+}
+
 const assert = {
     array: assertArray,
+    inValues: assertInValues,
     instanceOf: assertInstanceOf,
     string: assertString,
+    validDate: assertValidDate,
 };
 
 export default assert;
