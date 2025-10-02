@@ -15,7 +15,6 @@ function removeBoard(targetBoard) {
 }
 
 const workspace = {
-    boards,
     addBoard,
     removeBoard,
 
