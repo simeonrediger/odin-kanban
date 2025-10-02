@@ -31,7 +31,7 @@ export default class List {
     }
 
     get tasks() {
-        return this.#tasks;
+        return Object.freeze([...this.#tasks]);
     }
 
     set tasks(tasks) {
