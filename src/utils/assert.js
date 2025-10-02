@@ -55,9 +55,6 @@ const assert = {
     array: assertArray,
     instanceOf: assertInstanceOf,
     string: assertString,
-
-    function: assertFunction,
-    type: assertType,
 };
 
 export default assert;
