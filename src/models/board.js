@@ -31,7 +31,7 @@ export default class Board {
     }
 
     get lists() {
-        return this.#lists;
+        return Object.freeze([...this.#lists]);
     }
 
     set lists(lists) {
