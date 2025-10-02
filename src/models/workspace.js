@@ -1,11 +1,16 @@
+import assert from '../utils/assert.js';
+import Board from './board.js';
+
 const boards = [];
 let activeBoard;
 
 function addBoard(board) {
+    assert.instanceOf(Board, board, "'board'");
     boards.push(board);
 }
 
 function removeBoard(targetBoard) {
+    assert.instanceOf(Board, targetBoard, "'targetBoard'");
     boards.splice(boards.indexOf(targetBoard), 1);
 }
 
@@ -27,6 +32,7 @@ const workspace = {
     },
 
     set activeBoard(board) {
+        assert.instanceOf(Board, board, "'board'");
         activeBoard = board;
     }
 };
