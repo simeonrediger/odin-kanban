@@ -1,4 +1,5 @@
 import assert from '../utils/assert.js';
+import Task from './task.js';
 
 export default class List {
     name;
@@ -13,10 +14,12 @@ export default class List {
     }
 
     addTask(task) {
+        assert.instanceOf(Task, task, "'task'");
         this.tasks.push(task);
     }
 
     removeTask(targetTask) {
+        assert.instanceOf(Task, targetTask, "'targetTask'");
         this.tasks.splice(this.tasks.indexOf(targetTask), 1);
     }
 }
