@@ -15,7 +15,7 @@ const defaultName = 'variable';
 function assertArray(value, name = defaultName) {
 
     if (!Array.isArray(value)) {
-        throw new TypeError(`${name} must be an array`);
+        throw new TypeError(`${name} must be an Array`);
     }
 }
 
