@@ -20,6 +20,7 @@ const workspace = {
     removeBoard,
 
     get activeBoard() {
+
         if (activeBoard) {
             return activeBoard;
 
