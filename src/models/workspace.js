@@ -14,9 +14,26 @@ function removeBoard(targetBoard) {
     boards.splice(boards.indexOf(targetBoard), 1);
 }
 
+function toObject() {
+    const boardsToObjects = [];
+
+    for (const board of boards) {
+        boardsToObjects.push(board.toObject());
+    }
+
+    return Object.freeze({
+        boards: Object.freeze(boardsToObjects),
+    });
+}
+
+function toJson(replacer, space) {
+    return JSON.stringify(toObject(), replacer, space);
+}
+
 const workspace = {
     addBoard,
     removeBoard,
+    toJson,
 
     get activeBoard() {
 

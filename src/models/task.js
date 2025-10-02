@@ -68,4 +68,19 @@ export default class Task {
     unmarkAsDone() {
         this.#isDone = false;
     }
+
+    toObject() {
+
+        return Object.freeze({
+            name: this.name,
+            description: this.description,
+            dueDate: this.dueDate,
+            priorityLevel: this.priorityLevel,
+            isDone: this.isDone,
+        });
+    }
+
+    toJson(replacer, space) {
+        return JSON.stringify(this.toObject(), replacer, space);
+    }
 }

@@ -38,4 +38,21 @@ export default class Board {
         assert.array(lists, "'lists'");
         this.#lists = lists;
     }
+
+    toObject() {
+        const lists = [];
+
+        for (const list of this.#lists) {
+            lists.push(list.toObject());
+        }
+
+        return Object.freeze({
+            name: this.#name,
+            lists: Object.freeze(lists),
+        });
+    }
+
+    toJson(replacer, space) {
+        return JSON.stringify(this.toObject(), replacer, space);
+    }
 }

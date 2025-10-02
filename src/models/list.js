@@ -38,4 +38,21 @@ export default class List {
         assert.array(tasks, "'tasks'");
         this.#tasks = tasks;
     }
+
+    toObject() {
+        const tasks = [];
+
+        for (const task of this.#tasks) {
+            tasks.push(task.toObject());
+        }
+
+        return Object.freeze({
+            name: this.#name,
+            tasks: Object.freeze(tasks),
+        });
+    }
+
+    toJson(replacer, space) {
+        return JSON.stringify(this.toObject(), replacer, space);
+    }
 }
