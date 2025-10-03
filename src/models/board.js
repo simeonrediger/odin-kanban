@@ -32,6 +32,14 @@ export default class Board {
         this.#lists.splice(this.lists.indexOf(targetList), 1);
     }
 
+    moveList(list, targetIndex) {
+        assert.instanceOf(List, list, "'list'");
+        assert.nonNegativeInteger(targetIndex, "'targetIndex'");
+
+        this.removeList(list);
+        this.addList(list, targetIndex);
+    }
+
     get name() {
         return this.#name;
     }
