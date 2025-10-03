@@ -11,9 +11,15 @@ export default class Board {
         Object.freeze(this);
     }
 
-    addList(list) {
+    addList(list, targetIndex) {
         assert.instanceOf(List, list, "'list'");
-        this.#lists.push(list);
+
+        if (targetIndex === undefined) {
+            this.#lists.push(list);
+        } else {
+            assert.nonNegativeInteger(targetIndex, "'targetIndex'");
+            this.#lists.splice(targetIndex, 0, list);
+        }
     }
 
     removeList(targetList) {
