@@ -32,6 +32,14 @@ export default class List {
         this.#tasks.splice(this.tasks.indexOf(targetTask), 1);
     }
 
+    moveTask(task, targetIndex) {
+        assert.instanceOf(Task, task, "'task'");
+        assert.nonNegativeInteger(targetIndex, "'targetIndex'");
+
+        this.removeTask(task);
+        this.addTask(task, targetIndex);
+    }
+
     get name() {
         return this.#name;
     }
