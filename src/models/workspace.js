@@ -25,6 +25,14 @@ function removeBoard(targetBoard) {
     boards.splice(boards.indexOf(targetBoard), 1);
 }
 
+function moveBoard(board, targetIndex) {
+    assert.instanceOf(Board, board, "'board'");
+    assert.nonNegativeInteger(targetIndex, "'targetIndex'");
+
+    removeBoard(board);
+    addBoard(board, targetIndex);
+}
+
 function toObject() {
     const boardsToObjects = [];
 
@@ -44,6 +52,7 @@ function toJson(replacer, space) {
 const workspace = {
     addBoard,
     removeBoard,
+    moveBoard,
     toJson,
 
     get activeBoard() {
