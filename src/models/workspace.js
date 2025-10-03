@@ -4,9 +4,15 @@ import Board from './board.js';
 const boards = [];
 let activeBoard;
 
-function addBoard(board) {
+function addBoard(board, targetIndex) {
     assert.instanceOf(Board, board, "'board'");
-    boards.push(board);
+
+    if (targetIndex === undefined) {
+        boards.push(board);
+    } else {
+        assert.nonNegativeInteger(targetIndex, "'targetIndex'");
+        boards.splice(targetIndex, 0, board);
+    }
 }
 
 function removeBoard(targetBoard) {
