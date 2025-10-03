@@ -1,5 +1,6 @@
 import assert from '../utils/assert.js';
 import List from './list.js';
+import Task from './task.js';
 
 export default class Board {
     #name;
@@ -38,6 +39,24 @@ export default class Board {
 
         this.removeList(list);
         this.addList(list, targetIndex);
+    }
+
+    moveTask(task, targetList, targetIndex) {
+        assert.instanceOf(Task, task, "'task'");
+        assert.instanceOf(List, targetList, "'targetList'");
+
+        const list = this.#findListWithTask(task);
+
+        if (!list) {
+            throw new Error("'task' not found on this board");
+        }
+
+        list.removeTask(task);
+        targetList.addTask(task, targetIndex);
+    }
+
+    #findListWithTask(task) {
+        return this.#lists.find(list => list.tasks.includes(task));
     }
 
     get name() {
