@@ -11,6 +11,11 @@ function addBoard(board) {
 
 function removeBoard(targetBoard) {
     assert.instanceOf(Board, targetBoard, "'targetBoard'");
+
+    if (!boards.includes(targetBoard)) {
+        throw new Error("'targetBoard' not found in this workspace");
+    }
+
     boards.splice(boards.indexOf(targetBoard), 1);
 }
 
