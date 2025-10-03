@@ -1,5 +1,6 @@
 import assert from '../utils/assert.js';
 import Board from './board.js';
+import List from './list.js';
 
 const boards = [];
 let activeBoard;
@@ -33,6 +34,24 @@ function moveBoard(board, targetIndex) {
     addBoard(board, targetIndex);
 }
 
+function moveList(list, targetBoard, targetIndex) {
+    assert.instanceOf(List, list, "'list'");
+    assert.instanceOf(Board, targetBoard, "'targetBoard'");
+
+    const board = findBoardWithList(list);
+
+    if (!board) {
+        throw new Error("'list' not found in this workspace");
+    }
+
+    board.removeList(list);
+    targetBoard.addList(list, targetIndex);
+}
+
+function findBoardWithList(list) {
+    return boards.find(board => board.lists.includes(list));
+}
+
 function toObject() {
     const boardsToObjects = [];
 
@@ -53,6 +72,7 @@ const workspace = {
     addBoard,
     removeBoard,
     moveBoard,
+    moveList,
     toJson,
 
     get activeBoard() {
