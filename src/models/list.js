@@ -11,9 +11,15 @@ export default class List {
         Object.freeze(this);
     }
 
-    addTask(task) {
+    addTask(task, targetIndex) {
         assert.instanceOf(Task, task, "'task'");
-        this.#tasks.push(task);
+
+        if (targetIndex === undefined) {
+            this.#tasks.push(task);
+        } else {
+            assert.nonNegativeInteger(targetIndex, "'targetIndex'");
+            this.#tasks.splice(targetIndex, 0, task);
+        }
     }
 
     removeTask(targetTask) {
