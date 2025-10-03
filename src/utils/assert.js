@@ -44,7 +44,7 @@ function assertInstanceOf(constructor, value, name = defaultName) {
     }
 }
 
-function assertObject(value, name) {
+function assertObject(value, name = defaultName) {
 
     if (!(typeof value === 'object') || value === null) {
         throw new TypeError(`${name} must be an object`);
