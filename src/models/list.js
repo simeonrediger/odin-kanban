@@ -18,6 +18,11 @@ export default class List {
 
     removeTask(targetTask) {
         assert.instanceOf(Task, targetTask, "'targetTask'");
+
+        if (!this.#tasks.includes(targetTask)) {
+            throw new Error("'targetTask' not found on this list");
+        }
+
         this.#tasks.splice(this.tasks.indexOf(targetTask), 1);
     }
 

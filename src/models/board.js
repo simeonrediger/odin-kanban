@@ -18,6 +18,11 @@ export default class Board {
 
     removeList(targetList) {
         assert.instanceOf(List, targetList, "'targetList'");
+
+        if (!this.#lists.includes(targetList)) {
+            throw new Error("'targetList' not found on this board");
+        }
+
         this.#lists.splice(this.lists.indexOf(targetList), 1);
     }
 
