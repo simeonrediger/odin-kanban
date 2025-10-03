@@ -44,6 +44,21 @@ function assertInstanceOf(constructor, value, name = defaultName) {
     }
 }
 
+function assertInteger(value, name) {
+
+    if (!Number.isInteger(value)) {
+        throw new TypeError(`${name} must be an integer`);
+    }
+}
+
+function assertNonNegativeInteger(value, name = defaultName) {
+    assertInteger(value, name);
+
+    if (value < 0) {
+        throw new TypeError(`${name} must be a non-negative integer`);
+    }
+}
+
 function assertObject(value, name = defaultName) {
 
     if (!(typeof value === 'object') || value === null) {
@@ -77,6 +92,7 @@ const assert = {
     array: assertArray,
     inValues: assertInValues,
     instanceOf: assertInstanceOf,
+    nonNegativeInteger: assertNonNegativeInteger,
     string: assertString,
     validDate: assertValidDate,
 };
