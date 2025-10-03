@@ -45,7 +45,7 @@ export default class Board {
         assert.instanceOf(Task, task, "'task'");
         assert.instanceOf(List, targetList, "'targetList'");
 
-        const list = this.#findListWithTask(task);
+        const list = this.findListWithTask(task);
 
         if (!list) {
             throw new Error("'task' not found on this board");
@@ -55,7 +55,8 @@ export default class Board {
         targetList.addTask(task, targetIndex);
     }
 
-    #findListWithTask(task) {
+    findListWithTask(task) {
+        assert.instanceOf(Task, task, "'task'");
         return this.#lists.find(list => list.tasks.includes(task));
     }
 

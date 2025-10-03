@@ -1,6 +1,7 @@
 import assert from '../utils/assert.js';
 import Board from './board.js';
 import List from './list.js';
+import Task from './task.js';
 
 const boards = [];
 let activeBoard;
@@ -48,8 +49,41 @@ function moveList(list, targetBoard, targetIndex) {
     targetBoard.addList(list, targetIndex);
 }
 
+function moveTask(task, targetList, targetIndex) {
+    assert.instanceOf(Task, task, "'task'");
+    assert.instanceOf(List, targetList, "'targetList'");
+
+    const list = findListWithTask(task);
+
+    if (!list) {
+        throw new Error("'task' not found in this workspace'");
+    }
+
+    if (!includesList(targetList)) {
+        throw new Error("'targetList' not found in this workspace");
+    }
+
+    list.removeTask(task);
+    targetList.addTask(task, targetIndex);
+}
+
 function findBoardWithList(list) {
     return boards.find(board => board.lists.includes(list));
+}
+
+function findListWithTask(task) {
+
+    for (const board of boards) {
+        const list = board.findListWithTask(task);
+
+        if (list) {
+            return list;
+        }
+    }
+}
+
+function includesList(list) {
+    return boards.some(board => board.lists.includes(list));
 }
 
 function toObject() {
@@ -73,6 +107,7 @@ const workspace = {
     removeBoard,
     moveBoard,
     moveList,
+    moveTask,
     toJson,
 
     get activeBoard() {
