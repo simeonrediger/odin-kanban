@@ -67,3 +67,5 @@
 
 # Other
 - Consider if Task dates should be immutable
+- Prevent duplicate object references
+- Prevent duplicate names in same collection (or use IDs?)
