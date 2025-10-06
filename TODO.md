@@ -40,6 +40,27 @@
         - Functions cannot be stored in JSON data
         - Figure out how to add methods back to objects once you fetch them
 
+# Project structure
+```
+src/
+    domains/
+        <domain1>/
+            model/
+            components/
+            styles/
+            validation/
+            assets/
+            index.js
+        ...
+    shared/
+        components/
+        styles/
+        validation/
+        assets/
+    index.html
+    index.js
+```
+
 # Organization
 - Use subdirectories and barrel modules as complexity increases
 - `services/storage.js` for `localStorage`
