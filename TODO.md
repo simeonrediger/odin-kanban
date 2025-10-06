@@ -91,6 +91,7 @@ src/
     - `List` validates names in `tasks`
 - Or should the topmost class validate all names?
     - `workspace` validates names in `boards`, `lists`, and `tasks`
+- Consider adding board tab functionality
 
 # Other
 - Consider if Task dates should be immutable
