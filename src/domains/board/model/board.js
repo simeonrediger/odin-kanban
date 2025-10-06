@@ -1,6 +1,6 @@
-import assert from '../utils/assert.js';
-import List from './list.js';
-import Task from './task.js';
+import assert from '@/shared/validation/assert.js';
+import List from '@/domains/list/model/list.js';
+import Task from '@/domains/task/model/task.js';
 
 export default class Board {
     #name;

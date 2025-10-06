@@ -1,4 +1,4 @@
-import assert from '../utils/assert.js';
+import assert from '@/shared/validation/assert.js';
 
 export default class Task {
 

@@ -1,6 +1,6 @@
-import Board from '../models/board.js';
-import List from '../models/list.js';
-import Task from '../models/task.js';
+import Board from '../model/board.js';
+import List from '@/domains/list/model/list.js';
+import Task from '@/domains/task/model/task.js';
 
 export default new Board('Board 1', [
     new List('List A', [

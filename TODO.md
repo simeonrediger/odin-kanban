@@ -48,15 +48,21 @@ src/
             model/
             components/
             styles/
-            validation/
             assets/
+            validation/
+            utils/
             index.js
         ...
     shared/
         components/
         styles/
-        validation/
+            base/
+            layout/
+            components/
+            themes/
         assets/
+        validation/
+        utils/
     index.html
     index.js
 ```
