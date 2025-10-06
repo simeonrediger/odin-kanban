@@ -1,3 +1,5 @@
+import '../styles/workspace.css';
+
 import assert from '@/shared/validation/assert.js';
 import Board from '@/domains/board/model/board.js';
 import List from '@/domains/list/model/list.js';
