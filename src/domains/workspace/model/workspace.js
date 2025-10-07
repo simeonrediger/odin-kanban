@@ -103,6 +103,8 @@ function toJson(replacer, space) {
 }
 
 const workspace = {
+    isWorkspace: true,
+
     addBoard,
     removeBoard,
     moveBoard,

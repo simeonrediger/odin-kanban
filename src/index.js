@@ -6,3 +6,11 @@ import workspace from '@/domains/workspace/model/workspace.js';
 import workspaceView from '@/domains/workspace/components/workspace-view.js';
 
 workspace.addBoard(defaultBoard);
+
+workspaceView.render(
+    workspace,
+    '#workspace',
+    '#add-board-button',
+    '.board-list',
+    '.board-container',
+);
