@@ -41,24 +41,16 @@
 
 .board-nav {
   grid-column: span 2;
-  display: grid;
-  grid-template-columns: subgrid;
 }
 
 .board-list {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-auto-rows: max-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .board-list-item {
-  grid-column: span 2;
   display: grid;
-  grid-template-columns: subgrid;
-  gap: 0;
-  justify-items: center;
-  align-items: center;
+  grid-template-columns: 1fr max-content;
 }
 
 .board-select-button {
@@ -71,6 +63,7 @@
 
 .board-options-button {
   background-color: transparent;
+  padding-inline: 0.5rem;
   display: none;
 }
 
