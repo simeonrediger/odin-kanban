@@ -70,6 +70,13 @@ function assertString(value, name = defaultName) {
     assertType('string', value, name);
 }
 
+function assertTrue(value, name = defaultName) {
+
+    if (!value) {
+        throw new Error(`${name} must be true`);
+    }
+}
+
 function assertType(type, value, name = defaultName) {
 
     if (!validTypes.includes(type)) {
@@ -94,6 +101,7 @@ const assert = {
     instanceOf: assertInstanceOf,
     nonNegativeInteger: assertNonNegativeInteger,
     string: assertString,
+    true: assertTrue,
     validDate: assertValidDate,
 };
 
