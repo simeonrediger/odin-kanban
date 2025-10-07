@@ -26,7 +26,7 @@
   display: grid;
   grid-template-columns: 1fr max-content;
   grid-template-rows: max-content 1fr;
-  gap: 0.5rem 1rem;
+  column-gap: 1rem;
 }
 
 .board-list-label,
