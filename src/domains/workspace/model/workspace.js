@@ -112,6 +112,10 @@ const workspace = {
     moveTask,
     toJson,
 
+    get boards() {
+        return Object.freeze([...boards]);
+    },
+
     get activeBoard() {
 
         if (activeBoard) {
