@@ -71,6 +71,11 @@
 
 .board-options-button {
   background-color: transparent;
+  display: none;
+}
+
+.board-list-item:hover .board-options-button {
+  display: block;
 }
 
 .board-container {
