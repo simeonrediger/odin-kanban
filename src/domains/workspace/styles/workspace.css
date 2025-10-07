@@ -39,6 +39,40 @@
   font-size: 1.25rem;
 }
 
+.board-nav {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.board-list {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-auto-rows: max-content;
+}
+
+.board-list-item {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: subgrid;
+  gap: 0;
+  justify-items: center;
+  align-items: center;
+}
+
+.board-select-button {
+  background-color: transparent;
+  color: var(--color-fg-primary);
+  padding: 0.375rem 1rem;
+  text-align: start;
+  width: 100%;
+}
+
+.board-options-button {
+  background-color: transparent;
+}
+
 .board-container {
   padding: 1.25rem;
 
