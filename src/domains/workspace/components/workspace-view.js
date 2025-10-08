@@ -2,6 +2,7 @@ import '@/shared/styles/icon-button.css';
 import '../styles/workspace.css';
 
 import assert from '@/shared/validation/assert.js';
+import boardView from '@/domains/board/components/board-view.js';
 
 let workspace;
 let workspaceContainer;
@@ -29,6 +30,7 @@ function render(
     assert.instanceOf(Element, boardContainer, "'boardContainer'");
 
     renderBoardList();
+    boardView.render(workspace.activeBoard, boardContainer);
 }
 
 function renderBoardList() {
