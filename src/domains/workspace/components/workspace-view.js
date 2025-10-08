@@ -3,8 +3,6 @@ import '../styles/workspace.css';
 
 import assert from '@/shared/validation/assert.js';
 
-import threeDotsHorizontal from '../assets/three-dots-horizontal.svg';
-
 let workspace;
 let workspaceContainer;
 let addBoardButton;
@@ -45,8 +43,15 @@ function renderBoardList() {
 
         const boardOptionsButton = document.createElement('button');
         boardOptionsButton.classList.add('board-options-button');
-        const boardOptionsIcon = document.createElement('img');
-        boardOptionsIcon.src = threeDotsHorizontal;
+        boardOptionsButton.ariaLabel = 'Open board options menu'
+
+        const boardOptionsIcon = document
+            .getElementById('three-dots-horizontal-icon')
+            .content
+            .querySelector('svg')
+            .cloneNode(true);
+
+        boardOptionsIcon.classList.add('board-options-icon');
         boardOptionsButton.append(boardOptionsIcon);
 
         boardListItem.append(boardSelectButton, boardOptionsButton);
