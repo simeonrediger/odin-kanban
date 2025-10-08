@@ -30,7 +30,12 @@ function render(
     assert.instanceOf(Element, boardContainer, "'boardContainer'");
 
     renderBoardList();
-    boardView.render(workspace.activeBoard, boardContainer);
+
+    if (workspace.activeBoard) {
+        boardView.render(workspace.activeBoard, boardContainer);
+    } else {
+        renderBoardPlaceholder();
+    }
 }
 
 function renderBoardList() {
@@ -39,6 +44,13 @@ function renderBoardList() {
         const boardListItem = createBoardListItem(board);
         boardList.append(boardListItem);
     }
+}
+
+function renderBoardPlaceholder() {
+    const boardPlaceholderText = document.createElement('p');
+    boardPlaceholderText.classList.add('board-placeholder-text');
+    boardPlaceholderText.textContent = "You don't have any boards";
+    boardContainer.append(boardPlaceholderText);
 }
 
 function createBoardListItem(board) {

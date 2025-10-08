@@ -100,6 +100,15 @@
   gap: 1rem 2rem;
 }
 
+.board-placeholder-text {
+  color: var(--color-fg-faint);
+  font-size: 1.75rem;
+  font-weight: bold;
+  grid-row: 1 / -1;
+  align-self: center;
+  justify-self: center;
+}
+
 .board-title {
   font-size: 1.25rem;
 }
