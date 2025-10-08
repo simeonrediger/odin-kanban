@@ -1,3 +1,5 @@
+import '../styles/board.css';
+
 function render(board, boardContainer) {
 }
 
