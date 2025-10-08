@@ -43,6 +43,10 @@
   color: var(--color-fg-primary);
 }
 
+#create-new-board-button:hover .create-new-board-icon {
+  color: var(--color-fg-highlight);
+}
+
 .board-nav {
   grid-column: span 2;
 }
