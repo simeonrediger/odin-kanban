@@ -43,6 +43,7 @@ function render(
 }
 
 function renderBoardList() {
+    boardList.innerHTML = '';
 
     for (const board of workspace.boards) {
         const boardListItem = createBoardListItem(board);
