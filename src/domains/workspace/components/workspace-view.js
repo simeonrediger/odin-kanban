@@ -43,6 +43,7 @@ function renderBoardList() {
 
         const boardOptionsButton = document.createElement('button');
         boardOptionsButton.classList.add('board-options-button');
+        boardOptionsButton.title = 'Open board options menu';
         boardOptionsButton.ariaLabel = 'Open board options menu';
 
         const boardOptionsIcon = document
