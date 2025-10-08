@@ -43,7 +43,7 @@ function renderBoardList() {
 
         const boardOptionsButton = document.createElement('button');
         boardOptionsButton.classList.add('board-options-button');
-        boardOptionsButton.ariaLabel = 'Open board options menu'
+        boardOptionsButton.ariaLabel = 'Open board options menu';
 
         const boardOptionsIcon = document
             .getElementById('three-dots-horizontal-icon')
