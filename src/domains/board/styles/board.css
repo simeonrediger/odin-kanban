@@ -1,7 +1,10 @@
+.board-container:not(.hidden) {
+  display: grid;
+}
+
 .board-container {
   padding: 1.25rem;
 
-  display: grid;
   grid-template-columns: 1fr max-content;
   grid-template-rows: max-content 1fr;
   gap: 1rem 2rem;

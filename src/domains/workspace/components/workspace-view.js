@@ -1,3 +1,4 @@
+import '@/shared/styles/utilities.css';
 import '@/shared/styles/icon-button.css';
 import '../styles/workspace.css';
 import '../styles/sidebar.css';
@@ -33,7 +34,9 @@ function render(
     renderBoardList();
 
     if (workspace.activeBoard) {
+        boardPlaceholder.classList.add('hidden');
         boardView.render(workspace.activeBoard, boardContainer);
+        boardContainer.classList.remove('hidden');
     } else {
         renderBoardPlaceholder();
     }
@@ -49,6 +52,7 @@ function renderBoardList() {
 
 function renderBoardPlaceholder() {
     const boardPlaceholder = document.querySelector('.board-placeholder');
+    boardContainer.classList.add('hidden');
     boardPlaceholder.classList.remove('hidden');
 }
 
