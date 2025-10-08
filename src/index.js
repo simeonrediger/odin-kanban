@@ -13,4 +13,5 @@ workspaceView.render(
     '#create-new-board-button',
     '.board-list',
     '.board-container',
+    '.board-placeholder',
 );

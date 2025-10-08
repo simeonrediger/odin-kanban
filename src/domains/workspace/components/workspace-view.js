@@ -11,6 +11,7 @@ let workspaceContainer;
 let addBoardButton;
 let boardList;
 let boardContainer;
+let boardPlaceholder;
 
 function render(
     workspaceEntity,
@@ -18,18 +19,21 @@ function render(
     addBoardButtonSelector,
     boardListSelector,
     boardContainerSelector,
+    boardPlaceholderSelector,
 ) {
     workspace = workspaceEntity;
     workspaceContainer = document.querySelector(workspaceContainerSelector);
     addBoardButton = document.querySelector(addBoardButtonSelector);
     boardList = document.querySelector(boardListSelector);
     boardContainer = document.querySelector(boardContainerSelector);
+    boardPlaceholder = document.querySelector(boardPlaceholderSelector);
 
     assert.true(workspace.isWorkspace, "'workspace.isWorkspace'");
     assert.instanceOf(Element, workspaceContainer, "'workspaceContainer'");
     assert.instanceOf(Element, addBoardButton, "'addBoardButton'");
     assert.instanceOf(Element, boardList, "'boardList'");
     assert.instanceOf(Element, boardContainer, "'boardContainer'");
+    assert.instanceOf(Element, boardPlaceholder, "'boardPlaceholder'");
 
     renderBoardList();
 
@@ -52,7 +56,6 @@ function renderBoardList() {
 }
 
 function renderBoardPlaceholder() {
-    const boardPlaceholder = document.querySelector('.board-placeholder');
     boardContainer.classList.add('hidden');
     boardPlaceholder.classList.remove('hidden');
 }
