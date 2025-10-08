@@ -16,13 +16,15 @@
   gap: 1rem 2rem;
 }
 
-.board-placeholder-text {
+.board-placeholder {
   color: var(--color-fg-faint);
   font-size: 1.75rem;
   font-weight: bold;
-  grid-row: 1 / -1;
-  align-self: center;
-  justify-self: center;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .board-title {

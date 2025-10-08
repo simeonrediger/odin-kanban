@@ -48,10 +48,8 @@ function renderBoardList() {
 }
 
 function renderBoardPlaceholder() {
-    const boardPlaceholderText = document.createElement('p');
-    boardPlaceholderText.classList.add('board-placeholder-text');
-    boardPlaceholderText.textContent = "You don't have any boards";
-    boardContainer.append(boardPlaceholderText);
+    const boardPlaceholder = document.querySelector('.board-placeholder');
+    boardPlaceholder.classList.remove('hidden');
 }
 
 function createBoardListItem(board) {
