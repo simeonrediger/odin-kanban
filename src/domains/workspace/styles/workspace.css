@@ -7,13 +7,16 @@
   grid-template-rows: minmax(100vh, 100%);
 }
 
+.board-placeholder:not(.hidden) {
+  display: flex;
+}
+
 .board-placeholder {
   color: var(--color-fg-faint);
   font-size: 1.75rem;
   font-weight: bold;
   height: 100%;
 
-  display: flex;
   justify-content: center;
   align-items: center;
 }
