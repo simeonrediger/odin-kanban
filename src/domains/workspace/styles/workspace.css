@@ -39,6 +39,10 @@
   font-size: 1.25rem;
 }
 
+.create-new-board-icon {
+  color: var(--color-fg-primary);
+}
+
 .board-nav {
   grid-column: span 2;
 }
