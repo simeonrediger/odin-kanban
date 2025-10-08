@@ -53,6 +53,10 @@
   grid-template-columns: 1fr max-content;
 }
 
+.board-list-item:hover {
+  background-color: var(--color-bg-highlight);
+}
+
 .board-select-button {
   background-color: transparent;
   color: var(--color-fg-primary);
@@ -73,6 +77,10 @@
 
 .board-options-icon {
   color: var(--color-fg-primary);
+}
+
+.board-options-button:hover .board-options-icon {
+  color: var(--color-fg-highlight);
 }
 
 .board-container {
