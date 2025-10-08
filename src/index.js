@@ -10,7 +10,7 @@ workspace.addBoard(defaultBoard);
 workspaceView.render(
     workspace,
     '#workspace',
-    '#add-board-button',
+    '#create-new-board-button',
     '.board-list',
     '.board-container',
 );
