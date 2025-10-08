@@ -34,30 +34,52 @@ function render(
 function renderBoardList() {
 
     for (const board of workspace.boards) {
-        const boardListItem = document.createElement('li');
-        boardListItem.classList.add('board-list-item');
-
-        const boardSelectButton = document.createElement('button');
-        boardSelectButton.classList.add('board-select-button');
-        boardSelectButton.textContent = board.name;
-
-        const boardOptionsButton = document.createElement('button');
-        boardOptionsButton.classList.add('board-options-button');
-        boardOptionsButton.title = 'Open board options menu';
-        boardOptionsButton.ariaLabel = 'Open board options menu';
-
-        const boardOptionsIcon = document
-            .getElementById('three-dots-horizontal-icon')
-            .content
-            .querySelector('svg')
-            .cloneNode(true);
-
-        boardOptionsIcon.classList.add('board-options-icon');
-        boardOptionsButton.append(boardOptionsIcon);
-
-        boardListItem.append(boardSelectButton, boardOptionsButton);
+        const boardListItem = createBoardListItem(board);
         boardList.append(boardListItem);
     }
+}
+
+function createBoardListItem(board) {
+    const boardListItem = document.createElement('li');
+    boardListItem.classList.add('board-list-item');
+
+    const boardSelectButton = createBoardSelectButton(board);
+    const boardOptionsButton = createBoardOptionsButton();
+    boardListItem.append(boardSelectButton, boardOptionsButton);
+
+    return boardListItem;
+}
+
+function createBoardSelectButton(board) {
+    const boardSelectButton = document.createElement('button');
+    boardSelectButton.classList.add('board-select-button');
+    boardSelectButton.textContent = board.name;
+
+    return boardSelectButton;
+}
+
+function createBoardOptionsButton() {
+    const boardOptionsButton = document.createElement('button');
+    boardOptionsButton.classList.add('board-options-button');
+    boardOptionsButton.title = 'Open board options menu';
+    boardOptionsButton.ariaLabel = 'Open board options menu';
+
+    const boardOptionsIcon = createBoardOptionsIcon();
+    boardOptionsButton.append(boardOptionsIcon);
+
+    return boardOptionsButton;
+}
+
+function createBoardOptionsIcon() {
+    const boardOptionsIcon = document
+        .getElementById('three-dots-horizontal-icon')
+        .content
+        .querySelector('svg')
+        .cloneNode(true);
+
+    boardOptionsIcon.classList.add('board-options-icon');
+
+    return boardOptionsIcon;
 }
 
 const workspaceView = {
