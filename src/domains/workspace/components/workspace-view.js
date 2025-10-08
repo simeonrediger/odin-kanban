@@ -1,5 +1,6 @@
 import '@/shared/styles/icon-button.css';
 import '../styles/workspace.css';
+import '../styles/sidebar.css';
 
 import assert from '@/shared/validation/assert.js';
 import boardView from '@/domains/board/components/board-view.js';
