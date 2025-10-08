@@ -1,0 +1,16 @@
+.board-container {
+  padding: 1.25rem;
+
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: max-content 1fr;
+  gap: 1rem 2rem;
+}
+
+.board-title {
+  font-size: 1.25rem;
+}
+
+.lists {
+  grid-column: span 2;
+}
