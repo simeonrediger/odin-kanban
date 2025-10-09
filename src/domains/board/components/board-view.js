@@ -1,6 +1,11 @@
 import '../styles/board.css';
 
-function render(board, boardContainer) {
+let board;
+let container;
+
+function render(boardEntity, containerElement) {
+    board = boardEntity;
+    container = containerElement;
 }
 
 const boardView = {
