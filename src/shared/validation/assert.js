@@ -19,6 +19,13 @@ function assertArray(value, name = defaultName) {
     }
 }
 
+function assertDefined(value, name = defaultName) {
+
+    if (value === undefined) {
+        throw new TypeError(`${name} must not be undefined`);
+    }
+}
+
 function assertFunction(value, name = defaultName) {
     assertType('function', value, name);
 }
@@ -104,6 +111,7 @@ function assertValidDate(value, name = defaultName) {
 
 const assert = {
     array: assertArray,
+    defined: assertDefined,
     inValues: assertInValues,
     instanceOf: assertInstanceOf,
     nonNegativeInteger: assertNonNegativeInteger,
