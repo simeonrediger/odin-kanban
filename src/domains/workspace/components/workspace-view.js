@@ -13,27 +13,22 @@ let boardList;
 let boardContainer;
 let boardPlaceholder;
 
-function render(
-    workspaceEntity,
-    containerSelector,
-    addBoardButtonSelector,
-    boardListSelector,
-    boardContainerSelector,
-    boardPlaceholderSelector,
-) {
+function render(workspaceEntity, containerSelector) {
     workspace = workspaceEntity;
     container = document.querySelector(containerSelector);
-    addBoardButton = document.querySelector(addBoardButtonSelector);
-    boardList = document.querySelector(boardListSelector);
-    boardContainer = document.querySelector(boardContainerSelector);
-    boardPlaceholder = document.querySelector(boardPlaceholderSelector);
 
     assert.true(workspace.isWorkspace, "'workspace.isWorkspace'");
     assert.instanceOf(Element, container, "'container'");
-    assert.instanceOf(Element, addBoardButton, "'addBoardButton'");
-    assert.instanceOf(Element, boardList, "'boardList'");
-    assert.instanceOf(Element, boardContainer, "'boardContainer'");
-    assert.instanceOf(Element, boardPlaceholder, "'boardPlaceholder'");
+
+    addBoardButton = container.querySelector('#create-new-board-button');
+    boardList = container.querySelector('.board-list');
+    boardContainer = container.querySelector('.board-container');
+    boardPlaceholder = container.querySelector('.board-placeholder');
+
+    assert.notNull(addBoardButton, "'addBoardButton'");
+    assert.notNull(boardList, "'boardList'");
+    assert.notNull(boardContainer, "'boardContainer'");
+    assert.notNull(boardPlaceholder, "'boardPlaceholder'");
 
     renderBoardList();
 
