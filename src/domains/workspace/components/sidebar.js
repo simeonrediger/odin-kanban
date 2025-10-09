@@ -4,6 +4,10 @@ import '../styles/sidebar.css';
 
 import assert from '@/shared/validation/assert.js';
 
+import {
+    createThreeDotsHorizontalIcon,
+} from '@/shared/components/icons/icons.js';
+
 let workspace;
 let container;
 let createNewBoardButton;
@@ -63,19 +67,10 @@ function createBoardOptionsButton() {
     boardOptionsButton.title = boardOptionsButtonPrompt;
     boardOptionsButton.ariaLabel = boardOptionsButtonPrompt;
 
-    const boardOptionsIcon = createBoardOptionsIcon();
+    const boardOptionsIcon = createThreeDotsHorizontalIcon();
     boardOptionsButton.append(boardOptionsIcon);
 
     return boardOptionsButton;
-}
-
-function createBoardOptionsIcon() {
-    const boardOptionsIcon = container
-        .querySelector("[data-template='three-dots-horizontal-icon']")
-        .content
-        .cloneNode(true);
-
-    return boardOptionsIcon;
 }
 
 const sidebar = {
