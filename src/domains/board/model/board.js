@@ -8,7 +8,7 @@ export default class Board {
     #lists;
 
     constructor(name, lists, id) {
-        this.id = id ?? crypto.randomUUID();
+        this.#id = id ?? crypto.randomUUID();
         this.name = name;
         this.lists = lists;
         Object.freeze(this);
@@ -64,11 +64,6 @@ export default class Board {
 
     get id() {
         return this.#id;
-    }
-
-    set id(id) {
-        assert.string(id);
-        this.#id = id;
     }
 
     get name() {

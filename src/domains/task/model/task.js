@@ -18,18 +18,13 @@ export default class Task {
     #isDone;
 
     constructor(name, id) {
-        this.id = id ?? crypto.randomUUID();
+        this.#id = id ?? crypto.randomUUID();
         this.name = name;
         Object.freeze(this);
     }
 
     get id() {
         return this.#id;
-    }
-
-    set id(id) {
-        assert.string(id);
-        this.#id = id;
     }
 
     get name() {
