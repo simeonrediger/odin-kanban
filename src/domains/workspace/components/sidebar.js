@@ -64,6 +64,7 @@ function renderBoardList() {
 
 function startNewBoardEntry() {
     newBoardEntry.classList.remove('hidden');
+    newBoardNameInput.focus();
 }
 
 function createBoardListItem(board) {
