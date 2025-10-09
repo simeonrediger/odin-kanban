@@ -17,6 +17,11 @@ function addBoard(board, targetIndex) {
     }
 }
 
+function addEmptyBoard(boardName) {
+    const board = new Board(boardName, []);
+    addBoard(board);
+}
+
 function removeBoard(targetBoard) {
     assert.instanceOf(Board, targetBoard, "'targetBoard'");
 
@@ -106,6 +111,7 @@ const workspace = {
     isWorkspace: true,
 
     addBoard,
+    addEmptyBoard,
     removeBoard,
     moveBoard,
     moveList,

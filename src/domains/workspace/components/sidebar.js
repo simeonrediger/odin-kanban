@@ -51,8 +51,17 @@ function setUpElementReferences() {
 
 function bindEvents() {
     createNewBoardButton.addEventListener('click', startNewBoardEntry);
-    newBoardEntry.addEventListener('focusout', cancelNewBoardEntry);
     cancelNewBoardButton.addEventListener('click', cancelNewBoardEntry);
+    confirmNewBoardButton.addEventListener('click', confirmNewBoardEntry);
+
+    newBoardEntry.addEventListener('focusout', event => {
+        const noChildFocused = !newBoardEntry.contains(event.relatedTarget);
+        const isVisible = !newBoardEntry.classList.contains('hidden');
+
+        if (noChildFocused && isVisible) {
+            cancelNewBoardEntry();
+        }
+    });
 }
 
 function renderBoardList() {
@@ -72,6 +81,15 @@ function startNewBoardEntry() {
 function cancelNewBoardEntry() {
     newBoardEntry.classList.add('hidden');
     newBoardNameInput.value = '';
+}
+
+function confirmNewBoardEntry() {
+    const boardName = newBoardNameInput.value.trim()
+        || newBoardNameInput.placeholder;
+
+    workspace.addEmptyBoard(boardName);
+    cancelNewBoardEntry();
+    renderBoardList();
 }
 
 function createBoardListItem(board) {
