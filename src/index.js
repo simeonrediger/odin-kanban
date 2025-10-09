@@ -2,7 +2,7 @@ import '@/shared/styles/reset.css';
 import '@/shared/styles/colors.css';
 
 import assert from '@/shared/validation/assert.js';
-import defaultBoard from '@/domains/board/defaults/board.js';
+import defaultBoard from '@/domains/board/data/default-board.js';
 import demo from '@/shared/dev/demo.js';
 import workspace from '@/domains/workspace/model/workspace.js';
 import workspaceView from '@/domains/workspace/components/workspace-view.js';
