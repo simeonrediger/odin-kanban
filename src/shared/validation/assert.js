@@ -59,6 +59,13 @@ function assertNonNegativeInteger(value, name = defaultName) {
     }
 }
 
+function assertNotNull(value, name = defaultName) {
+
+    if (value === null) {
+        throw new TypeError(`${name} must not be null`);
+    }
+}
+
 function assertObject(value, name = defaultName) {
 
     if (!(typeof value === 'object') || value === null) {
@@ -100,6 +107,7 @@ const assert = {
     inValues: assertInValues,
     instanceOf: assertInstanceOf,
     nonNegativeInteger: assertNonNegativeInteger,
+    notNull: assertNotNull,
     string: assertString,
     true: assertTrue,
     validDate: assertValidDate,
