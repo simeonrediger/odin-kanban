@@ -13,9 +13,9 @@ let boardList;
 let boardContainer;
 let boardPlaceholder;
 
-function render(workspaceEntity, containerSelector) {
+function render(workspaceEntity, containerElement) {
     workspace = workspaceEntity;
-    container = document.querySelector(containerSelector);
+    container = containerElement;
 
     assert.true(workspace.isWorkspace, "'workspace.isWorkspace'");
     assert.instanceOf(Element, container, "'container'");

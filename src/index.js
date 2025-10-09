@@ -7,4 +7,5 @@ import workspaceView from '@/domains/workspace/components/workspace-view.js';
 
 workspace.addBoard(defaultBoard);
 
-workspaceView.render(workspace, '#workspace');
+const workspaceContainer = document.getElementById('workspace');
+workspaceView.render(workspace, workspaceContainer);
