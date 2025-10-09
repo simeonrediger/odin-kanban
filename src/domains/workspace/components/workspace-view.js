@@ -14,9 +14,6 @@ function render(workspaceEntity, containerElement) {
     workspace = workspaceEntity;
     container = containerElement;
 
-    assert.true(workspace.isWorkspace, "'workspace.isWorkspace'");
-    assert.instanceOf(Element, container, "'container'");
-
     setUpElementReferences();
     sidebar.render(workspace, sidebarContainer);
 

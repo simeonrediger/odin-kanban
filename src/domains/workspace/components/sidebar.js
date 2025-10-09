@@ -12,7 +12,6 @@ let boardList;
 function render(workspaceEntity, containerElement) {
     workspace = workspaceEntity;
     container = containerElement;
-    assert.notNull(container, "'container'");
 
     setUpElementReferences();
     renderBoardList();
