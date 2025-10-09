@@ -34,6 +34,7 @@ function setUpElementReferences() {
     boardContainer = container.querySelector('.board-container');
     boardPlaceholder = container.querySelector('.board-placeholder');
 
+    assert.notNull(sidebarContainer, "'sidebarContainer'");
     assert.notNull(boardContainer, "'boardContainer'");
     assert.notNull(boardPlaceholder, "'boardPlaceholder'");
 }
