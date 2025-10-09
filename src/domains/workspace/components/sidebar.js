@@ -1,6 +1,6 @@
 import '@/shared/styles/utilities.css';
 import '@/shared/styles/icon-button.css';
-import '../styles/sidebar.css'; 
+import '../styles/sidebar.css';
 
 import assert from '@/shared/validation/assert.js';
 
