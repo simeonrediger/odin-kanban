@@ -58,8 +58,10 @@ function createBoardSelectButton(board) {
 function createBoardOptionsButton() {
     const boardOptionsButton = document.createElement('button');
     boardOptionsButton.classList.add('board-options-button');
-    boardOptionsButton.title = 'Open board options menu';
-    boardOptionsButton.ariaLabel = 'Open board options menu';
+
+    const boardOptionsButtonPrompt = 'Open board options menu';
+    boardOptionsButton.title = boardOptionsButtonPrompt;
+    boardOptionsButton.ariaLabel = boardOptionsButtonPrompt;
 
     const boardOptionsIcon = createBoardOptionsIcon();
     boardOptionsButton.append(boardOptionsIcon);
