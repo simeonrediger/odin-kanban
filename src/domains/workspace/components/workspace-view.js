@@ -8,7 +8,7 @@ import boardView from '@/domains/board/components/board-view.js';
 
 let workspace;
 let container;
-let addBoardButton;
+let createNewBoardButton;
 let boardList;
 let boardContainer;
 let boardPlaceholder;
@@ -33,12 +33,12 @@ function render(workspaceEntity, containerElement) {
 }
 
 function setUpElementReferences() {
-    addBoardButton = container.querySelector('#create-new-board-button');
+    createNewBoardButton = container.querySelector('#create-new-board-button');
     boardList = container.querySelector('.board-list');
     boardContainer = container.querySelector('.board-container');
     boardPlaceholder = container.querySelector('.board-placeholder');
 
-    assert.notNull(addBoardButton, "'addBoardButton'");
+    assert.notNull(createNewBoardButton, "'createNewBoardButton'");
     assert.notNull(boardList, "'boardList'");
     assert.notNull(boardContainer, "'boardContainer'");
     assert.notNull(boardPlaceholder, "'boardPlaceholder'");
