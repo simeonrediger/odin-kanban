@@ -98,8 +98,6 @@ function createBoardOptionsIcon() {
         .querySelector('svg')
         .cloneNode(true);
 
-    boardOptionsIcon.classList.add('board-options-icon');
-
     return boardOptionsIcon;
 }
 
