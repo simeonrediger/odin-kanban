@@ -1,9 +1,13 @@
 import assert from '@/shared/validation/assert.js';
 import {
+    createCancelCircleIcon,
+    createCheckmarkIcon,
     createSquirclePlusIcon,
 } from './create-icons.js';
 
 const iconMap = {
+    'cancel-circle': createCancelCircleIcon,
+    'checkmark': createCheckmarkIcon,
     'squircle-plus': createSquirclePlusIcon,
 };
 
