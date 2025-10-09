@@ -64,15 +64,15 @@
   width: 100%;
 }
 
+.board-list-item:hover .board-options-button {
+  display: block;
+}
+
 .board-options-button {
   background-color: transparent;
   color: var(--color-fg-secondary);
   display: none;
   padding-inline: 0.5rem;
-}
-
-.board-list-item:hover .board-options-button {
-  display: block;
 }
 
 .board-options-button:hover {
