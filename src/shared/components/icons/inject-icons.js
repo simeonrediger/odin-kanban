@@ -14,6 +14,7 @@ export default function injectIcons(root) {
         const iconName = element.dataset.icon;
         const createIcon = iconMap[iconName];
         assert.defined(createIcon, `'${iconName}'`);
+
         const icon = createIcon();
         element.append(icon);
     }
