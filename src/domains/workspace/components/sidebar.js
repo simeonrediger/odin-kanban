@@ -51,6 +51,7 @@ function setUpElementReferences() {
 
 function bindEvents() {
     createNewBoardButton.addEventListener('click', startNewBoardEntry);
+    newBoardNameInput.addEventListener('keydown', handleNewBoardNameKeyDown);
     cancelNewBoardButton.addEventListener('click', cancelNewBoardEntry);
     confirmNewBoardButton.addEventListener('click', confirmNewBoardEntry);
     newBoardEntry.addEventListener('focusout', handleNewBoardEntryFocusOut);
@@ -82,6 +83,18 @@ function confirmNewBoardEntry() {
     workspace.addEmptyBoard(boardName);
     cancelNewBoardEntry();
     renderBoardList();
+}
+
+function handleNewBoardNameKeyDown(event) {
+
+    switch (event.key) {
+        case 'Enter':
+            confirmNewBoardEntry();
+            break;
+        case 'Escape':
+            cancelNewBoardEntry();
+            break;
+    }
 }
 
 function handleNewBoardEntryFocusOut(event) {
