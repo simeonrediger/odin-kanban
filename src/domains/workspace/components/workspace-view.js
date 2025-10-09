@@ -27,9 +27,11 @@ function render(workspaceEntity, containerElement) {
 }
 
 function setUpElementReferences() {
-    sidebarContainer = container.querySelector('.sidebar');
-    boardContainer = container.querySelector('.board-container');
-    boardPlaceholder = container.querySelector('.board-placeholder');
+    sidebarContainer = container.querySelector("[data-role='sidebar']");
+    boardContainer = container.querySelector("[data-role='board-container']");
+    boardPlaceholder = container.querySelector(
+        "[data-role='board-placeholder']"
+    );
 
     assert.notNull(sidebarContainer, "'sidebarContainer'");
     assert.notNull(boardContainer, "'boardContainer'");

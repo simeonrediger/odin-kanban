@@ -9,7 +9,7 @@
   </head>
 
   <body data-role='workspace' class='workspace'>
-    <aside class='sidebar'>
+    <aside data-role='sidebar' class='sidebar'>
       <h1 class='page-title'>To-do List</h1>
       <div class='board-list-container'>
         <div class='board-list-header'>
@@ -20,13 +20,13 @@
           ></button>
         </div>
         <nav class='board-nav'>
-          <ul class='board-list'></ul>
+          <ul data-role='board-list' class='board-list'></ul>
         </nav>
       </div>
     </aside>
     <main>
-      <div class='board-container hidden'></div>
-      <div class='board-placeholder hidden'>
+      <div data-role='board-container' class='board-container hidden'></div>
+      <div data-role='board-placeholder' class='board-placeholder hidden'>
         <p>You don't have any boards</p>
       </div>
     </main>

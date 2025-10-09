@@ -25,7 +25,7 @@ function setUpElementReferences() {
     createNewBoardButton = container.querySelector(
         "[data-action='create-new-board']"
     );
-    boardList = container.querySelector('.board-list');
+    boardList = container.querySelector("[data-role='board-list']");
 
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
     assert.notNull(boardList, "'boardList'");
