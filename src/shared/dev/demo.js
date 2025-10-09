@@ -2,7 +2,7 @@ import Board from '@/domains/board/model/board.js';
 import List from '@/domains/list/model/list.js';
 import Task from '@/domains/task/model/task.js';
 
-function run() {
+function run(workspace) {
     const task1 = new Task('Task 1');
     const task2 = new Task('Task 2');
     const task3 = new Task('Task 3');
