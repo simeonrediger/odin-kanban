@@ -21,6 +21,14 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
+            },
+            {
                 test: /\.svg$/i,
                 oneOf: [
                     {
@@ -35,14 +43,6 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|webp|avif|ico|bmp)$/i,
                 type: 'asset/resource',
-            },
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            },
-            {
-                test: /\.html$/i,
-                loader: 'html-loader',
             },
         ],
     },
