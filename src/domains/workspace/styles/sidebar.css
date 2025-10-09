@@ -32,11 +32,12 @@
   font-size: 1.25rem;
 }
 
-.create-new-board-icon {
+.create-new-board-button {
+  background-color: transparent;
   color: var(--color-fg-primary);
 }
 
-.create-new-board-button:hover .create-new-board-icon {
+.create-new-board-button:hover {
   color: var(--color-fg-highlight);
 }
 
