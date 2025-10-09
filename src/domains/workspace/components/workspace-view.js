@@ -95,7 +95,6 @@ function createBoardOptionsIcon() {
     const boardOptionsIcon = container
         .querySelector("[data-template='three-dots-horizontal-icon']")
         .content
-        .querySelector('svg')
         .cloneNode(true);
 
     return boardOptionsIcon;
