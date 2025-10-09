@@ -92,8 +92,8 @@
 .new-board-name-input {
   background-color: transparent;
   color: inherit;
-  min-width: 0;
   margin-inline-start: 0.5rem;
+  min-width: 0;
   outline: none;
   padding-inline: 0.5rem;
 }
