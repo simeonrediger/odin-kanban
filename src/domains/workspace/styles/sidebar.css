@@ -1,5 +1,7 @@
 .sidebar {
   background-color: var(--color-bg-secondary);
+  border-start-end-radius: 1.5rem;
+  border-end-end-radius: 1.5rem;
 
   display: grid;
   grid-template-columns: 1fr;
