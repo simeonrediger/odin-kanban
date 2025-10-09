@@ -53,15 +53,7 @@ function bindEvents() {
     createNewBoardButton.addEventListener('click', startNewBoardEntry);
     cancelNewBoardButton.addEventListener('click', cancelNewBoardEntry);
     confirmNewBoardButton.addEventListener('click', confirmNewBoardEntry);
-
-    newBoardEntry.addEventListener('focusout', event => {
-        const noChildFocused = !newBoardEntry.contains(event.relatedTarget);
-        const isVisible = !newBoardEntry.classList.contains('hidden');
-
-        if (noChildFocused && isVisible) {
-            cancelNewBoardEntry();
-        }
-    });
+    newBoardEntry.addEventListener('focusout', handleNewBoardEntryFocusOut);
 }
 
 function renderBoardList() {
@@ -90,6 +82,15 @@ function confirmNewBoardEntry() {
     workspace.addEmptyBoard(boardName);
     cancelNewBoardEntry();
     renderBoardList();
+}
+
+function handleNewBoardEntryFocusOut(event) {
+    const noChildFocused = !newBoardEntry.contains(event.relatedTarget);
+    const isVisible = !newBoardEntry.classList.contains('hidden');
+
+    if (noChildFocused && isVisible) {
+        cancelNewBoardEntry();
+    }
 }
 
 function createBoardListItem(board) {
