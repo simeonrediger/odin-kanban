@@ -20,16 +20,7 @@ function render(workspaceEntity, containerElement) {
     assert.true(workspace.isWorkspace, "'workspace.isWorkspace'");
     assert.instanceOf(Element, container, "'container'");
 
-    addBoardButton = container.querySelector('#create-new-board-button');
-    boardList = container.querySelector('.board-list');
-    boardContainer = container.querySelector('.board-container');
-    boardPlaceholder = container.querySelector('.board-placeholder');
-
-    assert.notNull(addBoardButton, "'addBoardButton'");
-    assert.notNull(boardList, "'boardList'");
-    assert.notNull(boardContainer, "'boardContainer'");
-    assert.notNull(boardPlaceholder, "'boardPlaceholder'");
-
+    setUpElementReferences();
     renderBoardList();
 
     if (workspace.activeBoard) {
@@ -39,6 +30,18 @@ function render(workspaceEntity, containerElement) {
     } else {
         renderBoardPlaceholder();
     }
+}
+
+function setUpElementReferences() {
+    addBoardButton = container.querySelector('#create-new-board-button');
+    boardList = container.querySelector('.board-list');
+    boardContainer = container.querySelector('.board-container');
+    boardPlaceholder = container.querySelector('.board-placeholder');
+
+    assert.notNull(addBoardButton, "'addBoardButton'");
+    assert.notNull(boardList, "'boardList'");
+    assert.notNull(boardContainer, "'boardContainer'");
+    assert.notNull(boardPlaceholder, "'boardPlaceholder'");
 }
 
 function renderBoardList() {
