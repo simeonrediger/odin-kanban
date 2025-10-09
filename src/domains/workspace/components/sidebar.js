@@ -6,7 +6,7 @@ import assert from '@/shared/validation/assert.js';
 
 import {
     createThreeDotsHorizontalIcon,
-} from '@/shared/components/icons/icons.js';
+} from '@/shared/components/icons/create-icons.js';
 
 let workspace;
 let container;
