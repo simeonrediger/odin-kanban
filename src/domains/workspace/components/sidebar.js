@@ -52,6 +52,7 @@ function setUpElementReferences() {
 function bindEvents() {
     createNewBoardButton.addEventListener('click', startNewBoardEntry);
     newBoardEntry.addEventListener('focusout', cancelNewBoardEntry);
+    cancelNewBoardButton.addEventListener('click', cancelNewBoardEntry);
 }
 
 function renderBoardList() {
