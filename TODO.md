@@ -97,3 +97,10 @@ src/
 - Consider if Task dates should be immutable
 - Prevent duplicate object references
 - Prevent duplicate names in same collection (or use IDs?)
+
+# Selector guidelines
+- Only use IDs for semantic targets
+- Only use data attributes to select for behavioral concerns
+- Only use classes to select for styling concerns
+- Only use `data-template` attribute to select for template cloning
+- Only use `data-role` attribute for purely-annotative concerns
