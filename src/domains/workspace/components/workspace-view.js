@@ -7,7 +7,7 @@ import assert from '@/shared/validation/assert.js';
 import boardView from '@/domains/board/components/board-view.js';
 
 let workspace;
-let workspaceContainer;
+let container;
 let addBoardButton;
 let boardList;
 let boardContainer;
@@ -15,21 +15,21 @@ let boardPlaceholder;
 
 function render(
     workspaceEntity,
-    workspaceContainerSelector,
+    containerSelector,
     addBoardButtonSelector,
     boardListSelector,
     boardContainerSelector,
     boardPlaceholderSelector,
 ) {
     workspace = workspaceEntity;
-    workspaceContainer = document.querySelector(workspaceContainerSelector);
+    container = document.querySelector(containerSelector);
     addBoardButton = document.querySelector(addBoardButtonSelector);
     boardList = document.querySelector(boardListSelector);
     boardContainer = document.querySelector(boardContainerSelector);
     boardPlaceholder = document.querySelector(boardPlaceholderSelector);
 
     assert.true(workspace.isWorkspace, "'workspace.isWorkspace'");
-    assert.instanceOf(Element, workspaceContainer, "'workspaceContainer'");
+    assert.instanceOf(Element, container, "'container'");
     assert.instanceOf(Element, addBoardButton, "'addBoardButton'");
     assert.instanceOf(Element, boardList, "'boardList'");
     assert.instanceOf(Element, boardContainer, "'boardContainer'");
