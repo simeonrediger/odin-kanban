@@ -58,6 +58,7 @@
 .board-select-button {
   background-color: transparent;
   color: var(--color-fg-primary);
+  cursor: default;
   padding: 0.375rem 1rem;
   text-align: start;
   width: 100%;
