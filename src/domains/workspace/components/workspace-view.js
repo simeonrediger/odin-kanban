@@ -90,8 +90,8 @@ function createBoardOptionsButton() {
 }
 
 function createBoardOptionsIcon() {
-    const boardOptionsIcon = document
-        .getElementById('three-dots-horizontal-icon')
+    const boardOptionsIcon = container
+        .querySelector('#three-dots-horizontal-icon')
         .content
         .querySelector('svg')
         .cloneNode(true);
