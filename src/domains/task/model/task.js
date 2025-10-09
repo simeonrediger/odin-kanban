@@ -10,15 +10,26 @@ export default class Task {
         CRITICAL: 50,
     });
 
+    #id;
     #name;
     #description;
     #dueDate;
     #priorityLevel;
     #isDone;
 
-    constructor(name) {
+    constructor(name, id) {
+        this.id = id ?? crypto.randomUUID();
         this.name = name;
         Object.freeze(this);
+    }
+
+    get id() {
+        return this.#id;
+    }
+
+    set id(id) {
+        assert.string(id);
+        this.#id = id;
     }
 
     get name() {

@@ -2,10 +2,12 @@ import assert from '@/shared/validation/assert.js';
 import Task from '@/domains/task/model/task.js';
 
 export default class List {
+    #id;
     #name;
     #tasks;
 
-    constructor(name, tasks) {
+    constructor(name, tasks, id) {
+        this.id = id ?? crypto.randomUUID();
         this.name = name;
         this.tasks = tasks;
         Object.freeze(this);
@@ -38,6 +40,15 @@ export default class List {
 
         this.removeTask(task);
         this.addTask(task, targetIndex);
+    }
+
+    get id() {
+        return this.#id;
+    }
+
+    set id(id) {
+        assert.string(id);
+        this.#id = id;
     }
 
     get name() {

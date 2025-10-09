@@ -3,10 +3,12 @@ import List from '@/domains/list/model/list.js';
 import Task from '@/domains/task/model/task.js';
 
 export default class Board {
+    #id;
     #name;
     #lists;
 
-    constructor(name, lists) {
+    constructor(name, lists, id) {
+        this.id = id ?? crypto.randomUUID();
         this.name = name;
         this.lists = lists;
         Object.freeze(this);
@@ -58,6 +60,15 @@ export default class Board {
     findListWithTask(task) {
         assert.instanceOf(Task, task, "'task'");
         return this.#lists.find(list => list.tasks.includes(task));
+    }
+
+    get id() {
+        return this.#id;
+    }
+
+    set id(id) {
+        assert.string(id);
+        this.#id = id;
     }
 
     get name() {
