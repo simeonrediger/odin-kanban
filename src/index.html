@@ -22,13 +22,15 @@
         <nav class='board-nav'>
           <ul data-role='board-list' class='board-list'></ul>
         </nav>
-        <div class='new-board-entry'>
-          <input class='new-board-name-input' placeholder='Untitled board'
-            aria-label='New board name'
+        <div data-role='new-board-entry' class='new-board-entry'>
+          <input data-input='new-board-name' class='new-board-name-input'
+            placeholder='Untitled board' aria-label='New board name'
           >
-          <button data-icon='cancel-circle' class='cancel-new-board-button'
+          <button data-action='cancel-new-board' data-icon='cancel-circle'
+            class='cancel-new-board-button'
           ></button>
-          <button data-icon='checkmark' class='confirm-new-board-button'
+          <button data-action='confirm-new-board' data-icon='checkmark'
+            class='confirm-new-board-button'
           ></button>
         </div>
       </div>

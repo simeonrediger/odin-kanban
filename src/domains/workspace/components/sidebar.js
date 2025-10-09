@@ -11,12 +11,17 @@ let workspace;
 let container;
 let createNewBoardButton;
 let boardList;
+let newBoardEntry;
+let newBoardNameInput;
+let cancelNewBoardButton;
+let confirmNewBoardButton;
 
 function render(workspaceEntity, containerElement) {
     workspace = workspaceEntity;
     container = containerElement;
 
     setUpElementReferences();
+    bindEvents();
     renderBoardList();
 }
 
@@ -25,9 +30,27 @@ function setUpElementReferences() {
         "[data-action='create-new-board']"
     );
     boardList = container.querySelector("[data-role='board-list']");
+    newBoardEntry = container.querySelector("[data-role='new-board-entry']");
+    newBoardNameInput = container.querySelector(
+        "[data-input='new-board-name']"
+    );
+    cancelNewBoardButton = container.querySelector(
+        "[data-action='cancel-new-board']"
+    );
+    confirmNewBoardButton = container.querySelector(
+        "[data-action='confirm-new-board']"
+    );
 
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
     assert.notNull(boardList, "'boardList'");
+    assert.notNull(newBoardEntry, "'newBoardEntry'");
+    assert.notNull(newBoardNameInput, "'newBoardNameInput'");
+    assert.notNull(cancelNewBoardButton, "'cancelNewBoardButton'");
+    assert.notNull(confirmNewBoardButton, "'confirmNewBoardButton'");
+}
+
+function bindEvents() {
+    createNewBoardButton.addEventListener('click', startNewBoardEntry);
 }
 
 function renderBoardList() {
@@ -37,6 +60,9 @@ function renderBoardList() {
         const boardListItem = createBoardListItem(board);
         boardList.append(boardListItem);
     }
+}
+
+function startNewBoardEntry() {
 }
 
 function createBoardListItem(board) {
