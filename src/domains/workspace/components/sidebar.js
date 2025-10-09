@@ -51,6 +51,7 @@ function setUpElementReferences() {
 
 function bindEvents() {
     createNewBoardButton.addEventListener('click', startNewBoardEntry);
+    newBoardEntry.addEventListener('focusout', cancelNewBoardEntry);
 }
 
 function renderBoardList() {
@@ -65,6 +66,11 @@ function renderBoardList() {
 function startNewBoardEntry() {
     newBoardEntry.classList.remove('hidden');
     newBoardNameInput.focus();
+}
+
+function cancelNewBoardEntry() {
+    newBoardEntry.classList.add('hidden');
+    newBoardNameInput.value = '';
 }
 
 function createBoardListItem(board) {
