@@ -1,3 +1,4 @@
+import squirclePlusSvg from './squircle-plus.svg?raw';
 import threeDotsHorizontalSvg from './three-dots-horizontal.svg?raw';
 
 const parser = new DOMParser();
@@ -7,6 +8,10 @@ function createIconFromString(svgString) {
     const svg = doc.documentElement;
 
     return svg;
+}
+
+export function createSquirclePlusIcon() {
+    return createIconFromString(squirclePlusSvg);
 }
 
 export function createThreeDotsHorizontalIcon() {
