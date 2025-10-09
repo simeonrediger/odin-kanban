@@ -68,6 +68,7 @@ function createBoardOptionsButton() {
     boardOptionsButton.ariaLabel = boardOptionsButtonPrompt;
 
     const boardOptionsIcon = createThreeDotsHorizontalIcon();
+    boardOptionsIcon.classList.add('board-options-icon');
     boardOptionsButton.append(boardOptionsIcon);
 
     return boardOptionsButton;
