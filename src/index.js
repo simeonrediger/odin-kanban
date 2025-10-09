@@ -7,5 +7,5 @@ import workspaceView from '@/domains/workspace/components/workspace-view.js';
 
 workspace.addBoard(defaultBoard);
 
-const workspaceContainer = document.getElementById('workspace');
+const workspaceContainer = document.querySelector("[data-role='workspace']");
 workspaceView.render(workspace, workspaceContainer);

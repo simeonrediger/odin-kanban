@@ -8,13 +8,14 @@
     <title>To-do List</title>
   </head>
 
-  <body id='workspace'>
+  <body class='workspace' data-role='workspace'>
     <aside class='sidebar'>
       <h1 class='page-title'>To-do List</h1>
       <div class='board-list-container'>
         <h2 class='board-list-label'>Boards</h2>
         <button
-          id='create-new-board-button' class='icon-button'
+          class='create-new-board-button icon-button'
+          data-action='create-new-board'
           title='Create new board' aria-label='Create new board'
         >
           <svg class='create-new-board-icon' xmlns='http://www.w3.org/2000/svg'
@@ -31,7 +32,7 @@
         <nav class='board-nav'>
           <ul class='board-list'></ul>
         </nav>
-        <template id='three-dots-horizontal-icon'>
+        <template data-template='three-dots-horizontal-icon'>
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16'
             height='16' aria-hidden='true'
           >

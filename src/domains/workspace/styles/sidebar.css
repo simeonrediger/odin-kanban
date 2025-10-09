@@ -21,7 +21,7 @@
 }
 
 .board-list-label,
-#create-new-board-button {
+.create-new-board-button {
   margin-inline: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -34,7 +34,7 @@
   color: var(--color-fg-primary);
 }
 
-#create-new-board-button:hover .create-new-board-icon {
+.create-new-board-button:hover .create-new-board-icon {
   color: var(--color-fg-highlight);
 }
 

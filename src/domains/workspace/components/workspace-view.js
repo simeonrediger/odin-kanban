@@ -33,7 +33,9 @@ function render(workspaceEntity, containerElement) {
 }
 
 function setUpElementReferences() {
-    createNewBoardButton = container.querySelector('#create-new-board-button');
+    createNewBoardButton = container.querySelector(
+        "[data-action='create-new-board']"
+    );
     boardList = container.querySelector('.board-list');
     boardContainer = container.querySelector('.board-container');
     boardPlaceholder = container.querySelector('.board-placeholder');
@@ -91,7 +93,7 @@ function createBoardOptionsButton() {
 
 function createBoardOptionsIcon() {
     const boardOptionsIcon = container
-        .querySelector('#three-dots-horizontal-icon')
+        .querySelector("[data-template='three-dots-horizontal-icon']")
         .content
         .querySelector('svg')
         .cloneNode(true);
