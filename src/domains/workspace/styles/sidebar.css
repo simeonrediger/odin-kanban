@@ -65,8 +65,8 @@
 
 .board-options-button {
   background-color: transparent;
-  padding-inline: 0.5rem;
   display: none;
+  padding-inline: 0.5rem;
 }
 
 .board-list-item:hover .board-options-button {
