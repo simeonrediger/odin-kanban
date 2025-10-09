@@ -21,7 +21,19 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|jpe?g|gif|svg|webp|avif|ico|bmp)$/i,
+                test: /\.svg$/i,
+                oneOf: [
+                    {
+                        resourceQuery: /raw/,
+                        type: 'asset/source',
+                    },
+                    {
+                        type: 'asset/resource',
+                    },
+                ],
+            },
+            {
+                test: /\.(png|jpe?g|gif|webp|avif|ico|bmp)$/i,
                 type: 'asset/resource',
             },
             {
