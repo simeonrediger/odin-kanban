@@ -121,6 +121,7 @@ function createBoardSelectButton(board) {
     const boardSelectButton = document.createElement('button');
     boardSelectButton.classList.add('board-select-button');
     boardSelectButton.textContent = board.name;
+    boardSelectButton.ariaLabel = 'Select board';
 
     return boardSelectButton;
 }
