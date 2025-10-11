@@ -11,7 +11,7 @@
   <body data-role='workspace' class='workspace'>
     <aside data-role='sidebar' class='sidebar'>
       <h1 class='page-title'>To-do List</h1>
-      <div class='board-list-container'>
+      <div data-role='board-list-container' class='board-list-container'>
         <div class='board-list-header'>
           <h2 class='board-list-label'>Boards</h2>
           <button data-action='create-new-board' data-icon='squircle-plus'
@@ -20,19 +20,15 @@
           ></button>
         </div>
         <nav class='board-nav'>
-          <ul data-role='board-list' class='board-list'></ul>
+          <ul data-role='board-list' class='board-list'>
+            <li data-role='new-board-entry' class='new-board-entry hidden'>
+              <input data-input='new-board-name' class='new-board-name-input' placeholder='Untitled board'
+                aria-label='New board name'>
+              <button data-action='cancel-new-board' data-icon='cancel-circle' class='cancel-new-board-button'></button>
+              <button data-action='confirm-new-board' data-icon='checkmark' class='confirm-new-board-button'></button>
+            </li>
+          </ul>
         </nav>
-        <div data-role='new-board-entry' class='new-board-entry hidden'>
-          <input data-input='new-board-name' class='new-board-name-input'
-            placeholder='Untitled board' aria-label='New board name'
-          >
-          <button data-action='cancel-new-board' data-icon='cancel-circle'
-            class='cancel-new-board-button'
-          ></button>
-          <button data-action='confirm-new-board' data-icon='checkmark'
-            class='confirm-new-board-button'
-          ></button>
-        </div>
       </div>
     </aside>
     <main>
