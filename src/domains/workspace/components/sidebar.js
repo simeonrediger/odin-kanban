@@ -67,13 +67,13 @@ function renderBoardList() {
 }
 
 function startNewBoardEntry() {
+    newBoardNameInput.value = '';
     newBoardEntry.classList.remove('hidden');
     newBoardNameInput.focus();
 }
 
 function cancelNewBoardEntry() {
     newBoardEntry.classList.add('hidden');
-    newBoardNameInput.value = '';
 }
 
 function confirmNewBoardEntry() {
