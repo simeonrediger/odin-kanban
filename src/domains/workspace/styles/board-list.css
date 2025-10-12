@@ -62,15 +62,15 @@
   color: var(--color-fg-highlight);
 }
 
-.new-board-entry:not(.hidden) {
+.board-entry:not(.hidden) {
   display: flex;
 }
 
-.new-board-entry:has(:focus) {
+.board-entry:has(:focus) {
   background-color: var(--color-bg-highlight);
 }
 
-.new-board-name-input {
+.board-name-input {
   background-color: transparent;
   color: inherit;
   min-width: 0;
@@ -79,18 +79,18 @@
   padding-inline: 1rem;
 }
 
-.cancel-new-board-button,
-.confirm-new-board-button {
+.cancel-board-entry-button,
+.confirm-board-entry-button {
   background-color: transparent;
   color: var(--color-fg-secondary);
   padding-inline: 0.25rem;
 }
 
-.confirm-new-board-button {
+.confirm-board-entry-button {
   padding-inline-end: 0.625rem;
 }
 
-.cancel-new-board-button:hover,
-.confirm-new-board-button:hover {
+.cancel-board-entry-button:hover,
+.confirm-board-entry-button:hover {
   color: var(--color-fg-highlight);
 }

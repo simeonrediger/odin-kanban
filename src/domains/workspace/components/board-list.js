@@ -11,10 +11,10 @@ let workspace;
 let container;
 let createNewBoardButton;
 let list;
-let newBoardNameInput;
-let cancelNewBoardButton;
-let confirmNewBoardButton;
-let newBoardEntry;
+let boardNameInput;
+let cancelEntryButton;
+let confirmEntryButton;
+let entry;
 
 function render(workspaceEntity, containerElement) {
     workspaceEntity ? workspace = workspaceEntity : null;
@@ -25,8 +25,8 @@ function render(workspaceEntity, containerElement) {
     removeAllBoardListItems();
 
     for (const board of workspace.boards) {
-        const boardListItem = createListItem(board);
-        addBoardListItem(boardListItem);
+        const listItem = createListItem(board);
+        addListItem(listItem);
     }
 }
 
@@ -35,113 +35,113 @@ function setUpElementReferences() {
         "[data-action='create-new-board']"
     );
     list = container.querySelector("[data-role='board-list']");
-    newBoardEntry = container.querySelector("[data-role='new-board-entry']");
-    newBoardNameInput = container.querySelector(
-        "[data-input='new-board-name']"
+    entry = container.querySelector("[data-role='board-entry']");
+    boardNameInput = container.querySelector(
+        "[data-input='board-name']"
     );
-    cancelNewBoardButton = container.querySelector(
-        "[data-action='cancel-new-board']"
+    cancelEntryButton = container.querySelector(
+        "[data-action='cancel-board-entry']"
     );
-    confirmNewBoardButton = container.querySelector(
-        "[data-action='confirm-new-board']"
+    confirmEntryButton = container.querySelector(
+        "[data-action='confirm-board-entry']"
     );
 
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
-    assert.notNull(newBoardEntry, "'newBoardEntry'");
-    assert.notNull(newBoardNameInput, "'newBoardNameInput'");
-    assert.notNull(cancelNewBoardButton, "'cancelNewBoardButton'");
-    assert.notNull(confirmNewBoardButton, "'confirmNewBoardButton'");
+    assert.notNull(entry, "'entry'");
+    assert.notNull(boardNameInput, "'boardNameInput'");
+    assert.notNull(cancelEntryButton, "'cancelEntryButton'");
+    assert.notNull(confirmEntryButton, "'confirmEntryButton'");
 }
 
 function bindEvents() {
-    createNewBoardButton.addEventListener('click', startNewBoardEntry);
-    newBoardNameInput.addEventListener('keydown', handleNewBoardNameKeyDown);
-    cancelNewBoardButton.addEventListener('click', cancelNewBoardEntry);
-    confirmNewBoardButton.addEventListener('click', confirmNewBoardEntry);
-    newBoardEntry.addEventListener('focusout', handleNewBoardEntryFocusOut);
+    createNewBoardButton.addEventListener('click', startEntry);
+    boardNameInput.addEventListener('keydown', handleBoardNameInputKeyDown);
+    cancelEntryButton.addEventListener('click', cancelEntry);
+    confirmEntryButton.addEventListener('click', confirmEntry);
+    entry.addEventListener('focusout', handleEntryFocusOut);
 }
 
-function addBoardListItem(listItem) {
-    list.insertBefore(listItem, newBoardEntry);
+function addListItem(listItem) {
+    list.insertBefore(listItem, entry);
 }
 
 function removeAllBoardListItems() {
     const boardListItems = Array.from(list.children).filter(
-        element => element !== newBoardEntry
+        element => element !== entry
     );
 
     boardListItems.forEach(listItem => listItem.remove());
 }
 
 function createListItem(board) {
-    const boardListItem = document.createElement('li');
-    boardListItem.classList.add('board-list-item');
+    const listItem = document.createElement('li');
+    listItem.classList.add('board-list-item');
 
-    const boardSelectButton = createSelectButton(board);
-    const boardOptionsButton = createOptionsButton();
-    boardListItem.append(boardSelectButton, boardOptionsButton);
+    const selectButton = createSelectButton(board);
+    const optionsButton = createOptionsButton();
+    listItem.append(selectButton, optionsButton);
 
-    return boardListItem;
+    return listItem;
 }
 
 function createSelectButton(board) {
-    const boardSelectButton = document.createElement('button');
-    boardSelectButton.classList.add('board-select-button');
-    boardSelectButton.textContent = board.name;
-    boardSelectButton.ariaLabel = 'Select board';
+    const button = document.createElement('button');
+    button.classList.add('board-select-button');
+    button.textContent = board.name;
+    button.ariaLabel = 'Select board';
 
-    return boardSelectButton;
+    return button;
 }
 
 function createOptionsButton() {
-    const boardOptionsButton = document.createElement('button');
-    boardOptionsButton.classList.add('board-options-button');
-    boardOptionsButton.ariaLabel = 'Open board options menu';
+    const button = document.createElement('button');
+    button.classList.add('board-options-button');
+    button.ariaLabel = 'Open board options menu';
 
-    const boardOptionsIcon = createThreeDotsHorizontalIcon();
-    boardOptionsIcon.classList.add('board-options-icon');
-    boardOptionsButton.append(boardOptionsIcon);
+    const icon = createThreeDotsHorizontalIcon();
+    icon.classList.add('board-options-icon');
+    button.append(icon);
 
-    return boardOptionsButton;
+    return button;
 }
 
-function startNewBoardEntry() {
-    newBoardNameInput.value = '';
-    newBoardEntry.classList.remove('hidden');
-    newBoardNameInput.focus();
+function startEntry() {
+    boardNameInput.value = '';
+    entry.classList.remove('hidden');
+    boardNameInput.focus();
 }
 
-function cancelNewBoardEntry() {
-    newBoardEntry.classList.add('hidden');
+function cancelEntry() {
+    entry.classList.add('hidden');
 }
 
-function confirmNewBoardEntry() {
-    const boardName = newBoardNameInput.value.trim()
-        || newBoardNameInput.placeholder;
+function confirmEntry() {
+    const boardName = boardNameInput.value.trim()
+        || boardNameInput.placeholder;
 
     workspace.addEmptyBoard(boardName);
-    cancelNewBoardEntry();
+    cancelEntry();
     boardList.render();
 }
 
-function handleNewBoardNameKeyDown(event) {
+function handleBoardNameInputKeyDown(event) {
 
     switch (event.key) {
         case 'Enter':
-            confirmNewBoardEntry();
+            confirmEntry();
             break;
         case 'Escape':
-            cancelNewBoardEntry();
+            cancelEntry();
             break;
     }
 }
 
-function handleNewBoardEntryFocusOut(event) {
-    const noChildFocused = !newBoardEntry.contains(event.relatedTarget);
-    const isVisible = !newBoardEntry.classList.contains('hidden');
+function handleEntryFocusOut(event) {
+    const noChildFocused = !entry.contains(event.relatedTarget);
+    const isVisible = !entry.classList.contains('hidden');
 
     if (noChildFocused && isVisible) {
-        cancelNewBoardEntry();
+        cancelEntry();
     }
 }
 
