@@ -38,6 +38,10 @@
   background-color: var(--color-bg-highlight);
 }
 
+.board-list-item.is-menu-context {
+  background-color: var(--color-bg-highlight-2);
+}
+
 .board-select-button {
   background-color: transparent;
   color: var(--color-fg-primary);
@@ -47,7 +51,8 @@
   width: 100%;
 }
 
-.board-list-item:hover .board-options-button {
+.board-list-item:hover .board-options-button,
+.board-list-item.is-menu-context .board-options-button {
   display: block;
 }
 

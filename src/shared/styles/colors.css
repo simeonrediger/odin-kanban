@@ -9,9 +9,14 @@ html {
   --gray-light-8: #ccc;
   --white: #fff;
 
+  --purple: rgb(105, 0, 144);
+
   --color-bg-primary: var(--gray-dark-13);
   --color-bg-secondary: var(--gray-dark-12);
   --color-bg-highlight: var(--gray-dark-15);
+  --color-bg-context-menu: var(--black);
+  --color-bg-context-menu-highlight: var(--gray-dark-13);
+  --color-bg-highlight-2: var(--purple);
 
   --color-fg-primary: var(--gray-light-8);
   --color-fg-secondary: var(--gray-light-6);

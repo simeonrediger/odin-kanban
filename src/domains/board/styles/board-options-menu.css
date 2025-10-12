@@ -1,0 +1,32 @@
+.board-options-menu {
+  background-color: var(--color-bg-context-menu);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.board-options-menu-label,
+.board-menu-option-button {
+  padding-inline: 0.5rem;
+}
+
+.board-options-menu-label {
+  color: var(--color-fg-faint);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.board-menu-option-button {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  color: var(--color-fg-primary);
+  padding-block: 0.25rem;
+  text-align: start;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.board-menu-option-button:hover {
+  background-color: var(--color-bg-context-menu-highlight);
+}
