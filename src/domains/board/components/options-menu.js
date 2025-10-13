@@ -37,18 +37,19 @@ function toggle(context) {
     } else {
         moveNextToElement();
         open();
-        monitorCloseCondition();
     }
 }
 
 function open() {
     isOpen = true;
+    document.addEventListener('click', closeOnOuterClick, { capture: true });
     container.classList.remove('hidden');
 }
 
 function close() {
     isOpen = false;
     anchorElement = null;
+    document.removeEventListener('click', closeOnOuterClick, { capture: true });
     container.classList.add('hidden');
 }
 
@@ -60,10 +61,6 @@ function moveNextToElement() {
     container.style.top = rect.y + 'px';
 }
 
-function monitorCloseCondition() {
-    document.addEventListener('click', closeOnOuterClick, { capture: true });
-}
-
 function closeOnOuterClick(event) {
     const isInnerClick = container.contains(event.target);
 
@@ -71,7 +68,6 @@ function closeOnOuterClick(event) {
         return;
     }
 
-    document.removeEventListener('click', closeOnOuterClick, { capture: true });
     close();
 }
 
