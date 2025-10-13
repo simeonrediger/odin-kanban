@@ -17,6 +17,8 @@ let cancelEntryButton;
 let confirmEntryButton;
 let entry;
 
+let editingBoardName = false;
+
 const roles = {
     boardListItem: 'board-list-item',
 };
@@ -93,6 +95,7 @@ function createListItem(board) {
     const listItem = document.createElement('li');
     listItem.classList.add('board-list-item');
     listItem.dataset.role = roles.boardListItem;
+    listItem.dataset.id = board.id;
 
     const selectButton = createSelectButton(board);
     const optionsButton = createOptionsButton();
@@ -209,6 +212,18 @@ function closeOptionsMenuOnOuterClick(event) {
 }
 
 function startEntryEdit() {
+    const listItem = optionsMenu.context;
+    optionsMenu.close();
+    setOptionMenuContext(null);
+
+    const board = workspace.getBoard(listItem.dataset.id);
+    boardNameInput.value = board.name;
+    list.insertBefore(entry, listItem);
+    editingBoardName = true;
+
+    listItem.classList.add('hidden');
+    entry.classList.remove('hidden');
+    boardNameInput.focus();
 }
 
 function startEntry() {
@@ -219,13 +234,28 @@ function startEntry() {
 
 function cancelEntry() {
     entry.classList.add('hidden');
+
+    if (editingBoardName) {
+        const listItem = entry.nextElementSibling;
+        listItem.classList.remove('hidden');
+    }
+
+    editingBoardName = false;
 }
 
 function confirmEntry() {
     const boardName = boardNameInput.value.trim()
         || boardNameInput.placeholder;
 
-    workspace.addEmptyBoard(boardName);
+    if (editingBoardName) {
+        const listItem = entry.nextElementSibling;
+        const board = workspace.getBoard(listItem.dataset.id);
+        board.name = boardName;
+
+    } else {
+        workspace.addEmptyBoard(boardName);
+    }
+
     cancelEntry();
     boardList.render();
 }

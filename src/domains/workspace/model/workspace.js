@@ -6,6 +6,11 @@ import Task from '@/domains/task/model/task.js';
 const boards = [];
 let activeBoard;
 
+function getBoard(boardId) {
+    assert.string(boardId, "'boardId'");
+    return boards.find(board => board.id === boardId);
+}
+
 function addBoard(board, targetIndex) {
     assert.instanceOf(Board, board, "'board'");
 
@@ -110,6 +115,7 @@ function toJson(replacer, space) {
 const workspace = {
     isWorkspace: true,
 
+    getBoard,
     addBoard,
     addEmptyBoard,
     removeBoard,
