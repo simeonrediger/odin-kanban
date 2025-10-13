@@ -33,7 +33,6 @@ function render(workspaceEntity, containerElement) {
     containerElement ? container = containerElement : null;
 
     setUpElementReferences();
-    optionsMenu.init(startEntryEdit, promptBoardDeletion);
     bindEvents();
     removeAllBoardListItems();
 
@@ -141,74 +140,32 @@ function handleInnerClick(event) {
     }
 
     const listItem = button.closest(`[data-role='${roles.boardListItem}']`);
-    const isSameContext = optionsMenu.context === listItem;
 
     if (action === actions.openOptionsMenu) {
-        handleOptionsButtonClick(button, listItem, isSameContext);
+        optionsMenu.toggle({
+            anchorElement: listItem,
+            isTrigger: isOptionsButton,
+            handleRename: startEntryEdit,
+            handleDelete: promptBoardDeletion,
+        });
 
     } else if (action === actions.selectBoard) {
         // TODO
     }
 }
 
-function handleOptionsButtonClick(button, listItem, isSameContext) {
+function isOptionsButton(event) {
+    const optionsButton = event.target.closest(
+        `[data-action='${actions.openOptionsMenu}']`
+    );
 
-    if (!optionsMenu.isOpen || !isSameContext) {
-
-        if (!optionsMenu.isOpen) {
-            setTimeout(monitorMenuCloseCondition);
-
-        } else {
-            setOptionMenuContext(null);
-        }
-
-        const { x, y } = getTopRightCornerCoordinates(button);
-        optionsMenu.move(x, y);
-        setOptionMenuContext(listItem);
-
-        if (!optionsMenu.isOpen) {
-            optionsMenu.open();
-        }
-
-    } else {
-        optionsMenu.close();
-        setOptionMenuContext(null);
-    }
+    return Boolean(optionsButton);
 }
 
 function setOptionMenuContext(context) {
     list.querySelector('.is-menu-context')?.classList.remove('is-menu-context');
     optionsMenu.context = context;
     context?.classList.add('is-menu-context');
-}
-
-function getTopRightCornerCoordinates(element) {
-    const rect = element.getBoundingClientRect();
-    const width = rect.right - rect.left;
-
-    return {
-        x: rect.x + width,
-        y: rect.y,
-    };
-}
-
-function monitorMenuCloseCondition() {
-    document.addEventListener('click', closeOptionsMenuOnOuterClick);
-}
-
-function closeOptionsMenuOnOuterClick(event) {
-    const isInnerClick = optionsMenu.container.contains(event.target);
-    const isOptionsButtonClick = Boolean(event.target.closest(
-        `[data-action='${actions.openOptionsMenu}']`
-    ));
-
-    if (isInnerClick || isOptionsButtonClick) {
-        return;
-    }
-
-    document.removeEventListener('click', closeOptionsMenuOnOuterClick);
-    optionsMenu.close();
-    setOptionMenuContext(null);
 }
 
 function startEntryEdit() {

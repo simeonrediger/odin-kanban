@@ -2,36 +2,77 @@ import '@/shared/styles/utilities.css';
 import '../styles/board-options-menu.css';
 
 let container;
-let context;
+let anchorElement;
+let isTrigger;
 let handleRename;
 let handleDelete;
+
+let isOpen = false;
 
 const actions = {
     renameBoard: 'rename-board',
     deleteBoard: 'delete-board',
 };
 
-function init(renameHandlerFunction, deleteHandlerFunction) {
-    handleRename = renameHandlerFunction;
-    handleDelete = deleteHandlerFunction;
-    bindEvents();
-}
-
 function bindEvents() {
     container.addEventListener('click', handleInnerClick);
 }
 
-function move(x, y) {
-    container.style.left = x + 'px';
-    container.style.top = y + 'px';
+function unbindEvents() {
+    container?.removeEventListener('click', handleInnerClick);
 }
 
-function open(board) {
+function toggle(context) {
+    const isSameAnchorElement = context.anchorElement === anchorElement;
+    ({ anchorElement, isTrigger, handleRename, handleDelete } = context);
+
+    if (isOpen) {
+
+        if (isSameAnchorElement) {
+            close();
+        } else {
+            moveNextToElement();
+        }
+
+    } else {
+        moveNextToElement();
+        open();
+        setTimeout(monitorCloseCondition);
+    }
+}
+
+function open() {
+    isOpen = true;
     container.classList.remove('hidden');
 }
 
 function close() {
+    isOpen = false;
+    anchorElement = null;
     container.classList.add('hidden');
+}
+
+function moveNextToElement() {
+    const rect = anchorElement.getBoundingClientRect();
+    const width = rect.right - rect.left;
+
+    container.style.left = rect.x + width + 'px';
+    container.style.top = rect.y + 'px';
+}
+
+function monitorCloseCondition() {
+    document.addEventListener('click', closeOnOuterClick);
+}
+
+function closeOnOuterClick(event) {
+    const isInnerClick = container.contains(event.target);
+
+    if (isInnerClick || isTrigger(event)) {
+        return;
+    }
+
+    document.removeEventListener('click', closeOnOuterClick);
+    close();
 }
 
 function handleInnerClick(event) {
@@ -52,29 +93,12 @@ function handleInnerClick(event) {
 }
 
 const boardOptionsMenu = {
-    init,
-    move,
-    open,
-    close,
-
-    get container() {
-        return container;
-    },
+    toggle,
 
     set container(element) {
+        unbindEvents();
         container = element;
-    },
-
-    get isOpen() {
-        return !container.classList.contains('hidden');
-    },
-
-    get context() {
-        return context;
-    },
-
-    set context(element) {
-        context = element;
+        bindEvents();
     },
 };
 
