@@ -170,7 +170,6 @@ function setOptionMenuContext(context) {
 
 function startEntryEdit() {
     const listItem = optionsMenu.context;
-    optionsMenu.close();
     setOptionMenuContext(null);
 
     const board = workspace.getBoard(listItem.dataset.id);

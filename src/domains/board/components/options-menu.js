@@ -86,6 +86,8 @@ function handleInnerClick(event) {
     } else if (action === actions.deleteBoard) {
         handleDelete();
     }
+
+    close();
 }
 
 const boardOptionsMenu = {
