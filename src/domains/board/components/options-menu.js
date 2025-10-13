@@ -6,6 +6,7 @@ import assert from '@/shared/validation/assert.js';
 let container;
 let anchorElement;
 let isTrigger;
+let deleteBoardOption;
 let confirmBoardDeletionOption;
 let handleRename;
 let handleDelete;
@@ -27,10 +28,14 @@ function unbindEvents() {
 }
 
 function setUpElementReferences() {
+    deleteBoardOption = container.querySelector(
+        "[data-role='delete-board-option']"
+    );
     confirmBoardDeletionOption = container.querySelector(
         "[data-role='confirm-board-deletion-option']"
     );
 
+    assert.notNull(deleteBoardOption, "'deleteBoardOption'");
     assert.notNull(confirmBoardDeletionOption, "'confirmBoardDeletionOption'");
 }
 
@@ -69,6 +74,7 @@ function close() {
     document.removeEventListener('click', closeOnOuterClick, { capture: true });
     container.classList.add('hidden');
     confirmBoardDeletionOption.classList.add('hidden');
+    deleteBoardOption.classList.remove('hidden');
 }
 
 function moveNextToElement() {
@@ -112,6 +118,7 @@ function handleInnerClick(event) {
 }
 
 function showDeletionConfirmation() {
+    deleteBoardOption.classList.add('hidden');
     confirmBoardDeletionOption.classList.remove('hidden');
 }
 
