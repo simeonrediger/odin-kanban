@@ -24,23 +24,28 @@ function unbindEvents() {
 
 function toggle(context) {
     const isSameAnchorElement = context.anchorElement === anchorElement;
-    ({ anchorElement, isTrigger, handleRename, handleDelete } = context);
 
     if (isOpen) {
 
         if (isSameAnchorElement) {
             close();
         } else {
-            moveNextToElement();
+            open(context);
         }
 
     } else {
-        moveNextToElement();
-        open();
+        open(context);
     }
 }
 
-function open() {
+function open(context) {
+    ({ anchorElement, isTrigger, handleRename, handleDelete } = context);
+    moveNextToElement();
+
+    if (isOpen) {
+        return;
+    }
+
     isOpen = true;
     document.addEventListener('click', closeOnOuterClick, { capture: true });
     container.classList.remove('hidden');
