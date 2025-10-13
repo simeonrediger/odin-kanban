@@ -29,7 +29,7 @@
   flex-direction: column;
 }
 
-.board-list-item {
+.board-list-item:not(.hidden) {
   display: grid;
   grid-template-columns: 1fr max-content;
 }

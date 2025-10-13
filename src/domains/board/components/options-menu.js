@@ -3,11 +3,23 @@ import '../styles/board-options-menu.css';
 
 let container;
 let context;
+let handleRename;
+let handleDelete;
 
 const actions = {
     renameBoard: 'rename-board',
     deleteBoard: 'delete-board',
 };
+
+function init(renameHandlerFunction, deleteHandlerFunction) {
+    handleRename = renameHandlerFunction;
+    handleDelete = deleteHandlerFunction;
+    bindEvents();
+}
+
+function bindEvents() {
+    container.addEventListener('click', handleInnerClick);
+}
 
 function move(x, y) {
     container.style.left = x + 'px';
@@ -20,6 +32,23 @@ function open(board) {
 
 function close() {
     container.classList.add('hidden');
+}
+
+function handleInnerClick(event) {
+    const clickedButton = event.target.closest('button');
+
+    if (!clickedButton) {
+        return;
+    }
+
+    const buttonAction = clickedButton.dataset.action;
+
+    if (buttonAction === actions.renameBoard) {
+        handleRename();
+
+    } else if (buttonAction === actions.deleteBoard) {
+        handleDelete();
+    }
 }
 
 const boardOptionsMenu = {

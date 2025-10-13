@@ -31,6 +31,7 @@ function render(workspaceEntity, containerElement) {
     containerElement ? container = containerElement : null;
 
     setUpElementReferences();
+    optionsMenu.init(startEntryEdit, promptBoardDeletion);
     bindEvents();
     removeAllBoardListItems();
 
@@ -207,6 +208,9 @@ function closeOptionsMenuOnOuterClick(event) {
     setOptionMenuContext(null);
 }
 
+function startEntryEdit() {
+}
+
 function startEntry() {
     boardNameInput.value = '';
     entry.classList.remove('hidden');
@@ -245,6 +249,9 @@ function handleEntryFocusOut(event) {
     if (noChildFocused && isVisible) {
         cancelEntry();
     }
+}
+
+function promptBoardDeletion() {
 }
 
 const boardList = {
