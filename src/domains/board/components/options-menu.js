@@ -37,7 +37,7 @@ function toggle(context) {
     } else {
         moveNextToElement();
         open();
-        setTimeout(monitorCloseCondition);
+        monitorCloseCondition();
     }
 }
 
@@ -61,7 +61,7 @@ function moveNextToElement() {
 }
 
 function monitorCloseCondition() {
-    document.addEventListener('click', closeOnOuterClick);
+    document.addEventListener('click', closeOnOuterClick, { capture: true });
 }
 
 function closeOnOuterClick(event) {
@@ -71,7 +71,7 @@ function closeOnOuterClick(event) {
         return;
     }
 
-    document.removeEventListener('click', closeOnOuterClick);
+    document.removeEventListener('click', closeOnOuterClick, { capture: true });
     close();
 }
 
