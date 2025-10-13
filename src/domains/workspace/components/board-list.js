@@ -29,11 +29,17 @@ const actions = {
 }
 
 function render(workspaceEntity, containerElement) {
-    workspaceEntity ? workspace = workspaceEntity : null;
-    containerElement ? container = containerElement : null;
 
-    setUpElementReferences();
-    bindEvents();
+    if (workspaceEntity) {
+        workspace = workspaceEntity;
+    }
+
+    if (containerElement) {
+        container = containerElement;
+        setUpElementReferences();
+        bindEvents();
+    }
+
     removeAllBoardListItems();
 
     for (const board of workspace.boards) {
