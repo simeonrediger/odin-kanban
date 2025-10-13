@@ -1,9 +1,12 @@
 import '@/shared/styles/utilities.css';
 import '../styles/board-options-menu.css';
 
+import assert from '@/shared/validation/assert.js';
+
 let container;
 let anchorElement;
 let isTrigger;
+let confirmBoardDeletionOption;
 let handleRename;
 let handleDelete;
 
@@ -12,6 +15,7 @@ let isOpen = false;
 const actions = {
     renameBoard: 'rename-board',
     deleteBoard: 'delete-board',
+    confirmBoardDeletion: 'confirm-board-deletion',
 };
 
 function bindEvents() {
@@ -20,6 +24,14 @@ function bindEvents() {
 
 function unbindEvents() {
     container?.removeEventListener('click', handleInnerClick);
+}
+
+function setUpElementReferences() {
+    confirmBoardDeletionOption = container.querySelector(
+        "[data-role='confirm-board-deletion-option']"
+    );
+
+    assert.notNull(confirmBoardDeletionOption, "'confirmBoardDeletionOption'");
 }
 
 function toggle(context) {
@@ -56,6 +68,7 @@ function close() {
     anchorElement = null;
     document.removeEventListener('click', closeOnOuterClick, { capture: true });
     container.classList.add('hidden');
+    confirmBoardDeletionOption.classList.add('hidden');
 }
 
 function moveNextToElement() {
@@ -87,12 +100,19 @@ function handleInnerClick(event) {
 
     if (action === actions.renameBoard) {
         handleRename();
+        close();
 
     } else if (action === actions.deleteBoard) {
-        handleDelete();
-    }
+        showDeletionConfirmation();
 
-    close();
+    } else if (action === actions.confirmBoardDeletion) {
+        handleDelete();
+        close();
+    }
+}
+
+function showDeletionConfirmation() {
+    confirmBoardDeletionOption.classList.remove('hidden');
 }
 
 const boardOptionsMenu = {
@@ -101,6 +121,7 @@ const boardOptionsMenu = {
     set container(element) {
         unbindEvents();
         container = element;
+        setUpElementReferences();
         bindEvents();
     },
 

@@ -140,13 +140,14 @@ function handleInnerClick(event) {
     }
 
     const listItem = button.closest(`[data-role='${roles.boardListItem}']`);
+    const board = workspace.getBoard(listItem.dataset.id);
 
     if (action === actions.openOptionsMenu) {
         optionsMenu.toggle({
             anchorElement: listItem,
             isTrigger: isOptionsButton,
             handleRename: startEntryEdit,
-            handleDelete: promptBoardDeletion,
+            handleDelete: () => deleteBoard(board),
         });
 
     } else if (action === actions.selectBoard) {
@@ -230,7 +231,9 @@ function handleEntryFocusOut(event) {
     }
 }
 
-function promptBoardDeletion() {
+function deleteBoard(board) {
+    workspace.removeBoard(board);
+    render();
 }
 
 const boardList = {

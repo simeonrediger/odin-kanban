@@ -30,3 +30,7 @@
 .board-menu-option-button:hover {
   background-color: var(--color-bg-context-menu-highlight);
 }
+
+.confirm-board-deletion-button {
+  color: var(--color-fg-critical);
+}

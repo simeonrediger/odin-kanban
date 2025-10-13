@@ -9,6 +9,7 @@ html {
   --gray-light-8: #ccc;
   --white: #fff;
 
+  --red: #f55;
   --purple: #690090;
 
   --color-bg-primary: var(--gray-dark-13);
@@ -22,4 +23,5 @@ html {
   --color-fg-secondary: var(--gray-light-6);
   --color-fg-highlight: var(--white);
   --color-fg-faint: var(--gray);
+  --color-fg-critical: var(--red);
 }
