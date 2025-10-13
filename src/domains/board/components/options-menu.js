@@ -41,12 +41,12 @@ function handleInnerClick(event) {
         return;
     }
 
-    const buttonAction = clickedButton.dataset.action;
+    const action = clickedButton.dataset.action;
 
-    if (buttonAction === actions.renameBoard) {
+    if (action === actions.renameBoard) {
         handleRename();
 
-    } else if (buttonAction === actions.deleteBoard) {
+    } else if (action === actions.deleteBoard) {
         handleDelete();
     }
 }
