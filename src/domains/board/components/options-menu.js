@@ -98,6 +98,10 @@ const boardOptionsMenu = {
         container = element;
         bindEvents();
     },
+
+    get anchorElement() {
+        return anchorElement;
+    }
 };
 
 export default boardOptionsMenu;

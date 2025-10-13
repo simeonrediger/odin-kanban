@@ -162,15 +162,8 @@ function isOptionsButton(event) {
     return Boolean(optionsButton);
 }
 
-function setOptionMenuContext(context) {
-    list.querySelector('.is-menu-context')?.classList.remove('is-menu-context');
-    optionsMenu.context = context;
-    context?.classList.add('is-menu-context');
-}
-
 function startEntryEdit() {
-    const listItem = optionsMenu.context;
-    setOptionMenuContext(null);
+    const listItem = optionsMenu.anchorElement;
 
     const board = workspace.getBoard(listItem.dataset.id);
     boardNameInput.value = board.name;
