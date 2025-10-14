@@ -1,5 +1,6 @@
 import cancelCircleSvg from './cancel-circle.svg?raw';
 import checkmarkSvg from './checkmark.svg?raw';
+import clipboardPlusSvg from './clipboard-plus.svg?raw';
 import squirclePlusSvg from './squircle-plus.svg?raw';
 import threeDotsHorizontalSvg from './three-dots-horizontal.svg?raw';
 
@@ -18,6 +19,10 @@ export function createCancelCircleIcon() {
 
 export function createCheckmarkIcon() {
     return createIconFromString(checkmarkSvg);
+}
+
+export function createClipboardPlusIcon() {
+    return createIconFromString(clipboardPlusSvg);
 }
 
 export function createSquirclePlusIcon() {

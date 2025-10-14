@@ -15,6 +15,19 @@
   font-size: 1.25rem;
 }
 
+.create-new-list-button {
+  background-color: transparent;
+  color: var(--color-fg-secondary);
+
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.create-new-list-button:hover {
+  color: var(--color-fg-highlight);
+}
+
 .lists-container {
   grid-column: span 2;
 
