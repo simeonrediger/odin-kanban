@@ -1,6 +1,6 @@
-import '../styles/board.css';
+import './styles/board.css';
 
-import ListView from '@/domains/list/components/list.js';
+import ListView from '@/domains/list/component.js';
 
 let board;
 let container;

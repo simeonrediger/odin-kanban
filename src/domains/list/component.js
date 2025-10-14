@@ -1,6 +1,6 @@
-import '../styles/list.css';
+import './styles/list.css';
 
-import TaskView from '@/domains/task/components/task.js';
+import TaskView from '@/domains/task/component.js';
 
 export default class ListView {
 

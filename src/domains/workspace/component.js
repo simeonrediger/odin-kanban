@@ -1,8 +1,8 @@
-import '../styles/workspace.css';
+import './styles/workspace.css';
 
 import assert from '@/shared/validation/assert.js';
-import boardView from '@/domains/board/components/board-view.js';
-import sidebar from './sidebar.js';
+import boardView from '@/domains/board/component.js';
+import sidebar from './components/sidebar.js';
 
 let workspace;
 let container;
