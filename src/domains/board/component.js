@@ -1,9 +1,11 @@
 import './style.css';
 
+import assert from '@/shared/validation/assert.js';
 import ListView from '@/domains/list/component.js';
 
 let board;
 let container;
+let boardTitle;
 
 function render(boardEntity, containerElement) {
     board = boardEntity;
@@ -12,9 +14,9 @@ function render(boardEntity, containerElement) {
         container = containerElement;
     }
 
+    setUpElementReferences();
     removeAllListViews();
-    container.querySelector("[data-role='board-title']")
-        .textContent = board.name;
+    boardTitle.textContent = board.name;
 
     for (const list of board.lists) {
         const listView = new ListView(list);
@@ -23,8 +25,13 @@ function render(boardEntity, containerElement) {
     }
 }
 
+function setUpElementReferences() {
+    boardTitle = container.querySelector("[data-role='board-title']");
+    assert.notNull(boardTitle, "'boardTitle'");
+}
+
 function removeAllListViews() {
-    const listViewContainers = document.querySelectorAll(
+    const listViewContainers = container.querySelectorAll(
         "[data-role='list-container']"
     );
 
