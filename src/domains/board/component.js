@@ -6,14 +6,13 @@ let board;
 let container;
 
 function render(boardEntity, containerElement) {
-    removeAllListViews();
-
     board = boardEntity;
 
     if (containerElement) {
         container = containerElement;
     }
 
+    removeAllListViews();
     document.querySelector("[data-role='board-title']")
         .textContent = board.name;
 
