@@ -4,6 +4,10 @@ import TaskView from '@/domains/task/component.js';
 
 export default class ListView {
 
+    #roles = {
+        taskContainer: 'task-container',
+    };
+
     constructor(list, containerRole) {
         this.container = document.createElement('li');
         this.container.dataset.id = list.id;
@@ -18,7 +22,7 @@ export default class ListView {
         this.tasks.classList.add('tasks-list');
 
         for (const task of list.tasks) {
-            const taskView = new TaskView(task);
+            const taskView = new TaskView(task, this.#roles.taskContainer);
             this.tasks.append(taskView.container);
         }
 
