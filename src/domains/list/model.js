@@ -1,5 +1,5 @@
 import assert from '@/shared/validation/assert.js';
-import Task from '@/domains/task/model/task.js';
+import Task from '@/domains/task/model.js';
 
 export default class List {
     #id;

@@ -1,7 +1,7 @@
 import assert from '@/shared/validation/assert.js';
-import Board from '@/domains/board/model/board.js';
-import List from '@/domains/list/model/list.js';
-import Task from '@/domains/task/model/task.js';
+import Board from '@/domains/board/model.js';
+import List from '@/domains/list/model.js';
+import Task from '@/domains/task/model.js';
 
 const boards = [];
 let activeBoard;
