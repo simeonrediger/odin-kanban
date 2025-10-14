@@ -1,4 +1,4 @@
-import './styles/workspace.css';
+import './style.css';
 
 import assert from '@/shared/validation/assert.js';
 import boardView from '@/domains/board/component.js';

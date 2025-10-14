@@ -1,4 +1,4 @@
-import './styles/board.css';
+import './style.css';
 
 import ListView from '@/domains/list/component.js';
 

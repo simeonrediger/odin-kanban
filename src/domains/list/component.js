@@ -1,4 +1,4 @@
-import './styles/list.css';
+import './style.css';
 
 import TaskView from '@/domains/task/component.js';
 

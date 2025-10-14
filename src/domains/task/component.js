@@ -1,4 +1,4 @@
-import './styles/task.css';
+import './style.css';
 
 export default class TaskView {
 
