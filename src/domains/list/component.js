@@ -4,10 +4,10 @@ import TaskView from '@/domains/task/component.js';
 
 export default class ListView {
 
-    constructor(list) {
+    constructor(list, containerRole) {
         this.container = document.createElement('li');
         this.container.dataset.id = list.id;
-        this.container.dataset.role = 'list-container';
+        this.container.dataset.role = containerRole;
         this.container.classList.add('list-container');
 
         this.label = document.createElement('p');

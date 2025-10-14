@@ -9,6 +9,10 @@ let boardTitle;
 let createNewListButton;
 let listsContainer;
 
+const roles = {
+    listContainer: 'list-container',
+};
+
 function render(boardEntity, containerElement) {
     board = boardEntity;
 
@@ -21,7 +25,7 @@ function render(boardEntity, containerElement) {
     boardTitle.textContent = board.name;
 
     for (const list of board.lists) {
-        const listView = new ListView(list);
+        const listView = new ListView(list, roles.listContainer);
         listsContainer.append(listView.container);
     }
 }
@@ -40,7 +44,7 @@ function setUpElementReferences() {
 
 function removeAllListViews() {
     const listViewContainers = container.querySelectorAll(
-        "[data-role='list-container']"
+        `[data-role='${roles.listContainer}']`
     );
 
     for (const listViewContainer of listViewContainers) {
