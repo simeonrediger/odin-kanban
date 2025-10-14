@@ -13,7 +13,7 @@ function render(boardEntity, containerElement) {
     }
 
     removeAllListViews();
-    document.querySelector("[data-role='board-title']")
+    container.querySelector("[data-role='board-title']")
         .textContent = board.name;
 
     for (const list of board.lists) {
