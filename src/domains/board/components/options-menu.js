@@ -1,5 +1,5 @@
 import '@/shared/styles/utilities.css';
-import '../styles/board-options-menu.css';
+import '../styles/options-menu.css';
 
 import assert from '@/shared/validation/assert.js';
 
