@@ -12,6 +12,7 @@ let workspace;
 let container;
 let createNewBoardButton;
 let list;
+let handleBoardSelect;
 let boardNameInput;
 let cancelEntryButton;
 let confirmEntryButton;
@@ -28,7 +29,7 @@ const actions = {
     openOptionsMenu: 'open-board-options-menu',
 }
 
-function render(workspaceEntity, containerElement) {
+function render(workspaceEntity, containerElement, boardSelectHandler) {
 
     if (workspaceEntity) {
         workspace = workspaceEntity;
@@ -38,6 +39,10 @@ function render(workspaceEntity, containerElement) {
         container = containerElement;
         setUpElementReferences();
         bindEvents();
+    }
+
+    if (boardSelectHandler) {
+        handleBoardSelect = boardSelectHandler;
     }
 
     removeAllBoardListItems();
@@ -157,7 +162,7 @@ function handleInnerClick(event) {
         });
 
     } else if (action === actions.selectBoard) {
-        // TODO
+        handleBoardSelect(board);
     }
 }
 

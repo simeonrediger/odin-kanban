@@ -1,11 +1,37 @@
 import '../styles/board.css';
 
+import ListView from '@/domains/list/components/list.js';
+
 let board;
 let container;
 
 function render(boardEntity, containerElement) {
+    removeAllListViews();
+
     board = boardEntity;
-    container = containerElement;
+
+    if (containerElement) {
+        container = containerElement;
+    }
+
+    document.querySelector("[data-role='board-title']")
+        .textContent = board.name;
+
+    for (const list of board.lists) {
+        const listView = new ListView(list);
+        container.querySelector("[data-role='lists-container']")
+            .append(listView.container);
+    }
+}
+
+function removeAllListViews() {
+    const listViewContainers = document.querySelectorAll(
+        "[data-role='list-container']"
+    );
+
+    for (const listViewContainer of listViewContainers) {
+        listViewContainer.remove();
+    }
 }
 
 const boardView = {

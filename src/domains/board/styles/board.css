@@ -1,5 +1,6 @@
 .board-container:not(.hidden) {
   display: grid;
+  height: 100%;
 }
 
 .board-container {
@@ -14,6 +15,10 @@
   font-size: 1.25rem;
 }
 
-.lists {
+.lists-container {
   grid-column: span 2;
+
+  display: flex;
+  align-items: start;
+  gap: 1rem;
 }

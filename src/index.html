@@ -59,7 +59,13 @@
       </div>
     </aside>
     <main>
-      <div data-role='board-container' class='board-container hidden'></div>
+      <div data-role='board-container' class='board-container hidden'>
+        <p data-role='board-title' class='board-title'></p>
+        <button data-action='create-new-list'
+          class='create-new-list-button'
+        >New list</button>
+        <ul data-role='lists-container' class='lists-container'></ul>
+      </div>
       <div data-role='board-placeholder' class='board-placeholder hidden'>
         <p>You don't have any boards</p>
       </div>
