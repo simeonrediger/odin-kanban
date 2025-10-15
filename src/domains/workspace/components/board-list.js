@@ -205,8 +205,7 @@ function cancelEntry() {
 }
 
 function confirmEntry() {
-    const boardName = boardNameInput.value.trim()
-        || boardNameInput.placeholder;
+    const boardName = boardNameInput.value.trim() || boardNameInput.placeholder;
 
     if (editingBoardName) {
         const listItem = entry.nextElementSibling;
