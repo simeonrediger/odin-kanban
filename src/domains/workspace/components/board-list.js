@@ -17,7 +17,6 @@ let handleBoardSelect;
 let boardNameInput;
 let cancelEntryButton;
 let confirmEntryButton;
-let entry;
 
 let editingBoardName = false;
 
@@ -59,26 +58,18 @@ function setUpElementReferences() {
         "[data-action='create-new-board']"
     );
     list = container.querySelector("[data-role='board-list']");
-    entry = container.querySelector("[data-role='board-entry']");
-    boardNameInput = container.querySelector(
-        "[data-input='board-name']"
-    );
-    cancelEntryButton = container.querySelector(
-        "[data-action='cancel-board-entry']"
-    );
-    confirmEntryButton = container.querySelector(
-        "[data-action='confirm-board-entry']"
+    const boardEditorContainer = document.querySelector(
+        "[data-role='board-editor']"
     );
     optionsMenu.container = container.querySelector(
         "[data-role='board-options-menu']"
     );
 
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
-    assert.notNull(entry, "'entry'");
-    assert.notNull(boardNameInput, "'boardNameInput'");
-    assert.notNull(cancelEntryButton, "'cancelEntryButton'");
-    assert.notNull(confirmEntryButton, "'confirmEntryButton'");
+    assert.notNull(boardEditorContainer, "'boardEditorContainer'");
     assert.notNull(optionsMenu.container, "'optionsMenu.container'");
+
+    boardEditor.init(boardEditorContainer)
 }
 
 function bindEvents() {
