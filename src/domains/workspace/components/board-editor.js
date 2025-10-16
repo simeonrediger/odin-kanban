@@ -7,7 +7,10 @@ let confirmButton;
 
 function init(containerElement) {
     container = containerElement;
+    cacheElements();
+}
 
+function cacheElements() {
     nameInput = container.querySelector("[data-input='board-name']");
     cancelButton = container.querySelector(
         "[data-action='cancel-board-editor']"
