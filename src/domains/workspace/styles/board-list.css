@@ -67,11 +67,11 @@
   color: var(--color-fg-highlight);
 }
 
-.board-entry:not(.hidden) {
+.board-editor:not(.hidden) {
   display: flex;
 }
 
-.board-entry:has(:focus) {
+.board-editor:has(:focus) {
   background-color: var(--color-bg-highlight);
 }
 
@@ -84,18 +84,18 @@
   padding-inline: 1rem;
 }
 
-.cancel-board-entry-button,
-.confirm-board-entry-button {
+.cancel-board-editor-button,
+.confirm-board-editor-button {
   background-color: transparent;
   color: var(--color-fg-secondary);
   padding-inline: 0.25rem;
 }
 
-.confirm-board-entry-button {
+.confirm-board-editor-button {
   padding-inline-end: 0.625rem;
 }
 
-.cancel-board-entry-button:hover,
-.confirm-board-entry-button:hover {
+.cancel-board-editor-button:hover,
+.confirm-board-editor-button:hover {
   color: var(--color-fg-highlight);
 }
