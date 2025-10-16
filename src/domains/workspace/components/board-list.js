@@ -2,6 +2,7 @@ import '@/shared/styles/utilities.css';
 import '../styles/board-list.css';
 
 import assert from '@/shared/validation/assert.js';
+import boardEditor from './board-editor.js';
 import optionsMenu from '@/domains/board/components/options-menu.js';
 
 import {
