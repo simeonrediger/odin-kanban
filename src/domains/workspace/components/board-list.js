@@ -14,9 +14,6 @@ let container;
 let createNewBoardButton;
 let list;
 let handleBoardSelect;
-let boardNameInput;
-let cancelEntryButton;
-let confirmEntryButton;
 
 let editingBoardName = false;
 
