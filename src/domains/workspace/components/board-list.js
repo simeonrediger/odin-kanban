@@ -13,6 +13,7 @@ let workspace;
 let container;
 let createNewBoardButton;
 let list;
+let boardEditorContainer;
 let handleBoardSelect;
 
 let editingBoardName = false;
@@ -55,7 +56,7 @@ function setUpElementReferences() {
         "[data-action='create-new-board']"
     );
     list = container.querySelector("[data-role='board-list']");
-    const boardEditorContainer = document.querySelector(
+    boardEditorContainer = document.querySelector(
         "[data-role='board-editor']"
     );
     optionsMenu.container = container.querySelector(
