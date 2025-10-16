@@ -67,7 +67,7 @@ function setUpElementReferences() {
     assert.notNull(boardEditorContainer, "'boardEditorContainer'");
     assert.notNull(optionsMenu.container, "'optionsMenu.container'");
 
-    boardEditor.init(boardEditorContainer)
+    boardEditor.init(boardEditorContainer);
 }
 
 function bindEvents() {
