@@ -35,7 +35,7 @@ function render(workspaceEntity, containerElement, boardSelectHandler) {
 
     if (containerElement) {
         container = containerElement;
-        setUpElementReferences();
+        cacheElements();
         bindEvents();
     }
 
@@ -51,7 +51,7 @@ function render(workspaceEntity, containerElement, boardSelectHandler) {
     }
 }
 
-function setUpElementReferences() {
+function cacheElements() {
     createNewBoardButton = container.querySelector(
         "[data-action='create-new-board']"
     );
