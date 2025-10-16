@@ -36,6 +36,7 @@ function render(workspaceEntity, containerElement, boardSelectHandler) {
     if (containerElement) {
         container = containerElement;
         cacheElements();
+        boardEditor.init(boardEditorContainer);
         bindEvents();
     }
 
@@ -66,8 +67,6 @@ function cacheElements() {
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
     assert.notNull(boardEditorContainer, "'boardEditorContainer'");
     assert.notNull(optionsMenu.container, "'optionsMenu.container'");
-
-    boardEditor.init(boardEditorContainer);
 }
 
 function bindEvents() {
