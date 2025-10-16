@@ -1,3 +1,5 @@
+import assert from '@/shared/validation/assert.js';
+
 let container;
 let nameInput;
 let cancelButton;
@@ -13,6 +15,10 @@ function init(containerElement) {
     confirmButton = container.querySelector(
         "[data-action='confirm-board-editor']"
     );
+
+    assert.notNull(nameInput, "'nameInput'");
+    assert.notNull(cancelButton, "'cancelButton'");
+    assert.notNull(confirmButton, "'confirmButton'");
 }
 
 const boardEditor = {
