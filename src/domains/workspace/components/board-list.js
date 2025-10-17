@@ -33,8 +33,8 @@ function init(workspaceEntity, containerElement, boardSelectHandler) {
     handleBoardSelect = boardSelectHandler;
 
     cacheElements();
-    boardEditor.init(boardEditorContainer);
     bindEvents();
+    boardEditor.init(boardEditorContainer);
 }
 
 function render() {
