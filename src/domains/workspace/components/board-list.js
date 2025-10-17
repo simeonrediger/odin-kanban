@@ -27,23 +27,17 @@ const actions = {
     openOptionsMenu: 'open-board-options-menu',
 }
 
-function render(workspaceEntity, containerElement, boardSelectHandler) {
+function init(workspaceEntity, containerElement, boardSelectHandler) {
+    workspace = workspaceEntity;
+    container = containerElement;
+    handleBoardSelect = boardSelectHandler;
 
-    if (workspaceEntity) {
-        workspace = workspaceEntity;
-    }
+    cacheElements();
+    boardEditor.init(boardEditorContainer);
+    bindEvents();
+}
 
-    if (containerElement) {
-        container = containerElement;
-        cacheElements();
-        boardEditor.init(boardEditorContainer);
-        bindEvents();
-    }
-
-    if (boardSelectHandler) {
-        handleBoardSelect = boardSelectHandler;
-    }
-
+function render() {
     removeAllBoardListItems();
 
     for (const board of workspace.boards) {
@@ -236,6 +230,7 @@ function deleteBoard(board) {
 }
 
 const boardList = {
+    init,
     render,
 };
 
