@@ -51,7 +51,7 @@ function cacheElements() {
         "[data-action='create-new-board']"
     );
     list = container.querySelector("[data-role='board-list']");
-    boardEditorContainer = document.querySelector(
+    boardEditorContainer = container.querySelector(
         "[data-role='board-editor']"
     );
     optionsMenu.container = container.querySelector(
