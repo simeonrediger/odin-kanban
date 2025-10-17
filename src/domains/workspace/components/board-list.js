@@ -14,7 +14,7 @@ let container;
 let createNewBoardButton;
 let list;
 let boardEditorContainer;
-let handleBoardSelect;
+let onBoardSelect;
 
 let editingBoardName = false;
 
@@ -30,7 +30,7 @@ const actions = {
 function init(workspaceModel, containerElement, boardSelectHandler) {
     workspace = workspaceModel;
     container = containerElement;
-    handleBoardSelect = boardSelectHandler;
+    onBoardSelect = boardSelectHandler;
 
     cacheElements();
     bindEvents();
