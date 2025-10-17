@@ -27,10 +27,10 @@ const actions = {
     openOptionsMenu: 'open-board-options-menu',
 }
 
-function init(workspaceModel, containerElement, boardSelectHandler) {
+function init(workspaceModel, containerElement, onBoardSelectHandler) {
     workspace = workspaceModel;
     container = containerElement;
-    onBoardSelect = boardSelectHandler;
+    onBoardSelect = onBoardSelectHandler;
 
     cacheElements();
     bindEvents();
