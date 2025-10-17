@@ -141,7 +141,7 @@ function handleInnerClick(event) {
         });
 
     } else if (action === actions.selectBoard) {
-        handleBoardSelect(board);
+        onBoardSelect(board);
     }
 }
 
