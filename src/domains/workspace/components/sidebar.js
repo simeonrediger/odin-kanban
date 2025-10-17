@@ -12,7 +12,7 @@ function render(workspaceEntity, containerElement, boardSelectHandler) {
     container = containerElement;
 
     setUpElementReferences();
-    boardList.init(workspace, boardListContainer, boardSelectHandler);
+    boardList.init(boardListContainer, workspace, boardSelectHandler);
     boardList.render();
 }
 
