@@ -66,10 +66,6 @@ function cacheElements() {
 function bindEvents() {
     createNewBoardButton.addEventListener('click', startEntry);
     list.addEventListener('click', handleInnerClick);
-    boardNameInput.addEventListener('keydown', handleBoardNameInputKeyDown);
-    cancelEntryButton.addEventListener('click', cancelEntry);
-    confirmEntryButton.addEventListener('click', confirmEntry);
-    entry.addEventListener('focusout', handleEntryFocusOut);
 }
 
 function addListItem(listItem) {
