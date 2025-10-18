@@ -64,7 +64,7 @@ function cacheElements() {
 }
 
 function bindEvents() {
-    createNewBoardButton.addEventListener('click', startEntry);
+    createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleInnerClick);
 }
 
@@ -151,6 +151,11 @@ function isOptionsButton(event) {
     );
 
     return Boolean(optionsButton);
+}
+
+function handleCreateNewBoardClick() {
+    list.append(boardEditorContainer);
+    boardEditor.enterCreateMode();
 }
 
 function deleteBoard(board) {

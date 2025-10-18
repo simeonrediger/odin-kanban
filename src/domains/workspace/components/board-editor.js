@@ -24,8 +24,19 @@ function cacheElements() {
     assert.notNull(confirmButton, "'confirmButton'");
 }
 
+function enterCreateMode() {
+    nameInput.value = '';
+    show();
+    nameInput.focus();
+}
+
+function show() {
+    container.classList.remove('hidden');
+}
+
 const boardEditor = {
     init,
+    enterCreateMode,
 };
 
 export default boardEditor;
