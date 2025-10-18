@@ -85,17 +85,17 @@
 }
 
 .cancel-board-editor-button,
-.confirm-board-editor-button {
+.submit-board-editor-button {
   background-color: transparent;
   color: var(--color-fg-secondary);
   padding-inline: 0.25rem;
 }
 
-.confirm-board-editor-button {
+.submit-board-editor-button {
   padding-inline-end: 0.625rem;
 }
 
 .cancel-board-editor-button:hover,
-.confirm-board-editor-button:hover {
+.submit-board-editor-button:hover {
   color: var(--color-fg-highlight);
 }

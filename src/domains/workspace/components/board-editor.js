@@ -3,7 +3,7 @@ import assert from '@/shared/validation/assert.js';
 let container;
 let nameInput;
 let cancelButton;
-let confirmButton;
+let submitButton;
 
 let isShown = false;
 
@@ -18,13 +18,13 @@ function cacheElements() {
     cancelButton = container.querySelector(
         "[data-action='cancel-board-editor']"
     );
-    confirmButton = container.querySelector(
-        "[data-action='confirm-board-editor']"
+    submitButton = container.querySelector(
+        "[data-action='submit-board-editor']"
     );
 
     assert.notNull(nameInput, "'nameInput'");
     assert.notNull(cancelButton, "'cancelButton'");
-    assert.notNull(confirmButton, "'confirmButton'");
+    assert.notNull(submitButton, "'submitButton'");
 }
 
 function bindEvents() {
