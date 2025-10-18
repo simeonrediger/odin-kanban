@@ -10,6 +10,7 @@ let isShown = false;
 function init(containerElement) {
     container = containerElement;
     cacheElements();
+    bindEvents();
 }
 
 function cacheElements() {
@@ -26,15 +27,37 @@ function cacheElements() {
     assert.notNull(confirmButton, "'confirmButton'");
 }
 
+function bindEvents() {
+    container.addEventListener('focusout', handleFocusOut);
+}
+
 function enterCreateMode() {
     nameInput.value = '';
     show();
     nameInput.focus();
 }
 
+function exit() {
+    hide();
+}
+
 function show() {
     isShown = true;
     container.classList.remove('hidden');
+}
+
+function hide() {
+    isShown = false;
+    container.classList.add('hidden');
+}
+
+function handleFocusOut(event) {
+    const noChildFocused = !container.contains(event.relatedTarget);
+    const isVisible = !container.classList.contains('hidden');
+
+    if (noChildFocused && isVisible) {
+        exit();
+    }
 }
 
 const boardEditor = {
