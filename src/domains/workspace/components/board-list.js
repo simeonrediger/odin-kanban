@@ -152,8 +152,8 @@ function handleInnerClick(event) {
     }
 }
 
-function isOptionsButton(event) {
-    const optionsButton = event.target.closest(
+function isOptionsButton(element) {
+    const optionsButton = element.closest(
         `[data-action='${actions.openOptionsMenu}']`
     );
 

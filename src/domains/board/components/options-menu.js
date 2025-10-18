@@ -88,7 +88,7 @@ function moveNextToElement() {
 function closeOnOuterClick(event) {
     const isInnerClick = container.contains(event.target);
 
-    if (isInnerClick || isTrigger(event)) {
+    if (isInnerClick || isTrigger(event.target)) {
         return;
     }
 
