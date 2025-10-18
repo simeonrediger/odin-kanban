@@ -7,10 +7,15 @@ let submitButton;
 
 let isShown = false;
 
-function init(containerElement) {
+let handlers = {
+    onSubmit: undefined,
+};
+
+function init(containerElement, { onSubmit } = {}) {
     container = containerElement;
     cacheElements();
     bindEvents();
+    handlers.onSubmit = onSubmit;
 }
 
 function cacheElements() {
@@ -30,12 +35,19 @@ function cacheElements() {
 function bindEvents() {
     container.addEventListener('focusout', handleFocusOut);
     cancelButton.addEventListener('click', exit);
+    submitButton.addEventListener('click', submit);
 }
 
 function enterCreateMode() {
     nameInput.value = '';
     show();
     nameInput.focus();
+}
+
+function submit() {
+    const boardName = nameInput.value.trim() || nameInput.placeholder;
+    exit();
+    handlers.onSubmit?.(boardName);
 }
 
 function exit() {

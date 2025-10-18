@@ -34,7 +34,9 @@ function init(containerElement, workspaceModel, onBoardSelectHandler) {
 
     cacheElements();
     bindEvents();
-    boardEditor.init(boardEditorContainer);
+    boardEditor.init(boardEditorContainer, {
+        onSubmit: addBoardAndRender,
+    });
 }
 
 function render() {
@@ -66,6 +68,11 @@ function cacheElements() {
 function bindEvents() {
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleInnerClick);
+}
+
+function addBoardAndRender(boardName) {
+    workspace.addEmptyBoard(boardName);
+    render();
 }
 
 function addListItem(listItem) {
