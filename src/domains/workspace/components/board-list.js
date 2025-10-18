@@ -67,7 +67,7 @@ function cacheElements() {
 
 function bindEvents() {
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
-    list.addEventListener('click', handleInnerClick);
+    list.addEventListener('click', handleListClick);
 }
 
 function addBoardAndRender(boardName) {
@@ -123,7 +123,7 @@ function createOptionsButton() {
     return button;
 }
 
-function handleInnerClick(event) {
+function handleListClick(event) {
     const button = event.target.closest('button');
 
     if (!button) {
