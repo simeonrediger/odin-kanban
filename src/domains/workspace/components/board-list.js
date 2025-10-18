@@ -69,12 +69,12 @@ function bindEvents() {
 }
 
 function addListItem(listItem) {
-    list.insertBefore(listItem, entry);
+    list.insertBefore(listItem, boardEditorContainer);
 }
 
 function removeAllBoardListItems() {
     const boardListItems = Array.from(list.children).filter(
-        element => element !== entry
+        element => element !== boardEditorContainer
     );
 
     boardListItems.forEach(listItem => listItem.remove());
