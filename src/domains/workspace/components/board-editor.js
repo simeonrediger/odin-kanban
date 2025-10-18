@@ -35,9 +35,9 @@ function cacheElements() {
 }
 
 function bindEvents() {
-    container.addEventListener('focusout', handleFocusOut);
     cancelButton.addEventListener('click', exit);
     submitButton.addEventListener('click', submit);
+    container.addEventListener('focusout', handleFocusOut);
 }
 
 function enterCreateMode() {
