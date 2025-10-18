@@ -5,6 +5,8 @@ let nameInput;
 let cancelButton;
 let confirmButton;
 
+let isShown = false;
+
 function init(containerElement) {
     container = containerElement;
     cacheElements();
@@ -31,6 +33,7 @@ function enterCreateMode() {
 }
 
 function show() {
+    isShown = true;
     container.classList.remove('hidden');
 }
 
