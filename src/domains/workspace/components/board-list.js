@@ -146,7 +146,7 @@ function deleteBoard(board) {
 }
 
 function addListItem(listItem) {
-    list.insertBefore(listItem, boardEditorContainer);
+    list.append(listItem);
 }
 
 function removeAllBoardListItems() {
