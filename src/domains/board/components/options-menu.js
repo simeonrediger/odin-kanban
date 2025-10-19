@@ -5,7 +5,7 @@ import assert from '@/shared/validation/assert.js';
 
 let container;
 let anchorElement;
-let outerClickIgnoredSelectors;
+let optionsMenuButtonSelector;
 let deleteBoardOption;
 let confirmBoardDeletionOption;
 let onRenameClick;
@@ -19,9 +19,9 @@ const actions = {
     confirmBoardDeletion: 'confirm-board-deletion',
 };
 
-function init(containerElement, { outerClickIgnoredSelectorList }) {
+function init(containerElement, { optionsMenuButtonSelectorString }) {
     container = containerElement;
-    outerClickIgnoredSelectors = outerClickIgnoredSelectorList;
+    optionsMenuButtonSelector = optionsMenuButtonSelectorString;
     setUpElementReferences();
     bindEvents();
 }
@@ -100,11 +100,8 @@ function closeOnOuterClick(event) {
         return;
     }
 
-    for (const selector of outerClickIgnoredSelectors || []) {
-
-        if (event.target.closest(selector)) {
-            return;
-        }
+    if (event.target.closest(optionsMenuButtonSelector)) {
+        return;
     }
 
     close();

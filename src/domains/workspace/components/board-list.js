@@ -44,9 +44,8 @@ function init(containerElement, workspaceModel, { onBoardSelect } = {}) {
         onExitEditMode: showEditedListItem,
     });
     optionsMenu.init(optionsMenuContainer, {
-        outerClickIgnoredSelectorList: [
+        optionsMenuButtonSelectorString:
             `[data-action='${actions.openOptionsMenu}']`,
-        ],
     });
 }
 
