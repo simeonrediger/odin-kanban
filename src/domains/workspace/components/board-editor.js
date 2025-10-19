@@ -12,13 +12,16 @@ let isEditMode = false;
 
 let handlers = {
     onSubmit: undefined,
+    onExitEditMode: undefined,
 };
 
-function init(containerElement, { onSubmit } = {}) {
+function init(containerElement, { onSubmit, onExitEditMode } = {}) {
     container = containerElement;
     cacheElements();
     bindEvents();
     handlers.onSubmit = onSubmit;
+    handlers.onExitEditMode = onExitEditMode;
+    console.log(handlers.onExitEditMode);
 }
 
 function cacheElements() {
@@ -61,7 +64,18 @@ function submit() {
 }
 
 function exit() {
+
+    if (isEditMode) {
+        exitEditMode();
+    } else {
+        close();
+    }
+}
+
+function exitEditMode() {
+    isEditMode = false;
     close();
+    handlers.onExitEditMode?.();
 }
 
 function open() {

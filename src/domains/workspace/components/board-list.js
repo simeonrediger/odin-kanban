@@ -17,6 +17,7 @@ let boardEditorContainer;
 let onBoardSelect;
 
 let editingBoardName = false;
+let editedListItem;
 
 const roles = {
     boardListItem: 'board-list-item',
@@ -36,6 +37,7 @@ function init(containerElement, workspaceModel, onBoardSelectHandler) {
     bindEvents();
     boardEditor.init(boardEditorContainer, {
         onSubmit: addBoardAndRender,
+        onExitEditMode: restoreEditedListItem,
     });
 }
 
@@ -153,9 +155,15 @@ function handleListClick(event) {
 }
 
 function editBoardName(boardName, listItem) {
-    listItem.classList.add('hidden');
-    list.insertBefore(boardEditorContainer, listItem);
+    editedListItem = listItem;
+    editedListItem.classList.add('hidden');
+    list.insertBefore(boardEditorContainer, editedListItem);
     boardEditor.enterEditMode(boardName);
+}
+
+function restoreEditedListItem() {
+    list.insertBefore(editedListItem, boardEditorContainer);
+    editedListItem.classList.remove('hidden');
 }
 
 function isOptionsButton(element) {
