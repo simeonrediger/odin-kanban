@@ -46,6 +46,7 @@ function cacheElements() {
 function bindEvents() {
     cancelButton.addEventListener('click', exit);
     submitButton.addEventListener('click', submit);
+    nameInput.addEventListener('keydown', handleNameInputKeyDown);
     container.addEventListener('focusout', handleFocusOut);
 }
 
@@ -97,6 +98,18 @@ function open() {
 function close() {
     isOpen = false;
     container.classList.add('hidden');
+}
+
+function handleNameInputKeyDown(event) {
+
+    switch (event.key) {
+        case 'Enter':
+            submit();
+            break;
+        case 'Escape':
+            exit();
+            break;
+    }
 }
 
 function handleFocusOut(event) {
