@@ -111,6 +111,17 @@ function addBoardAndRender(boardName) {
     render();
 }
 
+function completeBoardNameEdit(boardName) {
+    const board = workspace.getBoard(editedListItem.dataset.id);
+    board.name = boardName;
+    render();
+}
+
+function showEditedListItem() {
+    list.insertBefore(editedListItem, boardEditorContainer);
+    editedListItem.classList.remove('hidden');
+}
+
 function addListItem(listItem) {
     list.insertBefore(listItem, boardEditorContainer);
 }
@@ -128,17 +139,6 @@ function editBoardName(boardName, listItem) {
     editedListItem.classList.add('hidden');
     list.insertBefore(boardEditorContainer, editedListItem);
     boardEditor.enterEditMode(boardName);
-}
-
-function completeBoardNameEdit(boardName) {
-    const board = workspace.getBoard(editedListItem.dataset.id);
-    board.name = boardName;
-    render();
-}
-
-function showEditedListItem() {
-    list.insertBefore(editedListItem, boardEditorContainer);
-    editedListItem.classList.remove('hidden');
 }
 
 function isOptionsButton(element) {
