@@ -8,8 +8,6 @@ let anchorElement;
 let optionsMenuButtonSelector;
 let deleteBoardOption;
 let confirmBoardDeletionOption;
-let onRenameClick;
-let onConfirmDeletionClick;
 
 let isOpen = false;
 
@@ -17,6 +15,11 @@ const actions = {
     renameBoard: 'rename-board',
     deleteBoard: 'delete-board',
     confirmBoardDeletion: 'confirm-board-deletion',
+};
+
+const handlers = {
+    onRenameClick: undefined,
+    onConfirmDeletionClick: undefined,
 };
 
 function init(containerElement, { optionsMenuButtonSelectorString }) {
@@ -58,12 +61,14 @@ function toggle(context) {
     }
 }
 
-function open(context) {
-    ({
-        anchorElement,
-        onRenameClick,
-        onConfirmDeletionClick
-    } = context);
+function open({
+    menuAnchorElement,
+    onRenameClickHandler,
+    onConfirmDeletionClickHandler,
+}) {
+    anchorElement = menuAnchorElement;
+    handlers.onRenameClick = onRenameClickHandler;
+    handlers.onConfirmDeletionClick = onConfirmDeletionClickHandler;
 
     moveNextToElement();
 
@@ -118,14 +123,14 @@ function handleClick(event) {
 
     if (action === actions.renameBoard) {
         close();
-        onRenameClick();
+        handlers.onRenameClick?.();
 
     } else if (action === actions.deleteBoard) {
         showConfirmDeletionButton();
 
     } else if (action === actions.confirmBoardDeletion) {
         close();
-        onConfirmDeletionClick();
+        handlers.onConfirmDeletionClick?.();
     }
 }
 
