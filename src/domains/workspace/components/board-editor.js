@@ -7,7 +7,6 @@ let nameInput;
 let cancelButton;
 let submitButton;
 
-let isOpen = false;
 let isEditMode = false;
 
 let handlers = {
@@ -91,12 +90,10 @@ function exitEditMode() {
 }
 
 function open() {
-    isOpen = true;
     container.classList.remove('hidden');
 }
 
 function close() {
-    isOpen = false;
     container.classList.add('hidden');
 }
 
