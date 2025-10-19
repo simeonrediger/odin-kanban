@@ -103,8 +103,11 @@ function handleListClick(event) {
     const board = workspace.getBoard(listItem.dataset.id);
 
     if (action === actions.openOptionsMenu) {
+        highlightListItem(listItem);
         optionsMenu.toggle({
             anchorElement: listItem,
+            onOpen: () => highlightListItem(listItem),
+            onCloseOrMove: () => unhighlightListItem(listItem),
             onRenameClick: () => editBoardName(board.name, listItem),
             onConfirmDeletionClick: () => deleteBoard(board),
         });
@@ -112,6 +115,14 @@ function handleListClick(event) {
     } else if (action === actions.selectBoard) {
         handlers.onBoardSelect?.(board);
     }
+}
+
+function highlightListItem(listItem) {
+    listItem.classList.add('is-menu-context');
+}
+
+function unhighlightListItem(listItem) {
+    listItem.classList.remove('is-menu-context');
 }
 
 function addBoardAndRender(boardName) {

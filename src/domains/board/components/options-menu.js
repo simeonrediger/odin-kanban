@@ -18,6 +18,8 @@ const actions = {
 };
 
 const handlers = {
+    onOpen: undefined,
+    onCloseOrMove: undefined,
     onRenameClick: undefined,
     onConfirmDeletionClick: undefined,
 };
@@ -63,13 +65,20 @@ function toggle(context) {
 
 function open({
     anchorElement: anchorElementArg,
+    onOpen,
+    onCloseOrMove,
     onRenameClick,
     onConfirmDeletionClick,
 }) {
+    handlers.onCloseOrMove?.();
+
     anchorElement = anchorElementArg;
+    handlers.onOpen = onOpen;
+    handlers.onCloseOrMove = onCloseOrMove;
     handlers.onRenameClick = onRenameClick;
     handlers.onConfirmDeletionClick = onConfirmDeletionClick;
 
+    handlers.onOpen?.();
     moveNextToElement();
 
     if (isOpen) {
@@ -88,6 +97,7 @@ function close() {
     container.classList.add('hidden');
     confirmBoardDeletionOption.classList.add('hidden');
     deleteBoardOption.classList.remove('hidden');
+    handlers.onCloseOrMove?.();
 }
 
 function moveNextToElement() {
