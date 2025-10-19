@@ -19,18 +19,15 @@ const actions = {
     confirmBoardDeletion: 'confirm-board-deletion',
 };
 
-function init(containerElement) {
+function init(containerElement, { outerClickIgnoredSelectorList }) {
     container = containerElement;
+    outerClickIgnoredSelectors = outerClickIgnoredSelectorList;
     setUpElementReferences();
     bindEvents();
 }
 
 function bindEvents() {
     container.addEventListener('click', handleClick);
-}
-
-function unbindEvents() {
-    container?.removeEventListener('click', handleClick);
 }
 
 function setUpElementReferences() {
@@ -64,7 +61,6 @@ function toggle(context) {
 function open(context) {
     ({
         anchorElement,
-        outerClickIgnoredSelectors,
         onRenameClick,
         onConfirmDeletionClick
     } = context);
@@ -104,7 +100,7 @@ function closeOnOuterClick(event) {
         return;
     }
 
-    for (const selector of outerClickIgnoredSelectors) {
+    for (const selector of outerClickIgnoredSelectors || []) {
 
         if (event.target.closest(selector)) {
             return;

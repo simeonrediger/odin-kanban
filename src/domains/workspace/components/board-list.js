@@ -43,7 +43,11 @@ function init(containerElement, workspaceModel, { onBoardSelect } = {}) {
         onSubmitEdit: completeBoardNameEdit,
         onExitEditMode: showEditedListItem,
     });
-    optionsMenu.init(optionsMenuContainer);
+    optionsMenu.init(optionsMenuContainer, {
+        outerClickIgnoredSelectorList: [
+            `[data-action='${actions.openOptionsMenu}']`,
+        ],
+    });
 }
 
 function cacheElements() {
@@ -102,9 +106,6 @@ function handleListClick(event) {
     if (action === actions.openOptionsMenu) {
         optionsMenu.toggle({
             anchorElement: listItem,
-            outerClickIgnoredSelectors: [
-                `[data-action='${actions.openOptionsMenu}']`,
-            ],
             onRenameClick: () => editBoardName(board.name, listItem),
             onConfirmDeletionClick: () => deleteBoard(board),
         });
