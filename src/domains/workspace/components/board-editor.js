@@ -7,7 +7,7 @@ let nameInput;
 let cancelButton;
 let submitButton;
 
-let isShown = false;
+let isOpen = false;
 
 let handlers = {
     onSubmit: undefined,
@@ -42,13 +42,13 @@ function bindEvents() {
 
 function enterCreateMode() {
     nameInput.value = '';
-    show();
+    open();
     nameInput.focus();
 }
 
 function enterEditMode(boardName) {
     nameInput.value = boardName;
-    show();
+    open();
     nameInput.focus();
 }
 
@@ -59,16 +59,16 @@ function submit() {
 }
 
 function exit() {
-    hide();
+    close();
 }
 
-function show() {
-    isShown = true;
+function open() {
+    isOpen = true;
     container.classList.remove('hidden');
 }
 
-function hide() {
-    isShown = false;
+function close() {
+    isOpen = false;
     container.classList.add('hidden');
 }
 
