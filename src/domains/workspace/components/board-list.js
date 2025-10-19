@@ -150,10 +150,7 @@ function addListItem(listItem) {
 }
 
 function removeAllBoardListItems() {
-    const boardListItems = Array.from(list.children).filter(
-        element => element !== boardEditorContainer
-    );
-
+    const boardListItems = Array.from(list.children);
     boardListItems.forEach(listItem => listItem.remove());
 }
 
