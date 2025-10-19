@@ -37,6 +37,7 @@ function init(containerElement, workspaceModel, onBoardSelectHandler) {
     bindEvents();
     boardEditor.init(boardEditorContainer, {
         onSubmit: addBoardAndRender,
+        onSubmitEdit: completeBoardNameEdit,
         onExitEditMode: showEditedListItem,
     });
 }
@@ -159,6 +160,13 @@ function editBoardName(boardName, listItem) {
     editedListItem.classList.add('hidden');
     list.insertBefore(boardEditorContainer, editedListItem);
     boardEditor.enterEditMode(boardName);
+}
+
+function completeBoardNameEdit(boardName) {
+    console.log('called');
+    const board = workspace.getBoard(editedListItem.dataset.id);
+    board.name = boardName;
+    render();
 }
 
 function showEditedListItem() {

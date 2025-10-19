@@ -12,14 +12,20 @@ let isEditMode = false;
 
 let handlers = {
     onSubmit: undefined,
+    onSubmitEdit: undefined,
     onExitEditMode: undefined,
 };
 
-function init(containerElement, { onSubmit, onExitEditMode } = {}) {
+function init(containerElement, {
+    onSubmit,
+    onSubmitEdit,
+    onExitEditMode,
+} = {}) {
     container = containerElement;
     cacheElements();
     bindEvents();
     handlers.onSubmit = onSubmit;
+    handlers.onSubmitEdit = onSubmitEdit;
     handlers.onExitEditMode = onExitEditMode;
 }
 
@@ -58,8 +64,14 @@ function enterEditMode(boardName) {
 
 function submit() {
     const boardName = nameInput.value.trim() || nameInput.placeholder;
-    exit();
-    handlers.onSubmit?.(boardName);
+    close();
+
+    if (isEditMode) {
+        isEditMode = false;
+        handlers.onSubmitEdit?.(boardName);
+    } else {
+        handlers.onSubmit?.(boardName);
+    }
 }
 
 function exit() {
