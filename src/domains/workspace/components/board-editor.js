@@ -64,7 +64,7 @@ function enterEditMode(boardName) {
 
 function submit() {
     const boardName = nameInput.value.trim() || nameInput.placeholder;
-    close();
+    hide();
 
     if (isEditMode) {
         isEditMode = false;
@@ -79,13 +79,13 @@ function exit() {
     if (isEditMode) {
         exitEditMode();
     } else {
-        close();
+        hide();
     }
 }
 
 function exitEditMode() {
     isEditMode = false;
-    close();
+    hide();
     handlers.onExitEditMode?.();
 }
 
@@ -93,7 +93,7 @@ function show() {
     container.classList.remove('hidden');
 }
 
-function close() {
+function hide() {
     container.classList.add('hidden');
 }
 
