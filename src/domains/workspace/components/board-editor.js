@@ -21,7 +21,6 @@ function init(containerElement, { onSubmit, onExitEditMode } = {}) {
     bindEvents();
     handlers.onSubmit = onSubmit;
     handlers.onExitEditMode = onExitEditMode;
-    console.log(handlers.onExitEditMode);
 }
 
 function cacheElements() {
