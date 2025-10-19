@@ -57,6 +57,7 @@ function cacheElements() {
     );
 
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
+    assert.notNull(list, "'list'");
     assert.notNull(boardEditorContainer, "'boardEditorContainer'");
     assert.notNull(optionsMenu.container, "'optionsMenu.container'");
 }
