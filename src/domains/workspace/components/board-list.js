@@ -37,7 +37,7 @@ function init(containerElement, workspaceModel, onBoardSelectHandler) {
     bindEvents();
     boardEditor.init(boardEditorContainer, {
         onSubmit: addBoardAndRender,
-        onExitEditMode: restoreEditedListItem,
+        onExitEditMode: showEditedListItem,
     });
 }
 
@@ -161,7 +161,7 @@ function editBoardName(boardName, listItem) {
     boardEditor.enterEditMode(boardName);
 }
 
-function restoreEditedListItem() {
+function showEditedListItem() {
     list.insertBefore(editedListItem, boardEditorContainer);
     editedListItem.classList.remove('hidden');
 }
