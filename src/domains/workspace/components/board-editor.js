@@ -9,7 +9,7 @@ let submitButton;
 
 let isEditMode = false;
 
-let handlers = {
+const handlers = {
     onSubmit: undefined,
     onSubmitEdit: undefined,
     onExitEditMode: undefined,
