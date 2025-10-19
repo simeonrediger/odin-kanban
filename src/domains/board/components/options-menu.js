@@ -20,11 +20,11 @@ const actions = {
 };
 
 function bindEvents() {
-    container.addEventListener('click', handleInnerClick);
+    container.addEventListener('click', handleClick);
 }
 
 function unbindEvents() {
-    container?.removeEventListener('click', handleInnerClick);
+    container?.removeEventListener('click', handleClick);
 }
 
 function setUpElementReferences() {
@@ -95,7 +95,7 @@ function closeOnOuterClick(event) {
     close();
 }
 
-function handleInnerClick(event) {
+function handleClick(event) {
     const clickedButton = event.target.closest('button');
 
     if (!clickedButton) {
