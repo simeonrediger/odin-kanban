@@ -101,7 +101,7 @@ function handleListClick(event) {
             anchorElement: listItem,
             isTrigger: isOptionsButton,
             onRenameClick: () => editBoardName(board.name, listItem),
-            onConfirmDeleteClick: () => deleteBoard(board),
+            onConfirmDeletionClick: () => deleteBoard(board),
         });
 
     } else if (action === actions.selectBoard) {
