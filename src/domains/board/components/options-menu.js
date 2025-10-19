@@ -5,7 +5,7 @@ import assert from '@/shared/validation/assert.js';
 
 let container;
 let anchorElement;
-let isTrigger;
+let outerClickIgnoredSelectors;
 let deleteBoardOption;
 let confirmBoardDeletionOption;
 let onRenameClick;
@@ -58,7 +58,7 @@ function toggle(context) {
 function open(context) {
     ({
         anchorElement,
-        isTrigger,
+        outerClickIgnoredSelectors,
         onRenameClick,
         onConfirmDeletionClick
     } = context);
@@ -94,8 +94,15 @@ function moveNextToElement() {
 function closeOnOuterClick(event) {
     const isInnerClick = container.contains(event.target);
 
-    if (isInnerClick || isTrigger(event.target)) {
+    if (isInnerClick) {
         return;
+    }
+
+    for (const selector of outerClickIgnoredSelectors) {
+
+        if (event.target.closest(selector)) {
+            return;
+        }
     }
 
     close();

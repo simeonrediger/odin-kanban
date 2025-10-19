@@ -100,7 +100,9 @@ function handleListClick(event) {
     if (action === actions.openOptionsMenu) {
         optionsMenu.toggle({
             anchorElement: listItem,
-            isTrigger: isOptionsButton,
+            outerClickIgnoredSelectors: [
+                `[data-action='${actions.openOptionsMenu}']`,
+            ],
             onRenameClick: () => editBoardName(board.name, listItem),
             onConfirmDeletionClick: () => deleteBoard(board),
         });
@@ -127,14 +129,6 @@ function completeBoardNameEdit(boardName) {
 
 function showEditedListItem() {
     activeEditItem.classList.remove('hidden');
-}
-
-function isOptionsButton(element) {
-    const optionsButton = element.closest(
-        `[data-action='${actions.openOptionsMenu}']`
-    );
-
-    return Boolean(optionsButton);
 }
 
 function editBoardName(boardName, listItem) {
