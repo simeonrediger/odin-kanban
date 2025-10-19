@@ -143,8 +143,8 @@ function handleListClick(event) {
         optionsMenu.toggle({
             anchorElement: listItem,
             isTrigger: isOptionsButton,
-            handleRename: startEntryEdit,
-            handleDelete: () => deleteBoard(board),
+            onRenameClick: startEntryEdit,
+            onConfirmDeleteClick: () => deleteBoard(board),
         });
 
     } else if (action === actions.selectBoard) {

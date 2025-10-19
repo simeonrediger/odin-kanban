@@ -8,8 +8,8 @@ let anchorElement;
 let isTrigger;
 let deleteBoardOption;
 let confirmBoardDeletionOption;
-let handleRename;
-let handleDelete;
+let onRenameClick;
+let onConfirmDeletionClick;
 
 let isOpen = false;
 
@@ -56,7 +56,13 @@ function toggle(context) {
 }
 
 function open(context) {
-    ({ anchorElement, isTrigger, handleRename, handleDelete } = context);
+    ({
+        anchorElement,
+        isTrigger,
+        onRenameClick,
+        onConfirmDeletionClick
+    } = context);
+
     moveNextToElement();
 
     if (isOpen) {
@@ -105,15 +111,15 @@ function handleClick(event) {
     const action = clickedButton.dataset.action;
 
     if (action === actions.renameBoard) {
-        handleRename();
         close();
+        onRenameClick();
 
     } else if (action === actions.deleteBoard) {
         showConfirmDeletionButton();
 
     } else if (action === actions.confirmBoardDeletion) {
-        handleDelete();
         close();
+        onConfirmDeletionClick();
     }
 }
 
