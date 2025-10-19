@@ -15,7 +15,9 @@ function render(workspaceEntity, containerElement) {
     container = containerElement;
 
     setUpElementReferences();
-    sidebar.render(workspace, sidebarContainer, boardView.render);
+    sidebar.render(workspace, sidebarContainer, {
+        onBoardSelect: boardView.render,
+    });
 
     if (workspace.activeBoard) {
         boardPlaceholder.classList.add('hidden');

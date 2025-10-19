@@ -7,12 +7,12 @@ let workspace;
 let container;
 let boardListContainer;
 
-function render(workspaceEntity, containerElement, onBoardSelectHandler) {
+function render(workspaceEntity, containerElement, { onBoardSelect } = {}) {
     workspace = workspaceEntity;
     container = containerElement;
 
     setUpElementReferences();
-    boardList.init(boardListContainer, workspace, onBoardSelectHandler);
+    boardList.init(boardListContainer, workspace, { onBoardSelect });
     boardList.render();
 }
 
