@@ -72,21 +72,9 @@ function bindEvents() {
     list.addEventListener('click', handleListClick);
 }
 
-function addBoardAndRender(boardName) {
-    workspace.addEmptyBoard(boardName);
-    render();
-}
-
-function addListItem(listItem) {
-    list.insertBefore(listItem, boardEditorContainer);
-}
-
-function removeAllBoardListItems() {
-    const boardListItems = Array.from(list.children).filter(
-        element => element !== boardEditorContainer
-    );
-
-    boardListItems.forEach(listItem => listItem.remove());
+function handleCreateNewBoardClick() {
+    list.append(boardEditorContainer);
+    boardEditor.enterCreateMode();
 }
 
 function handleListClick(event) {
@@ -118,6 +106,23 @@ function handleListClick(event) {
     }
 }
 
+function addBoardAndRender(boardName) {
+    workspace.addEmptyBoard(boardName);
+    render();
+}
+
+function addListItem(listItem) {
+    list.insertBefore(listItem, boardEditorContainer);
+}
+
+function removeAllBoardListItems() {
+    const boardListItems = Array.from(list.children).filter(
+        element => element !== boardEditorContainer
+    );
+
+    boardListItems.forEach(listItem => listItem.remove());
+}
+
 function editBoardName(boardName, listItem) {
     editedListItem = listItem;
     editedListItem.classList.add('hidden');
@@ -142,11 +147,6 @@ function isOptionsButton(element) {
     );
 
     return Boolean(optionsButton);
-}
-
-function handleCreateNewBoardClick() {
-    list.append(boardEditorContainer);
-    boardEditor.enterCreateMode();
 }
 
 function deleteBoard(board) {
