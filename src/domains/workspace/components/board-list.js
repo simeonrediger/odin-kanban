@@ -110,7 +110,7 @@ function addBoardAndRender(boardName) {
     workspace.addEmptyBoard(boardName);
     render();
 }
-// rearrange
+
 function addListItem(listItem) {
     list.insertBefore(listItem, boardEditorContainer);
 }
