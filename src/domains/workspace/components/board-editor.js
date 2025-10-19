@@ -8,6 +8,7 @@ let cancelButton;
 let submitButton;
 
 let isOpen = false;
+let isEditMode = false;
 
 let handlers = {
     onSubmit: undefined,
@@ -48,6 +49,7 @@ function enterCreateMode() {
 
 function enterEditMode(boardName) {
     nameInput.value = boardName;
+    isEditMode = true;
     open();
     nameInput.focus();
 }
