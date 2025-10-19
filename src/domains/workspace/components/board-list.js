@@ -122,6 +122,26 @@ function showEditedListItem() {
     editedListItem.classList.remove('hidden');
 }
 
+function isOptionsButton(element) {
+    const optionsButton = element.closest(
+        `[data-action='${actions.openOptionsMenu}']`
+    );
+
+    return Boolean(optionsButton);
+}
+
+function editBoardName(boardName, listItem) {
+    editedListItem = listItem;
+    editedListItem.classList.add('hidden');
+    list.insertBefore(boardEditorContainer, editedListItem);
+    boardEditor.enterEditMode(boardName);
+}
+
+function deleteBoard(board) {
+    workspace.removeBoard(board);
+    render();
+}
+
 function addListItem(listItem) {
     list.insertBefore(listItem, boardEditorContainer);
 }
@@ -132,26 +152,6 @@ function removeAllBoardListItems() {
     );
 
     boardListItems.forEach(listItem => listItem.remove());
-}
-
-function editBoardName(boardName, listItem) {
-    editedListItem = listItem;
-    editedListItem.classList.add('hidden');
-    list.insertBefore(boardEditorContainer, editedListItem);
-    boardEditor.enterEditMode(boardName);
-}
-
-function isOptionsButton(element) {
-    const optionsButton = element.closest(
-        `[data-action='${actions.openOptionsMenu}']`
-    );
-
-    return Boolean(optionsButton);
-}
-
-function deleteBoard(board) {
-    workspace.removeBoard(board);
-    render();
 }
 
 function createListItem(board) {
