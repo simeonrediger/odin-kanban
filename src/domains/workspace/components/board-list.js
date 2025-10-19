@@ -90,42 +90,6 @@ function removeAllBoardListItems() {
     boardListItems.forEach(listItem => listItem.remove());
 }
 
-function createListItem(board) {
-    const listItem = document.createElement('li');
-    listItem.classList.add('board-list-item');
-    listItem.dataset.role = roles.boardListItem;
-    listItem.dataset.id = board.id;
-
-    const selectButton = createSelectButton(board);
-    const optionsButton = createOptionsButton();
-    listItem.append(selectButton, optionsButton);
-
-    return listItem;
-}
-
-function createSelectButton(board) {
-    const button = document.createElement('button');
-    button.dataset.action = actions.selectBoard;
-    button.classList.add('board-select-button');
-    button.textContent = board.name;
-    button.ariaLabel = 'Select board';
-
-    return button;
-}
-
-function createOptionsButton() {
-    const button = document.createElement('button');
-    button.dataset.action = actions.openOptionsMenu;
-    button.classList.add('board-options-button');
-    button.ariaLabel = 'Open board options menu';
-
-    const icon = createThreeDotsHorizontalIcon();
-    icon.classList.add('board-options-icon');
-    button.append(icon);
-
-    return button;
-}
-
 function handleListClick(event) {
     const button = event.target.closest('button');
 
@@ -189,6 +153,42 @@ function handleCreateNewBoardClick() {
 function deleteBoard(board) {
     workspace.removeBoard(board);
     render();
+}
+
+function createListItem(board) {
+    const listItem = document.createElement('li');
+    listItem.classList.add('board-list-item');
+    listItem.dataset.role = roles.boardListItem;
+    listItem.dataset.id = board.id;
+
+    const selectButton = createSelectButton(board);
+    const optionsButton = createOptionsButton();
+    listItem.append(selectButton, optionsButton);
+
+    return listItem;
+}
+
+function createSelectButton(board) {
+    const button = document.createElement('button');
+    button.dataset.action = actions.selectBoard;
+    button.classList.add('board-select-button');
+    button.textContent = board.name;
+    button.ariaLabel = 'Select board';
+
+    return button;
+}
+
+function createOptionsButton() {
+    const button = document.createElement('button');
+    button.dataset.action = actions.openOptionsMenu;
+    button.classList.add('board-options-button');
+    button.ariaLabel = 'Open board options menu';
+
+    const icon = createThreeDotsHorizontalIcon();
+    icon.classList.add('board-options-icon');
+    button.append(icon);
+
+    return button;
 }
 
 const boardList = {
