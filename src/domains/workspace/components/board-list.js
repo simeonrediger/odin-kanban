@@ -121,7 +121,6 @@ function completeBoardNameEdit(boardName) {
 }
 
 function showEditedListItem() {
-    list.insertBefore(editedListItem, boardEditorContainer);
     editedListItem.classList.remove('hidden');
 }
 
