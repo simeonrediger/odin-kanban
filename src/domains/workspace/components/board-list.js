@@ -14,6 +14,7 @@ let container;
 let createNewBoardButton;
 let list;
 let boardEditorContainer;
+let optionsMenuContainer;
 
 let activeEditItem;
 
@@ -42,6 +43,7 @@ function init(containerElement, workspaceModel, { onBoardSelect } = {}) {
         onSubmitEdit: completeBoardNameEdit,
         onExitEditMode: showEditedListItem,
     });
+    optionsMenu.init(optionsMenuContainer);
 }
 
 function cacheElements() {
@@ -52,14 +54,14 @@ function cacheElements() {
     boardEditorContainer = container.querySelector(
         "[data-role='board-editor']"
     );
-    optionsMenu.container = container.querySelector(
+    optionsMenuContainer = container.querySelector(
         "[data-role='board-options-menu']"
     );
 
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
     assert.notNull(list, "'list'");
     assert.notNull(boardEditorContainer, "'boardEditorContainer'");
-    assert.notNull(optionsMenu.container, "'optionsMenu.container'");
+    assert.notNull(optionsMenuContainer, "'optionsMenuContainer'");
 }
 
 function bindEvents() {

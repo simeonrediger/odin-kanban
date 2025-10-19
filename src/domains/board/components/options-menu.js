@@ -19,6 +19,12 @@ const actions = {
     confirmBoardDeletion: 'confirm-board-deletion',
 };
 
+function init(containerElement) {
+    container = containerElement;
+    setUpElementReferences();
+    bindEvents();
+}
+
 function bindEvents() {
     container.addEventListener('click', handleClick);
 }
@@ -136,14 +142,8 @@ function showConfirmDeletionButton() {
 }
 
 const boardOptionsMenu = {
+    init,
     toggle,
-
-    set container(element) {
-        unbindEvents();
-        container = element;
-        setUpElementReferences();
-        bindEvents();
-    },
 
     get anchorElement() {
         return anchorElement;
