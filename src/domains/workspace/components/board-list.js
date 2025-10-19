@@ -104,9 +104,9 @@ function handleListClick(event) {
 
     if (action === actions.openOptionsMenu) {
         optionsMenu.toggle({
-            menuAnchorElement: listItem,
-            onRenameClickHandler: () => editBoardName(board.name, listItem),
-            onConfirmDeletionClickHandler: () => deleteBoard(board),
+            anchorElement: listItem,
+            onRenameClick: () => editBoardName(board.name, listItem),
+            onConfirmDeletionClick: () => deleteBoard(board),
         });
 
     } else if (action === actions.selectBoard) {

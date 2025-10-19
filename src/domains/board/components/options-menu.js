@@ -62,13 +62,13 @@ function toggle(context) {
 }
 
 function open({
-    menuAnchorElement,
-    onRenameClickHandler,
-    onConfirmDeletionClickHandler,
+    anchorElement: anchorElementArg,
+    onRenameClick,
+    onConfirmDeletionClick,
 }) {
-    anchorElement = menuAnchorElement;
-    handlers.onRenameClick = onRenameClickHandler;
-    handlers.onConfirmDeletionClick = onConfirmDeletionClickHandler;
+    anchorElement = anchorElementArg;
+    handlers.onRenameClick = onRenameClick;
+    handlers.onConfirmDeletionClick = onConfirmDeletionClick;
 
     moveNextToElement();
 
