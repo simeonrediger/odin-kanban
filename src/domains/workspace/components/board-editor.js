@@ -51,14 +51,14 @@ function bindEvents() {
 
 function enterCreateMode() {
     nameInput.value = '';
-    open();
+    show();
     nameInput.focus();
 }
 
 function enterEditMode(boardName) {
     nameInput.value = boardName;
     isEditMode = true;
-    open();
+    show();
     nameInput.focus();
 }
 
@@ -89,7 +89,7 @@ function exitEditMode() {
     handlers.onExitEditMode?.();
 }
 
-function open() {
+function show() {
     container.classList.remove('hidden');
 }
 
