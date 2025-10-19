@@ -16,7 +16,6 @@ let list;
 let boardEditorContainer;
 let onBoardSelect;
 
-let editingBoardName = false;
 let editedListItem;
 
 const roles = {
