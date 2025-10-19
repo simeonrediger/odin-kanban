@@ -109,7 +109,7 @@ function handleClick(event) {
         close();
 
     } else if (action === actions.deleteBoard) {
-        showDeletionConfirmation();
+        showConfirmDeletionButton();
 
     } else if (action === actions.confirmBoardDeletion) {
         handleDelete();
@@ -117,7 +117,7 @@ function handleClick(event) {
     }
 }
 
-function showDeletionConfirmation() {
+function showConfirmDeletionButton() {
     deleteBoardOption.classList.add('hidden');
     confirmBoardDeletionOption.classList.remove('hidden');
 }
