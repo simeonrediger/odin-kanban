@@ -41,15 +41,6 @@ function init(containerElement, workspaceModel, onBoardSelectHandler) {
     });
 }
 
-function render() {
-    removeAllBoardListItems();
-
-    for (const board of workspace.boards) {
-        const listItem = createListItem(board);
-        addListItem(listItem);
-    }
-}
-
 function cacheElements() {
     createNewBoardButton = container.querySelector(
         "[data-action='create-new-board']"
@@ -70,6 +61,15 @@ function cacheElements() {
 function bindEvents() {
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleListClick);
+}
+
+function render() {
+    removeAllBoardListItems();
+
+    for (const board of workspace.boards) {
+        const listItem = createListItem(board);
+        addListItem(listItem);
+    }
 }
 
 function handleCreateNewBoardClick() {
@@ -110,7 +110,7 @@ function addBoardAndRender(boardName) {
     workspace.addEmptyBoard(boardName);
     render();
 }
-
+// rearrange
 function addListItem(listItem) {
     list.insertBefore(listItem, boardEditorContainer);
 }
