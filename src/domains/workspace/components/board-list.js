@@ -117,7 +117,11 @@ function addBoardAndRender(boardName) {
 function completeBoardNameEdit(boardName) {
     const board = workspace.getBoard(editedListItem.dataset.id);
     board.name = boardName;
-    render();
+    const boardSelectButton = editedListItem.querySelector(
+        `[data-action='${actions.selectBoard}']`
+    );
+    boardSelectButton.textContent = boardName;
+    showEditedListItem();
 }
 
 function showEditedListItem() {
