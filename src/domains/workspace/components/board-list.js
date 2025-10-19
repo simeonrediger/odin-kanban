@@ -15,7 +15,7 @@ let createNewBoardButton;
 let list;
 let boardEditorContainer;
 
-let editedListItem;
+let activeEditItem;
 
 const handlers = {
     onBoardSelect: undefined,
@@ -116,9 +116,9 @@ function addBoardAndRender(boardName) {
 }
 
 function completeBoardNameEdit(boardName) {
-    const board = workspace.getBoard(editedListItem.dataset.id);
+    const board = workspace.getBoard(activeEditItem.dataset.id);
     board.name = boardName;
-    const boardSelectButton = editedListItem.querySelector(
+    const boardSelectButton = activeEditItem.querySelector(
         `[data-action='${actions.selectBoard}']`
     );
     boardSelectButton.textContent = boardName;
@@ -126,7 +126,7 @@ function completeBoardNameEdit(boardName) {
 }
 
 function showEditedListItem() {
-    editedListItem.classList.remove('hidden');
+    activeEditItem.classList.remove('hidden');
 }
 
 function isOptionsButton(element) {
@@ -138,9 +138,9 @@ function isOptionsButton(element) {
 }
 
 function editBoardName(boardName, listItem) {
-    editedListItem = listItem;
-    editedListItem.classList.add('hidden');
-    list.insertBefore(boardEditorContainer, editedListItem);
+    activeEditItem = listItem;
+    activeEditItem.classList.add('hidden');
+    list.insertBefore(boardEditorContainer, activeEditItem);
     boardEditor.enterEditMode(boardName);
 }
 
