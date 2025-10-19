@@ -163,7 +163,6 @@ function editBoardName(boardName, listItem) {
 }
 
 function completeBoardNameEdit(boardName) {
-    console.log('called');
     const board = workspace.getBoard(editedListItem.dataset.id);
     board.name = boardName;
     render();
