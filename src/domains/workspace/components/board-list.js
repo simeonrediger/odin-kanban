@@ -18,10 +18,6 @@ let optionsMenuContainer;
 
 let activeEditItem;
 
-const handlers = {
-    onBoardSelect: undefined,
-};
-
 const roles = {
     boardListItem: 'board-list-item',
 };
@@ -30,6 +26,10 @@ const actions = {
     selectBoard: 'select-board',
     openOptionsMenu: 'open-board-options-menu',
 }
+
+const handlers = {
+    onBoardSelect: undefined,
+};
 
 function init(containerElement, workspaceModel, { onBoardSelect } = {}) {
     container = containerElement;
