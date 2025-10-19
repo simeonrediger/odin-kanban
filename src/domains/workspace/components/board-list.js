@@ -14,9 +14,12 @@ let container;
 let createNewBoardButton;
 let list;
 let boardEditorContainer;
-let onBoardSelect;
 
 let editedListItem;
+
+const handlers = {
+    onBoardSelect: undefined,
+};
 
 const roles = {
     boardListItem: 'board-list-item',
@@ -27,10 +30,10 @@ const actions = {
     openOptionsMenu: 'open-board-options-menu',
 }
 
-function init(containerElement, workspaceModel, onBoardSelectHandler) {
+function init(containerElement, workspaceModel, { onBoardSelect } = {}) {
     container = containerElement;
     workspace = workspaceModel;
-    onBoardSelect = onBoardSelectHandler;
+    handlers.onBoardSelect = onBoardSelect;
 
     cacheElements();
     bindEvents();
@@ -102,7 +105,7 @@ function handleListClick(event) {
         });
 
     } else if (action === actions.selectBoard) {
-        onBoardSelect(board);
+        handlers.onBoardSelect?.(board);
     }
 }
 
