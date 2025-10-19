@@ -143,13 +143,19 @@ function handleListClick(event) {
         optionsMenu.toggle({
             anchorElement: listItem,
             isTrigger: isOptionsButton,
-            onRenameClick: startEntryEdit,
+            onRenameClick: () => editBoardName(board.name, listItem),
             onConfirmDeleteClick: () => deleteBoard(board),
         });
 
     } else if (action === actions.selectBoard) {
         onBoardSelect(board);
     }
+}
+
+function editBoardName(boardName, listItem) {
+    listItem.classList.add('hidden');
+    list.insertBefore(boardEditorContainer, listItem);
+    boardEditor.enterEditMode(boardName);
 }
 
 function isOptionsButton(element) {

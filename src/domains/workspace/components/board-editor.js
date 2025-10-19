@@ -46,6 +46,12 @@ function enterCreateMode() {
     nameInput.focus();
 }
 
+function enterEditMode(boardName) {
+    nameInput.value = boardName;
+    show();
+    nameInput.focus();
+}
+
 function submit() {
     const boardName = nameInput.value.trim() || nameInput.placeholder;
     exit();
@@ -78,6 +84,7 @@ function handleFocusOut(event) {
 const boardEditor = {
     init,
     enterCreateMode,
+    enterEditMode,
 };
 
 export default boardEditor;
