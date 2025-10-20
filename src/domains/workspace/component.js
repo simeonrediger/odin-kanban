@@ -1,6 +1,7 @@
 import './style.css';
 
 import assert from '@/shared/validation/assert.js';
+import boardPlaceholder from './components/board-placeholder.js'
 import boardView from '@/domains/board/component.js';
 import sidebar from './components/sidebar.js';
 
@@ -8,7 +9,7 @@ let workspace;
 let container;
 let sidebarContainer;
 let boardContainer;
-let boardPlaceholder;
+let boardPlaceholderContainer;
 
 function init(containerElement, workspaceModel) {
     workspace = workspaceModel;
@@ -18,6 +19,7 @@ function init(containerElement, workspaceModel) {
         onBoardSelect: handleBoardSelect,
         onBoardNameChange: handleBoardNameChange,
     });
+    boardPlaceholder.init(boardPlaceholderContainer);
     boardView.init(boardContainer);
 }
 
@@ -26,32 +28,24 @@ function render() {
 
     if (workspace.activeBoard) {
         boardView.render(workspace.activeBoard);
-        hideBoardPlaceholder();
+        boardPlaceholder.hide();
         showBoardContainer();
     } else {
         hideBoardContainer();
-        showBoardPlaceholder();
+        boardPlaceholder.show();
     }
 }
 
 function setUpElementReferences() {
     sidebarContainer = container.querySelector("[data-role='sidebar']");
     boardContainer = container.querySelector("[data-role='board-container']");
-    boardPlaceholder = container.querySelector(
+    boardPlaceholderContainer = container.querySelector(
         "[data-role='board-placeholder']"
     );
 
     assert.notNull(sidebarContainer, "'sidebarContainer'");
     assert.notNull(boardContainer, "'boardContainer'");
-    assert.notNull(boardPlaceholder, "'boardPlaceholder'");
-}
-
-function showBoardPlaceholder() {
-    boardPlaceholder.classList.remove('hidden');
-}
-
-function hideBoardPlaceholder() {
-    boardPlaceholder.classList.add('hidden');
+    assert.notNull(boardPlaceholderContainer, "'boardPlaceholderContainer'");
 }
 
 function showBoardContainer() {
