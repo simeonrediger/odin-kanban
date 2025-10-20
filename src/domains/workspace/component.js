@@ -25,8 +25,8 @@ function render() {
     sidebar.render();
 
     if (workspace.activeBoard) {
-        boardPlaceholder.classList.add('hidden');
         boardView.render(workspace.activeBoard);
+        boardPlaceholder.classList.add('hidden');
         boardContainer.classList.remove('hidden');
     } else {
         renderBoardPlaceholder();
