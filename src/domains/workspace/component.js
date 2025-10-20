@@ -26,10 +26,11 @@ function render() {
 
     if (workspace.activeBoard) {
         boardView.render(workspace.activeBoard);
-        boardPlaceholder.classList.add('hidden');
-        boardContainer.classList.remove('hidden');
+        hideBoardPlaceholder();
+        showBoardContainer();
     } else {
-        renderBoardPlaceholder();
+        hideBoardContainer();
+        showBoardPlaceholder();
     }
 }
 
@@ -45,9 +46,20 @@ function setUpElementReferences() {
     assert.notNull(boardPlaceholder, "'boardPlaceholder'");
 }
 
-function renderBoardPlaceholder() {
-    boardContainer.classList.add('hidden');
+function showBoardPlaceholder() {
     boardPlaceholder.classList.remove('hidden');
+}
+
+function hideBoardPlaceholder() {
+    boardPlaceholder.classList.add('hidden');
+}
+
+function showBoardContainer() {
+    boardContainer.classList.remove('hidden');
+}
+
+function hideBoardContainer() {
+    boardContainer.classList.add('hidden');
 }
 
 function handleBoardSelect(board) {
