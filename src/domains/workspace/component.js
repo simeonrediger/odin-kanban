@@ -15,7 +15,8 @@ function init(containerElement, workspaceModel) {
     container = containerElement;
     setUpElementReferences();
     sidebar.init(sidebarContainer, workspace, {
-        onBoardSelect: boardView.render,
+        onBoardSelect: handleBoardSelect,
+        onBoardNameChange: handleBoardNameChange,
     });
     boardView.init(boardContainer);
 }
@@ -47,6 +48,18 @@ function setUpElementReferences() {
 function renderBoardPlaceholder() {
     boardContainer.classList.add('hidden');
     boardPlaceholder.classList.remove('hidden');
+}
+
+function handleBoardSelect(board) {
+    workspace.activeBoard = board;
+    boardView.render(board);
+}
+
+function handleBoardNameChange(board) {
+
+    if (board === workspace.activeBoard) {
+        boardView.renderTitle(board.name);
+    }
 }
 
 const workspaceView = {

@@ -58,6 +58,7 @@ function removeAllListViews() {
 const boardView = {
     init,
     render,
+    renderTitle,
 };
 
 export default boardView;

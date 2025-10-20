@@ -7,11 +7,17 @@ let workspace;
 let container;
 let boardListContainer;
 
-function init(containerElement, workspaceModel, { onBoardSelect } = {}) {
+function init(containerElement, workspaceModel, {
+    onBoardSelect,
+    onBoardNameChange,
+} = {}) {
     workspace = workspaceModel;
     container = containerElement;
     setUpElementReferences();
-    boardList.init(boardListContainer, workspace, { onBoardSelect });
+    boardList.init(boardListContainer, workspace, {
+        onBoardSelect,
+        onBoardNameChange,
+    });
 }
 
 function render() {
