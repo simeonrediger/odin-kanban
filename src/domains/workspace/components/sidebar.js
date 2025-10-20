@@ -7,12 +7,14 @@ let workspace;
 let container;
 let boardListContainer;
 
-function render(workspaceEntity, containerElement, { onBoardSelect } = {}) {
-    workspace = workspaceEntity;
+function init(containerElement, workspaceModel, { onBoardSelect } = {}) {
+    workspace = workspaceModel;
     container = containerElement;
-
     setUpElementReferences();
     boardList.init(boardListContainer, workspace, { onBoardSelect });
+}
+
+function render() {
     boardList.render();
 }
 
@@ -24,6 +26,7 @@ function setUpElementReferences() {
 }
 
 const sidebar = {
+    init,
     render,
 };
 

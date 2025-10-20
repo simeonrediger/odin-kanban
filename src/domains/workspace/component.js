@@ -10,14 +10,17 @@ let sidebarContainer;
 let boardContainer;
 let boardPlaceholder;
 
-function render(workspaceEntity, containerElement) {
-    workspace = workspaceEntity;
+function init(containerElement, workspaceModel) {
+    workspace = workspaceModel;
     container = containerElement;
-
     setUpElementReferences();
-    sidebar.render(workspace, sidebarContainer, {
+    sidebar.init(sidebarContainer, workspace, {
         onBoardSelect: boardView.render,
     });
+}
+
+function render() {
+    sidebar.render();
 
     if (workspace.activeBoard) {
         boardPlaceholder.classList.add('hidden');
@@ -46,6 +49,7 @@ function renderBoardPlaceholder() {
 }
 
 const workspaceView = {
+    init,
     render,
 };
 

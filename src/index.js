@@ -15,4 +15,5 @@ injectIcons(document);
 
 workspace.addBoard(defaultBoard);
 demo.run(workspace);
-workspaceView.render(workspace, workspaceContainer);
+workspaceView.init(workspaceContainer, workspace);
+workspaceView.render();
