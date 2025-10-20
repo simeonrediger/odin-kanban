@@ -18,8 +18,8 @@ function init(containerElement) {
     setUpElementReferences();
 }
 
-function render(boardEntity) {
-    board = boardEntity;
+function render(boardModel) {
+    board = boardModel;
     removeAllListViews();
     boardTitle.textContent = board.name;
 
