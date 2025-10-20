@@ -13,14 +13,13 @@ const roles = {
     listContainer: 'list-container',
 };
 
-function render(boardEntity, containerElement) {
-    board = boardEntity;
-
-    if (containerElement) {
-        container = containerElement;
-    }
-
+function init(containerElement) {
+    container = containerElement;
     setUpElementReferences();
+}
+
+function render(boardEntity) {
+    board = boardEntity;
     removeAllListViews();
     boardTitle.textContent = board.name;
 
@@ -53,6 +52,7 @@ function removeAllListViews() {
 }
 
 const boardView = {
+    init,
     render,
 };
 

@@ -17,6 +17,7 @@ function init(containerElement, workspaceModel) {
     sidebar.init(sidebarContainer, workspace, {
         onBoardSelect: boardView.render,
     });
+    boardView.init(boardContainer);
 }
 
 function render() {
@@ -24,7 +25,7 @@ function render() {
 
     if (workspace.activeBoard) {
         boardPlaceholder.classList.add('hidden');
-        boardView.render(workspace.activeBoard, boardContainer);
+        boardView.render(workspace.activeBoard);
         boardContainer.classList.remove('hidden');
     } else {
         renderBoardPlaceholder();
