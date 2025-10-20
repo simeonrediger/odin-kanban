@@ -21,12 +21,16 @@ function init(containerElement) {
 function render(boardModel) {
     board = boardModel;
     removeAllListViews();
-    boardTitle.textContent = board.name;
+    renderTitle(board.name);
 
     for (const list of board.lists) {
         const listView = new ListView(list, roles.listContainer);
         listsContainer.append(listView.container);
     }
+}
+
+function renderTitle(title) {
+    boardTitle.textContent = title;
 }
 
 function setUpElementReferences() {
