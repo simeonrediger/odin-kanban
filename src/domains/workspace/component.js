@@ -11,6 +11,8 @@ let sidebarContainer;
 let boardContainer;
 let boardPlaceholderContainer;
 
+let activeBoard;
+
 function init(containerElement, workspaceModel) {
     workspace = workspaceModel;
     container = containerElement;
@@ -26,13 +28,14 @@ function init(containerElement, workspaceModel) {
 function render() {
     sidebar.render();
 
-    if (workspace.activeBoard) {
-        boardView.render(workspace.activeBoard);
-        boardPlaceholder.hide();
-        showBoardContainer();
-    } else {
+    if (workspace.boards.length === 0) {
         hideBoardContainer();
         boardPlaceholder.show();
+    } else {
+        activeBoard = workspace.boards[0];
+        boardView.render(activeBoard);
+        boardPlaceholder.hide();
+        showBoardContainer();
     }
 }
 

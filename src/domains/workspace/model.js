@@ -127,24 +127,6 @@ const workspace = {
     get boards() {
         return Object.freeze([...boards]);
     },
-
-    get activeBoard() {
-
-        if (activeBoard) {
-            return activeBoard;
-
-        } else if (boards.length >= 1) {
-            return boards[0];
-
-        } else {
-            return null;
-        }
-    },
-
-    set activeBoard(board) {
-        assert.instanceOf(Board, board, "'board'");
-        activeBoard = board;
-    }
 };
 
 export default workspace;
