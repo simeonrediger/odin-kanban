@@ -4,7 +4,6 @@ import List from '@/domains/list/model.js';
 import Task from '@/domains/task/model.js';
 
 const boards = [];
-let activeBoard;
 
 function getBoard(boardId) {
     assert.string(boardId, "'boardId'");
