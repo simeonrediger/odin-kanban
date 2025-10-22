@@ -29,6 +29,7 @@ function render() {
     sidebar.render();
 
     if (workspace.boards.length === 0) {
+        boardPlaceholder.setNoBoardsMessage();
         hideBoardContainer();
         boardPlaceholder.show();
     } else {

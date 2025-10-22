@@ -21,10 +21,19 @@ function hide() {
     container.classList.add('hidden');
 }
 
+function setMessage(text) {
+    message.textContent = text;
+}
+
+function setNoBoardsMessage() {
+    setMessage("You don't have any boards");
+}
+
 const boardPlaceholder = {
     init,
     show,
     hide,
+    setNoBoardsMessage,
 };
 
 export default boardPlaceholder;
