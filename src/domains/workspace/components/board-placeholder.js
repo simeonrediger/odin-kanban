@@ -29,11 +29,16 @@ function setNoBoardsMessage() {
     setMessage("You don't have any boards");
 }
 
+function setBoardDeletedMessage() {
+    setMessage('This board has been deleted');
+}
+
 const boardPlaceholder = {
     init,
     show,
     hide,
     setNoBoardsMessage,
+    setBoardDeletedMessage,
 };
 
 export default boardPlaceholder;
