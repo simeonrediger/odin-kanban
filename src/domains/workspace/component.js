@@ -30,13 +30,13 @@ function render() {
 
     if (workspace.boards.length === 0) {
         boardPlaceholder.setNoBoardsMessage();
-        hideBoardContainer();
+        boardView.hide();
         boardPlaceholder.show();
     } else {
         activeBoard = workspace.boards[0];
         boardView.render(activeBoard);
         boardPlaceholder.hide();
-        showBoardContainer();
+        boardView.show();
     }
 }
 
@@ -50,14 +50,6 @@ function setUpElementReferences() {
     assert.notNull(sidebarContainer, "'sidebarContainer'");
     assert.notNull(boardContainer, "'boardContainer'");
     assert.notNull(boardPlaceholderContainer, "'boardPlaceholderContainer'");
-}
-
-function showBoardContainer() {
-    boardContainer.classList.remove('hidden');
-}
-
-function hideBoardContainer() {
-    boardContainer.classList.add('hidden');
 }
 
 function handleBoardSelect(board) {

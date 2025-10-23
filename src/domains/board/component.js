@@ -55,10 +55,20 @@ function removeAllListViews() {
     }
 }
 
+function show() {
+    container.classList.remove('hidden');
+}
+
+function hide() {
+    container.classList.add('hidden');
+}
+
 const boardView = {
     init,
     render,
     renderTitle,
+    show,
+    hide,
 };
 
 export default boardView;
