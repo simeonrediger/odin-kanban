@@ -54,13 +54,13 @@ function setUpElementReferences() {
 }
 
 function handleBoardSelect(board) {
-    workspace.activeBoard = board;
+    activeBoard = board;
     boardView.render(board);
 }
 
 function handleBoardRename(board) {
 
-    if (board === workspace.activeBoard) {
+    if (board === activeBoard) {
         boardView.renderTitle(board.name);
     }
 }
