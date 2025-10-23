@@ -27,8 +27,9 @@ function init(containerElement, workspaceModel) {
 
 function render() {
     sidebar.render();
+    const workspaceIsEmpty = workspace.boards.length === 0;
 
-    if (workspace.boards.length === 0) {
+    if (workspaceIsEmpty) {
         boardPlaceholder.setNoBoardsMessage();
         boardView.hide();
         boardPlaceholder.show();
