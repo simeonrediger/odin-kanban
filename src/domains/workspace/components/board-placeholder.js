@@ -11,7 +11,9 @@ function init(containerElement) {
 }
 
 function cacheElements() {
-    message = container.querySelector("[data-role='message']");
+    message = container.querySelector(
+        "[data-role='board-placeholder-message']"
+    );
     assert.notNull(message, "'message'");
 }
 
