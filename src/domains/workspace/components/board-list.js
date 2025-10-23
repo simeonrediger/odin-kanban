@@ -29,17 +29,17 @@ const actions = {
 
 const handlers = {
     onBoardSelect: undefined,
-    onBoardNameChange: undefined,
+    onBoardRename: undefined,
 };
 
 function init(containerElement, workspaceModel, {
     onBoardSelect,
-    onBoardNameChange,
+    onBoardRename,
 } = {}) {
     container = containerElement;
     workspace = workspaceModel;
     handlers.onBoardSelect = onBoardSelect;
-    handlers.onBoardNameChange = onBoardNameChange;
+    handlers.onBoardRename = onBoardRename;
 
     cacheElements();
     bindEvents();
@@ -143,7 +143,7 @@ function completeBoardNameEdit(boardName) {
     );
     boardSelectButton.textContent = boardName;
     showEditedListItem();
-    handlers.onBoardNameChange(board);
+    handlers.onBoardRename(board);
 }
 
 function showEditedListItem() {

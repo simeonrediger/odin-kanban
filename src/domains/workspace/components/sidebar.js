@@ -9,14 +9,14 @@ let boardListContainer;
 
 function init(containerElement, workspaceModel, {
     onBoardSelect,
-    onBoardNameChange,
+    onBoardRename,
 } = {}) {
     workspace = workspaceModel;
     container = containerElement;
     setUpElementReferences();
     boardList.init(boardListContainer, workspace, {
         onBoardSelect,
-        onBoardNameChange,
+        onBoardRename,
     });
 }
 

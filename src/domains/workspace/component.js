@@ -19,7 +19,7 @@ function init(containerElement, workspaceModel) {
     setUpElementReferences();
     sidebar.init(sidebarContainer, workspace, {
         onBoardSelect: handleBoardSelect,
-        onBoardNameChange: handleBoardNameChange,
+        onBoardRename: handleBoardRename,
     });
     boardPlaceholder.init(boardPlaceholderContainer);
     boardView.init(boardContainer);
@@ -58,7 +58,7 @@ function handleBoardSelect(board) {
     boardView.render(board);
 }
 
-function handleBoardNameChange(board) {
+function handleBoardRename(board) {
 
     if (board === workspace.activeBoard) {
         boardView.renderTitle(board.name);
