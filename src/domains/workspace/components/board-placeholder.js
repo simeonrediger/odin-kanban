@@ -1,3 +1,5 @@
+import '../styles/board-placeholder.css';
+
 import assert from '@/shared/validation/assert.js';
 
 let container;
