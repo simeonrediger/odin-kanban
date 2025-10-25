@@ -11,33 +11,28 @@ let sidebarContainer;
 let boardContainer;
 let boardPlaceholderContainer;
 
-let activeBoard;
-
-function init(containerElement, workspaceModel) {
+function init(containerElement, workspaceModel, {
+    onBoardSelect,
+    onBoardRename,
+}) {
     workspace = workspaceModel;
     container = containerElement;
     setUpElementReferences();
-    sidebar.init(sidebarContainer, workspace, {
-        onBoardSelect: handleBoardSelect,
-        onBoardRename: handleBoardRename,
-    });
+    sidebar.init(sidebarContainer, workspace, { onBoardSelect, onBoardRename });
     boardPlaceholder.init(boardPlaceholderContainer);
     boardView.init(boardContainer);
 }
 
-function render() {
+function render(activeBoardExists) {
     sidebar.render();
-    const workspaceIsEmpty = workspace.boards.length === 0;
 
-    if (workspaceIsEmpty) {
+    if (activeBoardExists) {
+        boardPlaceholder.hide();
+        boardView.show();
+    } else {
         boardPlaceholder.setNoBoardsMessage();
         boardView.hide();
         boardPlaceholder.show();
-    } else {
-        activeBoard = workspace.boards[0];
-        boardView.render(activeBoard);
-        boardPlaceholder.hide();
-        boardView.show();
     }
 }
 
@@ -51,18 +46,6 @@ function setUpElementReferences() {
     assert.notNull(sidebarContainer, "'sidebarContainer'");
     assert.notNull(boardContainer, "'boardContainer'");
     assert.notNull(boardPlaceholderContainer, "'boardPlaceholderContainer'");
-}
-
-function handleBoardSelect(board) {
-    activeBoard = board;
-    boardView.render(board);
-}
-
-function handleBoardRename(board) {
-
-    if (board === activeBoard) {
-        boardView.renderTitle(board.name);
-    }
 }
 
 const workspaceView = {
