@@ -40,7 +40,7 @@ function handleBoardSelect(board) {
 function handleBoardRename(board) {
 
     if (board === activeBoard) {
-        boardView.renderTitle(board.name);
+        // boardView.renderTitle(board.name);
     }
 }
 
