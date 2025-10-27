@@ -81,7 +81,7 @@ function render() {
     removeAllBoardListItems();
 
     for (const board of workspace.boards) {
-        const listItem = createListItem(board);
+        const listItem = createListItem(board.id, board.name);
         addListItem(listItem);
     }
 }
@@ -171,24 +171,24 @@ function removeAllBoardListItems() {
     boardListItems.forEach(listItem => listItem.remove());
 }
 
-function createListItem(board) {
+function createListItem(boardId, boardName) {
     const listItem = document.createElement('li');
     listItem.classList.add('board-list-item');
     listItem.dataset.role = roles.boardListItem;
-    listItem.dataset.id = board.id;
+    listItem.dataset.id = boardId;
 
-    const selectButton = createSelectButton(board);
+    const selectButton = createSelectButton(boardName);
     const optionsButton = createOptionsButton();
     listItem.append(selectButton, optionsButton);
 
     return listItem;
 }
 
-function createSelectButton(board) {
+function createSelectButton(boardName) {
     const button = document.createElement('button');
     button.dataset.action = actions.selectBoard;
     button.classList.add('board-select-button');
-    button.textContent = board.name;
+    button.textContent = boardName;
     button.ariaLabel = 'Select board';
 
     return button;
