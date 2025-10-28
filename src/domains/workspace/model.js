@@ -24,6 +24,7 @@ function addBoard(board, targetIndex) {
 function addEmptyBoard(boardName) {
     const board = new Board(boardName, []);
     addBoard(board);
+    return board;
 }
 
 function removeBoard(targetBoard) {

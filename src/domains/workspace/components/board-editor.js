@@ -1,6 +1,7 @@
 import '../styles/board-editor.css';
 
 import assert from '@/shared/validation/assert.js';
+import eventBus, { events } from '../event-bus.js';
 
 let container;
 let nameInput;
@@ -10,22 +11,14 @@ let submitButton;
 let isEditMode = false;
 
 const handlers = {
-    onSubmit: undefined,
-    onSubmitEdit: undefined,
-    onExitEditMode: undefined,
+    onExit: undefined,
 };
 
-function init(containerElement, {
-    onSubmit,
-    onSubmitEdit,
-    onExitEditMode,
-} = {}) {
+function init(containerElement, { onExit } = {}) {
     container = containerElement;
     cacheElements();
     bindEvents();
-    handlers.onSubmit = onSubmit;
-    handlers.onSubmitEdit = onSubmitEdit;
-    handlers.onExitEditMode = onExitEditMode;
+    handlers.onExit = onExit;
 }
 
 function cacheElements() {
@@ -43,6 +36,8 @@ function cacheElements() {
 }
 
 function bindEvents() {
+    eventBus.on(events.BOARD_CREATED, exit);
+
     cancelButton.addEventListener('click', exit);
     submitButton.addEventListener('click', submit);
     nameInput.addEventListener('keydown', handleNameInputKeyDown);
@@ -64,13 +59,12 @@ function enterEditMode(boardName) {
 
 function submit() {
     const boardName = nameInput.value.trim() || nameInput.placeholder;
-    hide();
 
     if (isEditMode) {
         isEditMode = false;
         handlers.onSubmitEdit?.(boardName);
     } else {
-        handlers.onSubmit?.(boardName);
+        eventBus.emit(events.BOARD_CREATION_REQUESTED, { boardName });
     }
 }
 
@@ -81,6 +75,8 @@ function exit() {
     } else {
         hide();
     }
+
+    handlers.onExit();
 }
 
 function exitEditMode() {

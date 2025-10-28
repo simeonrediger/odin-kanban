@@ -34,11 +34,7 @@ function init(containerElement, workspaceModel) {
 
     cacheElements();
     bindEvents();
-    boardEditor.init(boardEditorContainer, {
-        onSubmit: addBoardAndRender,
-        onSubmitEdit: completeBoardNameEdit,
-        onExitEditMode: showEditedListItem,
-    });
+    boardEditor.init(boardEditorContainer, { onExit: showActiveEditItem });
     optionsMenu.init(optionsMenuContainer, {
         optionsMenuButtonSelectorString:
             `[data-action='${actions.openOptionsMenu}']`,
@@ -64,6 +60,8 @@ function cacheElements() {
 }
 
 function bindEvents() {
+    eventBus.on(events.BOARD_CREATED, addHiddenListItem);
+
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleListClick);
 }
@@ -137,7 +135,7 @@ function completeBoardNameEdit(boardName) {
     // handlers.onBoardRename(board);
 }
 
-function showEditedListItem() {
+function showActiveEditItem() {
     activeEditItem.classList.remove('hidden');
 }
 
