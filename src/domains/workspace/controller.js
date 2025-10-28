@@ -1,5 +1,6 @@
 import assert from '@/shared/validation/assert.js';
 import boardView from '@/domains/board/component.js';
+import eventBus, { events } from './event-bus.js';
 import workspaceView from './component.js';
 
 let workspace;
@@ -10,6 +11,8 @@ let activeBoard;
 function init(workspaceModel) {
     workspace = workspaceModel;
     cacheElements();
+    bindEvents();
+
     workspaceView.init(workspaceContainer, workspace);
     initActiveBoard();
     boardView.render(activeBoard);
@@ -21,6 +24,10 @@ function cacheElements() {
     assert.notNull(workspaceContainer);
 }
 
+function bindEvents() {
+    eventBus.on(events.BOARD_SELECTION_REQUESTED, handleBoardSelection);
+}
+
 function initActiveBoard() {
     const workspaceHasBoards = workspace.boards.length !== 0;
 
@@ -29,10 +36,10 @@ function initActiveBoard() {
     }
 }
 
-// function handleBoardSelection(board) {
-//     activeBoard = board;
-//     boardView.render(board);
-// }
+function handleBoardSelection({ boardId }) {
+    activeBoard = workspace.getBoard(boardId);
+    boardView.render(activeBoard);
+}
 
 // function handleBoardRename(board) {
 

@@ -3,6 +3,7 @@ import '../styles/board-list.css';
 
 import assert from '@/shared/validation/assert.js';
 import boardEditor from './board-editor.js';
+import eventBus, { events } from '../event-bus.js';
 import optionsMenu from '@/domains/board/components/options-menu.js';
 
 import {
@@ -108,7 +109,7 @@ function handleListClick(event) {
         });
 
     } else if (action === actions.selectBoard) {
-        // handlers.onBoardSelect?.(board);
+        eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId: board.id });
     }
 }
 
