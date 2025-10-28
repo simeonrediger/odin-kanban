@@ -14,10 +14,6 @@ function init(containerElement, workspaceModel) {
     boardList.init(boardListContainer, workspace);
 }
 
-function render() {
-    boardList.render();
-}
-
 function setUpElementReferences() {
     boardListContainer = container.querySelector(
         "[data-role='board-list-container']"
@@ -27,7 +23,6 @@ function setUpElementReferences() {
 
 const sidebar = {
     init,
-    render,
 };
 
 export default sidebar;

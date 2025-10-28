@@ -67,11 +67,11 @@ function bindEvents() {
     list.addEventListener('click', handleListClick);
 }
 
-function render() {
+function render(boardListData) {
     removeAllBoardListItems();
 
-    for (const board of workspace.boards) {
-        const listItem = createListItem(board.id, board.name);
+    for (const { boardId, boardName } of boardListData) {
+        const listItem = createListItem(boardId, boardName);
         addListItem(listItem);
     }
 }

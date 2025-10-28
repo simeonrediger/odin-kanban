@@ -1,4 +1,5 @@
 import assert from '@/shared/validation/assert.js';
+import boardList from './components/board-list.js';
 import boardView from '@/domains/board/component.js';
 import eventBus, { events } from './event-bus.js';
 import workspaceView from './component.js';
@@ -17,6 +18,7 @@ function init(workspaceModel) {
     initActiveBoard();
     boardView.render(activeBoard);
     workspaceView.render(Boolean(activeBoard));
+    updateBoardList();
 }
 
 function cacheElements() {
@@ -36,6 +38,13 @@ function initActiveBoard() {
     if (workspaceHasBoards) {
         activeBoard = workspace.boards[0];
     }
+}
+
+function updateBoardList() {
+    const boardListData = workspace.boards.map(
+        board => ({ boardId: board.id, boardName: board.name })
+    );
+    boardList.render(boardListData);
 }
 
 function handleBoardSelection({ boardId }) {

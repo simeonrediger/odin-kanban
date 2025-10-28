@@ -21,7 +21,6 @@ function init(containerElement, workspaceModel) {
 }
 
 function render(activeBoardExists) {
-    sidebar.render();
 
     if (activeBoardExists) {
         boardPlaceholder.hide();
