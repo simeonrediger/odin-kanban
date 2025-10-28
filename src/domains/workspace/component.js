@@ -15,6 +15,7 @@ function init(containerElement, workspaceModel) {
     workspace = workspaceModel;
     container = containerElement;
     setUpElementReferences();
+
     sidebar.init(sidebarContainer, workspace);
     boardPlaceholder.init(boardPlaceholderContainer);
     boardView.init(boardContainer);
