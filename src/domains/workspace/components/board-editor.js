@@ -8,6 +8,7 @@ let nameInput;
 let cancelButton;
 let submitButton;
 
+let activeEditBoardId;
 let isEditMode = false;
 
 const handlers = {
@@ -37,6 +38,7 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.BOARD_CREATED, exit);
+    eventBus.on(events.BOARD_NAME_UPDATED, exit);
 
     cancelButton.addEventListener('click', exit);
     submitButton.addEventListener('click', submit);
@@ -50,7 +52,8 @@ function enterCreateMode() {
     nameInput.focus();
 }
 
-function enterEditMode(boardName) {
+function enterEditMode(boardId, boardName) {
+    activeEditBoardId = boardId;
     nameInput.value = boardName;
     isEditMode = true;
     show();
@@ -62,7 +65,11 @@ function submit() {
 
     if (isEditMode) {
         isEditMode = false;
-        handlers.onSubmitEdit?.(boardName);
+        eventBus.emit(events.BOARD_NAME_UPDATE_REQUESTED, {
+            boardId: activeEditBoardId,
+            boardName,
+        });
+
     } else {
         eventBus.emit(events.BOARD_CREATION_REQUESTED, { boardName });
     }
@@ -82,7 +89,6 @@ function exit() {
 function exitEditMode() {
     isEditMode = false;
     hide();
-    handlers.onExitEditMode?.();
 }
 
 function show() {

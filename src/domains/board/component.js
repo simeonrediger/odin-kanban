@@ -1,6 +1,7 @@
 import './style.css';
 
 import assert from '@/shared/validation/assert.js';
+import eventBus, { events } from '@/domains/workspace/event-bus.js';
 import ListView from '@/domains/list/component.js';
 
 let board;
@@ -16,6 +17,7 @@ const roles = {
 function init(containerElement) {
     container = containerElement;
     setUpElementReferences();
+    bindEvents();
 }
 
 function render(boardModel) {
@@ -41,6 +43,10 @@ function setUpElementReferences() {
     assert.notNull(listsContainer, "'listsContainer'");
 }
 
+function bindEvents() {
+    eventBus.on(events.BOARD_NAME_UPDATED, updateTitleOnNameChange);
+}
+
 function removeAllListViews() {
     const listViewContainers = container.querySelectorAll(
         `[data-role='${roles.listContainer}']`
@@ -57,6 +63,13 @@ function show() {
 
 function hide() {
     container.classList.add('hidden');
+}
+
+function updateTitleOnNameChange({ boardId, boardName }) {
+
+    if (board.id === boardId) {
+        boardTitle.textContent = boardName;
+    }
 }
 
 const boardView = {

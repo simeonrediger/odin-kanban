@@ -27,6 +27,7 @@ function cacheElements() {
 function bindEvents() {
     eventBus.on(events.BOARD_SELECTION_REQUESTED, handleBoardSelection);
     eventBus.on(events.BOARD_CREATION_REQUESTED, createBoard);
+    eventBus.on(events.BOARD_NAME_UPDATE_REQUESTED, updateBoardName);
 }
 
 function initActiveBoard() {
@@ -50,12 +51,11 @@ function createBoard({ boardName }) {
     });
 }
 
-// function handleBoardRename(board) {
-
-//     if (board === activeBoard) {
-//         // boardView.renderTitle(board.name);
-//     }
-// }
+function updateBoardName({ boardId, boardName }) {
+    const board = workspace.getBoard(boardId);
+    board.name = boardName;
+    eventBus.emit(events.BOARD_NAME_UPDATED, { boardId, boardName });
+}
 
 const workspaceController = {
     init,

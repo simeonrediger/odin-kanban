@@ -61,6 +61,7 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.BOARD_CREATED, addHiddenListItem);
+    eventBus.on(events.BOARD_NAME_UPDATED, updateBoardItemText);
 
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleListClick);
@@ -119,20 +120,18 @@ function unhighlightListItem(listItem) {
     listItem.classList.remove('is-menu-context');
 }
 
-function addBoardAndRender(boardName) {
-    workspace.addEmptyBoard(boardName);
-    render();
+function addHiddenListItem({boardId, boardName}) {
+    const listItem = createListItem(boardId, boardName);
+    activeEditItem = listItem;
+    activeEditItem.classList.add('hidden');
+    addListItem(activeEditItem);
 }
 
-function completeBoardNameEdit(boardName) {
-    const board = workspace.getBoard(activeEditItem.dataset.id);
-    board.name = boardName;
-    const boardSelectButton = activeEditItem.querySelector(
-        `[data-action='${actions.selectBoard}']`
+function updateBoardItemText({ boardId, boardName }) {
+    const boardSelectButton = list.querySelector(
+        `[data-id='${boardId}'] [data-action='${actions.selectBoard}']`
     );
     boardSelectButton.textContent = boardName;
-    showEditedListItem();
-    // handlers.onBoardRename(board);
 }
 
 function showActiveEditItem() {
@@ -140,10 +139,11 @@ function showActiveEditItem() {
 }
 
 function editBoardName(boardName, listItem) {
+    const boardId = listItem.dataset.id;
     activeEditItem = listItem;
     activeEditItem.classList.add('hidden');
     list.insertBefore(boardEditorContainer, activeEditItem);
-    boardEditor.enterEditMode(boardName);
+    boardEditor.enterEditMode(boardId, boardName);
 }
 
 function deleteBoard(board) {
