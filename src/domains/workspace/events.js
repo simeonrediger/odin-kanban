@@ -10,6 +10,29 @@
  * @property {string} boardId - Unique ID of the board.
  */
 
+/**
+ * @typedef {Object} BoardCreatedDetail
+ * @property {string} boardId - Unique ID of the board.
+ * @property {string} boardName - Name of the board.
+ */
+
+/**
+ * @typedef {Object} BoardCreationRequestedDetail
+ * @property {string} boardName - Name for the board.
+ */
+
+/**
+ * @typedef {Object} BoardNameUpdatedDetail
+ * @property {string} boardId - Unique ID of the board.
+ * @property {string} boardName - New name of the board.
+ */
+
+/**
+ * @typedef {Object} BoardNameUpdateRequestedDetail
+ * @property {string} boardId - Unique ID of the board.
+ * @property {string} boardName - New name for the board.
+ */
+
 
 
 // Event names
@@ -29,3 +52,35 @@ export const BOARD_SELECTION_REQUESTED = 'board:selection-requested';
  * @see {@link BoardSelectedDetail}
  */
 export const BOARD_SELECTED = 'board:selected';
+
+/**
+ * @description Emitted when board creation is requested.
+ * @event board:creation-requested
+ * @type {string}
+ * @see {@link BoardCreationRequestedDetail}
+ */
+export const BOARD_CREATION_REQUESTED = 'board:creation-requested';
+
+/**
+ * @description Emitted when a board is created.
+ * @event board:created
+ * @type {string}
+ * @see {@link BoardCreatedDetail}
+ */
+export const BOARD_CREATED = 'board:created';
+
+/**
+ * @description Emitted when a board name is updated.
+ * @event board:name-updated
+ * @type {string}
+ * @see {@link BoardNameUpdatedDetail}
+ */
+export const BOARD_NAME_UPDATED = 'board:name-updated';
+
+/**
+ * @description Emitted when a board name update is requested.
+ * @event board:name-update-requested
+ * @type {string}
+ * @see {@link BoardNameUpdateRequestedDetail}
+ */
+export const BOARD_NAME_UPDATE_REQUESTED = 'board:name-update-requested';
