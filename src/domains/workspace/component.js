@@ -11,14 +11,11 @@ let sidebarContainer;
 let boardContainer;
 let boardPlaceholderContainer;
 
-function init(containerElement, workspaceModel, {
-    onBoardSelect,
-    onBoardRename,
-}) {
+function init(containerElement, workspaceModel) {
     workspace = workspaceModel;
     container = containerElement;
     setUpElementReferences();
-    sidebar.init(sidebarContainer, workspace, { onBoardSelect, onBoardRename });
+    sidebar.init(sidebarContainer, workspace);
     boardPlaceholder.init(boardPlaceholderContainer);
     boardView.init(boardContainer);
 }

@@ -10,10 +10,7 @@ let activeBoard;
 function init(workspaceModel) {
     workspace = workspaceModel;
     cacheElements();
-    workspaceView.init(workspaceContainer, workspace, {
-        onBoardSelect: handleBoardSelect,
-        onBoardRename: handleBoardRename,
-    });
+    workspaceView.init(workspaceContainer, workspace);
     initActiveBoard();
     boardView.render(activeBoard);
     workspaceView.render(Boolean(activeBoard));
@@ -32,17 +29,17 @@ function initActiveBoard() {
     }
 }
 
-function handleBoardSelect(board) {
-    activeBoard = board;
-    boardView.render(board);
-}
+// function handleBoardSelection(board) {
+//     activeBoard = board;
+//     boardView.render(board);
+// }
 
-function handleBoardRename(board) {
+// function handleBoardRename(board) {
 
-    if (board === activeBoard) {
-        // boardView.renderTitle(board.name);
-    }
-}
+//     if (board === activeBoard) {
+//         // boardView.renderTitle(board.name);
+//     }
+// }
 
 const workspaceController = {
     init,

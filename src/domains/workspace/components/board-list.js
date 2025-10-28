@@ -27,19 +27,9 @@ const actions = {
     openOptionsMenu: 'open-board-options-menu',
 }
 
-const handlers = {
-    onBoardSelect: undefined,
-    onBoardRename: undefined,
-};
-
-function init(containerElement, workspaceModel, {
-    onBoardSelect,
-    onBoardRename,
-} = {}) {
+function init(containerElement, workspaceModel) {
     container = containerElement;
     workspace = workspaceModel;
-    handlers.onBoardSelect = onBoardSelect;
-    handlers.onBoardRename = onBoardRename;
 
     cacheElements();
     bindEvents();
@@ -118,7 +108,7 @@ function handleListClick(event) {
         });
 
     } else if (action === actions.selectBoard) {
-        handlers.onBoardSelect?.(board);
+        // handlers.onBoardSelect?.(board);
     }
 }
 
@@ -143,7 +133,7 @@ function completeBoardNameEdit(boardName) {
     );
     boardSelectButton.textContent = boardName;
     showEditedListItem();
-    handlers.onBoardRename(board);
+    // handlers.onBoardRename(board);
 }
 
 function showEditedListItem() {
