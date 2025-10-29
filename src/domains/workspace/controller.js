@@ -56,6 +56,12 @@ function handleBoardSelection({ boardId }) {
 
 function createBoard({ boardName }) {
     const board = workspace.addEmptyBoard(boardName);
+    activeBoard = board;
+    boardView.render(activeBoard);
+    workspaceView.render({
+        activeBoardExists: Boolean(activeBoard),
+    });
+
     eventBus.emit(events.BOARD_CREATED, {
         boardId: board.id,
         boardName: board.name,
