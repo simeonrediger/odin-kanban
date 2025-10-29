@@ -78,7 +78,6 @@ function handleBoardDeletionRequest({ boardId }) {
     const board = workspace.getBoard(boardId);
     workspace.removeBoard(board);
     const activeBoardDeleted = board === activeBoard;
-    eventBus.emit(events.BOARD_DELETED, { boardId });
 
     if (activeBoardDeleted) {
         activeBoard = null;
@@ -88,6 +87,8 @@ function handleBoardDeletionRequest({ boardId }) {
         activeBoardExists: Boolean(activeBoard),
         boardsAvailable: workspace.boards.length !== 0,
     });
+
+    eventBus.emit(events.BOARD_DELETED, { boardId });
 }
 
 const workspaceController = {
