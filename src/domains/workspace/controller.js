@@ -17,7 +17,7 @@ function init(workspaceModel) {
     workspaceView.init(workspaceContainer, workspace);
     initActiveBoard();
     boardView.render(activeBoard);
-    workspaceView.render(Boolean(activeBoard));
+    workspaceView.render({ activeBoardExists: Boolean(activeBoard) });
     updateBoardList();
 }
 
@@ -30,6 +30,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_SELECTION_REQUESTED, handleBoardSelection);
     eventBus.on(events.BOARD_CREATION_REQUESTED, createBoard);
     eventBus.on(events.BOARD_NAME_UPDATE_REQUESTED, updateBoardName);
+    eventBus.on(events.BOARD_DELETION_REQUESTED, handleBoardDeletionRequest)
 }
 
 function initActiveBoard() {
@@ -64,6 +65,13 @@ function updateBoardName({ boardId, boardName }) {
     const board = workspace.getBoard(boardId);
     board.name = boardName;
     eventBus.emit(events.BOARD_NAME_UPDATED, { boardId, boardName });
+}
+
+function handleBoardDeletionRequest({ boardId }) {
+    const board = workspace.getBoard(boardId);
+    workspace.removeBoard(board);
+    eventBus.emit(events.BOARD_DELETED, { boardId });
+    workspaceView.render({ activeBoardDeleted: boardId === activeBoard.id });
 }
 
 const workspaceController = {

@@ -21,9 +21,13 @@ function init(containerElement, workspaceModel) {
     boardView.init(boardContainer);
 }
 
-function render(activeBoardExists) {
+function render({ activeBoardDeleted, activeBoardExists }) {
 
-    if (activeBoardExists) {
+    if (activeBoardDeleted) {
+        boardPlaceholder.setBoardDeletedMessage();
+        boardView.hide();
+        boardPlaceholder.show();
+    } else if (activeBoardExists) {
         boardPlaceholder.hide();
         boardView.show();
     } else {

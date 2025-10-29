@@ -62,6 +62,7 @@ function cacheElements() {
 function bindEvents() {
     eventBus.on(events.BOARD_CREATED, addHiddenListItem);
     eventBus.on(events.BOARD_NAME_UPDATED, updateBoardItemText);
+    eventBus.on(events.BOARD_DELETED, removeListItem);
 
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleListClick);
@@ -95,7 +96,8 @@ function handleListClick(event) {
     }
 
     const listItem = button.closest(`[data-role='${roles.boardListItem}']`);
-    const board = workspace.getBoard(listItem.dataset.id);
+    const boardId = listItem.dataset.id;
+    const board = workspace.getBoard(boardId);
 
     if (action === actions.openOptionsMenu) {
         highlightListItem(listItem);
@@ -104,7 +106,7 @@ function handleListClick(event) {
             onOpen: () => highlightListItem(listItem),
             onCloseOrMove: () => unhighlightListItem(listItem),
             onRenameClick: () => handleRenameClick(board.name, listItem),
-            onConfirmDeletionClick: () => deleteBoard(board),
+            onConfirmDeletionClick: () => handleDeleteClick(boardId),
         });
 
     } else if (action === actions.selectBoard) {
@@ -146,9 +148,13 @@ function handleRenameClick(boardName, listItem) {
     boardEditor.enterEditMode(boardId, boardName);
 }
 
-function deleteBoard(board) {
-    workspace.removeBoard(board);
-    render();
+function handleDeleteClick(boardId) {
+    eventBus.emit(events.BOARD_DELETION_REQUESTED, { boardId });
+}
+
+function removeListItem({ boardId }) {
+    const listItem = list.querySelector(`[data-id='${boardId}']`);
+    listItem.remove();
 }
 
 function addListItem(listItem) {
