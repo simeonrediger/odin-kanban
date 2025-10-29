@@ -51,6 +51,7 @@ function updateBoardList() {
 function handleBoardSelection({ boardId }) {
     activeBoard = workspace.getBoard(boardId);
     boardView.render(activeBoard);
+    workspaceView.render({ activeBoardExists: Boolean(activeBoard) });
 }
 
 function createBoard({ boardName }) {
