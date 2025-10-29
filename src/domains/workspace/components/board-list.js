@@ -32,6 +32,7 @@ function init(containerElement) {
     container = containerElement;
     cacheElements();
     bindEvents();
+
     boardEditor.init(boardEditorContainer, { onExit: showActiveEditItem });
     optionsMenu.init(optionsMenuContainer, {
         optionsMenuButtonSelectorString:
