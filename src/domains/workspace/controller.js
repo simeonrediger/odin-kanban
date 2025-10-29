@@ -16,7 +16,11 @@ function init(workspaceModel) {
 
     workspaceView.init(workspaceContainer);
     initActiveBoard();
-    boardView.render(activeBoard);
+
+    if (activeBoard) {
+        boardView.render(activeBoard);
+    }
+
     workspaceView.render({ activeBoardExists: Boolean(activeBoard) });
     updateBoardList();
 }
