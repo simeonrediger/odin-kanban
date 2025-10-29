@@ -110,7 +110,7 @@ function handleListClick(event) {
         });
 
     } else if (action === actions.selectBoard) {
-        eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId: board.id });
+        eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId });
     }
 }
 
