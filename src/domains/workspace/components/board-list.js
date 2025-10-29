@@ -58,7 +58,7 @@ function cacheElements() {
 }
 
 function bindEvents() {
-    eventBus.on(events.BOARD_CREATED, addHiddenListItem);
+    eventBus.on(events.BOARD_CREATED, handleBoardCreation);
     eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
     eventBus.on(events.BOARD_DELETED, removeListItem);
 
@@ -122,11 +122,20 @@ function unhighlightListItem(listItem) {
     listItem.classList.remove('is-menu-context');
 }
 
-function addHiddenListItem({boardId, boardName}) {
+function handleBoardCreation({ boardId, boardName }) {
+    addBoardListDataEntry(boardId, boardName);
+    addHiddenListItem(boardId, boardName);
+}
+
+function addHiddenListItem(boardId, boardName) {
     const listItem = createListItem(boardId, boardName);
     activeEditItem = listItem;
     activeEditItem.classList.add('hidden');
     addListItem(activeEditItem);
+}
+
+function addBoardListDataEntry(boardId, boardName) {
+    boardListData.push({ boardId, boardName });
 }
 
 function handleBoardNameUpdate({ boardId, boardName }) {
