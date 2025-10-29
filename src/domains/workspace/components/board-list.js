@@ -10,13 +10,13 @@ import {
     createThreeDotsHorizontalIcon,
 } from '@/shared/components/icons/create-icons.js';
 
-let workspace;
 let container;
 let createNewBoardButton;
 let list;
 let boardEditorContainer;
 let optionsMenuContainer;
 
+let boardListData;
 let activeEditItem;
 
 const roles = {
@@ -28,10 +28,8 @@ const actions = {
     openOptionsMenu: 'open-board-options-menu',
 }
 
-function init(containerElement, workspaceModel) {
+function init(containerElement) {
     container = containerElement;
-    workspace = workspaceModel;
-
     cacheElements();
     bindEvents();
     boardEditor.init(boardEditorContainer, { onExit: showActiveEditItem });
@@ -61,14 +59,15 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.BOARD_CREATED, addHiddenListItem);
-    eventBus.on(events.BOARD_NAME_UPDATED, updateBoardItemText);
+    eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
     eventBus.on(events.BOARD_DELETED, removeListItem);
 
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleListClick);
 }
 
-function render(boardListData) {
+function render(newBoardListData) {
+    boardListData = newBoardListData;
     removeAllBoardListItems();
 
     for (const { boardId, boardName } of boardListData) {
@@ -97,7 +96,8 @@ function handleListClick(event) {
 
     const listItem = button.closest(`[data-role='${roles.boardListItem}']`);
     const boardId = listItem.dataset.id;
-    const board = workspace.getBoard(boardId);
+    const boardEntry = boardListData.find(entry => entry.boardId === boardId);
+    const boardName = boardEntry.boardName;
 
     if (action === actions.openOptionsMenu) {
         highlightListItem(listItem);
@@ -105,7 +105,7 @@ function handleListClick(event) {
             anchorElement: listItem,
             onOpen: () => highlightListItem(listItem),
             onCloseOrMove: () => unhighlightListItem(listItem),
-            onRenameClick: () => handleRenameClick(board.name, listItem),
+            onRenameClick: () => handleRenameClick(boardName, listItem),
             onConfirmDeletionClick: () => handleDeleteClick(boardId),
         });
 
@@ -129,7 +129,17 @@ function addHiddenListItem({boardId, boardName}) {
     addListItem(activeEditItem);
 }
 
-function updateBoardItemText({ boardId, boardName }) {
+function handleBoardNameUpdate({ boardId, boardName }) {
+    updateBoardListDataEntry(boardId, boardName);
+    updateBoardItemText(boardId, boardName);
+}
+
+function updateBoardListDataEntry(id, newName) {
+    const entry = boardListData.find(entry => entry.boardId === id);
+    entry.boardName = newName;
+}
+
+function updateBoardItemText(boardId, boardName) {
     const boardSelectButton = list.querySelector(
         `[data-id='${boardId}'] [data-action='${actions.selectBoard}']`
     );

@@ -14,7 +14,7 @@ function init(workspaceModel) {
     cacheElements();
     bindEvents();
 
-    workspaceView.init(workspaceContainer, workspace);
+    workspaceView.init(workspaceContainer);
     initActiveBoard();
     boardView.render(activeBoard);
     workspaceView.render({ activeBoardExists: Boolean(activeBoard) });

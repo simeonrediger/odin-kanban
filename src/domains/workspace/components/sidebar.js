@@ -3,15 +3,13 @@ import '../styles/sidebar.css';
 import assert from '@/shared/validation/assert.js';
 import boardList from './board-list.js';
 
-let workspace;
 let container;
 let boardListContainer;
 
-function init(containerElement, workspaceModel) {
-    workspace = workspaceModel;
+function init(containerElement) {
     container = containerElement;
     setUpElementReferences();
-    boardList.init(boardListContainer, workspace);
+    boardList.init(boardListContainer);
 }
 
 function setUpElementReferences() {

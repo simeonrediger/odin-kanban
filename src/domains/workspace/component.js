@@ -5,18 +5,16 @@ import boardPlaceholder from './components/board-placeholder.js'
 import boardView from '@/domains/board/component.js';
 import sidebar from './components/sidebar.js';
 
-let workspace;
 let container;
 let sidebarContainer;
 let boardContainer;
 let boardPlaceholderContainer;
 
 function init(containerElement, workspaceModel) {
-    workspace = workspaceModel;
     container = containerElement;
     setUpElementReferences();
 
-    sidebar.init(sidebarContainer, workspace);
+    sidebar.init(sidebarContainer);
     boardPlaceholder.init(boardPlaceholderContainer);
     boardView.init(boardContainer);
 }
