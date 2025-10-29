@@ -60,7 +60,7 @@ function cacheElements() {
 function bindEvents() {
     eventBus.on(events.BOARD_CREATED, handleBoardCreation);
     eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
-    eventBus.on(events.BOARD_DELETED, removeListItem);
+    eventBus.on(events.BOARD_DELETED, handleBoardDeletion);
 
     createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
     list.addEventListener('click', handleListClick);
@@ -138,6 +138,13 @@ function addBoardListDataEntry(boardId, boardName) {
     boardListData.push({ boardId, boardName });
 }
 
+function removeBoardListDataEntry(boardId) {
+    const entryIndex = boardListData.findIndex(
+        entry => entry.boardId === boardId
+    );
+    boardListData.splice(entryIndex, 1);
+}
+
 function handleBoardNameUpdate({ boardId, boardName }) {
     updateBoardListDataEntry(boardId, boardName);
     updateBoardItemText(boardId, boardName);
@@ -171,7 +178,12 @@ function handleDeleteClick(boardId) {
     eventBus.emit(events.BOARD_DELETION_REQUESTED, { boardId });
 }
 
-function removeListItem({ boardId }) {
+function handleBoardDeletion({ boardId, boardName }) {
+    removeBoardListDataEntry(boardId);
+    removeListItem(boardId);
+}
+
+function removeListItem(boardId) {
     const listItem = list.querySelector(`[data-id='${boardId}']`);
     listItem.remove();
 }
