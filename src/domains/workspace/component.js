@@ -21,20 +21,22 @@ function init(containerElement, workspaceModel) {
     boardView.init(boardContainer);
 }
 
-function render({ activeBoardDeleted, activeBoardExists }) {
+function render({ activeBoardExists, boardsAvailable }) {
 
-    if (activeBoardDeleted) {
-        boardPlaceholder.setBoardDeletedMessage();
-        boardView.hide();
-        boardPlaceholder.show();
-    } else if (activeBoardExists) {
+    if (activeBoardExists) {
         boardPlaceholder.hide();
         boardView.show();
+        return;
+    }
+
+    if (boardsAvailable) {
+        boardPlaceholder.setBoardDeletedMessage();
     } else {
         boardPlaceholder.setNoBoardsMessage();
-        boardView.hide();
-        boardPlaceholder.show();
     }
+
+    boardView.hide();
+    boardPlaceholder.show();
 }
 
 function setUpElementReferences() {

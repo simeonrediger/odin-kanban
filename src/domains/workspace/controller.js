@@ -70,8 +70,17 @@ function updateBoardName({ boardId, boardName }) {
 function handleBoardDeletionRequest({ boardId }) {
     const board = workspace.getBoard(boardId);
     workspace.removeBoard(board);
+    const activeBoardDeleted = board === activeBoard;
     eventBus.emit(events.BOARD_DELETED, { boardId });
-    workspaceView.render({ activeBoardDeleted: boardId === activeBoard.id });
+
+    if (activeBoardDeleted) {
+        activeBoard = null;
+    }
+
+    workspaceView.render({
+        activeBoardExists: Boolean(activeBoard),
+        boardsAvailable: workspace.boards.length !== 0,
+    });
 }
 
 const workspaceController = {
