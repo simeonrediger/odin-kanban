@@ -1,5 +1,6 @@
 import assert from '@/shared/validation/assert.js';
 import boardList from './components/board-list.js';
+import boardListStore from './board-list-store.js';
 import boardView from '@/domains/board/component.js';
 import eventBus, { events } from './event-bus.js';
 import workspaceView from './component.js';
@@ -22,6 +23,7 @@ function init(workspaceModel) {
     }
 
     workspaceView.render({ activeBoardExists: Boolean(activeBoard) });
+    initBoardListStore();
     updateBoardList();
 }
 
@@ -43,6 +45,16 @@ function initActiveBoard() {
     if (workspaceHasBoards) {
         activeBoard = workspace.boards[0];
     }
+}
+
+function initBoardListStore() {
+    const boardListData = {};
+
+    for (const board of workspace.boards) {
+        boardListData[board.id] = { name: board.name };
+    }
+
+    boardListStore.init(boardListData);
 }
 
 function updateBoardList() {

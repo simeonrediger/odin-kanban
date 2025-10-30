@@ -3,6 +3,7 @@ import '../styles/board-list.css';
 
 import assert from '@/shared/validation/assert.js';
 import boardEditor from './board-editor.js';
+import boardListStore from '../board-list-store.js';
 import eventBus, { events } from '../event-bus.js';
 import optionsMenu from '@/domains/board/components/options-menu.js';
 
@@ -16,7 +17,6 @@ let list;
 let boardEditorContainer;
 let optionsMenuContainer;
 
-let boardListData;
 let activeEditItem;
 
 const roles = {
@@ -67,11 +67,11 @@ function bindEvents() {
     list.addEventListener('click', handleListClick);
 }
 
-function render(newBoardListData) {
-    boardListData = newBoardListData;
+function render() {
     removeAllBoardListItems();
 
-    for (const { boardId, boardName } of boardListData) {
+    for (const boardId of boardListStore.getEntryIds()) {
+        const boardName = boardListStore.getEntryName(boardId);
         const listItem = createListItem(boardId, boardName);
         addListItem(listItem);
     }
@@ -97,8 +97,7 @@ function handleListClick(event) {
 
     const listItem = button.closest(`[data-role='${roles.boardListItem}']`);
     const boardId = listItem.dataset.id;
-    const boardEntry = boardListData.find(entry => entry.boardId === boardId);
-    const boardName = boardEntry.boardName;
+    const boardName = boardListStore.getEntryName(boardId);
 
     if (action === actions.openOptionsMenu) {
         highlightListItem(listItem);
@@ -124,7 +123,6 @@ function unhighlightListItem(listItem) {
 }
 
 function handleBoardCreation({ boardId, boardName }) {
-    addBoardListDataEntry(boardId, boardName);
     addHiddenListItem(boardId, boardName);
 }
 
@@ -135,25 +133,8 @@ function addHiddenListItem(boardId, boardName) {
     addListItem(activeEditItem);
 }
 
-function addBoardListDataEntry(boardId, boardName) {
-    boardListData.push({ boardId, boardName });
-}
-
-function removeBoardListDataEntry(boardId) {
-    const entryIndex = boardListData.findIndex(
-        entry => entry.boardId === boardId
-    );
-    boardListData.splice(entryIndex, 1);
-}
-
 function handleBoardNameUpdate({ boardId, boardName }) {
-    updateBoardListDataEntry(boardId, boardName);
     updateBoardItemText(boardId, boardName);
-}
-
-function updateBoardListDataEntry(id, newName) {
-    const entry = boardListData.find(entry => entry.boardId === id);
-    entry.boardName = newName;
 }
 
 function updateBoardItemText(boardId, boardName) {
@@ -180,7 +161,6 @@ function handleDeleteClick(boardId) {
 }
 
 function handleBoardDeletion({ boardId, boardName }) {
-    removeBoardListDataEntry(boardId);
     removeListItem(boardId);
 }
 
