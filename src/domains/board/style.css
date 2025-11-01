@@ -31,8 +31,13 @@
 
 .lists-container {
   grid-column: span 2;
+  overflow-x: auto;
 
   display: flex;
   align-items: start;
   gap: 1rem;
+}
+
+.lists-container > * {
+  flex-shrink: 0;
 }
