@@ -69,7 +69,7 @@ function initBoardListStore() {
 
 function handleBoardSelection({ boardId }) {
     setActiveBoard(workspace.getBoard(boardId));
-    boardListStore.setSelectedBoardId(activeBoard.id);
+    boardListStore.selectedBoardId = activeBoard.id;
 }
 
 function createBoard({ boardName }) {

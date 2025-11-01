@@ -14,14 +14,6 @@ function bindEvents() {
     eventBus.on(events.BOARD_DELETED, removeBoard);
 }
 
-function getSelectedBoardId() {
-    return selectedBoardId;
-}
-
-function setSelectedBoardId(id) {
-    selectedBoardId = id;
-}
-
 function addBoard({ boardId, boardName }) {
     boards[boardId] = { name: boardName };
 }
@@ -44,10 +36,16 @@ function getBoardName(boardId) {
 
 const boardListStore = {
     init,
-    getSelectedBoardId,
-    setSelectedBoardId,
     getBoardIds,
     getBoardName,
+
+    get selectedBoardId() {
+        return selectedBoardId;
+    },
+
+    set selectedBoardId(id) {
+        selectedBoardId = id;
+    },
 };
 
 export default boardListStore;

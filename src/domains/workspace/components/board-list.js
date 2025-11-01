@@ -77,7 +77,7 @@ function render() {
     }
 
     const selectedListItem = list.querySelector(
-        `[data-id='${boardListStore.getSelectedBoardId()}']`
+        `[data-id='${boardListStore.selectedBoardId}']`
     );
     highlightSelectedListItem(selectedListItem);
 }
