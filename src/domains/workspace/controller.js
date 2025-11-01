@@ -18,10 +18,6 @@ function init(workspaceModel) {
     workspaceView.init(workspaceContainer);
     initActiveBoard();
 
-    if (activeBoard) {
-        boardView.render(activeBoard);
-    }
-
     workspaceView.render({ activeBoardExists: Boolean(activeBoard) });
     initBoardListStore();
     updateBoardList();
@@ -40,7 +36,15 @@ function bindEvents() {
 }
 
 function initActiveBoard() {
-    activeBoard = workspace.boards[0] ?? null;
+    setActiveBoard(workspace.boards[0] ?? null);
+}
+
+function setActiveBoard(board) {
+    activeBoard = board;
+
+    if (activeBoard) {
+        boardView.render(activeBoard);
+    }
 }
 
 function initBoardListStore() {
@@ -61,15 +65,13 @@ function updateBoardList() {
 }
 
 function handleBoardSelection({ boardId }) {
-    activeBoard = workspace.getBoard(boardId);
-    boardView.render(activeBoard);
+    setActiveBoard(workspace.getBoard(boardId));
     workspaceView.render({ activeBoardExists: Boolean(activeBoard) });
 }
 
 function createBoard({ boardName }) {
     const board = workspace.addEmptyBoard(boardName);
-    activeBoard = board;
-    boardView.render(activeBoard);
+    setActiveBoard(board);
     workspaceView.render({
         activeBoardExists: Boolean(activeBoard),
     });
@@ -92,7 +94,7 @@ function handleBoardDeletionRequest({ boardId }) {
     const activeBoardDeleted = board === activeBoard;
 
     if (activeBoardDeleted) {
-        activeBoard = null;
+        setActiveBoard(null);
     }
 
     workspaceView.render({
