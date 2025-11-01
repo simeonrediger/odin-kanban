@@ -33,7 +33,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_SELECTION_REQUESTED, handleBoardSelection);
     eventBus.on(events.BOARD_CREATION_REQUESTED, createBoard);
     eventBus.on(events.BOARD_NAME_UPDATE_REQUESTED, updateBoardName);
-    eventBus.on(events.BOARD_DELETION_REQUESTED, handleBoardDeletionRequest)
+    eventBus.on(events.BOARD_DELETION_REQUESTED, handleBoardDeletionRequest);
 }
 
 function renderWorkspaceView(activeBoard) {
