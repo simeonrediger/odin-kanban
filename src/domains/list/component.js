@@ -35,7 +35,7 @@ export default class ListView {
         this.container.append(this.label, this.tasks);
     }
 
-    placeEditor(editor) {
+    replaceLabelWithEditor(editor) {
         this.label.classList.add('hidden');
         this.container.classList.add('editing');
         this.container.prepend(editor);

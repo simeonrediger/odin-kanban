@@ -108,8 +108,7 @@ function handleCreateNewListClick() {
         null,
         roles.listContainer
     );
-
-    activeEditListView.placeEditor(listEditorContainer);
+    activeEditListView.replaceLabelWithEditor(listEditorContainer);
     listsContainer.append(activeEditListView.container);
     listEditor.enterCreateMode();
 }
