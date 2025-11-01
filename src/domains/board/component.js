@@ -12,6 +12,8 @@ let createNewListButton;
 let listsContainer;
 let listEditorContainer;
 
+let activeCreationListView;
+
 const roles = {
     listContainer: 'list-container',
 };
@@ -56,6 +58,7 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, updateTitleOnNameChange);
+    createNewListButton.addEventListener('click', handleCreateNewListClick);
 }
 
 function removeAllListViews() {
@@ -81,6 +84,18 @@ function updateTitleOnNameChange({ boardId, boardName }) {
     if (boardViewStore.getBoardId() === boardId) {
         boardTitle.textContent = boardName;
     }
+}
+
+function handleCreateNewListClick() {
+    activeCreationListView = new ListView(
+        null,
+        null,
+        roles.listContainer
+    );
+
+    activeCreationListView.placeEditor(listEditorContainer);
+    listsContainer.append(activeCreationListView.container);
+    listEditor.enterCreateMode();
 }
 
 const boardView = {

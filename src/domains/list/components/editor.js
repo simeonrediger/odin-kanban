@@ -26,8 +26,19 @@ function cacheElements() {
     assert.notNull(submitButton, "'submitButton'");
 }
 
+function enterCreateMode() {
+    nameInput.value = '';
+    show();
+    nameInput.focus();
+}
+
+function show() {
+    container.classList.remove('hidden');
+}
+
 const listEditor = {
     init,
+    enterCreateMode,
 };
 
 export default listEditor;

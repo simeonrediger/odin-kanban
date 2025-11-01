@@ -1,0 +1,27 @@
+.list-editor {
+  font-size: 1.125rem;
+  margin-top: 0.25rem;
+  padding-inline: 0.75rem;
+  text-align: right;
+}
+
+.list-name-input {
+  background-color: transparent;
+  color: inherit;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  outline: none;
+}
+
+.cancel-list-editor-button,
+.submit-list-editor-button {
+  background-color: transparent;
+  color: var(--color-fg-secondary);
+  flex-shrink: 0;
+  padding-inline: 0.25rem;
+}
+
+.cancel-list-editor-button:hover,
+.submit-list-editor-button:hover {
+  color: var(--color-fg-highlight);
+}

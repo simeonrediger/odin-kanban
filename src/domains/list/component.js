@@ -15,13 +15,13 @@ export default class ListView {
         this.container.classList.add('list-container');
 
         this.label = document.createElement('p');
-        this.label.textContent = store.getListName(listId);
+        this.label.textContent = store?.getListName(listId);
         this.label.classList.add('list-label');
 
         this.tasks = document.createElement('ul');
         this.tasks.classList.add('tasks-list');
 
-        for (const taskId of store.getTaskIds(listId)) {
+        for (const taskId of store?.getTaskIds(listId) ?? []) {
             const taskViewStore = store.getTaskViewStore(taskId);
             const taskView = new TaskView(
                 taskId,
@@ -33,5 +33,10 @@ export default class ListView {
         }
 
         this.container.append(this.label, this.tasks);
+    }
+
+    placeEditor(editor) {
+        this.label.classList.add('hidden');
+        this.container.insertBefore(editor, this.tasks);
     }
 }
