@@ -38,6 +38,7 @@ function cacheElements() {
 function bindEvents() {
     eventBus.on(events.LIST_CREATED, handleListCreation);
 
+    nameInput.addEventListener('keydown', handleNameInputKeyDown);
     cancelButton.addEventListener('click', handleCancelClick);
     submitButton.addEventListener('click', submit);
 }
@@ -51,6 +52,19 @@ function enterCreateMode() {
 function handleListCreation() {
     const submitted = true;
     exit(submitted);
+}
+
+function handleNameInputKeyDown(event) {
+
+    switch (event.key) {
+        case 'Enter':
+            submit();
+            break;
+        case 'Escape':
+            const submitted = false;
+            exit(submitted);
+            break;
+    }
 }
 
 function handleCancelClick() {
