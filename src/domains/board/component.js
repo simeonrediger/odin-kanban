@@ -3,12 +3,14 @@ import './style.css';
 import assert from '@/shared/validation/assert.js';
 import boardViewStore from './store.js';
 import eventBus, { events } from '@/domains/workspace/event-bus.js';
+import listEditor from '@/domains/list/components/editor.js';
 import ListView from '@/domains/list/component.js';
 
 let container;
 let boardTitle;
 let createNewListButton;
 let listsContainer;
+let listEditorContainer;
 
 const roles = {
     listContainer: 'list-container',
@@ -18,6 +20,8 @@ function init(containerElement) {
     container = containerElement;
     cacheElements();
     bindEvents();
+
+    listEditor.init(listEditorContainer);
 }
 
 function render() {
@@ -42,10 +46,12 @@ function cacheElements() {
         "[data-action='create-new-list']"
     );
     listsContainer = container.querySelector("[data-role='lists-container']");
+    listEditorContainer = container.querySelector("[data-role='list-editor']");
 
     assert.notNull(boardTitle, "'boardTitle'");
     assert.notNull(createNewListButton, "'createNewListButton'");
     assert.notNull(listsContainer, "'listsContainer'");
+    assert.notNull(listEditorContainer, "'listEditorContainer'");
 }
 
 function bindEvents() {

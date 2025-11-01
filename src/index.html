@@ -66,6 +66,17 @@
           title='Create new list' aria-label='Create new list'
         >New list</button>
         <ul data-role='lists-container' class='lists-container'></ul>
+        <div data-role='list-editor' class='list-editor hidden'>
+          <input data-input='list-name' class='list-name-input'
+            placeholder='Untitled list' aria-label='List name'
+          >
+          <button data-action='cancel-list-editor' data-icon='cancel-circle'
+            class='cancel-list-editor-button'
+          ></button>
+          <button data-action='submit-list-editor' data-icon='checkmark'
+            class='submit-list-editor-button'
+          ></button>
+        </div>
       </div>
       <div data-role='board-placeholder' class='board-placeholder hidden'>
         <p data-role='board-placeholder-message'></p>
