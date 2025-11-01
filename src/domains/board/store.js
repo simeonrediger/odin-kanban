@@ -7,7 +7,7 @@ let lists;
 function init(boardId, boardName, listViewStores) {
     id = boardId;
     name = boardName;
-    lists = listViewStores
+    lists = listViewStores;
 }
 
 function getBoardId() {
