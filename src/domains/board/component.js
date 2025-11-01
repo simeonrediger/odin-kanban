@@ -23,7 +23,7 @@ function init(containerElement) {
     cacheElements();
     bindEvents();
 
-    listEditor.init(listEditorContainer);
+    listEditor.init(listEditorContainer, { onExit: handleEditorExit });
 }
 
 function render() {
@@ -96,6 +96,16 @@ function handleCreateNewListClick() {
     activeCreationListView.placeEditor(listEditorContainer);
     listsContainer.append(activeCreationListView.container);
     listEditor.enterCreateMode();
+}
+
+function handleEditorExit(submitted) {
+
+    if (submitted) {
+
+    } else {
+        activeCreationListView.container.remove();
+        activeCreationListView = null;
+    }
 }
 
 const boardView = {
