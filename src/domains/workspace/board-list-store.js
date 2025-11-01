@@ -1,10 +1,9 @@
 import eventBus, { events } from './event-bus.js';
 
-let selectedBoardId;
 let boards;
 
 function init(boardListData) {
-    ({ selectedBoardId, boards } = boardListData);
+    boards = boardListData;
     bindEvents();
 }
 
@@ -38,14 +37,6 @@ const boardListStore = {
     init,
     getBoardIds,
     getBoardName,
-
-    get selectedBoardId() {
-        return selectedBoardId;
-    },
-
-    set selectedBoardId(id) {
-        selectedBoardId = id;
-    },
 };
 
 export default boardListStore;

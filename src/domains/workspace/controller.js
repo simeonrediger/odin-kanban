@@ -16,10 +16,9 @@ function init(workspaceModel) {
     bindEvents();
 
     workspaceView.init(workspaceContainer);
-    initActiveBoard();
-
     initBoardListStore();
     boardList.render();
+    initActiveBoard();
 }
 
 function cacheElements() {
@@ -43,6 +42,7 @@ function setActiveBoard(board) {
 
     if (activeBoard) {
         boardView.render(activeBoard);
+        eventBus.emit(events.BOARD_SELECTED, { boardId: activeBoard.id });
     }
 
     renderWorkspaceView();
@@ -57,11 +57,9 @@ function renderWorkspaceView() {
 
 function initBoardListStore() {
     const boardListData = {};
-    boardListData.selectedBoardId = activeBoard?.id;
-    boardListData.boards = {};
 
     for (const board of workspace.boards) {
-        boardListData.boards[board.id] = { name: board.name };
+        boardListData[board.id] = { name: board.name };
     }
 
     boardListStore.init(boardListData);
@@ -69,17 +67,17 @@ function initBoardListStore() {
 
 function handleBoardSelection({ boardId }) {
     setActiveBoard(workspace.getBoard(boardId));
-    boardListStore.selectedBoardId = activeBoard.id;
 }
 
 function createBoard({ boardName }) {
     const board = workspace.addEmptyBoard(boardName);
-    setActiveBoard(board);
 
     eventBus.emit(events.BOARD_CREATED, {
         boardId: board.id,
         boardName: board.name,
     });
+
+    setActiveBoard(board);
 }
 
 function updateBoardName({ boardId, boardName }) {

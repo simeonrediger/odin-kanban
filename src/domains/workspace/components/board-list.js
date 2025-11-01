@@ -59,6 +59,7 @@ function cacheElements() {
 }
 
 function bindEvents() {
+    eventBus.on(events.BOARD_SELECTED, highlightSelectedListItem);
     eventBus.on(events.BOARD_CREATED, handleBoardCreation);
     eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
     eventBus.on(events.BOARD_DELETED, handleBoardDeletion);
@@ -75,11 +76,6 @@ function render() {
         const listItem = createListItem(boardId, boardName);
         addListItem(listItem);
     }
-
-    const selectedListItem = list.querySelector(
-        `[data-id='${boardListStore.selectedBoardId}']`
-    );
-    highlightSelectedListItem(selectedListItem);
 }
 
 function handleCreateNewBoardClick() {
@@ -116,7 +112,6 @@ function handleListClick(event) {
 
     } else if (action === actions.selectBoard) {
         eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId });
-        highlightSelectedListItem(listItem);
     }
 }
 
@@ -128,9 +123,10 @@ function unhighlightListItem(listItem) {
     listItem.classList.remove('is-menu-context');
 }
 
-function highlightSelectedListItem(selectedListItem) {
+function highlightSelectedListItem({ boardId }) {
+    const selectedListItem = list.querySelector(`[data-id='${boardId}']`);
     list.querySelector('.selected')?.classList.remove('selected');
-    selectedListItem.classList.add('selected');
+    selectedListItem?.classList.add('selected');
 }
 
 function handleBoardCreation({ boardId, boardName }) {
