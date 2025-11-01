@@ -33,10 +33,6 @@ function bindEvents() {
     eventBus.on(events.BOARD_DELETION_REQUESTED, handleBoardDeletionRequest)
 }
 
-function initActiveBoard() {
-    setActiveBoard(workspace.boards[0] ?? null);
-}
-
 function setActiveBoard(board) {
     activeBoard = board;
 
@@ -63,6 +59,10 @@ function initBoardListStore() {
     }
 
     boardListStore.init(boardListData);
+}
+
+function initActiveBoard() {
+    setActiveBoard(workspace.boards[0] ?? null);
 }
 
 function handleBoardSelection({ boardId }) {
