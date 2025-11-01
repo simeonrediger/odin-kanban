@@ -1,6 +1,7 @@
 import '../styles/editor.css';
 
 import assert from '@/shared/validation/assert.js';
+import eventBus, { events } from '@/domains/workspace/event-bus.js';
 
 let container;
 let nameInput;
@@ -36,6 +37,7 @@ function cacheElements() {
 
 function bindEvents() {
     cancelButton.addEventListener('click', handleCancelClick);
+    submitButton.addEventListener('click', submit);
 }
 
 function enterCreateMode() {
@@ -47,6 +49,16 @@ function enterCreateMode() {
 function handleCancelClick() {
     const submitted = false;
     exit(submitted);
+}
+
+function submit() {
+    const listName = nameInput.value.trim() || nameInput.placeholder;
+
+    if (isEditMode) {
+
+    } else {
+        eventBus.emit(events.LIST_CREATION_REQUESTED, { listName });
+    }
 }
 
 function exit(submitted) {

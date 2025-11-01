@@ -25,6 +25,12 @@ export default class Board {
         }
     }
 
+    addEmptyList(listName) {
+        const list = new List(listName, []);
+        this.addList(list);
+        return list;
+    }
+
     removeList(targetList) {
         assert.instanceOf(List, targetList, "'targetList'");
 

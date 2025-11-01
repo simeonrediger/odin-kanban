@@ -34,6 +34,8 @@ function bindEvents() {
     eventBus.on(events.BOARD_CREATION_REQUESTED, createBoard);
     eventBus.on(events.BOARD_NAME_UPDATE_REQUESTED, updateBoardName);
     eventBus.on(events.BOARD_DELETION_REQUESTED, handleBoardDeletionRequest);
+
+    eventBus.on(events.LIST_CREATION_REQUESTED, createList);
 }
 
 function renderWorkspaceView(activeBoard) {
@@ -118,6 +120,10 @@ function handleBoardDeletionRequest({ boardId }) {
     }
 
     eventBus.emit(events.BOARD_DELETED, { boardId });
+}
+
+function createList({ listName }) {
+    const list = activeBoard.addEmptyList(listName);
 }
 
 const workspaceController = {

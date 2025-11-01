@@ -43,6 +43,11 @@
  * @property {string} boardId - Unique ID of the board.
  */
 
+/**
+ * @typedef {Object} ListCreationRequestedDetail
+ * @property {string} listName - Name for the list.
+ */
+
 
 
 // Event names
@@ -110,3 +115,11 @@ export const BOARD_DELETION_REQUESTED = 'board:deletion-requested';
  * @see {@link BoardDeletedDetail}
  */
 export const BOARD_DELETED = 'board:deleted';
+
+/**
+ * @description Emitted when list creation is requested.
+ * @event list:creation-requested
+ * @type {string}
+ * @see {@link ListCreationRequestedDetail}
+ */
+export const LIST_CREATION_REQUESTED = 'list:creation-requested';
