@@ -37,6 +37,6 @@ export default class ListView {
 
     placeEditor(editor) {
         this.label.classList.add('hidden');
-        this.container.insertBefore(editor, this.tasks);
+        this.container.prepend(editor);
     }
 }
