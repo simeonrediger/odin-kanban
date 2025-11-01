@@ -2,15 +2,26 @@ import './style.css';
 
 import TaskView from '@/domains/task/component.js';
 
+import {
+    createThreeDotsVerticalIcon,
+} from '@/shared/components/icons/create-icons.js';
+
 export default class ListView {
 
     #roles = {
         taskContainer: 'task-container',
     };
 
+    #actions = {
+        openOptionsMenu: 'open-options-menu',
+    };
+
     constructor(listId, store, containerRole) {
         this.container = document.createElement('li');
         this.container.classList.add('list-container');
+
+        this.header = document.createElement('div');
+        this.header.classList.add('list-header');
 
         this.label = document.createElement('p');
         this.label.classList.add('list-label');
@@ -18,7 +29,8 @@ export default class ListView {
         this.tasks = document.createElement('ul');
         this.tasks.classList.add('tasks-list');
 
-        this.container.append(this.label, this.tasks);
+        this.header.append(this.label);
+        this.container.append(this.header, this.tasks);
 
         if (listId) {
             this.init(listId, store, containerRole);
@@ -30,6 +42,8 @@ export default class ListView {
         this.container.dataset.role = containerRole;
 
         this.label.textContent = store.getListName(listId);
+        const optionsMenuButton = this.#createOptionsButton();
+        this.header.append(optionsMenuButton);
 
         for (const taskId of store.getTaskIds(listId)) {
             const taskViewStore = store.getTaskViewStore(taskId);
@@ -46,11 +60,24 @@ export default class ListView {
     replaceLabelWithEditor(editor) {
         this.label.classList.add('hidden');
         this.container.classList.add('editing');
-        this.container.prepend(editor);
+        this.header.prepend(editor);
     }
 
     showLabel() {
         this.container.classList.remove('editing');
         this.label.classList.remove('hidden');
+    }
+
+    #createOptionsButton() {
+        const button = document.createElement('button');
+        button.dataset.action = this.#actions.openOptionsMenu;
+        button.classList.add('list-options-button');
+        button.ariaLabel = 'Open list options menu';
+
+        const icon = createThreeDotsVerticalIcon();
+        icon.classList.add('list-options-icon');
+        button.append(icon);
+
+        return button;
     }
 }

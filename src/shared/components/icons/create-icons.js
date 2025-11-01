@@ -3,6 +3,7 @@ import checkmarkSvg from './checkmark.svg?raw';
 import clipboardPlusSvg from './clipboard-plus.svg?raw';
 import squirclePlusSvg from './squircle-plus.svg?raw';
 import threeDotsHorizontalSvg from './three-dots-horizontal.svg?raw';
+import threeDotsVerticalSvg from './three-dots-vertical.svg?raw';
 
 const parser = new DOMParser();
 
@@ -31,4 +32,8 @@ export function createSquirclePlusIcon() {
 
 export function createThreeDotsHorizontalIcon() {
     return createIconFromString(threeDotsHorizontalSvg);
+}
+
+export function createThreeDotsVerticalIcon() {
+    return createIconFromString(threeDotsVerticalSvg);
 }

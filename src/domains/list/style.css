@@ -13,10 +13,34 @@
   background-color: var(--color-bg-highlight);
 }
 
+.list-header {
+  display: flex;
+}
+
+.list-container.editing .list-header {
+  flex-direction: column;
+}
+
 .list-label {
+  flex-grow: 1;
   font-size: 1.125rem;
   margin-top: 0.25rem;
   padding-inline: 0.75rem;
+}
+
+.list-container:hover .list-options-button {
+  display: block;
+}
+
+.list-options-button {
+  background-color: transparent;
+  color: var(--color-fg-secondary);
+  display: none;
+  padding-inline: 0.5rem;
+}
+
+.list-options-button:hover {
+  color: var(--color-fg-highlight);
 }
 
 .tasks-list {
