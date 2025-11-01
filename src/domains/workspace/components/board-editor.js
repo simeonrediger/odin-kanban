@@ -58,6 +58,7 @@ function enterEditMode(boardId, boardName) {
     isEditMode = true;
     show();
     nameInput.focus();
+    nameInput.setSelectionRange(boardName.length, boardName.length);
 }
 
 function submit() {
