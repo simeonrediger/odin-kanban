@@ -2,7 +2,10 @@ import assert from '@/shared/validation/assert.js';
 import boardList from './components/board-list.js';
 import boardListStore from './board-list-store.js';
 import boardView from '@/domains/board/component.js';
+import boardViewStore from '@/domains/board/store.js';
 import eventBus, { events } from './event-bus.js';
+import ListViewStore from '@/domains/list/store.js';
+import TaskViewStore from '@/domains/task/store.js';
 import workspaceView from './component.js';
 
 let workspace;
@@ -56,6 +59,7 @@ function initActiveBoard() {
 
 function setActiveBoard(board) {
     activeBoard = board;
+    setBoardViewStore(activeBoard);
 
     if (activeBoard) {
         boardView.render(activeBoard);
@@ -63,6 +67,22 @@ function setActiveBoard(board) {
     }
 
     renderWorkspaceView(activeBoard);
+}
+
+function setBoardViewStore(board) {
+    const listViewStores = {};
+
+    for (const list of board?.lists ?? []) {
+        const taskViewStores = {};
+
+        for (const task of list.tasks) {
+            taskViewStores[task.id] = new TaskViewStore(task.name);
+        }
+
+        listViewStores[list.id] = new ListViewStore(list.name, taskViewStores);
+    }
+
+    boardViewStore.init(board?.id, board?.name, listViewStores);
 }
 
 function handleBoardSelection({ boardId }) {

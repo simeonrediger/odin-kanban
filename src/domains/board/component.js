@@ -1,10 +1,10 @@
 import './style.css';
 
 import assert from '@/shared/validation/assert.js';
+import boardViewStore from './store.js';
 import eventBus, { events } from '@/domains/workspace/event-bus.js';
 import ListView from '@/domains/list/component.js';
 
-let board;
 let container;
 let boardTitle;
 let createNewListButton;
@@ -20,13 +20,18 @@ function init(containerElement) {
     bindEvents();
 }
 
-function render(boardModel) {
-    board = boardModel;
+function render() {
     removeAllListViews();
-    boardTitle.textContent = board.name;
+    boardTitle.textContent = boardViewStore.getBoardName();
 
-    for (const list of board.lists) {
-        const listView = new ListView(list, roles.listContainer);
+    for (const listId of boardViewStore.getListIds()) {
+        const listViewStore = boardViewStore.getListViewStore(listId);
+        const listView = new ListView(
+            listId,
+            listViewStore,
+            roles.listContainer,
+        );
+
         listsContainer.append(listView.container);
     }
 }
@@ -67,7 +72,7 @@ function hide() {
 
 function updateTitleOnNameChange({ boardId, boardName }) {
 
-    if (board.id === boardId) {
+    if (boardViewStore.getBoardId() === boardId) {
         boardTitle.textContent = boardName;
     }
 }

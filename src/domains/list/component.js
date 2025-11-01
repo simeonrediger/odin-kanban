@@ -8,21 +8,27 @@ export default class ListView {
         taskContainer: 'task-container',
     };
 
-    constructor(list, containerRole) {
+    constructor(listId, store, containerRole) {
         this.container = document.createElement('li');
-        this.container.dataset.id = list.id;
+        this.container.dataset.id = listId;
         this.container.dataset.role = containerRole;
         this.container.classList.add('list-container');
 
         this.label = document.createElement('p');
-        this.label.textContent = list.name;
+        this.label.textContent = store.getListName(listId);
         this.label.classList.add('list-label');
 
         this.tasks = document.createElement('ul');
         this.tasks.classList.add('tasks-list');
 
-        for (const task of list.tasks) {
-            const taskView = new TaskView(task, this.#roles.taskContainer);
+        for (const taskId of store.getTaskIds(listId)) {
+            const taskViewStore = store.getTaskViewStore(taskId);
+            const taskView = new TaskView(
+                taskId,
+                taskViewStore,
+                this.#roles.taskContainer,
+            );
+
             this.tasks.append(taskView.container);
         }
 
