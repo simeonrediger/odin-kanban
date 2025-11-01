@@ -18,6 +18,10 @@ const roles = {
     listContainer: 'list-container',
 };
 
+const actions = {
+    createNewList: 'create-new-list',
+};
+
 function init(containerElement) {
     container = containerElement;
     cacheElements();
@@ -58,7 +62,7 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, updateTitleOnNameChange);
-    createNewListButton.addEventListener('click', handleCreateNewListClick);
+    document.addEventListener('click', handleClick);
 }
 
 function removeAllListViews() {
@@ -86,6 +90,18 @@ function updateTitleOnNameChange({ boardId, boardName }) {
     }
 }
 
+function handleClick(event) {
+    const listEditorIsOpen = Boolean(activeEditListView);
+    const action = event.target.closest('button')?.dataset.action;
+
+    if (listEditorIsOpen) {
+        handleClickForListEditor(event.target);
+
+    } else if (action === actions.createNewList) {
+        handleCreateNewListClick();
+    }
+}
+
 function handleCreateNewListClick() {
     activeEditListView = new ListView(
         null,
@@ -96,6 +112,15 @@ function handleCreateNewListClick() {
     activeEditListView.placeEditor(listEditorContainer);
     listsContainer.append(activeEditListView.container);
     listEditor.enterCreateMode();
+}
+
+function handleClickForListEditor(target) {
+    const noChildFocused = !activeEditListView.container.contains(target);
+
+    if (noChildFocused) {
+        const submitted = false;
+        listEditor.exit(submitted);
+    }
 }
 
 function handleEditorExit(submitted) {

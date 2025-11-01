@@ -16,7 +16,6 @@ const handlers = {
 function init(containerElement, { onExit } = {}) {
     container = containerElement;
     cacheElements();
-    bindEvents();
     handlers.onExit = onExit;
 }
 
@@ -32,10 +31,6 @@ function cacheElements() {
     assert.notNull(nameInput, "'nameInput'");
     assert.notNull(cancelButton, "'cancelButton'");
     assert.notNull(submitButton, "'submitButton'");
-}
-
-function bindEvents() {
-    container.addEventListener('focusout', handleFocusOut);
 }
 
 function enterCreateMode() {
@@ -63,18 +58,10 @@ function hide() {
     container.classList.add('hidden');
 }
 
-function handleFocusOut(event) {
-    const noChildFocused = !container.contains(event.relatedTarget);
-    const isVisible = !container.classList.contains('hidden');
-
-    if (noChildFocused && isVisible) {
-        exit(false);
-    }
-}
-
 const listEditor = {
     init,
     enterCreateMode,
+    exit,
 };
 
 export default listEditor;
