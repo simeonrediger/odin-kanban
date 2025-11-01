@@ -19,7 +19,7 @@ function init(workspaceModel) {
     initActiveBoard();
 
     initBoardListStore();
-    updateBoardList();
+    boardList.render();
 }
 
 function cacheElements() {
@@ -63,13 +63,6 @@ function initBoardListStore() {
     }
 
     boardListStore.init(boardListData);
-}
-
-function updateBoardList() {
-    const boardListData = workspace.boards.map(
-        board => ({ boardId: board.id, boardName: board.name })
-    );
-    boardList.render(boardListData);
 }
 
 function handleBoardSelection({ boardId }) {
