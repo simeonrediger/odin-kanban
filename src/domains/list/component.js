@@ -10,18 +10,28 @@ export default class ListView {
 
     constructor(listId, store, containerRole) {
         this.container = document.createElement('li');
-        this.container.dataset.id = listId;
-        this.container.dataset.role = containerRole;
         this.container.classList.add('list-container');
 
         this.label = document.createElement('p');
-        this.label.textContent = store?.getListName(listId);
         this.label.classList.add('list-label');
 
         this.tasks = document.createElement('ul');
         this.tasks.classList.add('tasks-list');
 
-        for (const taskId of store?.getTaskIds(listId) ?? []) {
+        this.container.append(this.label, this.tasks);
+
+        if (listId) {
+            this.init(listId, store, containerRole);
+        }
+    }
+
+    init(listId, store, containerRole) {
+        this.container.dataset.id = listId;
+        this.container.dataset.role = containerRole;
+
+        this.label.textContent = store.getListName(listId);
+
+        for (const taskId of store.getTaskIds(listId)) {
             const taskViewStore = store.getTaskViewStore(taskId);
             const taskView = new TaskView(
                 taskId,
@@ -31,13 +41,16 @@ export default class ListView {
 
             this.tasks.append(taskView.container);
         }
-
-        this.container.append(this.label, this.tasks);
     }
 
     replaceLabelWithEditor(editor) {
         this.label.classList.add('hidden');
         this.container.classList.add('editing');
         this.container.prepend(editor);
+    }
+
+    showLabel() {
+        this.container.classList.remove('editing');
+        this.label.classList.remove('hidden');
     }
 }

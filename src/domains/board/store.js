@@ -10,6 +10,10 @@ function init(boardId, boardName, listViewStores) {
     lists = listViewStores;
 }
 
+function addList(listId, listViewStore) {
+    lists[listId] = listViewStore;
+}
+
 function getBoardId() {
     return id;
 }
@@ -28,6 +32,8 @@ function getListViewStore(listId) {
 
 const boardViewStore = {
     init,
+    addList,
+
     getBoardId,
     getBoardName,
     getListIds,

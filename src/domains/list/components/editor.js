@@ -36,6 +36,8 @@ function cacheElements() {
 }
 
 function bindEvents() {
+    eventBus.on(events.LIST_CREATED, handleListCreation);
+
     cancelButton.addEventListener('click', handleCancelClick);
     submitButton.addEventListener('click', submit);
 }
@@ -44,6 +46,11 @@ function enterCreateMode() {
     nameInput.value = '';
     show();
     nameInput.focus();
+}
+
+function handleListCreation() {
+    const submitted = true;
+    exit(submitted);
 }
 
 function handleCancelClick() {

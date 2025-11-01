@@ -62,6 +62,8 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, updateTitleOnNameChange);
+    eventBus.on(events.LIST_CREATED, handleListCreation);
+
     document.addEventListener('click', handleClick);
 }
 
@@ -90,6 +92,11 @@ function updateTitleOnNameChange({ boardId, boardName }) {
     }
 }
 
+function handleListCreation({ listId }) {
+    const listViewStore = boardViewStore.getListViewStore(listId);
+    activeEditListView.init(listId, listViewStore, roles.listContainer);
+}
+
 function handleClick(event) {
     const listEditorIsOpen = Boolean(activeEditListView);
     const action = event.target.closest('button')?.dataset.action;
@@ -103,11 +110,7 @@ function handleClick(event) {
 }
 
 function handleCreateNewListClick() {
-    activeEditListView = new ListView(
-        null,
-        null,
-        roles.listContainer
-    );
+    activeEditListView = new ListView();
     activeEditListView.replaceLabelWithEditor(listEditorContainer);
     listsContainer.append(activeEditListView.container);
     listEditor.enterCreateMode();
@@ -125,6 +128,7 @@ function handleClickForListEditor(target) {
 function handleEditorExit(submitted) {
 
     if (submitted) {
+        activeEditListView.showLabel();
 
     } else {
         activeEditListView.container.remove();

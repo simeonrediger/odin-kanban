@@ -124,6 +124,13 @@ function handleBoardDeletionRequest({ boardId }) {
 
 function createList({ listName }) {
     const list = activeBoard.addEmptyList(listName);
+    const listViewStore = new ListViewStore(list.name, {});
+    boardViewStore.addList(list.id, listViewStore);
+
+    eventBus.emit(events.LIST_CREATED, {
+        listId: list.id,
+        listName: list.name,
+    });
 }
 
 const workspaceController = {

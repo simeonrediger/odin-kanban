@@ -48,6 +48,12 @@
  * @property {string} listName - Name for the list.
  */
 
+/**
+ * @typedef {Object} ListCreatedDetail
+ * @property {string} listId - Unique ID of the list.
+ * @property {string} listName - Name of the list.
+ */
+
 
 
 // Event names
@@ -123,3 +129,11 @@ export const BOARD_DELETED = 'board:deleted';
  * @see {@link ListCreationRequestedDetail}
  */
 export const LIST_CREATION_REQUESTED = 'list:creation-requested';
+
+/**
+ * @description Emitted when a list is created.
+ * @event list:created
+ * @type {string}
+ * @see {@link ListCreatedDetail}
+ */
+export const LIST_CREATED = 'list:created';
