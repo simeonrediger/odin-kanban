@@ -75,6 +75,11 @@ function render() {
         const listItem = createListItem(boardId, boardName);
         addListItem(listItem);
     }
+
+    const selectedListItem = list.querySelector(
+        `[data-id='${boardListStore.getSelectedBoardId()}']`
+    );
+    highlightSelectedListItem(selectedListItem);
 }
 
 function handleCreateNewBoardClick() {
@@ -111,6 +116,7 @@ function handleListClick(event) {
 
     } else if (action === actions.selectBoard) {
         eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId });
+        highlightSelectedListItem(listItem);
     }
 }
 
@@ -120,6 +126,11 @@ function highlightListItem(listItem) {
 
 function unhighlightListItem(listItem) {
     listItem.classList.remove('is-menu-context');
+}
+
+function highlightSelectedListItem(selectedListItem) {
+    list.querySelector('.selected')?.classList.remove('selected');
+    selectedListItem.classList.add('selected');
 }
 
 function handleBoardCreation({ boardId, boardName }) {

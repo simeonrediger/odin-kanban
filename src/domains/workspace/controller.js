@@ -57,9 +57,11 @@ function renderWorkspaceView() {
 
 function initBoardListStore() {
     const boardListData = {};
+    boardListData.selectedBoardId = activeBoard?.id;
+    boardListData.boards = {};
 
     for (const board of workspace.boards) {
-        boardListData[board.id] = { name: board.name };
+        boardListData.boards[board.id] = { name: board.name };
     }
 
     boardListStore.init(boardListData);
@@ -67,6 +69,7 @@ function initBoardListStore() {
 
 function handleBoardSelection({ boardId }) {
     setActiveBoard(workspace.getBoard(boardId));
+    boardListStore.setSelectedBoardId(activeBoard.id);
 }
 
 function createBoard({ boardName }) {
