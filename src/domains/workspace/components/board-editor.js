@@ -41,9 +41,9 @@ function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, exit);
 
     container.addEventListener('focusout', handleFocusOut);
+    nameInput.addEventListener('keydown', handleNameInputKeyDown);
     cancelButton.addEventListener('click', exit);
     submitButton.addEventListener('click', submit);
-    nameInput.addEventListener('keydown', handleNameInputKeyDown);
 }
 
 function enterCreateMode() {
