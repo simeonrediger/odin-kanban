@@ -11,6 +11,7 @@ html {
 
   --red: #f55;
   --purple: #690090;
+  --purple-light: #c270e0;
 
   --color-bg-primary: var(--gray-dark-13);
   --color-bg-secondary: var(--gray-dark-12);
@@ -22,6 +23,7 @@ html {
   --color-fg-primary: var(--gray-light-8);
   --color-fg-secondary: var(--gray-light-6);
   --color-fg-highlight: var(--white);
+  --color-fg-highlight-2: var(--purple-light);
   --color-fg-faint: var(--gray);
   --color-fg-critical: var(--red);
 }

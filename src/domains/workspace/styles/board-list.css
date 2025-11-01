@@ -51,6 +51,10 @@
   width: 100%;
 }
 
+.board-list-item.selected:not(.is-menu-context) .board-select-button {
+  color: var(--color-fg-highlight-2);
+}
+
 .board-list-item:hover .board-options-button,
 .board-list-item.is-menu-context .board-options-button {
   display: block;
