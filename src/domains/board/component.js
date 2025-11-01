@@ -12,7 +12,7 @@ let createNewListButton;
 let listsContainer;
 let listEditorContainer;
 
-let activeCreationListView;
+let activeEditListView;
 
 const roles = {
     listContainer: 'list-container',
@@ -87,14 +87,14 @@ function updateTitleOnNameChange({ boardId, boardName }) {
 }
 
 function handleCreateNewListClick() {
-    activeCreationListView = new ListView(
+    activeEditListView = new ListView(
         null,
         null,
         roles.listContainer
     );
 
-    activeCreationListView.placeEditor(listEditorContainer);
-    listsContainer.append(activeCreationListView.container);
+    activeEditListView.placeEditor(listEditorContainer);
+    listsContainer.append(activeEditListView.container);
     listEditor.enterCreateMode();
 }
 
@@ -103,8 +103,8 @@ function handleEditorExit(submitted) {
     if (submitted) {
 
     } else {
-        activeCreationListView.container.remove();
-        activeCreationListView = null;
+        activeEditListView.container.remove();
+        activeEditListView = null;
     }
 }
 
