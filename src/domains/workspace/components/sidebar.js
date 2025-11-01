@@ -8,11 +8,11 @@ let boardListContainer;
 
 function init(containerElement) {
     container = containerElement;
-    setUpElementReferences();
+    cacheElements();
     boardList.init(boardListContainer);
 }
 
-function setUpElementReferences() {
+function cacheElements() {
     boardListContainer = container.querySelector(
         "[data-role='board-list-container']"
     );

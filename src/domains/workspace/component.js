@@ -12,7 +12,7 @@ let boardPlaceholderContainer;
 
 function init(containerElement, workspaceModel) {
     container = containerElement;
-    setUpElementReferences();
+    cacheElements();
 
     sidebar.init(sidebarContainer);
     boardPlaceholder.init(boardPlaceholderContainer);
@@ -37,7 +37,7 @@ function render({ activeBoardExists, boardsAvailable }) {
     boardPlaceholder.show();
 }
 
-function setUpElementReferences() {
+function cacheElements() {
     sidebarContainer = container.querySelector("[data-role='sidebar']");
     boardContainer = container.querySelector("[data-role='board-container']");
     boardPlaceholderContainer = container.querySelector(
