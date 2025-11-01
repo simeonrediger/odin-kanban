@@ -16,7 +16,7 @@ const roles = {
 
 function init(containerElement) {
     container = containerElement;
-    setUpElementReferences();
+    cacheElements();
     bindEvents();
 }
 
@@ -36,7 +36,7 @@ function render() {
     }
 }
 
-function setUpElementReferences() {
+function cacheElements() {
     boardTitle = container.querySelector("[data-role='board-title']");
     createNewListButton = container.querySelector(
         "[data-action='create-new-list']"
