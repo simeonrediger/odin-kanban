@@ -37,6 +37,7 @@ export default class ListView {
 
     placeEditor(editor) {
         this.label.classList.add('hidden');
+        this.container.classList.add('editing');
         this.container.prepend(editor);
     }
 }
