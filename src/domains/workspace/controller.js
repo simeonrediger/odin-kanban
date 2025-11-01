@@ -33,17 +33,6 @@ function bindEvents() {
     eventBus.on(events.BOARD_DELETION_REQUESTED, handleBoardDeletionRequest)
 }
 
-function setActiveBoard(board) {
-    activeBoard = board;
-
-    if (activeBoard) {
-        boardView.render(activeBoard);
-        eventBus.emit(events.BOARD_SELECTED, { boardId: activeBoard.id });
-    }
-
-    renderWorkspaceView();
-}
-
 function renderWorkspaceView() {
     workspaceView.render({
         activeBoardExists: Boolean(activeBoard),
@@ -63,6 +52,17 @@ function initBoardListStore() {
 
 function initActiveBoard() {
     setActiveBoard(workspace.boards[0] ?? null);
+}
+
+function setActiveBoard(board) {
+    activeBoard = board;
+
+    if (activeBoard) {
+        boardView.render(activeBoard);
+        eventBus.emit(events.BOARD_SELECTED, { boardId: activeBoard.id });
+    }
+
+    renderWorkspaceView();
 }
 
 function handleBoardSelection({ boardId }) {
