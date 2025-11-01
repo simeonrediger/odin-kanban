@@ -1,9 +1,9 @@
 import eventBus, { events } from './event-bus.js';
 
-let store;
+let boards;
 
 function init(boardListData) {
-    store = boardListData;
+    boards = boardListData;
     bindEvents();
 }
 
@@ -14,23 +14,23 @@ function bindEvents() {
 }
 
 function addBoard({ boardId, boardName }) {
-    store[boardId] = { name: boardName };
+    boards[boardId] = { name: boardName };
 }
 
 function updateBoardName({ boardId, boardName }) {
-    store[boardId].name = boardName;
+    boards[boardId].name = boardName;
 }
 
 function removeBoard({ boardId }) {
-    store[boardId] = undefined;
+    boards[boardId] = undefined;
 }
 
 function getBoardIds() {
-    return Object.freeze(Object.keys(store));
+    return Object.freeze(Object.keys(boards));
 }
 
 function getBoardName(boardId) {
-    return store[boardId].name;
+    return boards[boardId].name;
 }
 
 const boardListStore = {
