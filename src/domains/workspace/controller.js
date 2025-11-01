@@ -40,11 +40,7 @@ function bindEvents() {
 }
 
 function initActiveBoard() {
-    const workspaceHasBoards = workspace.boards.length !== 0;
-
-    if (workspaceHasBoards) {
-        activeBoard = workspace.boards[0];
-    }
+    activeBoard = workspace.boards[0] ?? null;
 }
 
 function initBoardListStore() {
