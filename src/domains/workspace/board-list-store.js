@@ -8,35 +8,35 @@ function init(boardListData) {
 }
 
 function bindEvents() {
-    eventBus.on(events.BOARD_CREATED, addEntry);
-    eventBus.on(events.BOARD_NAME_UPDATED, updateEntryName);
-    eventBus.on(events.BOARD_DELETED, deleteEntry);
+    eventBus.on(events.BOARD_CREATED, addBoard);
+    eventBus.on(events.BOARD_NAME_UPDATED, updateBoardName);
+    eventBus.on(events.BOARD_DELETED, removeBoard);
 }
 
-function addEntry({ boardId, boardName }) {
+function addBoard({ boardId, boardName }) {
     store[boardId] = { name: boardName };
 }
 
-function updateEntryName({ boardId, boardName }) {
+function updateBoardName({ boardId, boardName }) {
     store[boardId].name = boardName;
 }
 
-function deleteEntry({ boardId }) {
+function removeBoard({ boardId }) {
     store[boardId] = undefined;
 }
 
-function getEntryIds() {
+function getBoardIds() {
     return Object.freeze(Object.keys(store));
 }
 
-function getEntryName(boardId) {
+function getBoardName(boardId) {
     return store[boardId].name;
 }
 
 const boardListStore = {
     init,
-    getEntryIds,
-    getEntryName,
+    getBoardIds,
+    getBoardName,
 };
 
 export default boardListStore;

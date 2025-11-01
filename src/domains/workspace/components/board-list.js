@@ -70,8 +70,8 @@ function bindEvents() {
 function render() {
     removeAllBoardListItems();
 
-    for (const boardId of boardListStore.getEntryIds()) {
-        const boardName = boardListStore.getEntryName(boardId);
+    for (const boardId of boardListStore.getBoardIds()) {
+        const boardName = boardListStore.getBoardName(boardId);
         const listItem = createListItem(boardId, boardName);
         addListItem(listItem);
     }
@@ -97,7 +97,7 @@ function handleListClick(event) {
 
     const listItem = button.closest(`[data-role='${roles.boardListItem}']`);
     const boardId = listItem.dataset.id;
-    const boardName = boardListStore.getEntryName(boardId);
+    const boardName = boardListStore.getBoardName(boardId);
 
     if (action === actions.openOptionsMenu) {
         highlightListItem(listItem);
