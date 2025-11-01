@@ -104,8 +104,9 @@ function handleEditorExit(submitted) {
 
     } else {
         activeEditListView.container.remove();
-        activeEditListView = null;
     }
+
+    activeEditListView = null;
 }
 
 const boardView = {
