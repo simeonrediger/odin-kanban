@@ -100,7 +100,10 @@ function handleListClick(event) {
     const boardId = listItem.dataset.id;
     const boardName = boardListStore.getBoardName(boardId);
 
-    if (action === actions.openOptionsMenu) {
+    if (action === actions.selectBoard) {
+        eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId });
+
+    } else if (action === actions.openOptionsMenu) {
         highlightListItem(listItem);
         optionsMenu.toggle({
             anchorElement: listItem,
@@ -109,9 +112,6 @@ function handleListClick(event) {
             onRenameClick: () => handleRenameClick(boardName, listItem),
             onConfirmDeletionClick: () => handleDeleteClick(boardId),
         });
-
-    } else if (action === actions.selectBoard) {
-        eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId });
     }
 }
 
