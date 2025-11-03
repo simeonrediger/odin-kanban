@@ -15,7 +15,6 @@ let container;
 let createNewBoardButton;
 let list;
 let boardEditorContainer;
-let optionsMenuContainer;
 
 let activeEditItem;
 
@@ -34,12 +33,12 @@ function init(containerElement) {
     bindEvents();
 
     boardEditor.init(boardEditorContainer, { onExit: showActiveEditItem });
-    optionsMenu.init(optionsMenuContainer, {
-        optionsMenuButtonSelectorString:
-            `[data-action='${actions.openOptionsMenu}']`,
+    optionsMenu.init({
+        optionsMenuButtonSelector: `[data-action='${actions.openOptionsMenu}']`,
     });
+    container.append(optionsMenu.container);
 }
-
+ 
 function cacheElements() {
     createNewBoardButton = container.querySelector(
         "[data-action='create-new-board']"
@@ -48,14 +47,10 @@ function cacheElements() {
     boardEditorContainer = container.querySelector(
         "[data-role='board-editor']"
     );
-    optionsMenuContainer = container.querySelector(
-        "[data-role='board-options-menu']"
-    );
 
     assert.notNull(createNewBoardButton, "'createNewBoardButton'");
     assert.notNull(list, "'list'");
     assert.notNull(boardEditorContainer, "'boardEditorContainer'");
-    assert.notNull(optionsMenuContainer, "'optionsMenuContainer'");
 }
 
 function bindEvents() {

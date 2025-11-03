@@ -1,4 +1,4 @@
-.board-options-menu {
+.options-menu {
   background-color: var(--color-bg-context-menu);
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -6,18 +6,18 @@
   z-index: 1;
 }
 
-.board-options-menu-label,
-.board-menu-option-button {
+.options-menu-label,
+.menu-option-button {
   padding-inline: 0.5rem;
 }
 
-.board-options-menu-label {
+.options-menu-label {
   color: var(--color-fg-faint);
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
-.board-menu-option-button {
+.menu-option-button {
   background-color: transparent;
   border-radius: 0.5rem;
   color: var(--color-fg-primary);
@@ -27,10 +27,10 @@
   width: 100%;
 }
 
-.board-menu-option-button:hover {
+.menu-option-button:hover {
   background-color: var(--color-bg-context-menu-highlight);
 }
 
-.confirm-board-deletion-button {
+.confirm-deletion-button {
   color: var(--color-fg-critical);
 }
