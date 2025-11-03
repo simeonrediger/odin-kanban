@@ -5,7 +5,7 @@ import assert from '@/shared/validation/assert.js';
 import boardEditor from './board-editor.js';
 import boardListStore from '../board-list-store.js';
 import eventBus, { events } from '../event-bus.js';
-import optionsMenu from '@/domains/board/components/options-menu.js';
+import boardOptionsMenu from '@/domains/board/components/options-menu.js';
 
 import {
     createThreeDotsHorizontalIcon,
@@ -24,7 +24,7 @@ const roles = {
 
 const actions = {
     selectBoard: 'select-board',
-    openOptionsMenu: 'open-board-options-menu',
+    openBoardOptionsMenu: 'open-board-options-menu',
 }
 
 function init(containerElement) {
@@ -33,10 +33,14 @@ function init(containerElement) {
     bindEvents();
 
     boardEditor.init(boardEditorContainer, { onExit: showActiveEditItem });
-    optionsMenu.init({
-        optionsMenuButtonSelector: `[data-action='${actions.openOptionsMenu}']`,
+
+    boardOptionsMenu.init({
+        optionsMenuButtonSelector: (
+            `[data-action='${actions.openBoardOptionsMenu}']`
+        ),
     });
-    container.append(optionsMenu.container);
+
+    container.append(boardOptionsMenu.container);
 }
  
 function cacheElements() {
@@ -98,9 +102,9 @@ function handleListClick(event) {
     if (action === actions.selectBoard) {
         eventBus.emit(events.BOARD_SELECTION_REQUESTED, { boardId });
 
-    } else if (action === actions.openOptionsMenu) {
+    } else if (action === actions.openBoardOptionsMenu) {
         highlightListItem(listItem);
-        optionsMenu.toggle({
+        boardOptionsMenu.toggle({
             anchorElement: listItem,
             onOpen: () => highlightListItem(listItem),
             onCloseOrMove: () => unhighlightListItem(listItem),
@@ -205,7 +209,7 @@ function createSelectButton(boardName) {
 
 function createOptionsButton() {
     const button = document.createElement('button');
-    button.dataset.action = actions.openOptionsMenu;
+    button.dataset.action = actions.openBoardOptionsMenu;
     button.classList.add('board-options-button');
     button.ariaLabel = 'Open board options menu';
 
