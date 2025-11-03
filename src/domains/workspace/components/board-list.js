@@ -104,6 +104,7 @@ function handleListClick(event) {
 
     } else if (action === actions.openBoardOptionsMenu) {
         highlightListItem(listItem);
+
         boardOptionsMenu.toggle({
             anchorElement: listItem,
             onOpen: () => highlightListItem(listItem),
