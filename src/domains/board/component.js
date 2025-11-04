@@ -5,6 +5,7 @@ import boardViewStore from './store.js';
 import eventBus, { events } from '@/domains/workspace/event-bus.js';
 import listEditor from '@/domains/list/components/editor.js';
 import ListView from '@/domains/list/component.js';
+import listOptionsMenu from '@/domains/list/components/options-menu.js';
 
 let container;
 let boardTitle;
@@ -20,6 +21,7 @@ const roles = {
 
 const actions = {
     createNewList: 'create-new-list',
+    openListOptionsMenu: 'open-list-options-menu',
 };
 
 function init(containerElement) {
@@ -28,6 +30,14 @@ function init(containerElement) {
     bindEvents();
 
     listEditor.init(listEditorContainer, { onExit: handleEditorExit });
+
+    listOptionsMenu.init({
+        optionsMenuButtonSelector: (
+            `[data-action='${actions.openListOptionsMenu}']`
+        ),
+    });
+
+    container.append(listOptionsMenu.container);
 }
 
 function render() {
@@ -66,6 +76,7 @@ function bindEvents() {
     eventBus.on(events.LIST_CREATED, handleListCreation);
 
     document.addEventListener('click', handleClick);
+    listsContainer.addEventListener('click', handleListsClick);
 }
 
 function removeAllListViews() {
@@ -107,6 +118,31 @@ function handleClick(event) {
 
     } else if (action === actions.createNewList) {
         handleCreateNewListClick();
+    }
+}
+
+function handleListsClick(event) {
+    const button = event.target.closest('button');
+
+    if (!button) {
+        return;
+    }
+
+    const action = button.dataset.action;
+
+    if (!Object.values(actions).includes(action)) {
+        return;
+    }
+
+    const listContainer = button.closest(
+        `[data-role='${roles.listContainer}']`
+    );
+
+    if (action === actions.openListOptionsMenu) {
+
+        listOptionsMenu.toggle({
+            anchorElement: listContainer,
+        });
     }
 }
 

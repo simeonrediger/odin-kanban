@@ -17,7 +17,7 @@ export default class ListView {
     };
 
     #actions = {
-        openOptionsMenu: 'open-options-menu',
+        openOptionsMenu: 'open-list-options-menu',
     };
 
     constructor(listId, store, containerRole) {
