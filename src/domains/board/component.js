@@ -36,6 +36,7 @@ function render() {
 
     for (const listId of boardViewStore.getListIds()) {
         const listViewStore = boardViewStore.getListViewStore(listId);
+
         const listView = new ListView(
             listId,
             listViewStore,
