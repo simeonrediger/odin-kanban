@@ -8,6 +8,7 @@ let nameInput;
 let cancelButton;
 let submitButton;
 
+let isOpen = false;
 let isEditMode = false;
 
 const handlers = {
@@ -45,8 +46,24 @@ function bindEvents() {
 
 function enterCreateMode() {
     nameInput.value = '';
-    show();
+    open();
     nameInput.focus();
+}
+
+function enterEditMode(listId, listName) {
+    nameInput.value = listName;
+    open();
+    nameInput.focus();
+}
+
+function open() {
+    show();
+    isOpen = true;
+}
+
+function close() {
+    hide();
+    isOpen = false;
 }
 
 function handleListCreation() {
@@ -83,13 +100,7 @@ function submit() {
 }
 
 function exit(submitted) {
-
-    if (isEditMode) {
-
-    } else {
-        hide();
-    }
-
+    close();
     handlers.onExit(submitted);
 }
 
@@ -104,7 +115,12 @@ function hide() {
 const listEditor = {
     init,
     enterCreateMode,
+    enterEditMode,
     exit,
+
+    get isOpen() {
+        return isOpen;
+    },
 };
 
 export default listEditor;

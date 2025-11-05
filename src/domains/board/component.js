@@ -110,10 +110,9 @@ function handleListCreation({ listId }) {
 }
 
 function handleClick(event) {
-    const listEditorIsOpen = Boolean(activeEditListView);
     const action = event.target.closest('button')?.dataset.action;
 
-    if (listEditorIsOpen) {
+    if (listEditor.isOpen) {
         handleClickForListEditor(event.target);
 
     } else if (action === actions.createNewList) {
