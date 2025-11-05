@@ -65,6 +65,10 @@ export default class ListView {
         return this.#container;
     }
 
+    get id() {
+        return this.#container.dataset.id;
+    }
+
     replaceLabelWithEditor(editor) {
         this.#label.classList.add('hidden');
         this.#container.classList.add('editing');

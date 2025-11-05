@@ -13,6 +13,7 @@ let createNewListButton;
 let listsContainer;
 let listEditorContainer;
 
+const listViews = new Map();
 let activeEditListView;
 
 const roles = {
@@ -42,6 +43,7 @@ function init(containerElement) {
 
 function render() {
     removeAllListViews();
+    listViews.clear();
     boardTitle.textContent = boardViewStore.getBoardName();
 
     for (const listId of boardViewStore.getListIds()) {
@@ -53,6 +55,7 @@ function render() {
             roles.listContainer,
         );
 
+        listViews.set(listId, listView);
         listsContainer.append(listView.container);
     }
 }
@@ -140,10 +143,15 @@ function handleListsClick(event) {
         `[data-role='${roles.listContainer}']`
     );
 
+    const listId = listContainer.dataset.id;
+    const listViewStore = boardViewStore.getListViewStore(listId);
+    const listName = listViewStore.getListName(listId);
+
     if (action === actions.openListOptionsMenu) {
 
         listOptionsMenu.toggle({
             anchorElement: listContainer,
+            onRenameClick: () => handleRenameClick(listName, listContainer),
         });
     }
 }
@@ -167,6 +175,7 @@ function handleClickForListEditor(target) {
 function handleEditorExit(submitted) {
 
     if (submitted) {
+        listViews.set(activeEditListView.id, activeEditListView);
         activeEditListView.showLabel();
 
     } else {
@@ -174,6 +183,13 @@ function handleEditorExit(submitted) {
     }
 
     activeEditListView = null;
+}
+
+function handleRenameClick(listName, listContainer) {
+    const listId = listContainer.dataset.id;
+    activeEditListView = listViews.get(listId);
+    activeEditListView.replaceLabelWithEditor(listEditorContainer);
+    listEditor.enterEditMode(listId, listName);
 }
 
 const boardView = {
