@@ -56,6 +56,7 @@ function enterEditMode(listId, listName) {
     nameInput.value = listName;
     open();
     nameInput.focus();
+    nameInput.setSelectionRange(listName.length, listName.length);
     isEditMode = true;
     activeEditListId = listId;
 }
