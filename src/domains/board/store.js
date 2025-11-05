@@ -8,6 +8,19 @@ function init(boardId, boardName, listViewStores) {
     id = boardId;
     name = boardName;
     lists = listViewStores;
+
+    bindEvents();
+}
+
+function bindEvents() {
+    eventBus.on(events.BOARD_NAME_UPDATED, setBoardName);
+}
+
+function setBoardName({ boardId, boardName }) {
+
+    if (boardId === id) {
+        name = boardName;
+    }
 }
 
 function addList(listId, listViewStore) {
