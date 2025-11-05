@@ -77,6 +77,7 @@ function cacheElements() {
 function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, updateTitleOnNameChange);
     eventBus.on(events.LIST_CREATED, handleListCreation);
+    eventBus.on(events.LIST_DELETED, handleListDeletion);
 
     document.addEventListener('click', handleClick);
     listsContainer.addEventListener('click', handleListsClick);
@@ -110,6 +111,12 @@ function updateTitleOnNameChange({ boardId, boardName }) {
 function handleListCreation({ listId }) {
     const listViewStore = boardViewStore.getListViewStore(listId);
     activeEditListView.init(listId, listViewStore, roles.listContainer);
+}
+
+function handleListDeletion({ listId }) {
+    const listViewContainer = listViews.get(listId).container;
+    listViewContainer.remove();
+    listViews.delete(listId);
 }
 
 function handleClick(event) {

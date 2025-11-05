@@ -146,6 +146,7 @@ function updateListName({ listId, listName }) {
 function handleListDeletionRequest({ listId }) {
     const list = activeBoard.getList(listId);
     activeBoard.removeList(list);
+    eventBus.emit(events.LIST_DELETED, { listId });
 }
 
 const workspaceController = {

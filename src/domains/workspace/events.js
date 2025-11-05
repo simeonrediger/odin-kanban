@@ -71,6 +71,11 @@
  * @property {string} listId - Unique ID of the list.
  */
 
+/**
+ * @typedef {Object} ListDeletedDetail
+ * @property {string} listId - Unique ID of the list.
+ */
+
 
 
 // Event names
@@ -178,3 +183,11 @@ export const LIST_NAME_UPDATED = 'list:name-updated';
  * @see {@link ListDeletionRequestedDetail}
  */
 export const LIST_DELETION_REQUESTED = 'list:deletion-requested';
+
+/**
+ * @description Emitted when a list name is deleted.
+ * @event list:deleted
+ * @type {string}
+ * @see {@link ListDeletedDetail}
+ */
+export const LIST_DELETED = 'list:deleted';
