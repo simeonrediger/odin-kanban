@@ -84,6 +84,8 @@ export default class OptionsMenu {
 
     #open({
         anchorElement: anchorElementArg,
+        clientX,
+        clientY,
         onOpen,
         onCloseOrMove,
         onRenameClick,
@@ -98,7 +100,7 @@ export default class OptionsMenu {
         this.#handlers.onConfirmDeletionClick = onConfirmDeletionClick;
 
         this.#handlers.onOpen?.();
-        this.#moveNextToElement();
+        this.#moveNextToElement(clientX, clientY);
 
         if (this.#isOpen) {
             return;
@@ -129,12 +131,22 @@ export default class OptionsMenu {
         this.#handlers.onCloseOrMove?.();
     }
 
-    #moveNextToElement() {
-        const rect = this.#anchorElement.getBoundingClientRect();
-        const width = rect.right - rect.left;
+    #moveNextToElement(clientX, clientY) {
+        const parentElement = this.#container.parentNode;
 
-        this.#container.style.left = rect.x + width + 'px';
-        this.#container.style.top = rect.y + 'px';
+        const parent = {
+            rect: parentElement.getBoundingClientRect(),
+            scrollLeft: parentElement.scrollLeft,
+            scrollTop: parentElement.scrollTop,
+        };
+
+        this.#container.style.left = (
+            clientX - parent.rect.left + parent.scrollLeft + 'px'
+        );
+
+        this.#container.style.top = (
+            clientY - parent.rect.top + parent.scrollTop + 'px'
+        );
     }
 
     #closeOnOuterClick(event) {

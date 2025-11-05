@@ -38,7 +38,7 @@ function init(containerElement) {
         ),
     });
 
-    container.append(listOptionsMenu.container);
+    listsContainer.append(listOptionsMenu.container);
 }
 
 function render() {
@@ -158,6 +158,8 @@ function handleListsClick(event) {
 
         listOptionsMenu.toggle({
             anchorElement: listContainer,
+            clientX: event.clientX,
+            clientY: event.clientY,
             onRenameClick: () => handleRenameClick(listName, listContainer),
             onConfirmDeletionClick: () => handleDeleteClick(listId),
         });

@@ -32,6 +32,7 @@
 .lists-container {
   grid-column: span 2;
   overflow-x: auto;
+  position: relative;
 
   display: flex;
   align-items: start;

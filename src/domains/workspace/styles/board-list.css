@@ -24,6 +24,10 @@
   color: var(--color-fg-highlight);
 }
 
+.board-list-container {
+  position: relative;
+}
+
 .board-list {
   display: flex;
   flex-direction: column;

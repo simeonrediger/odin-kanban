@@ -107,6 +107,8 @@ function handleListClick(event) {
 
         boardOptionsMenu.toggle({
             anchorElement: listItem,
+            clientX: event.clientX,
+            clientY: event.clientY,
             onOpen: () => highlightListItem(listItem),
             onCloseOrMove: () => unhighlightListItem(listItem),
             onRenameClick: () => handleRenameClick(boardName, listItem),
