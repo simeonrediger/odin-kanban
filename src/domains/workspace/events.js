@@ -60,6 +60,12 @@
  * @property {string} listName - New name for the list.
  */
 
+/**
+ * @typedef {Object} ListNameUpdatedDetail
+ * @property {string} listId - Unique ID of the list.
+ * @property {string} listName - New name of the list.
+ */
+
 
 
 // Event names
@@ -151,3 +157,11 @@ export const LIST_CREATED = 'list:created';
  * @see {@link ListNameUpdateRequestedDetail}
  */
 export const LIST_NAME_UPDATE_REQUESTED = 'list:name-update-requested';
+
+/**
+ * @description Emitted when a list name is updated.
+ * @event list:name-updated
+ * @type {string}
+ * @see {@link ListNameUpdatedDetail}
+ */
+export const LIST_NAME_UPDATED = 'list:name-updated';
