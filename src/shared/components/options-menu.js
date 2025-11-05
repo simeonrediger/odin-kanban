@@ -29,7 +29,7 @@ export default class OptionsMenu {
 
     constructor() {
         this.#container = this.#createContainer();
-        this.#setUpElementReferences();
+        this.#cacheElements();
         this.#bindEvents();
     }
 
@@ -68,7 +68,7 @@ export default class OptionsMenu {
         this.#container.addEventListener('click', this.#handleClick.bind(this));
     }
 
-    #setUpElementReferences() {
+    #cacheElements() {
         this.#label = this.#container.querySelector("[data-role='label']");
         this.#deleteOption = this.#container.querySelector(
             "[data-role='delete-option']"
