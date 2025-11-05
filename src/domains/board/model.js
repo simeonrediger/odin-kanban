@@ -14,6 +14,11 @@ export default class Board {
         Object.freeze(this);
     }
 
+    getList(listId) {
+        assert.string(listId, "'listId'");
+        return this.#lists.find(list => list.id === listId);
+    }
+
     addList(list, targetIndex) {
         assert.instanceOf(List, list, "'list'");
 

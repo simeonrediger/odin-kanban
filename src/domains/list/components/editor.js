@@ -10,6 +10,7 @@ let submitButton;
 
 let isOpen = false;
 let isEditMode = false;
+let activeEditListId;
 
 const handlers = {
     onExit: undefined,
@@ -54,6 +55,8 @@ function enterEditMode(listId, listName) {
     nameInput.value = listName;
     open();
     nameInput.focus();
+    isEditMode = true;
+    activeEditListId = listId;
 }
 
 function open() {
@@ -93,7 +96,8 @@ function submit() {
     const listName = nameInput.value.trim() || nameInput.placeholder;
 
     if (isEditMode) {
-
+        const listId = activeEditListId;
+        eventBus.emit(events.LIST_NAME_UPDATE_REQUESTED, { listId, listName });
     } else {
         eventBus.emit(events.LIST_CREATION_REQUESTED, { listName });
     }
