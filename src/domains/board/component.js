@@ -112,7 +112,10 @@ function handleListCreation({ listId }) {
 function handleClick(event) {
     const action = event.target.closest('button')?.dataset.action;
 
-    if (listEditor.isOpen) {
+    if (listOptionsMenu.container.contains(event.target)) {
+        return;
+
+    } else if (listEditor.isOpen) {
         handleClickForListEditor(event.target);
 
     } else if (action === actions.createNewList) {
