@@ -66,6 +66,11 @@
  * @property {string} listName - New name of the list.
  */
 
+/**
+ * @typedef {Object} ListDeletionRequestedDetail
+ * @property {string} listId - Unique ID of the list.
+ */
+
 
 
 // Event names
@@ -165,3 +170,11 @@ export const LIST_NAME_UPDATE_REQUESTED = 'list:name-update-requested';
  * @see {@link ListNameUpdatedDetail}
  */
 export const LIST_NAME_UPDATED = 'list:name-updated';
+
+/**
+ * @description Emitted when list deletion is requested.
+ * @event list:deletion-requested
+ * @type {string}
+ * @see {@link ListDeletionRequestedDetail}
+ */
+export const LIST_DELETION_REQUESTED = 'list:deletion-requested';

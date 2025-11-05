@@ -152,6 +152,7 @@ function handleListsClick(event) {
         listOptionsMenu.toggle({
             anchorElement: listContainer,
             onRenameClick: () => handleRenameClick(listName, listContainer),
+            onConfirmDeletionClick: () => handleDeleteClick(listId),
         });
     }
 }
@@ -205,6 +206,10 @@ function handleRenameClick(listName, listContainer) {
     activeEditListView = listViews.get(listId);
     activeEditListView.replaceLabelWithEditor(listEditorContainer);
     listEditor.enterEditMode(listId, listName);
+}
+
+function handleDeleteClick(listId) {
+    eventBus.emit(events.LIST_DELETION_REQUESTED, { listId });
 }
 
 const boardView = {
