@@ -39,6 +39,10 @@
   padding-inline: 0.5rem;
 }
 
+.list-container.editing .list-options-button {
+  display: none;
+}
+
 .list-options-button:hover {
   color: var(--color-fg-highlight);
 }
