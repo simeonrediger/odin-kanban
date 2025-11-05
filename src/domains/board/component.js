@@ -177,6 +177,10 @@ function handleEditorExit(isEditMode, submitted) {
     if (isEditMode) {
 
         if (submitted) {
+            const listId = activeEditListView.id;
+            const listViewStore = boardViewStore.getListViewStore(listId);
+            activeEditListView.updateLabel(listViewStore.getListName());
+            activeEditListView.showLabel();
 
         } else {
             activeEditListView.showLabel();

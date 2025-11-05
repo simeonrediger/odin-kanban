@@ -80,6 +80,10 @@ export default class ListView {
         this.#label.classList.remove('hidden');
     }
 
+    updateLabel(labelText) {
+        this.#label.textContent = labelText;
+    }
+
     #createOptionsButton() {
         const button = document.createElement('button');
         button.dataset.action = this.#actions.openOptionsMenu;

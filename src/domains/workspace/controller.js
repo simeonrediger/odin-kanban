@@ -137,6 +137,9 @@ function createList({ listName }) {
 function updateListName({ listId, listName }) {
     const list = activeBoard.getList(listId);
     list.name = listName;
+    const listViewStore = boardViewStore.getListViewStore(listId);
+    listViewStore.setListName(listName);
+    eventBus.emit(events.LIST_NAME_UPDATED, { listId, listName });
 }
 
 const workspaceController = {

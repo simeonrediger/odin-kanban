@@ -11,6 +11,10 @@ export default class ListViewStore {
         return this.#name;
     }
 
+    setListName(name) {
+        this.#name = name;
+    }
+
     getTaskIds() {
         return Object.freeze(Object.keys(this.#tasks));
     }

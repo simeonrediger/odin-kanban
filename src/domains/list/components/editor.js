@@ -39,6 +39,7 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.LIST_CREATED, handleListCreation);
+    eventBus.on(events.LIST_NAME_UPDATED, handleNameUpdated);
 
     nameInput.addEventListener('keydown', handleNameInputKeyDown);
     cancelButton.addEventListener('click', handleCancelClick);
@@ -70,6 +71,11 @@ function close() {
 }
 
 function handleListCreation() {
+    const submitted = true;
+    exit(submitted);
+}
+
+function handleNameUpdated() {
     const submitted = true;
     exit(submitted);
 }
