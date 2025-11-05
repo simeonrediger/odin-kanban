@@ -172,14 +172,25 @@ function handleClickForListEditor(target) {
     }
 }
 
-function handleEditorExit(submitted) {
+function handleEditorExit(isEditMode, submitted) {
 
-    if (submitted) {
-        listViews.set(activeEditListView.id, activeEditListView);
-        activeEditListView.showLabel();
+    if (isEditMode) {
+
+        if (submitted) {
+
+        } else {
+            activeEditListView.showLabel();
+        }
 
     } else {
-        activeEditListView.container.remove();
+
+        if (submitted) {
+            listViews.set(activeEditListView.id, activeEditListView);
+            activeEditListView.showLabel();
+
+        } else {
+            activeEditListView.container.remove();
+        }
     }
 
     activeEditListView = null;

@@ -105,7 +105,10 @@ function submit() {
 
 function exit(submitted) {
     close();
-    handlers.onExit(submitted);
+    const wasEditMode = isEditMode;
+    isEditMode = false;
+    activeEditListId = null;
+    handlers.onExit(wasEditMode, submitted);
 }
 
 function show() {
