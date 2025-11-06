@@ -132,21 +132,49 @@ export default class OptionsMenu {
     }
 
     #moveNextToElement(clientX, clientY) {
-        const parentElement = this.#container.parentNode;
+        const containerDisplay = this.#container.style.display;
+        const containerVisibility = this.#container.style.visibility;
 
-        const parent = {
-            rect: parentElement.getBoundingClientRect(),
-            scrollLeft: parentElement.scrollLeft,
-            scrollTop: parentElement.scrollTop,
+        this.#container.style.left = 0;
+        this.#container.style.top = 0;
+        this.#container.style.visibility = 'hidden';
+        this.#container.style.display = 'block';
+        const containerRect = this.#container.getBoundingClientRect();
+
+        this.#container.style.display = containerDisplay;
+        this.#container.style.visibility = containerVisibility;
+
+        const parent = this.#container.parentNode;
+        const parentRect = parent.getBoundingClientRect();
+
+        const click = {
+            x: clientX - parentRect.left + parent.scrollLeft,
+            y: clientY - parentRect.top + parent.scrollTop,
+        };
+
+        const containerOverflowsParent = {
+            x: (
+                click.x + containerRect.width
+                > parent.scrollLeft + parentRect.width
+            ),
+
+            y: (
+                click.y + containerRect.height
+                > parent.scrollTop + parentRect.height
+            ),
         };
 
         this.#container.style.left = (
-            clientX - parent.rect.left + parent.scrollLeft + 'px'
-        );
+            containerOverflowsParent.x
+                ? click.x - containerRect.width
+                : click.x
+        ) + 'px';
 
         this.#container.style.top = (
-            clientY - parent.rect.top + parent.scrollTop + 'px'
-        );
+            containerOverflowsParent.y
+                ? click.y - containerRect.height
+                : click.y
+        ) + 'px';
     }
 
     #closeOnOuterClick(event) {
