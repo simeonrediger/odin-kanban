@@ -3,12 +3,14 @@ import './style.css';
 import TaskView from '@/domains/task/component.js';
 
 import {
+    createPlusIcon,
     createThreeDotsVerticalIcon,
 } from '@/shared/components/icons/create-icons.js';
 
 export default class ListView {
 
     static #actions = {
+        createTask: 'create-task',
         openOptionsMenu: 'open-list-options-menu',
     };
 
@@ -18,6 +20,10 @@ export default class ListView {
 
     static get openOptionsMenuAction() {
         return this.#actions.openOptionsMenu;
+    }
+
+    static get createTaskAction() {
+        return this.#actions.createTask;
     }
 
     #container;
@@ -64,6 +70,9 @@ export default class ListView {
 
             this.#tasks.append(taskView.container);
         }
+
+        const newTaskButton = this.#createNewTaskButton();
+        this.#container.append(newTaskButton);
     }
 
     get container() {
@@ -98,6 +107,19 @@ export default class ListView {
         const icon = createThreeDotsVerticalIcon();
         icon.classList.add('list-options-icon');
         button.append(icon);
+
+        return button;
+    }
+
+    #createNewTaskButton() {
+        const button = document.createElement('button');
+        button.dataset.action = ListView.#actions.createTask;
+        button.classList.add('new-task-button');
+        button.ariaLabel = 'Create new task';
+
+        const plusIcon = createPlusIcon();
+        plusIcon.classList.add('new-task-icon');
+        button.append(plusIcon);
 
         return button;
     }
