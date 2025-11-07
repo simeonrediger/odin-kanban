@@ -62,7 +62,9 @@ function render() {
 
 function cacheElements() {
     boardTitle = container.querySelector("[data-role='board-title']");
-    createListButton = container.querySelector("[data-action='create-list']");
+    createListButton = container.querySelector(
+        `[data-action='${actions.createList}']`
+    );
     listsContainer = container.querySelector("[data-role='lists-container']");
     listEditorContainer = container.querySelector("[data-role='list-editor']");
 
