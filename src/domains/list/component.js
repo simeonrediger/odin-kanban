@@ -71,7 +71,7 @@ export default class ListView {
             this.#tasks.append(taskView.container);
         }
 
-        const newTaskButton = this.#createNewTaskButton();
+        const newTaskButton = this.#createTaskButton();
         this.#container.append(newTaskButton);
     }
 
@@ -111,11 +111,11 @@ export default class ListView {
         return button;
     }
 
-    #createNewTaskButton() {
+    #createTaskButton() {
         const button = document.createElement('button');
         button.dataset.action = ListView.#actions.createTask;
         button.classList.add('new-task-button');
-        button.ariaLabel = 'Create new task';
+        button.ariaLabel = 'Create task';
 
         const plusIcon = createPlusIcon();
         plusIcon.classList.add('new-task-icon');
