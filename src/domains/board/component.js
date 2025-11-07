@@ -22,8 +22,8 @@ const roles = {
 
 const actions = {
     createList: 'create-list',
-    createTask: ListView.createTask,
-    openListOptionsMenu: ListView.openOptionsMenu,
+    createTask: ListView.createTaskAction,
+    openListOptionsMenu: ListView.openOptionsMenuAction,
 };
 
 function init(containerElement) {
