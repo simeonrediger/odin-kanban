@@ -16,7 +16,7 @@
   font-weight: bold;
 }
 
-.create-new-list-button {
+.create-list-button {
   background-color: transparent;
   color: var(--color-fg-secondary);
 
@@ -25,7 +25,7 @@
   gap: 0.25rem;
 }
 
-.create-new-list-button:hover {
+.create-list-button:hover {
   color: var(--color-fg-highlight);
 }
 

@@ -9,7 +9,7 @@ import listOptionsMenu from '@/domains/list/components/options-menu.js';
 
 let container;
 let boardTitle;
-let createNewListButton;
+let createListButton;
 let listsContainer;
 let listEditorContainer;
 
@@ -21,7 +21,7 @@ const roles = {
 };
 
 const actions = {
-    createNewList: 'create-new-list',
+    createList: 'create-list',
     openListOptionsMenu: ListView.openOptionsMenu,
 };
 
@@ -62,14 +62,12 @@ function render() {
 
 function cacheElements() {
     boardTitle = container.querySelector("[data-role='board-title']");
-    createNewListButton = container.querySelector(
-        "[data-action='create-new-list']"
-    );
+    createListButton = container.querySelector("[data-action='create-list']");
     listsContainer = container.querySelector("[data-role='lists-container']");
     listEditorContainer = container.querySelector("[data-role='list-editor']");
 
     assert.notNull(boardTitle, "'boardTitle'");
-    assert.notNull(createNewListButton, "'createNewListButton'");
+    assert.notNull(createListButton, "'createListButton'");
     assert.notNull(listsContainer, "'listsContainer'");
     assert.notNull(listEditorContainer, "'listEditorContainer'");
 }
@@ -128,8 +126,8 @@ function handleClick(event) {
     } else if (listEditor.isOpen) {
         handleClickForListEditor(event.target);
 
-    } else if (action === actions.createNewList) {
-        handleCreateNewListClick();
+    } else if (action === actions.createList) {
+        handleCreateListClick();
     }
 }
 
@@ -166,7 +164,7 @@ function handleListsClick(event) {
     }
 }
 
-function handleCreateNewListClick() {
+function handleCreateListClick() {
     activeEditListView = new ListView();
     activeEditListView.replaceLabelWithEditor(listEditorContainer);
     listsContainer.append(activeEditListView.container);
