@@ -22,6 +22,7 @@ const roles = {
 
 const actions = {
     createList: 'create-list',
+    createTask: ListView.createTask,
     openListOptionsMenu: ListView.openOptionsMenu,
 };
 
@@ -163,6 +164,9 @@ function handleListsClick(event) {
             onRenameClick: () => handleRenameClick(listName, listContainer),
             onConfirmDeletionClick: () => handleDeleteClick(listId),
         });
+
+    } else if (action === actions.createTask) {
+        handleCreateTaskClick();
     }
 }
 
@@ -219,6 +223,9 @@ function handleRenameClick(listName, listContainer) {
 
 function handleDeleteClick(listId) {
     eventBus.emit(events.LIST_DELETION_REQUESTED, { listId });
+}
+
+function handleCreateTaskClick() {
 }
 
 const boardView = {
