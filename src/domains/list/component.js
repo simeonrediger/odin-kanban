@@ -7,18 +7,23 @@ import {
 } from '@/shared/components/icons/create-icons.js';
 
 export default class ListView {
+
+    static #actions = {
+        openOptionsMenu: 'open-list-options-menu',
+    };
+
+    static #roles = {
+        taskContainer: 'task-container',
+    };
+
+    static get openOptionsMenuAction() {
+        return this.#actions.openOptionsMenu;
+    }
+
     #container;
     #header;
     #label;
     #tasks;
-
-    #roles = {
-        taskContainer: 'task-container',
-    };
-
-    #actions = {
-        openOptionsMenu: 'open-list-options-menu',
-    };
 
     constructor(listId, store, containerRole) {
         this.#container = document.createElement('li');
@@ -54,7 +59,7 @@ export default class ListView {
             const taskView = new TaskView(
                 taskId,
                 taskViewStore,
-                this.#roles.taskContainer,
+                ListView.#roles.taskContainer,
             );
 
             this.#tasks.append(taskView.container);
@@ -86,7 +91,7 @@ export default class ListView {
 
     #createOptionsButton() {
         const button = document.createElement('button');
-        button.dataset.action = this.#actions.openOptionsMenu;
+        button.dataset.action = ListView.#actions.openOptionsMenu;
         button.classList.add('list-options-button');
         button.ariaLabel = 'Open list options menu';
 

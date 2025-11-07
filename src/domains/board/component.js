@@ -22,7 +22,7 @@ const roles = {
 
 const actions = {
     createNewList: 'create-new-list',
-    openListOptionsMenu: 'open-list-options-menu',
+    openListOptionsMenu: ListView.openOptionsMenu,
 };
 
 function init(containerElement) {
