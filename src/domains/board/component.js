@@ -15,6 +15,7 @@ let listEditorContainer;
 
 const listViews = new Map();
 let activeEditListView;
+let activeEditTaskView;
 
 const roles = {
     listContainer: 'list-container',
@@ -166,7 +167,7 @@ function handleListsClick(event) {
         });
 
     } else if (action === actions.createTask) {
-        handleCreateTaskClick();
+        handleCreateTaskClick(event.target);
     }
 }
 
@@ -225,7 +226,14 @@ function handleDeleteClick(listId) {
     eventBus.emit(events.LIST_DELETION_REQUESTED, { listId });
 }
 
-function handleCreateTaskClick() {
+function handleCreateTaskClick(target) {
+    const listContainer = target.closest(
+        `[data-role='${roles.listContainer}']`
+    );
+    const listId = listContainer.dataset.id;
+    activeEditListView = listViews.get(listId);
+
+    activeEditTaskView = activeEditListView.createTaskView();
 }
 
 const boardView = {

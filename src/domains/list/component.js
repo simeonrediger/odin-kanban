@@ -123,4 +123,10 @@ export default class ListView {
 
         return button;
     }
+
+    createTaskView() {
+        const taskView = new TaskView();
+        this.#tasks.append(taskView.container);
+        return taskView;
+    }
 }
