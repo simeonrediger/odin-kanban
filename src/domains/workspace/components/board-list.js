@@ -12,7 +12,7 @@ import {
 } from '@/shared/components/icons/create-icons.js';
 
 let container;
-let createNewBoardButton;
+let createBoardButton;
 let list;
 let boardEditorContainer;
 
@@ -44,15 +44,15 @@ function init(containerElement) {
 }
  
 function cacheElements() {
-    createNewBoardButton = container.querySelector(
-        "[data-action='create-new-board']"
+    createBoardButton = container.querySelector(
+        "[data-action='create-board']"
     );
     list = container.querySelector("[data-role='board-list']");
     boardEditorContainer = container.querySelector(
         "[data-role='board-editor']"
     );
 
-    assert.notNull(createNewBoardButton, "'createNewBoardButton'");
+    assert.notNull(createBoardButton, "'createBoardButton'");
     assert.notNull(list, "'list'");
     assert.notNull(boardEditorContainer, "'boardEditorContainer'");
 }
@@ -63,7 +63,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
     eventBus.on(events.BOARD_DELETED, handleBoardDeletion);
 
-    createNewBoardButton.addEventListener('click', handleCreateNewBoardClick);
+    createBoardButton.addEventListener('click', handleCreateBoardClick);
     list.addEventListener('click', handleListClick);
 }
 
@@ -77,7 +77,7 @@ function render() {
     }
 }
 
-function handleCreateNewBoardClick() {
+function handleCreateBoardClick() {
     list.append(boardEditorContainer);
     boardEditor.enterCreateMode();
 }

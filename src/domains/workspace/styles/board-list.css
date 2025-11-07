@@ -15,12 +15,12 @@
   font-size: 1.25rem;
 }
 
-.create-new-board-button {
+.create-board-button {
   background-color: transparent;
   color: var(--color-fg-secondary);
 }
 
-.create-new-board-button:hover {
+.create-board-button:hover {
   color: var(--color-fg-highlight);
 }
 
