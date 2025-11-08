@@ -87,7 +87,6 @@ function bindEvents() {
     eventBus.on(events.LIST_DELETED, handleListDeletion);
 
     document.addEventListener('click', handleClick);
-    listsContainer.addEventListener('click', handleListsClick);
 }
 
 function removeAllListViews() {
@@ -137,6 +136,9 @@ function handleClick(event) {
 
     } else if (action === actions.createList) {
         handleCreateListClick();
+
+    } else if (listsContainer.contains(event.target)) {
+        handleListsClick(event);
     }
 }
 
