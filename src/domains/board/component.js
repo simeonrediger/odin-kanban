@@ -121,6 +121,7 @@ function updateTitleOnNameChange({ boardId, boardName }) {
 function handleListCreation({ listId }) {
     const listViewStore = boardViewStore.getListViewStore(listId);
     activeEditListView.init(listId, listViewStore, roles.listContainer);
+    listViews.set(listId, activeEditListView);
 }
 
 function handleListDeletion({ listId }) {
@@ -225,7 +226,6 @@ function handleListEditorExit(isEditMode, submitted) {
     } else {
 
         if (submitted) {
-            listViews.set(activeEditListView.id, activeEditListView);
             activeEditListView.showLabel();
 
         } else {
