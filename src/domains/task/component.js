@@ -28,4 +28,10 @@ export default class TaskView {
     get container() {
         return this.#container;
     }
+
+    replaceLabelWithEditor(editor) {
+        this.#label.classList.add('hidden');
+        this.#container.classList.add('editing');
+        this.#container.prepend(editor);
+    }
 }

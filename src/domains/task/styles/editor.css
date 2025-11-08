@@ -1,0 +1,24 @@
+.task-editor {
+  text-align: right;
+}
+
+.task-name-input {
+  background-color: transparent;
+  color: inherit;
+  margin-bottom: 0.5rem;
+  max-width: 100%;
+  outline: none;
+}
+
+.cancel-task-editor-button,
+.submit-task-editor-button {
+  background-color: transparent;
+  color: var(--color-fg-secondary);
+  padding-inline: 0.125rem;
+  scale: 0.875;
+}
+
+.cancel-task-editor-button:hover,
+.submit-task-editor-button:hover {
+  color: var(--color-fg-highlight);
+}

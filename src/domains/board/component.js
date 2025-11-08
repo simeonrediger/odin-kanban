@@ -35,6 +35,7 @@ function init(containerElement) {
     bindEvents();
 
     listEditor.init(listEditorContainer, { onExit: handleListEditorExit });
+    taskEditor.init(taskEditorContainer);
 
     listOptionsMenu.init({
         optionsMenuButtonSelector: (
@@ -238,6 +239,8 @@ function handleCreateTaskClick(target) {
     activeEditListView = listViews.get(listId);
 
     activeEditTaskView = activeEditListView.createTaskView();
+    activeEditTaskView.replaceLabelWithEditor(taskEditorContainer);
+    taskEditor.enterCreateMode();
 }
 
 const boardView = {
