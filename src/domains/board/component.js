@@ -35,7 +35,7 @@ function init(containerElement) {
     bindEvents();
 
     listEditor.init(listEditorContainer, { onExit: handleListEditorExit });
-    taskEditor.init(taskEditorContainer);
+    taskEditor.init(taskEditorContainer, { onExit: handleTaskEditorExit });
 
     listOptionsMenu.init({
         optionsMenuButtonSelector: (
@@ -241,6 +241,30 @@ function handleCreateTaskClick(target) {
     activeEditTaskView = activeEditListView.createTaskView();
     activeEditTaskView.replaceLabelWithEditor(taskEditorContainer);
     taskEditor.enterCreateMode();
+}
+
+function handleTaskEditorExit(isEditMode, submitted) {
+
+    if (isEditMode) {
+
+        if (submitted) {
+            // TODO
+        } else {
+            // TODO
+        }
+
+    } else {
+
+        if (submitted) {
+            // TODO
+
+        } else {
+            activeEditTaskView.container.remove();
+        }
+    }
+
+    activeEditListView = null;
+    activeEditTaskView = null;
 }
 
 const boardView = {

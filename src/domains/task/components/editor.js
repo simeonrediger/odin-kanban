@@ -8,10 +8,18 @@ let cancelButton;
 let submitButton;
 
 let isOpen = false;
+let isEditMode = false;
+let activeEditTaskId;
 
-function init(containerElement) {
+const handlers = {
+    onExit: undefined,
+};
+
+function init(containerElement, { onExit } = {}) {
     container = containerElement;
     cacheElements();
+    bindEvents();
+    handlers.onExit = onExit;
 }
 
 function cacheElements() {
@@ -28,6 +36,10 @@ function cacheElements() {
     assert.notNull(submitButton, "'submitButton'");
 }
 
+function bindEvents() {
+    cancelButton.addEventListener('click', handleCancelClick);
+}
+
 function enterCreateMode() {
     nameInput.value = '';
     open();
@@ -39,13 +51,40 @@ function open() {
     isOpen = true;
 }
 
+function close() {
+    hide();
+    isOpen = false;
+}
+
+function handleCancelClick() {
+    const submitted = false;
+    exit(submitted);
+}
+
+function exit(submitted) {
+    close();
+    const wasEditMode = isEditMode;
+    isEditMode = false;
+    activeEditTaskId = null;
+    handlers.onExit(wasEditMode, submitted);
+}
+
 function show() {
     container.classList.remove('hidden');
+}
+
+function hide() {
+    container.classList.add('hidden');
 }
 
 const taskEditor = {
     init,
     enterCreateMode,
+    exit,
+
+    get isOpen() {
+        return isOpen;
+    },
 };
 
 export default taskEditor;
