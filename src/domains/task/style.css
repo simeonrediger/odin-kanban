@@ -8,6 +8,7 @@
 }
 
 .task-container.editing {
+  background-color: var(--color-bg-highlight);
 }
 
 .task-label {
