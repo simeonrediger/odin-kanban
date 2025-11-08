@@ -24,6 +24,12 @@ export default class List {
         }
     }
 
+    addEmptyTask(taskName) {
+        const task = new Task(taskName);
+        this.addTask(task);
+        return task;
+    }
+
     removeTask(targetTask) {
         assert.instanceOf(Task, targetTask, "'targetTask'");
 

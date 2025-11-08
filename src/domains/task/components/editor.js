@@ -1,6 +1,7 @@
 import '../styles/editor.css';
 
 import assert from '@/shared/validation/assert.js';
+import eventBus, { events } from '@/domains/workspace/event-bus.js';
 
 let container;
 let nameInput;
@@ -13,13 +14,15 @@ let activeEditTaskId;
 
 const handlers = {
     onExit: undefined,
+    getActiveEditListId: undefined,
 };
 
-function init(containerElement, { onExit } = {}) {
+function init(containerElement, { onExit, getActiveEditListId } = {}) {
     container = containerElement;
     cacheElements();
     bindEvents();
     handlers.onExit = onExit;
+    handlers.getActiveEditListId = getActiveEditListId;
 }
 
 function cacheElements() {
@@ -38,6 +41,7 @@ function cacheElements() {
 
 function bindEvents() {
     cancelButton.addEventListener('click', handleCancelClick);
+    submitButton.addEventListener('click', submit);
 }
 
 function enterCreateMode() {
@@ -59,6 +63,17 @@ function close() {
 function handleCancelClick() {
     const submitted = false;
     exit(submitted);
+}
+
+function submit() {
+    const taskName = nameInput.value.trim() || nameInput.placeholder;
+
+    if (isEditMode) {
+        // TODO
+    } else {
+        const listId = handlers.getActiveEditListId();
+        eventBus.emit(events.TASK_CREATION_REQUESTED, { listId, taskName });
+    }
 }
 
 function exit(submitted) {

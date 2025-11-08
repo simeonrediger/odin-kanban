@@ -22,4 +22,8 @@ export default class ListViewStore {
     getTaskViewStore(taskId) {
         return this.#tasks[taskId];
     }
+
+    addTask(taskId, taskViewStore) {
+        this.#tasks[taskId] = taskViewStore;
+    }
 }

@@ -35,7 +35,10 @@ function init(containerElement) {
     bindEvents();
 
     listEditor.init(listEditorContainer, { onExit: handleListEditorExit });
-    taskEditor.init(taskEditorContainer, { onExit: handleTaskEditorExit });
+    taskEditor.init(taskEditorContainer, {
+        onExit: handleTaskEditorExit,
+        getActiveEditListId,
+    });
 
     listOptionsMenu.init({
         optionsMenuButtonSelector: (
@@ -278,6 +281,10 @@ function handleTaskEditorExit(isEditMode, submitted) {
 
     activeEditListView = null;
     activeEditTaskView = null;
+}
+
+function getActiveEditListId() {
+    return activeEditListView.id;
 }
 
 const boardView = {
