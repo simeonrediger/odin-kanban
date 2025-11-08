@@ -278,8 +278,14 @@ function handleTaskEditorExit(isEditMode, submitted) {
             // TODO
         }
 
-    } else if (!submitted) {
-        activeEditTaskView.container.remove();
+    } else {
+
+        if (submitted) {
+            activeEditTaskView.showLabel();
+
+        } else {
+            activeEditTaskView.container.remove();
+        }
     }
 
     activeEditListView = null;
