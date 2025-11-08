@@ -6,12 +6,14 @@ import eventBus, { events } from '@/domains/workspace/event-bus.js';
 import listEditor from '@/domains/list/components/editor.js';
 import ListView from '@/domains/list/component.js';
 import listOptionsMenu from '@/domains/list/components/options-menu.js';
+import taskEditor from '@/domains/task/components/editor.js';
 
 let container;
 let boardTitle;
 let createListButton;
 let listsContainer;
 let listEditorContainer;
+let taskEditorContainer;
 
 const listViews = new Map();
 let activeEditListView;
@@ -69,11 +71,13 @@ function cacheElements() {
     );
     listsContainer = container.querySelector("[data-role='lists-container']");
     listEditorContainer = container.querySelector("[data-role='list-editor']");
+    taskEditorContainer = container.querySelector("[data-role='task-editor']");
 
     assert.notNull(boardTitle, "'boardTitle'");
     assert.notNull(createListButton, "'createListButton'");
     assert.notNull(listsContainer, "'listsContainer'");
     assert.notNull(listEditorContainer, "'listEditorContainer'");
+    assert.notNull(taskEditorContainer, "'taskEditorContainer'");
 }
 
 function bindEvents() {
