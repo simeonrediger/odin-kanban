@@ -42,6 +42,7 @@ function cacheElements() {
 function bindEvents() {
     eventBus.on(events.TASK_CREATED, handleTaskCreation);
 
+    nameInput.addEventListener('keydown', handleNameInputKeyDown);
     cancelButton.addEventListener('click', handleCancelClick);
     submitButton.addEventListener('click', submit);
 }
@@ -65,6 +66,19 @@ function close() {
 function handleTaskCreation() {
     const submitted = true;
     exit(submitted);
+}
+
+function handleNameInputKeyDown(event) {
+
+    switch (event.key) {
+        case 'Enter':
+            submit();
+            break;
+        case 'Escape':
+            const submitted = false;
+            exit(submitted);
+            break;
+    }
 }
 
 function handleCancelClick() {
