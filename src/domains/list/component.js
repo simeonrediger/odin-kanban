@@ -26,6 +26,10 @@ export default class ListView {
         return this.#actions.createTask;
     }
 
+    static get taskContainerRole() {
+        return this.#roles.taskContainer;
+    }
+
     #container;
     #header;
     #label;

@@ -7,6 +7,8 @@ import listEditor from '@/domains/list/components/editor.js';
 import ListView from '@/domains/list/component.js';
 import listOptionsMenu from '@/domains/list/components/options-menu.js';
 import taskEditor from '@/domains/task/components/editor.js';
+import taskOptionsMenu from '@/domains/task/components/options-menu.js';
+import TaskView from '@/domains/task/component.js';
 
 let container;
 let boardTitle;
@@ -27,6 +29,7 @@ const actions = {
     createList: 'create-list',
     createTask: ListView.createTaskAction,
     openListOptionsMenu: ListView.openOptionsMenuAction,
+    openTaskOptionsMenu: TaskView.openOptionsMenuAction,
 };
 
 function init(containerElement) {
@@ -47,6 +50,14 @@ function init(containerElement) {
     });
 
     listsContainer.append(listOptionsMenu.container);
+
+    taskOptionsMenu.init({
+        optionsMenuButtonSelector: (
+            `[data-action='${actions.openTaskOptionsMenu}']`
+        ),
+    });
+
+    listsContainer.append(taskOptionsMenu.container);
 }
 
 function render() {
@@ -186,6 +197,18 @@ function handleListsClick(event) {
             clientY: event.clientY,
             onRenameClick: () => handleRenameClick(listName, listContainer),
             onConfirmDeletionClick: () => handleDeleteClick(listId),
+        });
+
+    } else if (action === actions.openTaskOptionsMenu) {
+
+        const taskContainer = button.closest(`
+            [data-role='${ListView.taskContainerRole}']`
+        );
+
+        taskOptionsMenu.toggle({
+            anchorElement: taskContainer,
+            clientX: event.clientX,
+            clientY: event.clientY,
         });
 
     } else if (action === actions.createTask) {
