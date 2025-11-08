@@ -62,6 +62,7 @@ export default class ListView {
 
         for (const taskId of store.getTaskIds(listId)) {
             const taskViewStore = store.getTaskViewStore(taskId);
+
             const taskView = new TaskView(
                 taskId,
                 taskViewStore,
