@@ -1,6 +1,7 @@
 .list-container {
   background-color: #222;
   border-radius: 1rem;
+  max-height: 100%;
   padding: 0.5rem;
   width: 11.5rem;
 
@@ -48,6 +49,8 @@
 }
 
 .tasks-list {
+  overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   gap: 0.375rem;

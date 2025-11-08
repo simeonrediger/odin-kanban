@@ -4,6 +4,7 @@
 }
 
 .board-container {
+  max-height: 100vh;
   padding: 1.25rem;
 
   grid-template-columns: 1fr max-content;
