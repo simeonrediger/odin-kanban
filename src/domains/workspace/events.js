@@ -76,6 +76,12 @@
  * @property {string} listId - Unique ID of the list.
  */
 
+/**
+ * @typedef {Object} TaskCreationRequestedDetail
+ * @property {string} listId - Unique ID of the list containing the task.
+ * @property {string} taskName - Name for the task.
+ */
+
 
 
 // Event names
@@ -191,3 +197,11 @@ export const LIST_DELETION_REQUESTED = 'list:deletion-requested';
  * @see {@link ListDeletedDetail}
  */
 export const LIST_DELETED = 'list:deleted';
+
+/**
+ * @description Emitted when task creation is requested.
+ * @event task:creation-requested
+ * @type {string}
+ * @see {@link TaskCreationRequestedDetail}
+ */
+export const TASK_CREATION_REQUESTED = 'task:creation-requested';
