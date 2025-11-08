@@ -34,7 +34,7 @@ function init(containerElement) {
     cacheElements();
     bindEvents();
 
-    listEditor.init(listEditorContainer, { onExit: handleEditorExit });
+    listEditor.init(listEditorContainer, { onExit: handleListEditorExit });
 
     listOptionsMenu.init({
         optionsMenuButtonSelector: (
@@ -191,7 +191,7 @@ function handleClickForListEditor(target) {
     }
 }
 
-function handleEditorExit(isEditMode, submitted) {
+function handleListEditorExit(isEditMode, submitted) {
 
     if (isEditMode) {
 
