@@ -271,7 +271,6 @@ function handleTaskEditorExit(isEditMode, submitted) {
 
         if (submitted) {
             // TODO
-
         } else {
             activeEditTaskView.container.remove();
         }
