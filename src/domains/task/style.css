@@ -8,7 +8,6 @@
 }
 
 .task-container.editing {
-  flex-direction: column;
 }
 
 .task-label {
