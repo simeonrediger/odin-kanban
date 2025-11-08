@@ -134,6 +134,9 @@ function handleClick(event) {
     } else if (listEditor.isOpen) {
         handleClickForListEditor(event.target);
 
+    } else if (taskEditor.isOpen) {
+        handleClickForTaskEditor(event.target);
+
     } else if (action === actions.createList) {
         handleCreateListClick();
 
@@ -243,6 +246,15 @@ function handleCreateTaskClick(target) {
     activeEditTaskView = activeEditListView.createTaskView();
     activeEditTaskView.replaceLabelWithEditor(taskEditorContainer);
     taskEditor.enterCreateMode();
+}
+
+function handleClickForTaskEditor(target) {
+    const noChildFocused = !activeEditTaskView.container.contains(target);
+
+    if (noChildFocused) {
+        const submitted = false;
+        taskEditor.exit(submitted);
+    }
 }
 
 function handleTaskEditorExit(isEditMode, submitted) {
