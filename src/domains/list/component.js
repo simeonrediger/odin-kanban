@@ -30,6 +30,7 @@ export default class ListView {
     #header;
     #label;
     #tasks;
+    #taskViews = new Map();
 
     constructor(listId, store, containerRole) {
         this.#container = document.createElement('li');
@@ -69,6 +70,7 @@ export default class ListView {
                 ListView.#roles.taskContainer,
             );
 
+            this.#taskViews.set(taskId, taskView);
             this.#tasks.append(taskView.container);
         }
 
@@ -129,5 +131,11 @@ export default class ListView {
         const taskView = new TaskView();
         this.#tasks.append(taskView.container);
         return taskView;
+    }
+
+    initTaskView(taskView, taskId, taskViewStore) {
+        taskView.init(taskId, taskViewStore, ListView.#roles.taskContainer);
+        this.#taskViews.set(taskId, taskView);
+        taskView.showLabel();
     }
 }

@@ -82,6 +82,13 @@
  * @property {string} taskName - Name for the task.
  */
 
+/**
+ * @typedef {Object} TaskCreatedDetail
+ * @property {string} listId - Unique ID of the list containing the task.
+ * @property {string} taskId - Unique ID of the task.
+ * @property {string} taskName - Name of the task.
+ */
+
 
 
 // Event names
@@ -205,3 +212,11 @@ export const LIST_DELETED = 'list:deleted';
  * @see {@link TaskCreationRequestedDetail}
  */
 export const TASK_CREATION_REQUESTED = 'task:creation-requested';
+
+/**
+ * @description Emitted when a task is created.
+ * @event task:created
+ * @type {string}
+ * @see {@link TaskCreatedDetail}
+ */
+export const TASK_CREATED = 'task:created';

@@ -29,9 +29,18 @@ export default class TaskView {
         return this.#container;
     }
 
+    get id() {
+        return this.#container.dataset.id;
+    }
+
     replaceLabelWithEditor(editor) {
         this.#label.classList.add('hidden');
         this.#container.classList.add('editing');
         this.#container.prepend(editor);
+    }
+
+    showLabel() {
+        this.#container.classList.remove('editing');
+        this.#label.classList.remove('hidden');
     }
 }

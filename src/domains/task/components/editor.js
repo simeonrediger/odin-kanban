@@ -40,6 +40,8 @@ function cacheElements() {
 }
 
 function bindEvents() {
+    eventBus.on(events.TASK_CREATED, handleTaskCreation);
+
     cancelButton.addEventListener('click', handleCancelClick);
     submitButton.addEventListener('click', submit);
 }
@@ -58,6 +60,11 @@ function open() {
 function close() {
     hide();
     isOpen = false;
+}
+
+function handleTaskCreation() {
+    const submitted = true;
+    exit(submitted);
 }
 
 function handleCancelClick() {

@@ -88,6 +88,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, updateTitleOnNameChange);
     eventBus.on(events.LIST_CREATED, handleListCreation);
     eventBus.on(events.LIST_DELETED, handleListDeletion);
+    eventBus.on(events.TASK_CREATED, handleTaskCreation);
 
     document.addEventListener('click', handleClick);
 }
@@ -126,6 +127,13 @@ function handleListDeletion({ listId }) {
     const listViewContainer = listViews.get(listId).container;
     listViewContainer.remove();
     listViews.delete(listId);
+}
+
+function handleTaskCreation({ listId, taskId }) {
+    const listViewStore = boardViewStore.getListViewStore(listId);
+    const taskViewStore = listViewStore.getTaskViewStore(taskId);
+    const listView = listViews.get(listId);
+    listView.initTaskView(activeEditTaskView, taskId, taskViewStore);
 }
 
 function handleClick(event) {
@@ -270,13 +278,8 @@ function handleTaskEditorExit(isEditMode, submitted) {
             // TODO
         }
 
-    } else {
-
-        if (submitted) {
-            // TODO
-        } else {
-            activeEditTaskView.container.remove();
-        }
+    } else if (!submitted) {
+        activeEditTaskView.container.remove();
     }
 
     activeEditListView = null;

@@ -157,6 +157,12 @@ function createTask({ listId, taskName }) {
     const taskViewStore = new TaskViewStore(task.name);
     const listViewStore = boardViewStore.getListViewStore(listId);
     listViewStore.addTask(task.id, taskViewStore);
+
+    eventBus.emit(events.TASK_CREATED, {
+        listId: list.id,
+        taskId: task.id,
+        taskName: task.name,
+    });
 }
 
 const workspaceController = {
