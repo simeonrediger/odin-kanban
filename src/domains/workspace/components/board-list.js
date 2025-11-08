@@ -32,7 +32,7 @@ function init(containerElement) {
     cacheElements();
     bindEvents();
 
-    boardEditor.init(boardEditorContainer, { onExit: showActiveEditItem });
+    boardEditor.init(boardEditorContainer, { onExit: handleBoardEditorExit });
 
     boardOptionsMenu.init({
         optionsMenuButtonSelector: (
@@ -151,6 +151,15 @@ function updateBoardItemText(boardId, boardName) {
         `[data-id='${boardId}'] [data-action='${actions.selectBoard}']`
     );
     boardSelectButton.textContent = boardName;
+}
+
+function handleBoardEditorExit() {
+
+    if (activeEditItem) {
+        showActiveEditItem();
+    }
+
+    activeEditItem = null;
 }
 
 function showActiveEditItem() {
