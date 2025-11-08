@@ -1,8 +1,20 @@
 import './style.css';
 
+import {
+    createThreeDotsVerticalIcon,
+} from '@/shared/components/icons/create-icons.js';
+
 export default class TaskView {
     #container;
     #label;
+
+    static #actions = {
+        openOptionsMenu: 'open-task-options-menu',
+    };
+
+    static get openOptionsMenuAction() {
+        return this.#actions.openOptionsMenu;
+    }
 
     constructor(taskId, store, containerRole) {
         this.#container = document.createElement('li');
@@ -23,6 +35,8 @@ export default class TaskView {
         this.#container.dataset.role = containerRole;
 
         this.#label.textContent = store.getTaskName(taskId);
+        const optionsMenuButton = this.#createOptionsButton();
+        this.#container.append(optionsMenuButton);
     }
 
     get container() {
@@ -42,5 +56,18 @@ export default class TaskView {
     showLabel() {
         this.#container.classList.remove('editing');
         this.#label.classList.remove('hidden');
+    }
+
+    #createOptionsButton() {
+        const button = document.createElement('button');
+        button.dataset.action = TaskView.#actions.openOptionsMenu;
+        button.classList.add('task-options-button');
+        button.ariaLabel = 'Open task options menu';
+
+        const icon = createThreeDotsVerticalIcon();
+        icon.classList.add('task-options-icon');
+        button.append(icon);
+
+        return button;
     }
 }

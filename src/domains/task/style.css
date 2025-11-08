@@ -2,4 +2,40 @@
   background-color: #181818;
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
+
+  display: flex;
+  align-items: start;
+}
+
+.task-container.editing {
+  flex-direction: column;
+}
+
+.task-label {
+  flex-grow: 1;
+}
+
+.task-container:hover .task-options-button {
+  display: block;
+}
+
+.task-options-button {
+  background-color: transparent;
+  color: var(--color-fg-secondary);
+  display: none;
+  padding-inline: 0.125rem;
+  margin-right: -0.5rem;
+  min-width: max-content;
+}
+
+.task-container.editing .task-options-button {
+  display: none;
+}
+
+.task-options-button:hover {
+  color: var(--color-fg-highlight);
+}
+
+.task-options-icon {
+  scale: 0.75;
 }
