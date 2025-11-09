@@ -170,7 +170,7 @@ export const BOARD_NAME_UPDATED = 'board:name-updated';
 export const BOARD_DELETION_REQUESTED = 'board:deletion-requested';
 
 /**
- * @description Emitted when a board name is deleted.
+ * @description Emitted when a board is deleted.
  * @event board:deleted
  * @type {string}
  * @see {@link BoardDeletedDetail}
@@ -218,7 +218,7 @@ export const LIST_NAME_UPDATED = 'list:name-updated';
 export const LIST_DELETION_REQUESTED = 'list:deletion-requested';
 
 /**
- * @description Emitted when a list name is deleted.
+ * @description Emitted when a list is deleted.
  * @event list:deleted
  * @type {string}
  * @see {@link ListDeletedDetail}
