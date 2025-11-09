@@ -218,6 +218,7 @@ function handleListsClick(event) {
             clientX: event.clientX,
             clientY: event.clientY,
             onRenameClick: () => handleTaskRenameClick(taskName, taskContainer),
+            onConfirmDeletionClick: () => handleTaskDeleteClick(listId, taskId),
         });
 
     } else if (action === actions.createTask) {
@@ -343,6 +344,10 @@ function handleTaskRenameClick(taskName, taskContainer) {
 
     activeEditTaskView.replaceLabelWithEditor(taskEditorContainer);
     taskEditor.enterEditMode(taskId, taskName);
+}
+
+function handleTaskDeleteClick(listId, taskId) {
+    eventBus.emit(events.TASK_DELETION_REQUESTED, { listId, taskId });
 }
 
 function getActiveEditListId() {

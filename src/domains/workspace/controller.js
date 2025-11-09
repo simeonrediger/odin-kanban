@@ -41,6 +41,7 @@ function bindEvents() {
 
     eventBus.on(events.TASK_CREATION_REQUESTED, createTask);
     eventBus.on(events.TASK_NAME_UPDATE_REQUESTED, updateTaskName);
+    eventBus.on(events.TASK_DELETION_REQUESTED, handleTaskDeletionRequest);
 }
 
 function renderWorkspaceView(activeBoard) {
@@ -180,6 +181,12 @@ function updateTaskName({ listId, taskId, taskName }) {
         taskId: task.id,
         taskName: task.name,
     });
+}
+
+function handleTaskDeletionRequest({ listId, taskId }) {
+    const list = activeBoard.getList(listId);
+    const task = list.getTask(taskId);
+    list.removeTask(task);
 }
 
 const workspaceController = {
