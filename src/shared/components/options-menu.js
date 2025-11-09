@@ -100,7 +100,7 @@ export default class OptionsMenu {
         this.#handlers.onConfirmDeletionClick = onConfirmDeletionClick;
 
         this.#handlers.onOpen?.();
-        this.#moveNextToElement(clientX, clientY);
+        this.#positionContainer(clientX, clientY);
 
         if (this.#isOpen) {
             return;
@@ -131,7 +131,7 @@ export default class OptionsMenu {
         this.#handlers.onCloseOrMove?.();
     }
 
-    #moveNextToElement(clientX, clientY) {
+    #positionContainer(clientX, clientY) {
         const containerDisplay = this.#container.style.display;
         const containerVisibility = this.#container.style.visibility;
 
