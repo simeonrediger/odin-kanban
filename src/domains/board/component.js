@@ -100,6 +100,7 @@ function bindEvents() {
     eventBus.on(events.LIST_CREATED, handleListCreation);
     eventBus.on(events.LIST_DELETED, handleListDeletion);
     eventBus.on(events.TASK_CREATED, handleTaskCreation);
+    eventBus.on(events.TASK_DELETED, handleTaskDeletion);
 
     document.addEventListener('click', handleClick);
 }
@@ -146,6 +147,11 @@ function handleTaskCreation({ listId, taskId }) {
     const taskViewStore = listViewStore.getTaskViewStore(taskId);
     const listView = listViews.get(listId);
     listView.initTaskView(activeEditTaskView, taskId, taskViewStore);
+}
+
+function handleTaskDeletion({ listId, taskId }) {
+    const listView = listViews.get(listId);
+    listView.removeTaskView(taskId);
 }
 
 function handleClick(event) {

@@ -15,6 +15,7 @@ function init(boardId, boardName, listViewStores) {
 function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, setBoardName);
     eventBus.on(events.LIST_DELETED, removeList);
+    eventBus.on(events.TASK_DELETED, removeTask);
 }
 
 function setBoardName({ boardId, boardName }) {
@@ -30,6 +31,11 @@ function addList(listId, listViewStore) {
 
 function removeList({ listId }) {
     lists[listId] = undefined;
+}
+
+function removeTask({ listId, taskId }) {
+    const listViewStore = getListViewStore(listId);
+    listViewStore.removeTask(taskId);
 }
 
 function getBoardId() {

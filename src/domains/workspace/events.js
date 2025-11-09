@@ -109,6 +109,12 @@
  * @property {string} taskId - Unique ID of the task.
  */
 
+/**
+ * @typedef {Object} TaskDeletedDetail
+ * @property {string} listId - Unique ID of the list containing the task.
+ * @property {string} taskId - Unique ID of the task.
+ */
+
 
 
 // Event names
@@ -264,3 +270,11 @@ export const TASK_NAME_UPDATED = 'task:name-updated';
  * @see {@link TaskDeletionRequestedDetail}
  */
 export const TASK_DELETION_REQUESTED = 'task:deletion-requested';
+
+/**
+ * @description Emitted when a task is deleted.
+ * @event task:deleted
+ * @type {string}
+ * @see {@link TaskDeletedDetail}
+ */
+export const TASK_DELETED = 'task:deleted';

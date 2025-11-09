@@ -145,4 +145,10 @@ export default class ListView {
     getTaskView(taskId) {
         return this.#taskViews.get(taskId);
     }
+
+    removeTaskView(taskId) {
+        const taskView = this.getTaskView(taskId);
+        taskView.container.remove();
+        this.#taskViews.delete(taskId);
+    }
 }

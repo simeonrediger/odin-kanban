@@ -26,4 +26,8 @@ export default class ListViewStore {
     addTask(taskId, taskViewStore) {
         this.#tasks[taskId] = taskViewStore;
     }
+
+    removeTask(taskId) {
+        this.#tasks[taskId] = undefined;
+    }
 }

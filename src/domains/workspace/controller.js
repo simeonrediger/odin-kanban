@@ -187,6 +187,7 @@ function handleTaskDeletionRequest({ listId, taskId }) {
     const list = activeBoard.getList(listId);
     const task = list.getTask(taskId);
     list.removeTask(task);
+    eventBus.emit(events.TASK_DELETED, { listId, taskId });
 }
 
 const workspaceController = {
