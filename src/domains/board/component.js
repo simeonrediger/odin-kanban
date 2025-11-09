@@ -195,7 +195,7 @@ function handleListsClick(event) {
             anchorElement: listContainer,
             clientX: event.clientX,
             clientY: event.clientY,
-            onRenameClick: () => handleRenameClick(listName, listContainer),
+            onRenameClick: () => handleListRenameClick(listName, listContainer),
             onConfirmDeletionClick: () => handleDeleteClick(listId),
         });
 
@@ -259,7 +259,7 @@ function handleListEditorExit(isEditMode, submitted) {
     activeEditListView = null;
 }
 
-function handleRenameClick(listName, listContainer) {
+function handleListRenameClick(listName, listContainer) {
     const listId = listContainer.dataset.id;
     activeEditListView = listViews.get(listId);
     activeEditListView.replaceLabelWithEditor(listEditorContainer);
