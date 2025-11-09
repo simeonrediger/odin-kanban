@@ -205,10 +205,16 @@ function handleListsClick(event) {
             [data-role='${ListView.taskContainerRole}']`
         );
 
+        const taskId = taskContainer.dataset.id;
+        const listViewStore = boardViewStore.getListViewStore(listId);
+        const taskViewStore = listViewStore.getTaskViewStore(taskId);
+        const taskName = taskViewStore.getTaskName();
+
         taskOptionsMenu.toggle({
             anchorElement: taskContainer,
             clientX: event.clientX,
             clientY: event.clientY,
+            onRenameClick: () => handleTaskRenameClick(taskName, taskContainer),
         });
 
     } else if (action === actions.createTask) {
@@ -313,6 +319,9 @@ function handleTaskEditorExit(isEditMode, submitted) {
 
     activeEditListView = null;
     activeEditTaskView = null;
+}
+
+function handleTaskRenameClick(taskName, taskContainer) {
 }
 
 function getActiveEditListId() {
