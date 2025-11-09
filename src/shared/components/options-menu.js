@@ -152,26 +152,28 @@ export default class OptionsMenu {
             y: clientY - parentRect.top + parent.scrollTop,
         };
 
-        const containerOverflowsParent = {
+        const bodyRect = document.body.getBoundingClientRect();
+
+        const containerOverflowsViewport = {
             x: (
-                click.x + containerRect.width
-                > parent.scrollLeft + parentRect.width
+                clientX + containerRect.width
+                > bodyRect.right
             ),
 
             y: (
-                click.y + containerRect.height
-                > parent.scrollTop + parentRect.height
+                clientY + containerRect.height
+                > bodyRect.bottom
             ),
         };
 
         this.#container.style.left = (
-            containerOverflowsParent.x
+            containerOverflowsViewport.x
                 ? click.x - containerRect.width
                 : click.x
         ) + 'px';
 
         this.#container.style.top = (
-            containerOverflowsParent.y
+            containerOverflowsViewport.y
                 ? click.y - containerRect.height
                 : click.y
         ) + 'px';
