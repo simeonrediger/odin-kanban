@@ -174,6 +174,12 @@ function updateTaskName({ listId, taskId, taskName }) {
     const listViewStore = boardViewStore.getListViewStore(listId);
     const taskViewStore = listViewStore.getTaskViewStore(taskId);
     taskViewStore.setTaskName(task.name);
+
+    eventBus.emit(events.TASK_NAME_UPDATED, {
+        listId: list.id,
+        taskId: task.id,
+        taskName: task.name,
+    });
 }
 
 const workspaceController = {

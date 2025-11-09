@@ -58,6 +58,10 @@ export default class TaskView {
         this.#label.classList.remove('hidden');
     }
 
+    updateLabel(taskText) {
+        this.#label.textContent = taskText;
+    }
+
     #createOptionsButton() {
         const button = document.createElement('button');
         button.dataset.action = TaskView.#actions.openOptionsMenu;

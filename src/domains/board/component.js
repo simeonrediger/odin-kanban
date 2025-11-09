@@ -305,7 +305,13 @@ function handleTaskEditorExit(isEditMode, submitted) {
     if (isEditMode) {
 
         if (submitted) {
-            // TODO
+            const listId = activeEditListView.id;
+            const listViewStore = boardViewStore.getListViewStore(listId);
+            const taskId = activeEditTaskView.id;
+            const taskViewStore = listViewStore.getTaskViewStore(taskId);
+            activeEditTaskView.updateLabel(taskViewStore.getTaskName());
+            activeEditTaskView.showLabel();
+
         } else {
             activeEditTaskView.showLabel();
         }
