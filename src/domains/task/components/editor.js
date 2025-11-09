@@ -53,6 +53,15 @@ function enterCreateMode() {
     nameInput.focus();
 }
 
+function enterEditMode(taskId, taskName) {
+    nameInput.value = taskName;
+    open();
+    nameInput.focus();
+    nameInput.setSelectionRange(taskName.length, taskName.length);
+    isEditMode = true;
+    activeEditTaskId = taskId;
+}
+
 function open() {
     show();
     isOpen = true;
@@ -116,6 +125,7 @@ function hide() {
 const taskEditor = {
     init,
     enterCreateMode,
+    enterEditMode,
     exit,
 
     get isOpen() {

@@ -141,4 +141,8 @@ export default class ListView {
         taskView.init(taskId, taskViewStore, ListView.#roles.taskContainer);
         this.#taskViews.set(taskId, taskView);
     }
+
+    getTaskView(taskId) {
+        return this.#taskViews.get(taskId);
+    }
 }

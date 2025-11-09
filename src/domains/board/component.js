@@ -154,6 +154,9 @@ function handleClick(event) {
     if (listOptionsMenu.container.contains(event.target)) {
         return;
 
+    } else if (taskOptionsMenu.container.contains(event.target)) {
+        return;
+
     } else if (listEditor.isOpen) {
         handleClickForListEditor(event.target);
 
@@ -322,6 +325,18 @@ function handleTaskEditorExit(isEditMode, submitted) {
 }
 
 function handleTaskRenameClick(taskName, taskContainer) {
+    const listContainer = taskContainer.closest(
+        `[data-role='${roles.listContainer}']`
+    );
+
+    const listId = listContainer.dataset.id;
+    activeEditListView = listViews.get(listId);
+
+    const taskId = taskContainer.dataset.id;
+    activeEditTaskView = activeEditListView.getTaskView(taskId);
+
+    activeEditTaskView.replaceLabelWithEditor(taskEditorContainer);
+    taskEditor.enterEditMode(taskId, taskName);
 }
 
 function getActiveEditListId() {
