@@ -147,7 +147,7 @@ export default class OptionsMenu {
         const parent = this.#container.parentNode;
         const parentRect = parent.getBoundingClientRect();
 
-        const click = {
+        const clickRelativeToParent = {
             x: clientX - parentRect.left + parent.scrollLeft,
             y: clientY - parentRect.top + parent.scrollTop,
         };
@@ -168,14 +168,14 @@ export default class OptionsMenu {
 
         this.#container.style.left = (
             containerOverflowsViewport.x
-                ? click.x - containerRect.width
-                : click.x
+                ? clickRelativeToParent.x - containerRect.width
+                : clickRelativeToParent.x
         ) + 'px';
 
         this.#container.style.top = (
             containerOverflowsViewport.y
-                ? click.y - containerRect.height
-                : click.y
+                ? clickRelativeToParent.y - containerRect.height
+                : clickRelativeToParent.y
         ) + 'px';
     }
 
