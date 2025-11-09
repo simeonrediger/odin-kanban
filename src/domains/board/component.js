@@ -307,7 +307,7 @@ function handleTaskEditorExit(isEditMode, submitted) {
         if (submitted) {
             // TODO
         } else {
-            // TODO
+            activeEditTaskView.showLabel();
         }
 
     } else {
