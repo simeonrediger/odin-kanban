@@ -196,7 +196,7 @@ function handleListsClick(event) {
             clientX: event.clientX,
             clientY: event.clientY,
             onRenameClick: () => handleListRenameClick(listName, listContainer),
-            onConfirmDeletionClick: () => handleDeleteClick(listId),
+            onConfirmDeletionClick: () => handleListDeleteClick(listId),
         });
 
     } else if (action === actions.openTaskOptionsMenu) {
@@ -266,7 +266,7 @@ function handleListRenameClick(listName, listContainer) {
     listEditor.enterEditMode(listId, listName);
 }
 
-function handleDeleteClick(listId) {
+function handleListDeleteClick(listId) {
     eventBus.emit(events.LIST_DELETION_REQUESTED, { listId });
 }
 
