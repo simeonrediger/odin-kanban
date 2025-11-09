@@ -155,15 +155,8 @@ export default class OptionsMenu {
         const bodyRect = document.body.getBoundingClientRect();
 
         const containerOverflowsViewport = {
-            x: (
-                clientX + containerRect.width
-                > bodyRect.right
-            ),
-
-            y: (
-                clientY + containerRect.height
-                > bodyRect.bottom
-            ),
+            x: clientX + containerRect.width > bodyRect.right,
+            y: clientY + containerRect.height > bodyRect.bottom,
         };
 
         this.#container.style.left = (
