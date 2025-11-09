@@ -13,6 +13,11 @@ export default class List {
         Object.freeze(this);
     }
 
+    getTask(taskId) {
+        assert.string(taskId, "'taskId'");
+        return this.#tasks.find(task => task.id === taskId);
+    }
+
     addTask(task, targetIndex) {
         assert.instanceOf(Task, task, "'task'");
 

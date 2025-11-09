@@ -97,9 +97,15 @@ function handleCancelClick() {
 
 function submit() {
     const taskName = nameInput.value.trim() || nameInput.placeholder;
+    const listId = handlers.getActiveEditListId();
 
     if (isEditMode) {
-        // TODO
+        eventBus.emit(events.TASK_NAME_UPDATE_REQUESTED, {
+            listId,
+            taskId: activeEditTaskId,
+            taskName,
+        });
+
     } else {
         const listId = handlers.getActiveEditListId();
         eventBus.emit(events.TASK_CREATION_REQUESTED, { listId, taskName });

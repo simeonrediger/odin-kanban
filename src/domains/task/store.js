@@ -8,4 +8,8 @@ export default class TaskViewStore {
     getTaskName() {
         return this.#name;
     }
+
+    setTaskName(name) {
+        this.#name = name;
+    }
 }

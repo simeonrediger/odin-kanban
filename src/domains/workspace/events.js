@@ -89,6 +89,13 @@
  * @property {string} taskName - Name of the task.
  */
 
+/**
+ * @typedef {Object} TaskNameUpdateRequestedDetail
+ * @property {string} listId - Unique ID of the list containing the task.
+ * @property {string} taskId - Unique ID of the task.
+ * @property {string} taskName - New name for the task.
+ */
+
 
 
 // Event names
@@ -220,3 +227,11 @@ export const TASK_CREATION_REQUESTED = 'task:creation-requested';
  * @see {@link TaskCreatedDetail}
  */
 export const TASK_CREATED = 'task:created';
+
+/**
+ * @description Emitted when a task name update is requested.
+ * @event task:name-update-requested
+ * @type {string}
+ * @see {@link TaskNameUpdateRequestedDetail}
+ */
+export const TASK_NAME_UPDATE_REQUESTED = 'task:name-update-requested';
