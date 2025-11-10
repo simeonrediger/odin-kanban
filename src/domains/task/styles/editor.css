@@ -3,12 +3,25 @@
   width: 100%;
 }
 
-.task-name-input {
+.task-name-input,
+.task-description-input {
+  width: 100%;
+}
+
+.task-name-input,
+.task-description-input {
   background-color: transparent;
   color: inherit;
-  margin-bottom: 0.5rem;
-  width: 100%;
   outline: none;
+}
+
+.task-name-input {
+  margin-bottom: 0.5rem;
+}
+
+.task-description-input {
+  overflow: hidden;
+  resize: none;
 }
 
 .cancel-task-editor-button,

@@ -1,4 +1,5 @@
 import '../styles/editor.css';
+import '@/shared/utilities/auto-size-textarea.js';
 
 import assert from '@/shared/validation/assert.js';
 import eventBus, { events } from '@/domains/workspace/event-bus.js';
