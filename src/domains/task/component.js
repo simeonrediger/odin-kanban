@@ -94,10 +94,6 @@ export default class TaskView {
     }
 
     #renderDescription(descriptionText) {
-        this.#description = document.createElement('p');
-        this.#description.classList.add('task-description', 'hidden');
-        this.#description.textContent = descriptionText;
-
         const toggleDescriptionButtonWrapper = document.createElement('div');
         toggleDescriptionButtonWrapper.classList.add(
             'toggle-description-button-wrapper'
@@ -112,10 +108,15 @@ export default class TaskView {
         const toggleDescriptionIcon = createCaretDownIcon();
         toggleDescriptionIcon.classList.add('toggle-description-icon');
 
+        this.#description = document.createElement('p');
+        this.#description.classList.add('task-description', 'hidden');
+        this.#description.textContent = descriptionText;
+
         toggleDescriptionButton.append(toggleDescriptionIcon);
         toggleDescriptionButtonWrapper.append(toggleDescriptionButton);
         this.#container.append(
-            this.#description, toggleDescriptionButtonWrapper
+            toggleDescriptionButtonWrapper,
+            this.#description,
         );
     }
 

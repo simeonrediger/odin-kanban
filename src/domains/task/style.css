@@ -68,8 +68,7 @@
   color: var(--color-fg-highlight);
 }
 
-.task-description:not(.hidden)
-+ .toggle-description-button-wrapper .toggle-description-icon {
+.task-container:has(.task-description:not(.hidden)) .toggle-description-icon {
   rotate: 180deg;
 }
 
