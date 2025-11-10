@@ -46,7 +46,7 @@
 
 .toggle-description-button-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 
 .task-description {
