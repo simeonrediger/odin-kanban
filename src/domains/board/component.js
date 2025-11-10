@@ -23,6 +23,7 @@ let activeEditTaskView;
 
 const roles = {
     listContainer: 'list-container',
+    taskContainer: ListView.taskContainerRole,
 };
 
 const actions = {
@@ -211,7 +212,7 @@ function handleListsClick(event) {
     } else if (action === actions.openTaskOptionsMenu) {
 
         const taskContainer = button.closest(`
-            [data-role='${ListView.taskContainerRole}']`
+            [data-role='${roles.taskContainer}']`
         );
 
         const taskId = taskContainer.dataset.id;
