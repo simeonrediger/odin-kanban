@@ -1,11 +1,12 @@
-import '@/shared/utilities/auto-size-textarea.js';
 import '../styles/editor.css';
 
 import assert from '@/shared/validation/assert.js';
+import autoSizeTextarea from '@/shared/utilities/auto-size-textarea.js';
 import eventBus, { events } from '@/domains/workspace/event-bus.js';
 
 let container;
 let nameInput;
+let descriptionInput;
 let cancelButton;
 let submitButton;
 
@@ -28,6 +29,9 @@ function init(containerElement, { onExit, getActiveEditListId } = {}) {
 
 function cacheElements() {
     nameInput = container.querySelector("[data-input='task-name']");
+    descriptionInput = container.querySelector(
+        "[data-input='task-description']"
+    );
     cancelButton = container.querySelector(
         "[data-action='cancel-task-editor']"
     );
@@ -36,6 +40,7 @@ function cacheElements() {
     );
 
     assert.notNull(nameInput, "'nameInput'");
+    assert.notNull(descriptionInput, "'descriptionInput'");
     assert.notNull(cancelButton, "'cancelButton'");
     assert.notNull(submitButton, "'submitButton'");
 }
@@ -129,6 +134,7 @@ function exit(submitted) {
 
 function show() {
     container.classList.remove('hidden');
+    autoSizeTextarea(descriptionInput);
 }
 
 function hide() {
