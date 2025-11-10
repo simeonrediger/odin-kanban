@@ -84,7 +84,11 @@ function setBoardViewStore(board) {
         const taskViewStores = {};
 
         for (const task of list.tasks) {
-            taskViewStores[task.id] = new TaskViewStore(task.name);
+
+            taskViewStores[task.id] = new TaskViewStore(
+                task.name,
+                task.description,
+            );
         }
 
         listViewStores[list.id] = new ListViewStore(list.name, taskViewStores);

@@ -2,13 +2,15 @@
   background-color: #181818;
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
-
-  display: flex;
-  align-items: start;
 }
 
 .task-container.editing {
   background-color: var(--color-bg-highlight);
+}
+
+.task-header {
+  display: flex;
+  align-items: start;
 }
 
 .task-label {
@@ -40,4 +42,37 @@
 
 .task-options-icon {
   scale: 0.75;
+}
+
+.toggle-description-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.task-description {
+  color: var(--color-fg-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.toggle-description-button {
+  background-color: transparent;
+}
+
+.toggle-description-icon {
+  color: var(--color-fg-secondary);
+  scale: 0.75;
+}
+
+.toggle-description-icon:hover {
+  color: var(--color-fg-highlight);
+}
+
+.task-description:not(.hidden)
++ .toggle-description-button-wrapper .toggle-description-icon {
+  rotate: 180deg;
+}
+
+.task-container.editing .toggle-description-button {
+  display: none;
 }

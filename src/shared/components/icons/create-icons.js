@@ -1,4 +1,5 @@
 import cancelCircleSvg from './cancel-circle.svg?raw';
+import caretDownSvg from './caret-down.svg?raw';
 import checkmarkSvg from './checkmark.svg?raw';
 import clipboardPlusSvg from './clipboard-plus.svg?raw';
 import plusSvg from './plus.svg?raw';
@@ -17,6 +18,10 @@ function createIconFromString(svgString) {
 
 export function createCancelCircleIcon() {
     return createIconFromString(cancelCircleSvg);
+}
+
+export function createCaretDownIcon() {
+    return createIconFromString(caretDownSvg);
 }
 
 export function createCheckmarkIcon() {

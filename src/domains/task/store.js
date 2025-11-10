@@ -1,8 +1,10 @@
 export default class TaskViewStore {
     #name;
+    #description;
 
-    constructor(name) {
+    constructor(name, description) {
         this.#name = name;
+        this.#description = description;
     }
 
     getTaskName() {
@@ -11,5 +13,9 @@ export default class TaskViewStore {
 
     setTaskName(name) {
         this.#name = name;
+    }
+
+    getTaskDescription() {
+        return this.#description;
     }
 }

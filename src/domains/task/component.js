@@ -1,19 +1,27 @@
 import './style.css';
 
 import {
+    createCaretDownIcon,
     createThreeDotsVerticalIcon,
 } from '@/shared/components/icons/create-icons.js';
 
 export default class TaskView {
     #container;
+    #header;
     #label;
+    #description;
 
     static #actions = {
         openOptionsMenu: 'open-task-options-menu',
+        toggleDescription: 'toggle-task-description',
     };
 
     static get openOptionsMenuAction() {
         return this.#actions.openOptionsMenu;
+    }
+
+    static get toggleDescriptionAction() {
+        return this.#actions.toggleDescription;
     }
 
     constructor(taskId, store, containerRole) {
@@ -23,7 +31,11 @@ export default class TaskView {
         this.#label = document.createElement('p');
         this.#label.classList.add('task-label');
 
-        this.#container.append(this.#label);
+        this.#header = document.createElement('div');
+        this.#header.classList.add('task-header');
+        this.#header.append(this.#label);
+
+        this.#container.append(this.#header);
 
         if (taskId) {
             this.init(taskId, store, containerRole);
@@ -36,7 +48,13 @@ export default class TaskView {
 
         this.#label.textContent = store.getTaskName(taskId);
         const optionsMenuButton = this.#createOptionsButton();
-        this.#container.append(optionsMenuButton);
+        this.#header.append(optionsMenuButton);
+
+        const taskDescription = store.getTaskDescription();
+
+        if (taskDescription) {
+            this.#renderDescription(taskDescription);
+        }
     }
 
     get container() {
@@ -50,7 +68,7 @@ export default class TaskView {
     replaceLabelWithEditor(editor) {
         this.#label.classList.add('hidden');
         this.#container.classList.add('editing');
-        this.#container.prepend(editor);
+        this.#header.prepend(editor);
     }
 
     showLabel() {
@@ -73,5 +91,31 @@ export default class TaskView {
         button.append(icon);
 
         return button;
+    }
+
+    #renderDescription(descriptionText) {
+        this.#description = document.createElement('p');
+        this.#description.classList.add('task-description', 'hidden');
+        this.#description.textContent = descriptionText;
+
+        const toggleDescriptionButtonWrapper = document.createElement('div');
+        toggleDescriptionButtonWrapper.classList.add(
+            'toggle-description-button-wrapper'
+        );
+
+        const toggleDescriptionButton = document.createElement('button');
+        toggleDescriptionButton.classList.add('toggle-description-button')
+        toggleDescriptionButton.dataset.action = (
+            TaskView.#actions.toggleDescription
+        );
+
+        const toggleDescriptionIcon = createCaretDownIcon();
+        toggleDescriptionIcon.classList.add('toggle-description-icon');
+
+        toggleDescriptionButton.append(toggleDescriptionIcon);
+        toggleDescriptionButtonWrapper.append(toggleDescriptionButton);
+        this.#container.append(
+            this.#description, toggleDescriptionButtonWrapper
+        );
     }
 }
