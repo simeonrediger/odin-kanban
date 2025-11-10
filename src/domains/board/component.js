@@ -31,6 +31,7 @@ const actions = {
     createTask: ListView.createTaskAction,
     openListOptionsMenu: ListView.openOptionsMenuAction,
     openTaskOptionsMenu: TaskView.openOptionsMenuAction,
+    toggleTaskDescription: TaskView.toggleDescriptionAction,
 };
 
 function init(containerElement) {
@@ -228,6 +229,9 @@ function handleListsClick(event) {
             onConfirmDeletionClick: () => handleTaskDeleteClick(listId, taskId),
         });
 
+    } else if (action === actions.toggleTaskDescription) {
+        handleToggleTaskDescriptionClick(event.target);
+
     } else if (action === actions.createTask) {
         handleCreateTaskClick(event.target);
     }
@@ -359,6 +363,20 @@ function handleTaskDeleteClick(listId, taskId) {
 
 function getActiveEditListId() {
     return activeEditListView.id;
+}
+
+function handleToggleTaskDescriptionClick(target) {
+    const listId = target.closest(
+        `[data-role='${roles.listContainer}']`
+    ).dataset.id;
+
+    const taskId = target.closest(
+        `[data-role='${roles.taskContainer}']`
+    ).dataset.id;
+
+    const listView = listViews.get(listId);
+    const taskView = listView.getTaskView(taskId);
+    taskView.toggleDescription();
 }
 
 const boardView = {

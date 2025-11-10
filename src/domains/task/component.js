@@ -118,4 +118,8 @@ export default class TaskView {
             this.#description, toggleDescriptionButtonWrapper
         );
     }
+
+    toggleDescription() {
+        this.#description.classList.toggle('hidden');
+    }
 }
