@@ -22,6 +22,7 @@
 .task-description-input {
   overflow: hidden;
   resize: none;
+  vertical-align: top;
 }
 
 .cancel-task-editor-button,
