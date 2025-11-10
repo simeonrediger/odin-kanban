@@ -1,4 +1,4 @@
-import '@/shared/utilities/auto-size-textarea.js'; 
+import '@/shared/utilities/auto-size-textarea.js';
 import '../styles/editor.css';
 
 import assert from '@/shared/validation/assert.js';
