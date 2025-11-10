@@ -1,3 +1,5 @@
+import '../styles/auto-size-textarea.css';
+
 const autoSizeTextareas = document.querySelectorAll('textarea.auto-size');
 
 for (const textarea of autoSizeTextareas) {

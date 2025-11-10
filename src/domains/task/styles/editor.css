@@ -19,12 +19,6 @@
   margin-bottom: 0.5rem;
 }
 
-.task-description-input {
-  overflow: hidden;
-  resize: none;
-  vertical-align: top;
-}
-
 .cancel-task-editor-button,
 .submit-task-editor-button {
   background-color: transparent;

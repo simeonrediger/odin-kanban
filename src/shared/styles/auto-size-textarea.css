@@ -1,0 +1,5 @@
+textarea.auto-size {
+  overflow: hidden;
+  resize: none;
+  vertical-align: top;
+}
