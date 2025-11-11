@@ -58,9 +58,10 @@
           ></button>
         </div>
         <div data-role='task-editor' class='task-editor hidden'>
-          <input data-input='task-name' class='task-name-input'
-            placeholder='Untitled task' aria-label='Task name'
+          <textarea data-input='task-name' class='task-name-input auto-size'
+            rows='1' placeholder='Untitled task' aria-label='Task name'
           >
+          </textarea>
           <textarea data-input='task-description'
             class='task-description-input auto-size' rows='1'
             placeholder='Optional description' aria-label='Task description'

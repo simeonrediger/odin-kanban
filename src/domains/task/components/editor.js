@@ -134,6 +134,7 @@ function exit(submitted) {
 
 function show() {
     container.classList.remove('hidden');
+    autoSizeTextarea(nameInput);
     autoSizeTextarea(descriptionInput);
 }
 
