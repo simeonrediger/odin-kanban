@@ -32,7 +32,10 @@
   min-width: max-content;
 }
 
-.task-container.editing .task-options-button {
+.task-container.editing :is(
+  .task-options-button,
+  .task-description,
+ ) {
   display: none;
 }
 
