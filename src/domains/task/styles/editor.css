@@ -19,6 +19,11 @@
   margin-bottom: 0.5rem;
 }
 
+.task-description-input {
+  color: var(--color-fg-secondary);
+  font-size: 0.875rem;
+}
+
 .cancel-task-editor-button,
 .submit-task-editor-button {
   background-color: transparent;
