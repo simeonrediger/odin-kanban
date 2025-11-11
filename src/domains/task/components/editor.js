@@ -113,15 +113,20 @@ function submit() {
     const listId = handlers.getActiveEditListId();
 
     if (isEditMode) {
-        eventBus.emit(events.TASK_NAME_UPDATE_REQUESTED, {
+        eventBus.emit(events.TASK_UPDATE_REQUESTED, {
             listId,
             taskId: activeEditTaskId,
             taskName,
+            taskDescription,
         });
 
     } else {
         const listId = handlers.getActiveEditListId();
-        eventBus.emit(events.TASK_CREATION_REQUESTED, { listId, taskName });
+        eventBus.emit(events.TASK_CREATION_REQUESTED, {
+            listId,
+            taskName,
+            taskDescription,
+        });
     }
 }
 

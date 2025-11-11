@@ -40,7 +40,7 @@ function bindEvents() {
     eventBus.on(events.LIST_DELETION_REQUESTED, handleListDeletionRequest);
 
     eventBus.on(events.TASK_CREATION_REQUESTED, createTask);
-    eventBus.on(events.TASK_NAME_UPDATE_REQUESTED, updateTaskName);
+    eventBus.on(events.TASK_UPDATE_REQUESTED, updateTask);
     eventBus.on(events.TASK_DELETION_REQUESTED, handleTaskDeletionRequest);
 }
 
@@ -171,10 +171,11 @@ function createTask({ listId, taskName }) {
     });
 }
 
-function updateTaskName({ listId, taskId, taskName }) {
+function updateTask({ listId, taskId, taskName, taskDescription }) {
     const list = activeBoard.getList(listId);
     const task = list.getTask(taskId);
     task.name = taskName;
+    task.description = taskDescription;
 
     const listViewStore = boardViewStore.getListViewStore(listId);
     const taskViewStore = listViewStore.getTaskViewStore(taskId);

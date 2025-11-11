@@ -253,7 +253,7 @@ export const TASK_CREATED = 'task:created';
  * @type {string}
  * @see {@link TaskNameUpdateRequestedDetail}
  */
-export const TASK_NAME_UPDATE_REQUESTED = 'task:name-update-requested';
+export const TASK_UPDATE_REQUESTED = 'task:name-update-requested';
 
 /**
  * @description Emitted when a task name is updated.
