@@ -12,11 +12,8 @@
 .task-description-input {
   background-color: transparent;
   color: inherit;
-  outline: none;
-}
-
-.task-name-input {
   margin-bottom: 0.5rem;
+  outline: none;
 }
 
 .task-description-input {
