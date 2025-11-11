@@ -56,6 +56,7 @@ function bindEvents() {
 
 function enterCreateMode() {
     nameInput.value = '';
+    descriptionInput.value = '';
     open();
     nameInput.focus();
 }
