@@ -40,6 +40,7 @@
   background-color: transparent;
   color: var(--color-fg-secondary);
   display: none;
+  flex-shrink: 0;
   padding-inline: 0.5rem;
 }
 
