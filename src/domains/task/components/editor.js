@@ -64,8 +64,13 @@ function enterEditMode(taskId, taskName, taskDescription) {
     nameInput.value = taskName;
     descriptionInput.value = taskDescription ?? '';
     open();
-    nameInput.focus();
-    nameInput.setSelectionRange(taskName.length, taskName.length);
+
+    descriptionInput.focus();
+    descriptionInput.setSelectionRange(
+        taskDescription.length,
+        taskDescription.length,
+    );
+
     isEditMode = true;
     activeEditTaskId = taskId;
 }
