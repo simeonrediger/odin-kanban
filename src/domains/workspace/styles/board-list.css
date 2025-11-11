@@ -50,9 +50,12 @@
   background-color: transparent;
   color: var(--color-fg-primary);
   cursor: default;
+  overflow-x: hidden;
   padding: 0.375rem 1rem;
   text-align: start;
   width: 100%;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
 }
 
 .board-list-item.selected:not(.is-menu-context) .board-select-button {
