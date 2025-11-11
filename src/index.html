@@ -23,9 +23,10 @@
         <nav class='board-nav'>
           <ul data-role='board-list' class='board-list'>
             <li data-role='board-editor' class='board-editor hidden'>
-              <input data-input='board-name' class='board-name-input'
+              <textarea data-input='board-name'
+                class='board-name-input auto-size' rows='1'
                 placeholder='Untitled board' aria-label='Board name'
-              >
+              ></textarea>
               <button data-action='cancel-board-editor'
                 data-icon='cancel-circle' class='cancel-board-editor-button'
               ></button>

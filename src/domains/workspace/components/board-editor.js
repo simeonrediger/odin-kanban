@@ -1,6 +1,7 @@
 import '../styles/board-editor.css';
 
 import assert from '@/shared/validation/assert.js';
+import autoSizeTextarea from '@/shared/utilities/auto-size-textarea.js';
 import eventBus, { events } from '../event-bus.js';
 
 let container;
@@ -94,6 +95,7 @@ function exitEditMode() {
 
 function show() {
     container.classList.remove('hidden');
+    autoSizeTextarea(nameInput);
 }
 
 function hide() {
