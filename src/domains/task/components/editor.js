@@ -60,9 +60,9 @@ function enterCreateMode() {
     nameInput.focus();
 }
 
-function enterEditMode(taskId, taskName, taskDescription) {
+function enterEditMode(taskId, taskName, taskDescription = '') {
     nameInput.value = taskName;
-    descriptionInput.value = taskDescription ?? '';
+    descriptionInput.value = taskDescription;
     open();
 
     descriptionInput.focus();
