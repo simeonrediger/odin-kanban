@@ -1,6 +1,7 @@
 import '../styles/editor.css';
 
 import assert from '@/shared/validation/assert.js';
+import autoSizeTextarea from '@/shared/utilities/auto-size-textarea.js';
 import eventBus, { events } from '@/domains/workspace/event-bus.js';
 
 let container;
@@ -120,6 +121,7 @@ function exit(submitted) {
 
 function show() {
     container.classList.remove('hidden');
+    autoSizeTextarea(nameInput);
 }
 
 function hide() {
