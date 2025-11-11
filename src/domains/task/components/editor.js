@@ -109,6 +109,7 @@ function handleCancelClick() {
 
 function submit() {
     const taskName = nameInput.value.trim() || nameInput.placeholder;
+    const taskDescription = descriptionInput.value.trim() || undefined;
     const listId = handlers.getActiveEditListId();
 
     if (isEditMode) {
