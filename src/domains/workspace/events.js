@@ -80,6 +80,7 @@
  * @typedef {Object} TaskCreationRequestedDetail
  * @property {string} listId - Unique ID of the list containing the task.
  * @property {string} taskName - Name for the task.
+ * @property {string} taskDescription - Description for the task.
  */
 
 /**
