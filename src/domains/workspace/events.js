@@ -88,6 +88,7 @@
  * @property {string} listId - Unique ID of the list containing the task.
  * @property {string} taskId - Unique ID of the task.
  * @property {string} taskName - Name of the task.
+ * @property {string} taskDescription - Description of the task.
  */
 
 /**
@@ -99,10 +100,11 @@
  */
 
 /**
- * @typedef {Object} TaskNameUpdatedDetail
+ * @typedef {Object} TaskUpdatedDetail
  * @property {string} listId - Unique ID of the list containing the task.
  * @property {string} taskId - Unique ID of the task.
  * @property {string} taskName - New name of the task.
+ * @property {string} taskDescription - Description of the task.
  */
 
 /**
@@ -258,12 +260,12 @@ export const TASK_CREATED = 'task:created';
 export const TASK_UPDATE_REQUESTED = 'task:name-update-requested';
 
 /**
- * @description Emitted when a task name is updated.
+ * @description Emitted when a task is updated.
  * @event task:name-updated
  * @type {string}
- * @see {@link TaskNameUpdatedDetail}
+ * @see {@link TaskUpdatedDetail}
  */
-export const TASK_NAME_UPDATED = 'task:name-updated';
+export const TASK_UPDATED = 'task:name-updated';
 
 /**
  * @description Emitted when task deletion is requested.

@@ -18,4 +18,8 @@ export default class TaskViewStore {
     getTaskDescription() {
         return this.#description;
     }
+
+    setTaskDescription(description) {
+        this.#description = description;
+    }
 }

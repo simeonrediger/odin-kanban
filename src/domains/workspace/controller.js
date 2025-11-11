@@ -180,11 +180,13 @@ function updateTask({ listId, taskId, taskName, taskDescription }) {
     const listViewStore = boardViewStore.getListViewStore(listId);
     const taskViewStore = listViewStore.getTaskViewStore(taskId);
     taskViewStore.setTaskName(task.name);
+    taskViewStore.setTaskDescription(task.description);
 
-    eventBus.emit(events.TASK_NAME_UPDATED, {
+    eventBus.emit(events.TASK_UPDATED, {
         listId: list.id,
         taskId: task.id,
         taskName: task.name,
+        taskDescription: task.description,
     });
 }
 

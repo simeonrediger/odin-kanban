@@ -47,7 +47,7 @@ function cacheElements() {
 
 function bindEvents() {
     eventBus.on(events.TASK_CREATED, handleTaskCreation);
-    eventBus.on(events.TASK_NAME_UPDATED, handleNameUpdated);
+    eventBus.on(events.TASK_UPDATED, handleTaskUpdated);
 
     nameInput.addEventListener('keydown', handleNameInputKeyDown);
     cancelButton.addEventListener('click', handleCancelClick);
@@ -84,7 +84,7 @@ function handleTaskCreation() {
     exit(submitted);
 }
 
-function handleNameUpdated() {
+function handleTaskUpdated() {
     const submitted = true;
     exit(submitted);
 }
