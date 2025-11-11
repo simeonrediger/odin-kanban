@@ -220,12 +220,17 @@ function handleListsClick(event) {
         const listViewStore = boardViewStore.getListViewStore(listId);
         const taskViewStore = listViewStore.getTaskViewStore(taskId);
         const taskName = taskViewStore.getTaskName();
+        const taskDescription = taskViewStore.getTaskDescription();
 
         taskOptionsMenu.toggle({
             anchorElement: taskContainer,
             clientX: event.clientX,
             clientY: event.clientY,
-            onRenameClick: () => handleTaskRenameClick(taskName, taskContainer),
+            onRenameClick: () => handleTaskRenameClick(
+                taskName,
+                taskDescription,
+                taskContainer
+            ),
             onConfirmDeletionClick: () => handleTaskDeleteClick(listId, taskId),
         });
 
@@ -342,7 +347,7 @@ function handleTaskEditorExit(isEditMode, submitted) {
     activeEditTaskView = null;
 }
 
-function handleTaskRenameClick(taskName, taskContainer) {
+function handleTaskRenameClick(taskName, taskDescription, taskContainer) {
     const listContainer = taskContainer.closest(
         `[data-role='${roles.listContainer}']`
     );
@@ -354,7 +359,7 @@ function handleTaskRenameClick(taskName, taskContainer) {
     activeEditTaskView = activeEditListView.getTaskView(taskId);
 
     activeEditTaskView.replaceLabelWithEditor(taskEditorContainer);
-    taskEditor.enterEditMode(taskId, taskName);
+    taskEditor.enterEditMode(taskId, taskName, taskDescription);
 }
 
 function handleTaskDeleteClick(listId, taskId) {
