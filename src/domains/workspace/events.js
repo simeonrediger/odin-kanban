@@ -30,7 +30,7 @@
 /**
  * @typedef {Object} BoardNameUpdatedDetail
  * @property {string} boardId - Unique ID of the board.
- * @property {string} boardName - New name of the board.
+ * @property {string} boardName - Name of the board.
  */
 
 /**
@@ -63,7 +63,7 @@
 /**
  * @typedef {Object} ListNameUpdatedDetail
  * @property {string} listId - Unique ID of the list.
- * @property {string} listName - New name of the list.
+ * @property {string} listName - Name of the list.
  */
 
 /**
@@ -103,7 +103,7 @@
  * @typedef {Object} TaskUpdatedDetail
  * @property {string} listId - Unique ID of the list containing the task.
  * @property {string} taskId - Unique ID of the task.
- * @property {string} taskName - New name of the task.
+ * @property {string} taskName - Name of the task.
  * @property {string} taskDescription - Description of the task.
  */
 
