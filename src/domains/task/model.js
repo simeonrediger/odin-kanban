@@ -42,7 +42,11 @@ export default class Task {
     }
 
     set description(description) {
-        assert.string(description);
+
+        if (description !== undefined) {
+            assert.string(description);
+        }
+
         this.#description = description;
     }
 
