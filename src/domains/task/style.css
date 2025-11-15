@@ -54,11 +54,6 @@
 
 .toggle-description-button {
   background-color: transparent;
-  display: none;
-}
-
-.toggle-description-button:not(.hidden) {
-  display: inline-block;
 }
 
 .toggle-description-icon {
