@@ -12,6 +12,7 @@ export default class TaskView {
     #detailsContainer;
     #toggleDescriptionButton
     #description;
+    #priorityLevel;
 
     static #actions = {
         openOptionsMenu: 'open-task-options-menu',
@@ -55,8 +56,10 @@ export default class TaskView {
         const optionsMenuButton = this.#createOptionsButton();
         this.#header.append(optionsMenuButton);
 
+        const taskPriorityLevel = store.getTaskPriorityLevel();
         const taskDescription = store.getTaskDescription();
 
+        this.#renderPriorityLevel(taskPriorityLevel);
         this.#renderDescription(taskDescription);
     }
 
@@ -94,6 +97,40 @@ export default class TaskView {
         button.append(icon);
 
         return button;
+    }
+
+    #renderPriorityLevel(priorityLevel) {
+
+        if (!priorityLevel) {
+            return;
+        }
+
+        this.#priorityLevel = document.createElement('p');
+        this.#priorityLevel.classList.add('task-priority-level');
+
+        this.#priorityLevel.textContent = this.#getPriorityLevelText(
+            priorityLevel
+        );
+
+        this.#detailsContainer.prepend(this.#priorityLevel);
+    }
+
+    #getPriorityLevelText(priorityLevel) {
+
+        switch (priorityLevel) {
+            case 10:
+                return 'Optional';
+            case 20:
+                return 'Low';
+            case 30:
+                return 'Medium';
+            case 40:
+                return 'High';
+            case 50:
+                return 'Critical';
+            default:
+                throw new Error(`Unexpected 'priorityLevel': ${priorityLevel}`);
+        }
     }
 
     #renderDescription(descriptionText) {

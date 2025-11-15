@@ -17,10 +17,11 @@ export default class Task {
     #priorityLevel;
     #isDone;
 
-    constructor(name, description, id) {
+    constructor(name, description, priorityLevel, id) {
         this.#id = id ?? crypto.randomUUID();
         this.name = name;
         this.#description = description;
+        this.#priorityLevel = priorityLevel;
         Object.freeze(this);
     }
 

@@ -88,6 +88,7 @@ function setBoardViewStore(board) {
             taskViewStores[task.id] = new TaskViewStore(
                 task.name,
                 task.description,
+                task.priorityLevel,
             );
         }
 
