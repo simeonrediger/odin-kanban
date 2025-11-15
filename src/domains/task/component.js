@@ -38,7 +38,7 @@ export default class TaskView {
         this.#header.append(this.#label);
 
         this.#detailsContainer = document.createElement('div');
-        this.#detailsContainer.classList.add('task-details', 'hidden');
+        this.#detailsContainer.classList.add('task-details');
 
         this.#container.append(this.#header, this.#detailsContainer);
 
@@ -104,6 +104,8 @@ export default class TaskView {
 
         if (descriptionText) {
             this.#setDescriptionText(descriptionText);
+        } else {
+            this.#unsetDescription();
         }
     }
 
@@ -114,7 +116,12 @@ export default class TaskView {
         }
 
         this.#description.textContent = text;
-        this.#detailsContainer.classList.remove('hidden');
+        this.#toggleDescriptionButton.classList.remove('hidden');
+    }
+
+    #unsetDescription() {
+        this.#description.textContent = '';
+        this.#toggleDescriptionButton.classList.add('hidden');
     }
 
     #createDescription() {
@@ -130,7 +137,7 @@ export default class TaskView {
         toggleDescriptionIcon.classList.add('toggle-description-icon');
 
         this.#description = document.createElement('p');
-        this.#description.classList.add('task-description', 'hidden');
+        this.#description.classList.add('task-description');
 
         this.#toggleDescriptionButton.append(toggleDescriptionIcon);
         this.#detailsContainer.append(this.#toggleDescriptionButton);
