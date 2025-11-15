@@ -65,6 +65,10 @@
   background-color: transparent;
 }
 
+.task-details:has(.task-priority-level) {
+  justify-content: space-between;
+}
+
 .toggle-description-icon {
   color: var(--color-fg-secondary);
   scale: 0.75;
