@@ -137,7 +137,7 @@ export default class TaskView {
         toggleDescriptionIcon.classList.add('toggle-description-icon');
 
         this.#description = document.createElement('p');
-        this.#description.classList.add('task-description');
+        this.#description.classList.add('task-description', 'hidden');
 
         this.#toggleDescriptionButton.append(toggleDescriptionIcon);
         this.#detailsContainer.append(this.#toggleDescriptionButton);
