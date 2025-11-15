@@ -61,7 +61,7 @@
   scale: 0.75;
 }
 
-.toggle-description-icon:hover {
+.toggle-description-button:hover .toggle-description-icon {
   color: var(--color-fg-highlight);
 }
 
