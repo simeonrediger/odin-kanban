@@ -9,6 +9,7 @@ export default class TaskView {
     #container;
     #header;
     #label;
+    #detailsContainer;
     #description;
 
     static #actions = {
@@ -94,10 +95,8 @@ export default class TaskView {
     }
 
     #renderDescription(descriptionText) {
-        const toggleDescriptionButtonWrapper = document.createElement('div');
-        toggleDescriptionButtonWrapper.classList.add(
-            'toggle-description-button-wrapper'
-        );
+        this.#detailsContainer = document.createElement('div');
+        this.#detailsContainer.classList.add('task-details');
 
         const toggleDescriptionButton = document.createElement('button');
         toggleDescriptionButton.classList.add('toggle-description-button')
@@ -113,11 +112,8 @@ export default class TaskView {
         this.#description.textContent = descriptionText;
 
         toggleDescriptionButton.append(toggleDescriptionIcon);
-        toggleDescriptionButtonWrapper.append(toggleDescriptionButton);
-        this.#container.append(
-            toggleDescriptionButtonWrapper,
-            this.#description,
-        );
+        this.#detailsContainer.append(toggleDescriptionButton);
+        this.#container.append(this.#detailsContainer, this.#description);
     }
 
     toggleDescription() {
