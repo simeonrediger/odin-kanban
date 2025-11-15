@@ -37,7 +37,7 @@ export default class TaskView {
         this.#header.append(this.#label);
 
         this.#detailsContainer = document.createElement('div');
-        this.#detailsContainer.classList.add('task-details');
+        this.#detailsContainer.classList.add('task-details', 'hidden');
 
         this.#container.append(this.#header, this.#detailsContainer);
 
@@ -56,9 +56,7 @@ export default class TaskView {
 
         const taskDescription = store.getTaskDescription();
 
-        if (taskDescription) {
-            this.#renderDescription(taskDescription);
-        }
+        this.#renderDescription(taskDescription);
     }
 
     get container() {
@@ -98,9 +96,27 @@ export default class TaskView {
     }
 
     #renderDescription(descriptionText) {
-        this.#detailsContainer = document.createElement('div');
-        this.#detailsContainer.classList.add('task-details');
 
+        if (!this.#description) {
+            this.#createDescription();
+        }
+
+        if (descriptionText) {
+            this.#setDescriptionText(descriptionText);
+        }
+    }
+
+    #setDescriptionText(text) {
+
+        if (typeof text !== 'string' || text === '') {
+            throw new TypeError(`'text' must be a string`);
+        }
+
+        this.#description.textContent = text;
+        this.#detailsContainer.classList.remove('hidden');
+    }
+
+    #createDescription() {
         const toggleDescriptionButton = document.createElement('button');
         toggleDescriptionButton.classList.add('toggle-description-button')
         toggleDescriptionButton.dataset.action = (
@@ -112,7 +128,6 @@ export default class TaskView {
 
         this.#description = document.createElement('p');
         this.#description.classList.add('task-description', 'hidden');
-        this.#description.textContent = descriptionText;
 
         toggleDescriptionButton.append(toggleDescriptionIcon);
         this.#detailsContainer.append(toggleDescriptionButton);

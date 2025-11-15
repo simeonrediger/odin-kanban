@@ -48,8 +48,11 @@
 }
 
 .task-details {
-  display: flex;
   justify-content: end;
+}
+
+.task-details:not(.hidden) {
+  display: flex;
 }
 
 .task-description {
