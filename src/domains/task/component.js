@@ -108,11 +108,33 @@ export default class TaskView {
         this.#priorityLevel = document.createElement('p');
         this.#priorityLevel.classList.add('task-priority-level');
 
+        this.#priorityLevel.classList.add(
+            this.#getPriorityLevelClass(priorityLevel)
+        );
+
         this.#priorityLevel.textContent = this.#getPriorityLevelText(
             priorityLevel
         );
 
         this.#detailsContainer.prepend(this.#priorityLevel);
+    }
+
+    #getPriorityLevelClass(priorityLevel) {
+
+        switch (priorityLevel) {
+            case 10:
+                return 'optional';
+            case 20:
+                return 'low';
+            case 30:
+                return 'medium';
+            case 40:
+                return 'high';
+            case 50:
+                return 'critical';
+            default:
+                throw new Error(`Unexpected 'priorityLevel': ${priorityLevel}`);
+        }
     }
 
     #getPriorityLevelText(priorityLevel) {

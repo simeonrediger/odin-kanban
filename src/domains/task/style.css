@@ -53,12 +53,30 @@
 }
 
 .task-priority-level {
-  background-color: #555;
   border-radius: 0.5rem;
-  color: var(--color-fg-secondary);
   display: inline-block;
   font-size: 0.75rem;
   padding-inline: 0.25rem;
+}
+
+.task-priority-level.optional {
+  background-color: #444;
+}
+
+.task-priority-level.low {
+  background-color: #448;
+}
+
+.task-priority-level.medium {
+  background-color: #a70;
+}
+
+.task-priority-level.high {
+  background-color: #a40;
+}
+
+.task-priority-level.critical {
+  background-color: #a00;
 }
 
 .toggle-description-button {
