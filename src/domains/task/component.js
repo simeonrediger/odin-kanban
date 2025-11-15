@@ -119,7 +119,9 @@ export default class TaskView {
 
     #createDescription() {
         this.#toggleDescriptionButton = document.createElement('button');
-        this.#toggleDescriptionButton.classList.add('toggle-description-button')
+        this.#toggleDescriptionButton.classList.add(
+            'toggle-description-button'
+        );
         this.#toggleDescriptionButton.dataset.action = (
             TaskView.#actions.toggleDescription
         );
