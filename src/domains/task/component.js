@@ -36,7 +36,10 @@ export default class TaskView {
         this.#header.classList.add('task-header');
         this.#header.append(this.#label);
 
-        this.#container.append(this.#header);
+        this.#detailsContainer = document.createElement('div');
+        this.#detailsContainer.classList.add('task-details');
+
+        this.#container.append(this.#header, this.#detailsContainer);
 
         if (taskId) {
             this.init(taskId, store, containerRole);
@@ -113,7 +116,7 @@ export default class TaskView {
 
         toggleDescriptionButton.append(toggleDescriptionIcon);
         this.#detailsContainer.append(toggleDescriptionButton);
-        this.#container.append(this.#detailsContainer, this.#description);
+        this.#container.append(this.#description);
     }
 
     toggleDescription() {
