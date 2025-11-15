@@ -52,16 +52,6 @@
   justify-content: end;
 }
 
-.task-details:not(.hidden) {
-  display: flex;
-}
-
-.task-description {
-  color: var(--color-fg-secondary);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
 .toggle-description-button {
   background-color: transparent;
   display: none;
@@ -78,6 +68,12 @@
 
 .toggle-description-icon:hover {
   color: var(--color-fg-highlight);
+}
+
+.task-description {
+  color: var(--color-fg-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }
 
 .task-container:has(.task-description:not(.hidden)) .toggle-description-icon {
