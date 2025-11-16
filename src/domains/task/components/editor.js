@@ -70,7 +70,7 @@ function enterCreateMode() {
 function enterEditMode(id, name, description = '', priorityLevel = '') {
     nameInput.value = name;
     descriptionInput.value = description;
-    priorityLevelInput.value = priorityLevel;
+    priorityLevelInput.value = getPriorityLevelOptionValue(priorityLevel);
     open();
 
     descriptionInput.focus();
@@ -78,6 +78,26 @@ function enterEditMode(id, name, description = '', priorityLevel = '') {
 
     isEditMode = true;
     activeEditTaskId = id;
+}
+
+function getPriorityLevelOptionValue(priorityLevel) {
+
+    switch (priorityLevel) {
+        case '':
+            return '';
+        case 10:
+            return 'optional';
+        case 20:
+            return 'low';
+        case 30:
+            return 'medium';
+        case 40:
+            return 'high';
+        case 50:
+            return 'critical';
+        default:
+            throw new Error(`Unexpected 'priorityLevel': ${priorityLevel}`);
+    }
 }
 
 function open() {
