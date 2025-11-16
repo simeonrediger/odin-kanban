@@ -11,8 +11,11 @@
   <body data-role='workspace' class='workspace'>
 
     <aside data-role='sidebar' class='sidebar'>
+
       <h1 class='page-title'>To-do List</h1>
+
       <div data-role='board-list-container' class='board-list-container'>
+
         <div class='board-list-header'>
           <h2 class='board-list-label'>Boards</h2>
           <button data-action='create-board' data-icon='squircle-plus'
@@ -20,6 +23,7 @@
             title='Create board' aria-label='Create board'
           ></button>
         </div>
+
         <nav class='board-nav'>
           <ul data-role='board-list' class='board-list'>
             <li data-role='board-editor' class='board-editor hidden'>
@@ -36,17 +40,21 @@
             </li>
           </ul>
         </nav>
+
       </div>
     </aside>
 
     <main>
+
       <div data-role='board-container' class='board-container hidden'>
+
         <p data-role='board-title' class='board-title'></p>
         <button data-action='create-list' data-icon='clipboard-plus prepend'
           class='create-list-button'
           title='Create list' aria-label='Create list'
         >New list</button>
         <ul data-role='lists-container' class='lists-container'></ul>
+
         <div data-role='list-editor' class='list-editor hidden'>
           <textarea data-input='list-name' class='list-name-input auto-size'
             rows='1' placeholder='Untitled list' aria-label='List name'
@@ -58,6 +66,7 @@
             class='submit-list-editor-button'
           ></button>
         </div>
+
         <div data-role='task-editor' class='task-editor hidden'>
           <textarea data-input='task-name' class='task-name-input auto-size'
             rows='1' placeholder='Untitled task' aria-label='Task name'
@@ -73,10 +82,13 @@
             class='submit-task-editor-button'
           ></button>
         </div>
+
       </div>
+
       <div data-role='board-placeholder' class='board-placeholder hidden'>
         <p data-role='board-placeholder-message'></p>
       </div>
+
     </main>
 
     <template data-template='options-menu'>
