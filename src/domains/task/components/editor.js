@@ -62,6 +62,7 @@ function bindEvents() {
 function enterCreateMode() {
     nameInput.value = '';
     descriptionInput.value = '';
+    priorityLevelInput.value = '';
     open();
     nameInput.focus();
 }
