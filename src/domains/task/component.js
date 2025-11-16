@@ -52,13 +52,14 @@ export default class TaskView {
         this.#container.dataset.id = taskId;
         this.#container.dataset.role = containerRole;
 
-        this.#label.textContent = store.getTaskName();
         const optionsMenuButton = this.#createOptionsButton();
         this.#header.append(optionsMenuButton);
 
+        const taskName = store.getTaskName();
         const taskPriorityLevel = store.getTaskPriorityLevel();
         const taskDescription = store.getTaskDescription();
 
+        this.#renderName(taskName);
         this.#renderPriorityLevel(taskPriorityLevel);
         this.#renderDescription(taskDescription);
     }
@@ -97,6 +98,10 @@ export default class TaskView {
         button.append(icon);
 
         return button;
+    }
+
+    #renderName(name) {
+        this.#label.textContent = name;
     }
 
     #renderPriorityLevel(priorityLevel) {
