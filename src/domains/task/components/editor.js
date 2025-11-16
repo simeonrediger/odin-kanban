@@ -67,19 +67,17 @@ function enterCreateMode() {
     nameInput.focus();
 }
 
-function enterEditMode(taskId, taskName, taskDescription = '') {
-    nameInput.value = taskName;
-    descriptionInput.value = taskDescription;
+function enterEditMode(id, name, description = '') {
+    nameInput.value = name;
+    descriptionInput.value = description;
+    priorityLevelInput.value = taskPriorityLevel;
     open();
 
     descriptionInput.focus();
-    descriptionInput.setSelectionRange(
-        taskDescription.length,
-        taskDescription.length,
-    );
+    descriptionInput.setSelectionRange(description.length, description.length);
 
     isEditMode = true;
-    activeEditTaskId = taskId;
+    activeEditTaskId = id;
 }
 
 function open() {
