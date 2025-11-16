@@ -29,7 +29,7 @@ export default class TaskViewStore {
         return this.#priorityLevel;
     }
 
-    setTaskPriority(priorityLevel) {
+    setTaskPriorityLevel(priorityLevel) {
         this.#priorityLevel = priorityLevel;
     }
 }
