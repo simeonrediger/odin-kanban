@@ -65,7 +65,11 @@ export default class Task {
     }
 
     set priorityLevel(priorityLevel) {
-        assert.inValues(priorityLevel, Task.#PRIORITY, "'priorityLevel'");
+
+        if (priorityLevel !== undefined) {
+            assert.inValues(priorityLevel, Task.#PRIORITY, "'priorityLevel'");
+        }
+
         this.#priorityLevel = priorityLevel;
     }
 
