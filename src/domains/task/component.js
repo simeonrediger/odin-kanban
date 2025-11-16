@@ -114,12 +114,14 @@ export default class TaskView {
             return;
         }
 
-        this.#priorityLevel = document.createElement('p');
-        this.#priorityLevel.classList.add('task-priority-level');
+        if (!this.#priorityLevel) {
+            this.#priorityLevel = document.createElement('p');
+            this.#priorityLevel.classList.add('task-priority-level');
+        }
 
-        this.#priorityLevel.classList.add(
-            this.#getPriorityLevelClass(priorityLevel)
-        );
+        const priorityLevelClass = this.#getPriorityLevelClass(priorityLevel);
+        this.#priorityLevel.classList.add(priorityLevelClass);
+        this.#removePriorityLevelClasses(priorityLevelClass);
 
         this.#priorityLevel.textContent = this.#getPriorityLevelText(
             priorityLevel
@@ -144,6 +146,15 @@ export default class TaskView {
             default:
                 throw new Error(`Unexpected 'priorityLevel': ${priorityLevel}`);
         }
+    }
+
+    #removePriorityLevelClasses(exception) {
+        const classNames = ['optional', 'low', 'medium', 'high', 'critical'];
+        const classesToRemove = classNames.filter(
+            className => className !== exception
+        );
+
+        this.#priorityLevel.classList.remove(...classesToRemove);
     }
 
     #getPriorityLevelText(priorityLevel) {
