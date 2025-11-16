@@ -5,15 +5,11 @@
 
 .task-name-input,
 .task-description-input {
-  width: 100%;
-}
-
-.task-name-input,
-.task-description-input {
   background-color: transparent;
   color: inherit;
   margin-bottom: 0.5rem;
   outline: none;
+  width: 100%;
 }
 
 .task-description-input {
