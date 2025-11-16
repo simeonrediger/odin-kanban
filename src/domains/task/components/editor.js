@@ -121,7 +121,7 @@ function handleCancelClick() {
 function submit() {
     const taskName = nameInput.value.trim() || nameInput.placeholder;
     const taskDescription = descriptionInput.value.trim() || undefined;
-    const taskPriorityLevel = priorityLevelInput.value || undefined;
+    const taskPriorityLevel = Number(priorityLevelInput.value) || undefined;
     const listId = handlers.getActiveEditListId();
 
     if (isEditMode) {
