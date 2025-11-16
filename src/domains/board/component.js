@@ -229,7 +229,7 @@ function handleListsClick(event) {
             onRenameClick: () => handleTaskRenameClick(
                 taskName,
                 taskDescription,
-                taskContainer
+                taskContainer,
             ),
             onConfirmDeletionClick: () => handleTaskDeleteClick(listId, taskId),
         });
