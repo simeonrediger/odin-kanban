@@ -121,6 +121,7 @@ function handleCancelClick() {
 function submit() {
     const taskName = nameInput.value.trim() || nameInput.placeholder;
     const taskDescription = descriptionInput.value.trim() || undefined;
+    const taskPriorityLevel = priorityLevelInput.value || undefined;
     const listId = handlers.getActiveEditListId();
 
     if (isEditMode) {
@@ -129,6 +130,7 @@ function submit() {
             taskId: activeEditTaskId,
             taskName,
             taskDescription,
+            taskPriorityLevel,
         });
 
     } else {
@@ -137,6 +139,7 @@ function submit() {
             listId,
             taskName,
             taskDescription,
+            taskPriorityLevel,
         });
     }
 }
