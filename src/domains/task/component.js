@@ -111,6 +111,12 @@ export default class TaskView {
     #renderPriorityLevel(priorityLevel) {
 
         if (!priorityLevel) {
+
+            if (this.#priorityLevel) {
+                this.#priorityLevel.remove();
+                this.#priorityLevel = undefined;
+            }
+
             return;
         }
 
