@@ -59,6 +59,10 @@
   padding-inline: 0.375rem;
 }
 
+.task-container.editing .task-priority-level {
+  display: none;
+}
+
 .task-priority-level.optional {
   background-color: #444;
 }
