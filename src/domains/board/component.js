@@ -221,6 +221,7 @@ function handleListsClick(event) {
         const taskViewStore = listViewStore.getTaskViewStore(taskId);
         const taskName = taskViewStore.getTaskName();
         const taskDescription = taskViewStore.getTaskDescription();
+        const taskPriorityLevel = taskViewStore.getTaskPriorityLevel();
 
         taskOptionsMenu.toggle({
             anchorElement: taskContainer,
@@ -229,6 +230,7 @@ function handleListsClick(event) {
             onRenameClick: () => handleTaskRenameClick(
                 taskName,
                 taskDescription,
+                taskPriorityLevel,
                 taskContainer,
             ),
             onConfirmDeletionClick: () => handleTaskDeleteClick(listId, taskId),
