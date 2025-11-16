@@ -55,13 +55,7 @@ export default class TaskView {
         const optionsMenuButton = this.#createOptionsButton();
         this.#header.append(optionsMenuButton);
 
-        const taskName = store.getTaskName();
-        const taskPriorityLevel = store.getTaskPriorityLevel();
-        const taskDescription = store.getTaskDescription();
-
-        this.#renderName(taskName);
-        this.#renderPriorityLevel(taskPriorityLevel);
-        this.#renderDescription(taskDescription);
+        this.render(store);
     }
 
     get container() {
@@ -98,6 +92,16 @@ export default class TaskView {
         button.append(icon);
 
         return button;
+    }
+
+    render(store) {
+        const taskName = store.getTaskName();
+        const taskPriorityLevel = store.getTaskPriorityLevel();
+        const taskDescription = store.getTaskDescription();
+
+        this.#renderName(taskName);
+        this.#renderPriorityLevel(taskPriorityLevel);
+        this.#renderDescription(taskDescription);
     }
 
     #renderName(name) {
