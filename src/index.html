@@ -76,6 +76,17 @@
             class='task-description-input auto-size' rows='1'
             placeholder='Optional description' aria-label='Task description'
           ></textarea>
+          <select data-input='task-priority-level'
+            class='task-priority-level-input'
+            title='Priority level' aria-label='Priority level'
+          >
+            <option value=''>No priority</option>
+            <option value='optional'>Optional</option>
+            <option value='low'>Low</option>
+            <option value='medium'>Medium</option>
+            <option value='high'>High</option>
+            <option value='critical'>Critical</option>
+          </select>
           <button data-action='cancel-task-editor' data-icon='cancel-circle'
             class='cancel-task-editor-button'
           ></button>

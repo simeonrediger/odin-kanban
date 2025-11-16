@@ -21,6 +21,13 @@
   font-size: 0.875rem;
 }
 
+.task-priority-level-input {
+  border: 1px solid #555;
+  border-radius: 0.5rem;
+  display: block;
+  padding-inline: 0.375rem;
+}
+
 .cancel-task-editor-button,
 .submit-task-editor-button {
   background-color: transparent;
