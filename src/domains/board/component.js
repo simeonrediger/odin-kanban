@@ -347,7 +347,12 @@ function handleTaskEditorExit(isEditMode, submitted) {
     activeEditTaskView = null;
 }
 
-function handleTaskRenameClick(taskName, taskDescription, taskContainer) {
+function handleTaskRenameClick(
+    taskName,
+    taskDescription,
+    taskPriorityLevel,
+    taskContainer,
+) {
     const listContainer = taskContainer.closest(
         `[data-role='${roles.listContainer}']`
     );
@@ -359,7 +364,12 @@ function handleTaskRenameClick(taskName, taskDescription, taskContainer) {
     activeEditTaskView = activeEditListView.getTaskView(taskId);
 
     activeEditTaskView.replaceLabelWithEditor(taskEditorContainer);
-    taskEditor.enterEditMode(taskId, taskName, taskDescription);
+    taskEditor.enterEditMode(
+        taskId,
+        taskName,
+        taskDescription,
+        taskPriorityLevel,
+    );
 }
 
 function handleTaskDeleteClick(listId, taskId) {
