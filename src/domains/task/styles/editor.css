@@ -7,9 +7,13 @@
 .task-description-input {
   background-color: transparent;
   color: inherit;
-  margin-bottom: 0.5rem;
   outline: none;
   width: 100%;
+}
+
+.task-priority-level-input,
+.task-description-input {
+  margin-bottom: 0.5rem;
 }
 
 .task-priority-level-input {
