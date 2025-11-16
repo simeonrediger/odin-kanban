@@ -52,7 +52,7 @@ export default class TaskView {
         this.#container.dataset.id = taskId;
         this.#container.dataset.role = containerRole;
 
-        this.#label.textContent = store.getTaskName(taskId);
+        this.#label.textContent = store.getTaskName();
         const optionsMenuButton = this.#createOptionsButton();
         this.#header.append(optionsMenuButton);
 
