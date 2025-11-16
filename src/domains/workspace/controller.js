@@ -158,10 +158,16 @@ function handleListDeletionRequest({ listId }) {
     eventBus.emit(events.LIST_DELETED, { listId });
 }
 
-function createTask({ listId, taskName }) {
+function createTask({ listId, taskName, taskDescription, taskPriorityLevel }) {
     const list = activeBoard.getList(listId);
     const task = list.createTask(taskName, taskDescription, taskPriorityLevel);
-    const taskViewStore = new TaskViewStore(task.name);
+
+    const taskViewStore = new TaskViewStore(
+        task.name,
+        task.description,
+        task.priorityLevel,
+    );
+
     const listViewStore = boardViewStore.getListViewStore(listId);
     listViewStore.addTask(task.id, taskViewStore);
 
@@ -169,25 +175,36 @@ function createTask({ listId, taskName }) {
         listId: list.id,
         taskId: task.id,
         taskName: task.name,
+        taskDescription: task.description,
+        taskPriorityLevel: task.priorityLevel,
     });
 }
 
-function updateTask({ listId, taskId, taskName, taskDescription }) {
+function updateTask({
+    listId,
+    taskId,
+    taskName,
+    taskDescription,
+    taskPriorityLevel,
+}) {
     const list = activeBoard.getList(listId);
     const task = list.getTask(taskId);
     task.name = taskName;
     task.description = taskDescription;
+    task.priorityLevel = taskPriorityLevel;
 
     const listViewStore = boardViewStore.getListViewStore(listId);
     const taskViewStore = listViewStore.getTaskViewStore(taskId);
     taskViewStore.setTaskName(task.name);
     taskViewStore.setTaskDescription(task.description);
+    taskViewStore.setTaskPriorityLevel(task.priorityLevel);
 
     eventBus.emit(events.TASK_UPDATED, {
         listId: list.id,
         taskId: task.id,
         taskName: task.name,
         taskDescription: task.description,
+        taskPriorityLevel: task.priorityLevel,
     });
 }
 
