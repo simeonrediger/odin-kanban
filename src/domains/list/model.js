@@ -29,8 +29,8 @@ export default class List {
         }
     }
 
-    addEmptyTask(taskName) {
-        const task = new Task(taskName);
+    createTask(taskName, taskDescription, taskPriorityLevel) {
+        const task = new Task(taskName, taskDescription, taskPriorityLevel);
         this.addTask(task);
         return task;
     }

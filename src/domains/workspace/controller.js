@@ -160,7 +160,7 @@ function handleListDeletionRequest({ listId }) {
 
 function createTask({ listId, taskName }) {
     const list = activeBoard.getList(listId);
-    const task = list.addEmptyTask(taskName);
+    const task = list.createTask(taskName, taskDescription, taskPriorityLevel);
     const taskViewStore = new TaskViewStore(task.name);
     const listViewStore = boardViewStore.getListViewStore(listId);
     listViewStore.addTask(task.id, taskViewStore);
