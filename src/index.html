@@ -72,14 +72,8 @@
           <textarea data-input='task-name' class='task-name-input auto-size'
             rows='1' placeholder='Untitled task' aria-label='Task name'
           ></textarea>
-          <textarea data-input='task-description'
-            class='task-description-input auto-size' rows='1'
-            placeholder='Optional description' aria-label='Task description'
-          ></textarea>
-          <select data-input='task-priority-level'
-            class='task-priority-level-input'
-            title='Priority level' aria-label='Priority level'
-          >
+          <select data-input='task-priority-level' class='task-priority-level-input' title='Priority level'
+            aria-label='Priority level'>
             <option value=''>No priority</option>
             <option value='10'>Optional</option>
             <option value='20'>Low</option>
@@ -87,6 +81,10 @@
             <option value='40'>High</option>
             <option value='50'>Critical</option>
           </select>
+          <textarea data-input='task-description'
+            class='task-description-input auto-size' rows='1'
+            placeholder='Optional description' aria-label='Task description'
+          ></textarea>
           <button data-action='cancel-task-editor' data-icon='cancel-circle'
             class='cancel-task-editor-button'
           ></button>

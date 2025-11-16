@@ -12,17 +12,17 @@
   width: 100%;
 }
 
-.task-description-input {
-  color: var(--color-fg-secondary);
-  font-size: 0.875rem;
-}
-
 .task-priority-level-input {
   border: 1px solid #555;
   border-radius: 0.5rem;
   display: block;
   font-size: 0.75rem;
   padding: 0.125rem 0.375rem;
+}
+
+.task-description-input {
+  color: var(--color-fg-secondary);
+  font-size: 0.875rem;
 }
 
 .cancel-task-editor-button,
