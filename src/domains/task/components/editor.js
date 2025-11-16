@@ -70,7 +70,6 @@ function enterCreateMode() {
 function enterEditMode(id, name, description = '') {
     nameInput.value = name;
     descriptionInput.value = description;
-    priorityLevelInput.value = taskPriorityLevel;
     open();
 
     descriptionInput.focus();
