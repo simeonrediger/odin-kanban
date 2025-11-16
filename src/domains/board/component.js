@@ -213,7 +213,7 @@ function handleListsClick(event) {
             anchorElement: listContainer,
             clientX: event.clientX,
             clientY: event.clientY,
-            onRenameClick: () => handleListRenameClick(listName, listContainer),
+            onEditClick: () => handleListEditClick(listName, listContainer),
             onConfirmDeletionClick: () => handleListDeleteClick(listId),
         });
 
@@ -234,7 +234,7 @@ function handleListsClick(event) {
             anchorElement: taskContainer,
             clientX: event.clientX,
             clientY: event.clientY,
-            onRenameClick: () => handleTaskRenameClick(
+            onEditClick: () => handleTaskEditClick(
                 taskName,
                 taskDescription,
                 taskPriorityLevel,
@@ -294,7 +294,7 @@ function handleListEditorExit(isEditMode, submitted) {
     activeEditListView = null;
 }
 
-function handleListRenameClick(listName, listContainer) {
+function handleListEditClick(listName, listContainer) {
     const listId = listContainer.dataset.id;
     activeEditListView = listViews.get(listId);
     activeEditListView.replaceLabelWithEditor(listEditorContainer);
@@ -356,7 +356,7 @@ function handleTaskEditorExit(isEditMode, submitted) {
     activeEditTaskView = null;
 }
 
-function handleTaskRenameClick(
+function handleTaskEditClick(
     taskName,
     taskDescription,
     taskPriorityLevel,

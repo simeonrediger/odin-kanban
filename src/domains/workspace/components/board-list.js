@@ -111,7 +111,7 @@ function handleListClick(event) {
             clientY: event.clientY,
             onOpen: () => highlightListItem(listItem),
             onCloseOrMove: () => unhighlightListItem(listItem),
-            onRenameClick: () => handleRenameClick(boardName, listItem),
+            onEditClick: () => handleEditClick(boardName, listItem),
             onConfirmDeletionClick: () => handleDeleteClick(boardId),
         });
     }
@@ -166,7 +166,7 @@ function showActiveEditItem() {
     activeEditItem.classList.remove('hidden');
 }
 
-function handleRenameClick(boardName, listItem) {
+function handleEditClick(boardName, listItem) {
     const boardId = listItem.dataset.id;
     activeEditItem = listItem;
     activeEditItem.classList.add('hidden');

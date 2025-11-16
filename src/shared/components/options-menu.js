@@ -6,7 +6,7 @@ import assert from '../validation/assert.js';
 export default class OptionsMenu {
 
     static #actions = {
-        rename: 'rename',
+        edit: 'edit',
         delete: 'delete',
         confirmDeletion: 'confirm-deletion',
     };
@@ -23,7 +23,7 @@ export default class OptionsMenu {
     #handlers = {
         onOpen: undefined,
         onCloseOrMove: undefined,
-        onRenameClick: undefined,
+        onEditClick: undefined,
         onConfirmDeletionClick: undefined,
     };
 
@@ -88,7 +88,7 @@ export default class OptionsMenu {
         clientY,
         onOpen,
         onCloseOrMove,
-        onRenameClick,
+        onEditClick,
         onConfirmDeletionClick,
     }) {
         this.#handlers.onCloseOrMove?.();
@@ -96,7 +96,7 @@ export default class OptionsMenu {
         this.#anchorElement = anchorElementArg;
         this.#handlers.onOpen = onOpen;
         this.#handlers.onCloseOrMove = onCloseOrMove;
-        this.#handlers.onRenameClick = onRenameClick;
+        this.#handlers.onEditClick = onEditClick;
         this.#handlers.onConfirmDeletionClick = onConfirmDeletionClick;
 
         this.#handlers.onOpen?.();
@@ -193,9 +193,9 @@ export default class OptionsMenu {
 
         const action = clickedButton.dataset.action;
 
-        if (action === OptionsMenu.#actions.rename) {
+        if (action === OptionsMenu.#actions.edit) {
             this.#close();
-            this.#handlers.onRenameClick?.();
+            this.#handlers.onEditClick?.();
 
         } else if (action === OptionsMenu.#actions.delete) {
             this.#showConfirmDeletionButton();
