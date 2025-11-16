@@ -7,6 +7,7 @@ import eventBus, { events } from '@/domains/workspace/event-bus.js';
 let container;
 let nameInput;
 let descriptionInput;
+let priorityLevelInput;
 let cancelButton;
 let submitButton;
 
@@ -32,6 +33,9 @@ function cacheElements() {
     descriptionInput = container.querySelector(
         "[data-input='task-description']"
     );
+    priorityLevelInput = container.querySelector(
+        "[data-input='task-priority-level']"
+    );
     cancelButton = container.querySelector(
         "[data-action='cancel-task-editor']"
     );
@@ -41,6 +45,7 @@ function cacheElements() {
 
     assert.notNull(nameInput, "'nameInput'");
     assert.notNull(descriptionInput, "'descriptionInput'");
+    assert.notNull(priorityLevelInput, "'priorityLevelInput'");
     assert.notNull(cancelButton, "'cancelButton'");
     assert.notNull(submitButton, "'submitButton'");
 }
