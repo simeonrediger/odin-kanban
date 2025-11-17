@@ -51,15 +51,6 @@ export default class Task {
         this.#description = description;
     }
 
-    get dueDate() {
-        return this.#dueDate;
-    }
-
-    set dueDate(dueDate) {
-        assert.validDate(dueDate);
-        this.#dueDate = dueDate;
-    }
-
     get priorityLevel() {
         return this.#priorityLevel;
     }
@@ -71,6 +62,15 @@ export default class Task {
         }
 
         this.#priorityLevel = priorityLevel;
+    }
+
+    get dueDate() {
+        return this.#dueDate;
+    }
+
+    set dueDate(dueDate) {
+        assert.validDate(dueDate);
+        this.#dueDate = dueDate;
     }
 
     get isDone() {
