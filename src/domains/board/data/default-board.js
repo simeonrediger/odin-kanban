@@ -4,15 +4,11 @@ import Task from '@/domains/task/model.js';
 
 export default new Board('Board 1', [
     new List('List A', [
-        new Task('Task A1', 30, 'This is an example of a task description.'),
-        new Task(
-            'Task A2',
-            undefined,
-            'This is another example of a task description.',
-        ),
+        new Task('Task A1', 'This is an example of a task description.', 30),
+        new Task('Task A2', 'This is another example of a task description.'),
     ]),
     new List('List B', [
-        new Task('Task B1', 50),
+        new Task('Task B1', undefined, 50),
         new Task('Task B2'),
         new Task('Task B3'),
         new Task('Task B4'),

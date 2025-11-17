@@ -87,8 +87,8 @@ function setBoardViewStore(board) {
 
             taskViewStores[task.id] = new TaskViewStore(
                 task.name,
-                task.priorityLevel,
                 task.description,
+                task.priorityLevel,
             );
         }
 
@@ -158,14 +158,14 @@ function handleListDeletionRequest({ listId }) {
     eventBus.emit(events.LIST_DELETED, { listId });
 }
 
-function createTask({ listId, taskName, taskPriorityLevel, taskDescription }) {
+function createTask({ listId, taskName, taskDescription, taskPriorityLevel }) {
     const list = activeBoard.getList(listId);
-    const task = list.createTask(taskName, taskPriorityLevel, taskDescription);
+    const task = list.createTask(taskName, taskDescription, taskPriorityLevel);
 
     const taskViewStore = new TaskViewStore(
         task.name,
-        task.priorityLevel,
         task.description,
+        task.priorityLevel,
     );
 
     const listViewStore = boardViewStore.getListViewStore(listId);
@@ -175,8 +175,8 @@ function createTask({ listId, taskName, taskPriorityLevel, taskDescription }) {
         listId: list.id,
         taskId: task.id,
         taskName: task.name,
-        taskPriorityLevel: task.priorityLevel,
         taskDescription: task.description,
+        taskPriorityLevel: task.priorityLevel,
     });
 }
 
@@ -184,27 +184,27 @@ function updateTask({
     listId,
     taskId,
     taskName,
-    taskPriorityLevel,
     taskDescription,
+    taskPriorityLevel,
 }) {
     const list = activeBoard.getList(listId);
     const task = list.getTask(taskId);
     task.name = taskName;
-    task.priorityLevel = taskPriorityLevel;
     task.description = taskDescription;
+    task.priorityLevel = taskPriorityLevel;
 
     const listViewStore = boardViewStore.getListViewStore(listId);
     const taskViewStore = listViewStore.getTaskViewStore(taskId);
     taskViewStore.setTaskName(task.name);
-    taskViewStore.setTaskPriorityLevel(task.priorityLevel);
     taskViewStore.setTaskDescription(task.description);
+    taskViewStore.setTaskPriorityLevel(task.priorityLevel);
 
     eventBus.emit(events.TASK_UPDATED, {
         listId: list.id,
         taskId: task.id,
         taskName: task.name,
-        taskPriorityLevel: task.priorityLevel,
         taskDescription: task.description,
+        taskPriorityLevel: task.priorityLevel,
     });
 }
 

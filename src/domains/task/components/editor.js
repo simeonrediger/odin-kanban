@@ -67,7 +67,7 @@ function enterCreateMode() {
     nameInput.focus();
 }
 
-function enterEditMode(id, name, priorityLevel = '', description = '') {
+function enterEditMode(id, name, description = '', priorityLevel = '') {
     nameInput.value = name;
     priorityLevelInput.value = priorityLevel;
     descriptionInput.value = description;
@@ -129,8 +129,8 @@ function submit() {
             listId,
             taskId: activeEditTaskId,
             taskName,
-            taskPriorityLevel,
             taskDescription,
+            taskPriorityLevel,
         });
 
     } else {
@@ -138,8 +138,8 @@ function submit() {
         eventBus.emit(events.TASK_CREATION_REQUESTED, {
             listId,
             taskName,
-            taskPriorityLevel,
             taskDescription,
+            taskPriorityLevel,
         });
     }
 }
