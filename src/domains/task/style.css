@@ -64,23 +64,28 @@
 }
 
 .task-priority-level.optional {
-  background-color: #444;
+  background-color: #333;
+  color: #666;
 }
 
 .task-priority-level.low {
-  background-color: #448;
+  background-color: #66a;
+  color: #005;
 }
 
 .task-priority-level.medium {
-  background-color: #a70;
+  background-color: #a73;
+  color: #430;
 }
 
 .task-priority-level.high {
   background-color: #a40;
+  color: #410;
 }
 
 .task-priority-level.critical {
   background-color: #a00;
+  color: #400;
 }
 
 .toggle-description-button {
