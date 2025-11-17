@@ -7,11 +7,9 @@ import {
 
 export default class TaskView {
     #container;
-    #header;
     #label;
-    #detailsContainer;
     #priorityLevel;
-    #toggleDescriptionButton
+    #descriptionToggleContainer;
     #description;
 
     static #actions = {
@@ -31,17 +29,35 @@ export default class TaskView {
         this.#container = document.createElement('li');
         this.#container.classList.add('task-container');
 
+        const headerContainer = document.createElement('div');
+        headerContainer.classList.add('task-header-container');
+
         this.#label = document.createElement('p');
         this.#label.classList.add('task-label');
 
-        this.#header = document.createElement('div');
-        this.#header.classList.add('task-header');
-        this.#header.append(this.#label);
+        const optionsButton = this.#createOptionsButton();
 
-        this.#detailsContainer = document.createElement('div');
-        this.#detailsContainer.classList.add('task-details');
+        headerContainer.append(this.#label, optionsButton);
 
-        this.#container.append(this.#header, this.#detailsContainer);
+        this.#priorityLevel = document.createElement('p');
+        this.#priorityLevel.classList.add('task-priority-level');
+
+        this.#descriptionToggleContainer = document.createElement('div');
+        this.#descriptionToggleContainer.classList.add(
+            'task-description-toggle-container'
+        );
+        const descriptionToggle = this.#createDescriptionToggle();
+        this.#descriptionToggleContainer.append(descriptionToggle);
+
+        this.#description = document.createElement('p');
+        this.#description.classList.add('task-description', 'hidden');
+
+        this.#container.append(
+            headerContainer,
+            this.#priorityLevel,
+            this.#descriptionToggleContainer,
+            this.#description,
+        );
 
         if (taskId) {
             this.init(taskId, store, containerRole);
@@ -51,10 +67,6 @@ export default class TaskView {
     init(taskId, store, containerRole) {
         this.#container.dataset.id = taskId;
         this.#container.dataset.role = containerRole;
-
-        const optionsMenuButton = this.#createOptionsButton();
-        this.#header.append(optionsMenuButton);
-
         this.render(store);
     }
 
@@ -67,14 +79,12 @@ export default class TaskView {
     }
 
     replaceLabelWithEditor(editor) {
-        this.#label.classList.add('hidden');
         this.#container.classList.add('editing');
-        this.#header.prepend(editor);
+        this.#container.append(editor);
     }
 
     showLabel() {
         this.#container.classList.remove('editing');
-        this.#label.classList.remove('hidden');
     }
 
     updateLabel(taskText) {
@@ -111,18 +121,8 @@ export default class TaskView {
     #renderPriorityLevel(priorityLevel) {
 
         if (!priorityLevel) {
-
-            if (this.#priorityLevel) {
-                this.#priorityLevel.remove();
-                this.#priorityLevel = undefined;
-            }
-
+            this.#priorityLevel.classList.add('hidden');
             return;
-        }
-
-        if (!this.#priorityLevel) {
-            this.#priorityLevel = document.createElement('p');
-            this.#priorityLevel.classList.add('task-priority-level');
         }
 
         const priorityLevelClass = this.#getPriorityLevelClass(priorityLevel);
@@ -133,7 +133,7 @@ export default class TaskView {
             priorityLevel
         );
 
-        this.#detailsContainer.prepend(this.#priorityLevel);
+        this.#priorityLevel.classList.remove('hidden');
     }
 
     #getPriorityLevelClass(priorityLevel) {
@@ -183,10 +183,6 @@ export default class TaskView {
 
     #renderDescription(descriptionText) {
 
-        if (!this.#description) {
-            this.#createDescription();
-        }
-
         if (descriptionText) {
             this.#setDescriptionText(descriptionText);
         } else {
@@ -201,32 +197,26 @@ export default class TaskView {
         }
 
         this.#description.textContent = text;
-        this.#toggleDescriptionButton.classList.remove('hidden');
+        this.#descriptionToggleContainer.classList.remove('hidden');
     }
 
     #unsetDescription() {
         this.#description.textContent = '';
-        this.#toggleDescriptionButton.classList.add('hidden');
+        this.#descriptionToggleContainer.classList.add('hidden');
     }
 
-    #createDescription() {
-        this.#toggleDescriptionButton = document.createElement('button');
-        this.#toggleDescriptionButton.classList.add(
-            'toggle-description-button'
-        );
-        this.#toggleDescriptionButton.dataset.action = (
+    #createDescriptionToggle() {
+        const descriptionToggle = document.createElement('button');
+        descriptionToggle.classList.add('task-description-toggle');
+        descriptionToggle.dataset.action = (
             TaskView.#actions.toggleDescription
         );
 
         const toggleDescriptionIcon = createCaretDownIcon();
-        toggleDescriptionIcon.classList.add('toggle-description-icon');
+        toggleDescriptionIcon.classList.add('task-description-toggle-icon');
+        descriptionToggle.append(toggleDescriptionIcon);
 
-        this.#description = document.createElement('p');
-        this.#description.classList.add('task-description', 'hidden');
-
-        this.#toggleDescriptionButton.append(toggleDescriptionIcon);
-        this.#detailsContainer.append(this.#toggleDescriptionButton);
-        this.#container.append(this.#description);
+        return descriptionToggle;
     }
 
     toggleDescription() {
