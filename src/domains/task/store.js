@@ -1,12 +1,12 @@
 export default class TaskViewStore {
     #name;
-    #description;
     #priorityLevel;
+    #description;
 
-    constructor(name, description, priorityLevel) {
+    constructor(name, priorityLevel, description) {
         this.#name = name;
-        this.#description = description;
         this.#priorityLevel = priorityLevel;
+        this.#description = description;
     }
 
     getTaskName() {
@@ -17,19 +17,19 @@ export default class TaskViewStore {
         this.#name = name;
     }
 
-    getTaskDescription() {
-        return this.#description;
-    }
-
-    setTaskDescription(description) {
-        this.#description = description;
-    }
-
     getTaskPriorityLevel() {
         return this.#priorityLevel;
     }
 
     setTaskPriorityLevel(priorityLevel) {
         this.#priorityLevel = priorityLevel;
+    }
+
+    getTaskDescription() {
+        return this.#description;
+    }
+
+    setTaskDescription(description) {
+        this.#description = description;
     }
 }

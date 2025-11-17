@@ -87,8 +87,8 @@ function setBoardViewStore(board) {
 
             taskViewStores[task.id] = new TaskViewStore(
                 task.name,
-                task.description,
                 task.priorityLevel,
+                task.description,
             );
         }
 
@@ -158,14 +158,14 @@ function handleListDeletionRequest({ listId }) {
     eventBus.emit(events.LIST_DELETED, { listId });
 }
 
-function createTask({ listId, taskName, taskDescription, taskPriorityLevel }) {
+function createTask({ listId, taskName, taskPriorityLevel, taskDescription }) {
     const list = activeBoard.getList(listId);
-    const task = list.createTask(taskName, taskDescription, taskPriorityLevel);
+    const task = list.createTask(taskName, taskPriorityLevel, taskDescription);
 
     const taskViewStore = new TaskViewStore(
         task.name,
-        task.description,
         task.priorityLevel,
+        task.description,
     );
 
     const listViewStore = boardViewStore.getListViewStore(listId);
@@ -175,8 +175,8 @@ function createTask({ listId, taskName, taskDescription, taskPriorityLevel }) {
         listId: list.id,
         taskId: task.id,
         taskName: task.name,
-        taskDescription: task.description,
         taskPriorityLevel: task.priorityLevel,
+        taskDescription: task.description,
     });
 }
 
@@ -184,27 +184,27 @@ function updateTask({
     listId,
     taskId,
     taskName,
-    taskDescription,
     taskPriorityLevel,
+    taskDescription,
 }) {
     const list = activeBoard.getList(listId);
     const task = list.getTask(taskId);
     task.name = taskName;
-    task.description = taskDescription;
     task.priorityLevel = taskPriorityLevel;
+    task.description = taskDescription;
 
     const listViewStore = boardViewStore.getListViewStore(listId);
     const taskViewStore = listViewStore.getTaskViewStore(taskId);
     taskViewStore.setTaskName(task.name);
-    taskViewStore.setTaskDescription(task.description);
     taskViewStore.setTaskPriorityLevel(task.priorityLevel);
+    taskViewStore.setTaskDescription(task.description);
 
     eventBus.emit(events.TASK_UPDATED, {
         listId: list.id,
         taskId: task.id,
         taskName: task.name,
-        taskDescription: task.description,
         taskPriorityLevel: task.priorityLevel,
+        taskDescription: task.description,
     });
 }
 

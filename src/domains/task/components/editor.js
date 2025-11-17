@@ -6,8 +6,8 @@ import eventBus, { events } from '@/domains/workspace/event-bus.js';
 
 let container;
 let nameInput;
-let descriptionInput;
 let priorityLevelInput;
+let descriptionInput;
 let cancelButton;
 let submitButton;
 
@@ -30,11 +30,11 @@ function init(containerElement, { onExit, getActiveEditListId } = {}) {
 
 function cacheElements() {
     nameInput = container.querySelector("[data-input='task-name']");
-    descriptionInput = container.querySelector(
-        "[data-input='task-description']"
-    );
     priorityLevelInput = container.querySelector(
         "[data-input='task-priority-level']"
+    );
+    descriptionInput = container.querySelector(
+        "[data-input='task-description']"
     );
     cancelButton = container.querySelector(
         "[data-action='cancel-task-editor']"
@@ -44,8 +44,8 @@ function cacheElements() {
     );
 
     assert.notNull(nameInput, "'nameInput'");
-    assert.notNull(descriptionInput, "'descriptionInput'");
     assert.notNull(priorityLevelInput, "'priorityLevelInput'");
+    assert.notNull(descriptionInput, "'descriptionInput'");
     assert.notNull(cancelButton, "'cancelButton'");
     assert.notNull(submitButton, "'submitButton'");
 }
@@ -61,16 +61,16 @@ function bindEvents() {
 
 function enterCreateMode() {
     nameInput.value = '';
-    descriptionInput.value = '';
     priorityLevelInput.value = '';
+    descriptionInput.value = '';
     open();
     nameInput.focus();
 }
 
-function enterEditMode(id, name, description = '', priorityLevel = '') {
+function enterEditMode(id, name, priorityLevel = '', description = '') {
     nameInput.value = name;
-    descriptionInput.value = description;
     priorityLevelInput.value = priorityLevel;
+    descriptionInput.value = description;
     open();
 
     descriptionInput.focus();
@@ -120,8 +120,8 @@ function handleCancelClick() {
 
 function submit() {
     const taskName = nameInput.value.trim() || nameInput.placeholder;
-    const taskDescription = descriptionInput.value.trim() || undefined;
     const taskPriorityLevel = Number(priorityLevelInput.value) || undefined;
+    const taskDescription = descriptionInput.value.trim() || undefined;
     const listId = handlers.getActiveEditListId();
 
     if (isEditMode) {
@@ -129,8 +129,8 @@ function submit() {
             listId,
             taskId: activeEditTaskId,
             taskName,
-            taskDescription,
             taskPriorityLevel,
+            taskDescription,
         });
 
     } else {
@@ -138,8 +138,8 @@ function submit() {
         eventBus.emit(events.TASK_CREATION_REQUESTED, {
             listId,
             taskName,
-            taskDescription,
             taskPriorityLevel,
+            taskDescription,
         });
     }
 }

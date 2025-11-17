@@ -227,8 +227,8 @@ function handleListsClick(event) {
         const listViewStore = boardViewStore.getListViewStore(listId);
         const taskViewStore = listViewStore.getTaskViewStore(taskId);
         const taskName = taskViewStore.getTaskName();
-        const taskDescription = taskViewStore.getTaskDescription();
         const taskPriorityLevel = taskViewStore.getTaskPriorityLevel();
+        const taskDescription = taskViewStore.getTaskDescription();
 
         taskOptionsMenu.toggle({
             anchorElement: taskContainer,
@@ -236,8 +236,8 @@ function handleListsClick(event) {
             clientY: event.clientY,
             onEditClick: () => handleTaskEditClick(
                 taskName,
-                taskDescription,
                 taskPriorityLevel,
+                taskDescription,
                 taskContainer,
             ),
             onConfirmDeletionClick: () => handleTaskDeleteClick(listId, taskId),
@@ -358,8 +358,8 @@ function handleTaskEditorExit(isEditMode, submitted) {
 
 function handleTaskEditClick(
     taskName,
-    taskDescription,
     taskPriorityLevel,
+    taskDescription,
     taskContainer,
 ) {
     const listContainer = taskContainer.closest(
@@ -376,8 +376,8 @@ function handleTaskEditClick(
     taskEditor.enterEditMode(
         taskId,
         taskName,
-        taskDescription,
         taskPriorityLevel,
+        taskDescription,
     );
 }
 

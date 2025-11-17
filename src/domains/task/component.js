@@ -10,9 +10,9 @@ export default class TaskView {
     #header;
     #label;
     #detailsContainer;
+    #priorityLevel;
     #toggleDescriptionButton
     #description;
-    #priorityLevel;
 
     static #actions = {
         openOptionsMenu: 'open-task-options-menu',
