@@ -12,11 +12,13 @@
 }
 
 .task-priority-level-input,
+.task-due-date-input,
 .task-description-input {
   margin-bottom: 0.5rem;
 }
 
-.task-priority-level-input {
+.task-priority-level-input,
+.task-due-date-input {
   border: 1px solid #555;
   border-radius: 0.5rem;
   display: block;
