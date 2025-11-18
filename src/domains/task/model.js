@@ -15,7 +15,6 @@ export default class Task {
     #description;
     #dueDate;
     #priorityLevel;
-    #isDone;
 
     constructor(name, description, priorityLevel, dueDate, id) {
         this.#id = id ?? crypto.randomUUID();
@@ -74,18 +73,6 @@ export default class Task {
         this.#dueDate = dueDate;
     }
 
-    get isDone() {
-        return this.#isDone;
-    }
-
-    markAsDone() {
-        this.#isDone = true;
-    }
-
-    unmarkAsDone() {
-        this.#isDone = false;
-    }
-
     toObject() {
 
         return Object.freeze({
@@ -93,7 +80,6 @@ export default class Task {
             description: this.description,
             dueDate: this.dueDate,
             priorityLevel: this.priorityLevel,
-            isDone: this.isDone,
         });
     }
 
