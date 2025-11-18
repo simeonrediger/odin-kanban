@@ -131,7 +131,7 @@
 
 .task-container.editing :is(
   .task-header-container,
-  .task-priority-level,
+  .task-details-container,
   .task-description-toggle-container,
   .task-description,
 ) {
