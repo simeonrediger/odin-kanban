@@ -67,6 +67,7 @@ function bindEvents() {
 function enterCreateMode() {
     nameInput.value = '';
     priorityLevelInput.value = '';
+    dueDateInput.value = '';
     descriptionInput.value = '';
     open();
     nameInput.focus();
