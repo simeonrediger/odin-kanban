@@ -229,6 +229,7 @@ function handleListsClick(event) {
         const taskName = taskViewStore.getTaskName();
         const taskDescription = taskViewStore.getTaskDescription();
         const taskPriorityLevel = taskViewStore.getTaskPriorityLevel();
+        const taskDueDate = taskViewStore.getTaskDueDate();
 
         taskOptionsMenu.toggle({
             anchorElement: taskContainer,
@@ -238,6 +239,7 @@ function handleListsClick(event) {
                 taskName,
                 taskDescription,
                 taskPriorityLevel,
+                taskDueDate,
                 taskContainer,
             ),
             onConfirmDeletionClick: () => handleTaskDeleteClick(listId, taskId),
@@ -360,6 +362,7 @@ function handleTaskEditClick(
     taskName,
     taskDescription,
     taskPriorityLevel,
+    taskDueDate,
     taskContainer,
 ) {
     const listContainer = taskContainer.closest(
@@ -378,6 +381,7 @@ function handleTaskEditClick(
         taskName,
         taskDescription,
         taskPriorityLevel,
+        taskDueDate,
     );
 }
 

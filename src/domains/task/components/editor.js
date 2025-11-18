@@ -72,9 +72,16 @@ function enterCreateMode() {
     nameInput.focus();
 }
 
-function enterEditMode(id, name, description = '', priorityLevel = '') {
+function enterEditMode(
+    id,
+    name,
+    description = '',
+    priorityLevel = '',
+    dueDate = '',
+) {
     nameInput.value = name;
     priorityLevelInput.value = priorityLevel;
+    dueDateInput.value = toLocalIsoDate(dueDate);
     descriptionInput.value = description;
     open();
 
@@ -83,6 +90,19 @@ function enterEditMode(id, name, description = '', priorityLevel = '') {
 
     isEditMode = true;
     activeEditTaskId = id;
+}
+
+function toLocalIsoDate(unixInMs) {
+    const date = new Date(unixInMs);
+    const pad = n => String(n).padStart(2, '0');
+
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+
+    const isoDate = `${year}-${month}-${day}`;
+    console.log(isoDate);
+    return isoDate;
 }
 
 function open() {
