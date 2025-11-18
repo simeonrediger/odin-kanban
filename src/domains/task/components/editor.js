@@ -101,7 +101,6 @@ function toLocalIsoDate(unixInMs) {
     const day = pad(date.getDate());
 
     const isoDate = `${year}-${month}-${day}`;
-    console.log(isoDate);
     return isoDate;
 }
 
