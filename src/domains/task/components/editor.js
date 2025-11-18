@@ -81,7 +81,7 @@ function enterEditMode(
 ) {
     nameInput.value = name;
     priorityLevelInput.value = priorityLevel;
-    dueDateInput.value = toLocalIsoDate(dueDate);
+    dueDateInput.value = dueDate ? toLocalIsoDate(dueDate) : '';
     descriptionInput.value = description;
     open();
 
