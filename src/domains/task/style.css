@@ -44,6 +44,12 @@
   scale: 0.75;
 }
 
+.task-details-container {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
 .task-priority-level:not(.hidden) {
   display: inline-block;
 }
@@ -78,6 +84,18 @@
 .task-priority-level.critical {
   background-color: #a00;
   color: #400;
+}
+
+.task-due-date:not(.hidden) {
+  display: inline-block;
+}
+
+.task-due-date:not(.hidden) {
+  color: var(--color-fg-secondary);
+  font-size: 0.75rem;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
 .task-description-toggle-container:not(.hidden) {

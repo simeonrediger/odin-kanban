@@ -4,7 +4,12 @@ import Task from '@/domains/task/model.js';
 
 export default new Board('Board 1', [
     new List('List A', [
-        new Task('Task A1', 'This is an example of a task description.', 30),
+        new Task(
+            'Task A1',
+            'This is an example of a task description.',
+            30,
+            1763683200000,
+        ),
         new Task('Task A2', 'This is another example of a task description.'),
     ]),
     new List('List B', [

@@ -2,11 +2,13 @@ export default class TaskViewStore {
     #name;
     #description;
     #priorityLevel;
+    #dueDate;
 
-    constructor(name, description, priorityLevel) {
+    constructor(name, description, priorityLevel, dueDate) {
         this.#name = name;
         this.#description = description;
         this.#priorityLevel = priorityLevel;
+        this.#dueDate = dueDate;
     }
 
     getTaskName() {
@@ -31,5 +33,13 @@ export default class TaskViewStore {
 
     setTaskPriorityLevel(priorityLevel) {
         this.#priorityLevel = priorityLevel;
+    }
+
+    getTaskDueDate() {
+        return this.#dueDate;
+    }
+
+    setTaskDueDate(dueDate) {
+        this.#dueDate = dueDate;
     }
 }

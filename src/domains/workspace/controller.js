@@ -89,6 +89,7 @@ function setBoardViewStore(board) {
                 task.name,
                 task.description,
                 task.priorityLevel,
+                task.dueDate,
             );
         }
 
