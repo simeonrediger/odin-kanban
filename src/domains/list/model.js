@@ -29,8 +29,15 @@ export default class List {
         }
     }
 
-    createTask(taskName, taskDescription, taskPriorityLevel) {
-        const task = new Task(taskName, taskDescription, taskPriorityLevel);
+    createTask(taskName, taskDescription, taskPriorityLevel, taskDueDate) {
+
+        const task = new Task(
+            taskName,
+            taskDescription,
+            taskPriorityLevel,
+            taskDueDate,
+        );
+
         this.addTask(task);
         return task;
     }

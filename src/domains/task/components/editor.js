@@ -146,6 +146,11 @@ function handleCancelClick() {
 function submit() {
     const taskName = nameInput.value.trim() || nameInput.placeholder;
     const taskPriorityLevel = Number(priorityLevelInput.value) || undefined;
+
+    const taskDueDate = dueDateInput.value
+        ? toUnix(dueDateInput.value)
+        : undefined;
+
     const taskDescription = descriptionInput.value.trim() || undefined;
     const listId = handlers.getActiveEditListId();
 
@@ -157,6 +162,7 @@ function submit() {
             taskName,
             taskDescription,
             taskPriorityLevel,
+            taskDueDate,
         });
 
     } else {
@@ -167,8 +173,16 @@ function submit() {
             taskName,
             taskDescription,
             taskPriorityLevel,
+            taskDueDate,
         });
     }
+}
+
+function toUnix(localIsoDate) {
+    const [year, month, day] = localIsoDate.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    const unix = date.getTime();
+    return unix;
 }
 
 function exit(submitted) {

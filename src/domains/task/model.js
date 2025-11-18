@@ -70,7 +70,7 @@ export default class Task {
     }
 
     set dueDate(dueDate) {
-        assert.validDate(dueDate);
+        assert.validDate(new Date(dueDate));
         this.#dueDate = dueDate;
     }
 

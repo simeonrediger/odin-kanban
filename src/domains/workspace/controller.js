@@ -159,14 +159,27 @@ function handleListDeletionRequest({ listId }) {
     eventBus.emit(events.LIST_DELETED, { listId });
 }
 
-function createTask({ listId, taskName, taskDescription, taskPriorityLevel }) {
+function createTask({
+    listId,
+    taskName,
+    taskDescription,
+    taskPriorityLevel,
+    taskDueDate,
+}) {
     const list = activeBoard.getList(listId);
-    const task = list.createTask(taskName, taskDescription, taskPriorityLevel);
+
+    const task = list.createTask(
+        taskName,
+        taskDescription,
+        taskPriorityLevel,
+        taskDueDate,
+    );
 
     const taskViewStore = new TaskViewStore(
         task.name,
         task.description,
         task.priorityLevel,
+        task.dueDate,
     );
 
     const listViewStore = boardViewStore.getListViewStore(listId);
@@ -178,6 +191,7 @@ function createTask({ listId, taskName, taskDescription, taskPriorityLevel }) {
         taskName: task.name,
         taskDescription: task.description,
         taskPriorityLevel: task.priorityLevel,
+        taskDueDate: task.dueDate,
     });
 }
 
@@ -187,18 +201,21 @@ function updateTask({
     taskName,
     taskDescription,
     taskPriorityLevel,
+    taskDueDate,
 }) {
     const list = activeBoard.getList(listId);
     const task = list.getTask(taskId);
     task.name = taskName;
     task.description = taskDescription;
     task.priorityLevel = taskPriorityLevel;
+    task.dueDate = taskDueDate;
 
     const listViewStore = boardViewStore.getListViewStore(listId);
     const taskViewStore = listViewStore.getTaskViewStore(taskId);
     taskViewStore.setTaskName(task.name);
     taskViewStore.setTaskDescription(task.description);
     taskViewStore.setTaskPriorityLevel(task.priorityLevel);
+    taskViewStore.setTaskDueDate(task.dueDate);
 
     eventBus.emit(events.TASK_UPDATED, {
         listId: list.id,
@@ -206,6 +223,7 @@ function updateTask({
         taskName: task.name,
         taskDescription: task.description,
         taskPriorityLevel: task.priorityLevel,
+        taskDueDate: task.dueDate,
     });
 }
 

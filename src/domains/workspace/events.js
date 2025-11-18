@@ -82,6 +82,7 @@
  * @property {string} taskName - Name for the task.
  * @property {string} taskDescription - Description for the task.
  * @property {string} taskPriorityLevel - Priority level for the task.
+ * @property {string} taskDueDate - Due date for the task.
  */
 
 /**
@@ -91,6 +92,7 @@
  * @property {string} taskName - Name of the task.
  * @property {string} taskDescription - Description of the task.
  * @property {string} taskPriorityLevel - Priority level of the task.
+ * @property {string} taskDueDate - Due date of the task.
  */
 
 /**
@@ -100,6 +102,7 @@
  * @property {string} taskName - New name for the task.
  * @property {string} taskDescription - New description for the task.
  * @property {string} taskPriorityLevel - Priority level for the task.
+ * @property {string} taskDueDate - Due date for the task.
  */
 
 /**
@@ -109,6 +112,7 @@
  * @property {string} taskName - Name of the task.
  * @property {string} taskDescription - Description of the task.
  * @property {string} taskPriorityLevel - Priority level of the task.
+ * @property {string} taskDueDate - Due date of the task.
  */
 
 /**
