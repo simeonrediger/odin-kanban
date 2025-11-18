@@ -149,6 +149,7 @@ function submit() {
     const listId = handlers.getActiveEditListId();
 
     if (isEditMode) {
+
         eventBus.emit(events.TASK_UPDATE_REQUESTED, {
             listId,
             taskId: activeEditTaskId,
@@ -159,6 +160,7 @@ function submit() {
 
     } else {
         const listId = handlers.getActiveEditListId();
+
         eventBus.emit(events.TASK_CREATION_REQUESTED, {
             listId,
             taskName,
