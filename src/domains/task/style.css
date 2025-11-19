@@ -28,7 +28,7 @@
   background-color: transparent;
   color: var(--color-fg-secondary);
   flex-shrink: 0;
-  margin-right: -0.25rem;
+  margin-inline-end: -0.25rem;
   visibility: hidden;
 }
 
