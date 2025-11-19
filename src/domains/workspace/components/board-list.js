@@ -247,8 +247,8 @@ function moveItemDown() {
         return;
     }
 
-    const targetNextElementSibling = boardListItems[targetIndex + 1];
-    list.insertBefore(activeEditItem, targetNextElementSibling);
+    const targetNextItem = boardListItems[targetIndex + 1];
+    list.insertBefore(activeEditItem, targetNextItem);
     moveClone();
 }
 
@@ -265,8 +265,8 @@ function moveItemUp() {
         return;
     }
 
-    const targetNextElementSibling = boardListItems[targetIndex];
-    list.insertBefore(activeEditItem, targetNextElementSibling);
+    const targetNextItem = boardListItems[targetIndex];
+    list.insertBefore(activeEditItem, targetNextItem);
     moveClone();
 }
 
