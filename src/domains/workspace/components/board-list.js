@@ -12,7 +12,6 @@ import {
 } from '@/shared/components/icons/create-icons.js';
 
 let container;
-let createBoardButton;
 let list;
 let boardEditorContainer;
 
@@ -24,6 +23,7 @@ const roles = {
 };
 
 const actions = {
+    createBoard: 'create-board',
     selectBoard: 'select-board',
     openBoardOptionsMenu: 'open-board-options-menu',
 }
@@ -45,15 +45,11 @@ function init(containerElement) {
 }
  
 function cacheElements() {
-    createBoardButton = container.querySelector(
-        "[data-action='create-board']"
-    );
     list = container.querySelector("[data-role='board-list']");
     boardEditorContainer = container.querySelector(
         "[data-role='board-editor']"
     );
 
-    assert.notNull(createBoardButton, "'createBoardButton'");
     assert.notNull(list, "'list'");
     assert.notNull(boardEditorContainer, "'boardEditorContainer'");
 }
@@ -64,8 +60,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
     eventBus.on(events.BOARD_DELETED, handleBoardDeletion);
 
-    createBoardButton.addEventListener('click', handleCreateBoardClick);
-    list.addEventListener('click', handleListClick);
+    container.addEventListener('click', handleClick);
 }
 
 function render() {
@@ -78,12 +73,7 @@ function render() {
     }
 }
 
-function handleCreateBoardClick() {
-    list.append(boardEditorContainer);
-    boardEditor.enterCreateMode();
-}
-
-function handleListClick(event) {
+function handleClick(event) {
     const button = event.target.closest('button');
 
     if (!button) {
@@ -93,6 +83,11 @@ function handleListClick(event) {
     const action = button.dataset.action;
 
     if (!Object.values(actions).includes(action)) {
+        return;
+    }
+
+    if (action === actions.createBoard) {
+        handleCreateBoardClick();
         return;
     }
 
@@ -117,6 +112,11 @@ function handleListClick(event) {
             onConfirmDeletionClick: () => handleDeleteClick(boardId),
         });
     }
+}
+
+function handleCreateBoardClick() {
+    list.append(boardEditorContainer);
+    boardEditor.enterCreateMode();
 }
 
 function highlightListItem(listItem) {
