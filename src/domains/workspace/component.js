@@ -1,20 +1,20 @@
 import './style.css';
 
 import assert from '@/shared/validation/assert.js';
+import boardList from './components/board-list.js';
 import boardPlaceholder from './components/board-placeholder.js'
 import boardView from '@/domains/board/component.js';
-import sidebar from './components/sidebar.js';
 
 let container;
-let sidebarContainer;
 let boardContainer;
+let boardListContainer;
 let boardPlaceholderContainer;
 
 function init(containerElement, workspaceModel) {
     container = containerElement;
     cacheElements();
 
-    sidebar.init(sidebarContainer);
+    boardList.init(boardListContainer);
     boardPlaceholder.init(boardPlaceholderContainer);
     boardView.init(boardContainer);
 }
@@ -38,13 +38,15 @@ function render({ activeBoardExists, boardsAvailable }) {
 }
 
 function cacheElements() {
-    sidebarContainer = container.querySelector("[data-role='sidebar']");
+    boardListContainer = container.querySelector(
+        "[data-role='board-list-container']"
+    );
     boardContainer = container.querySelector("[data-role='board-container']");
     boardPlaceholderContainer = container.querySelector(
         "[data-role='board-placeholder']"
     );
 
-    assert.notNull(sidebarContainer, "'sidebarContainer'");
+    assert.notNull(boardListContainer, "'boardListContainer'");
     assert.notNull(boardContainer, "'boardContainer'");
     assert.notNull(boardPlaceholderContainer, "'boardPlaceholderContainer'");
 }
