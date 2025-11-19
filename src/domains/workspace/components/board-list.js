@@ -112,6 +112,7 @@ function handleListClick(event) {
             onOpen: () => highlightListItem(listItem),
             onCloseOrMove: () => unhighlightListItem(listItem),
             onEditClick: () => handleEditClick(boardName, listItem),
+            onMoveClick: () => handleMoveClick(boardId),
             onConfirmDeletionClick: () => handleDeleteClick(boardId),
         });
     }
@@ -172,6 +173,37 @@ function handleEditClick(boardName, listItem) {
     activeEditItem.classList.add('hidden');
     list.insertBefore(boardEditorContainer, activeEditItem);
     boardEditor.enterEditMode(boardId, boardName);
+}
+
+function handleMoveClick(boardId) {
+    activeEditItem = list.querySelector(`[data-id='${boardId}']`);
+    activeEditItem.classList.add('moving');
+    document.addEventListener('keydown', handleMoveKeyDown);
+}
+
+function handleMoveKeyDown(event) {
+
+    switch (event.key) {
+
+        case 'Enter':
+            submitItemMove();
+        case 'Escape':
+            stopItemMove();
+            break;
+        case 'ArrowDown':
+            moveItemDown();
+            break;
+    }
+}
+
+function stopItemMove() {
+    activeEditItem.classList.remove('moving');
+    activeEditItem = null;
+    document.removeEventListener('keydown', handleMoveKeyDown);
+}
+
+function moveItemDown() {
+    
 }
 
 function handleDeleteClick(boardId) {

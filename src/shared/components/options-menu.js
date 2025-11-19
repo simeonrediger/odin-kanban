@@ -7,6 +7,7 @@ export default class OptionsMenu {
 
     static #actions = {
         edit: 'edit',
+        move: 'move',
         delete: 'delete',
         confirmDeletion: 'confirm-deletion',
     };
@@ -24,6 +25,7 @@ export default class OptionsMenu {
         onOpen: undefined,
         onCloseOrMove: undefined,
         onEditClick: undefined,
+        onMoveClick: undefined,
         onConfirmDeletionClick: undefined,
     };
 
@@ -89,6 +91,7 @@ export default class OptionsMenu {
         onOpen,
         onCloseOrMove,
         onEditClick,
+        onMoveClick,
         onConfirmDeletionClick,
     }) {
         this.#handlers.onCloseOrMove?.();
@@ -97,6 +100,7 @@ export default class OptionsMenu {
         this.#handlers.onOpen = onOpen;
         this.#handlers.onCloseOrMove = onCloseOrMove;
         this.#handlers.onEditClick = onEditClick;
+        this.#handlers.onMoveClick = onMoveClick;
         this.#handlers.onConfirmDeletionClick = onConfirmDeletionClick;
 
         this.#handlers.onOpen?.();
@@ -196,6 +200,10 @@ export default class OptionsMenu {
         if (action === OptionsMenu.#actions.edit) {
             this.#close();
             this.#handlers.onEditClick?.();
+
+        } else if (action === OptionsMenu.#actions.move) {
+            this.#close();
+            this.#handlers.onMoveClick?.();
 
         } else if (action === OptionsMenu.#actions.delete) {
             this.#showConfirmDeletionButton();
