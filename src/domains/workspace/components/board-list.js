@@ -247,8 +247,13 @@ function moveItemDown() {
         return;
     }
 
-    const targetNextItem = boardListItems[targetIndex + 1];
-    list.insertBefore(activeEditItem, targetNextItem);
+    if (targetIndex === maxIndex) {
+        list.append(activeEditItem);
+    } else {
+        const targetNextItem = boardListItems[targetIndex + 1];
+        list.insertBefore(activeEditItem, targetNextItem);
+    }
+    
     moveClone();
 }
 
