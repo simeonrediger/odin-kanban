@@ -17,6 +17,7 @@ let list;
 let boardEditorContainer;
 
 let activeEditItem;
+let movingClone;
 
 const roles = {
     boardListItem: 'board-list-item',
@@ -178,8 +179,34 @@ function handleEditClick(boardName, listItem) {
 function handleMoveClick(boardId) {
     stopItemMove();
     activeEditItem = list.querySelector(`[data-id='${boardId}']`);
-    activeEditItem.classList.add('moving');
+    createMovingClone();
     document.addEventListener('keydown', handleMoveKeyDown);
+}
+
+function createMovingClone() {
+    movingClone = activeEditItem.cloneNode(true);
+    delete movingClone.dataset.role;
+    delete movingClone.dataset.id;
+
+    moveClone();
+
+    list.append(movingClone);
+    activeEditItem.classList.add('moving');
+    movingClone.classList.add('moving-clone');
+}
+
+function moveClone() {
+    const listRect = list.getBoundingClientRect();
+    const itemRect = activeEditItem.getBoundingClientRect();
+
+    const relativePosition = {
+        top: itemRect.top - listRect.top,
+        left: itemRect.left - listRect.left,
+    };
+
+    movingClone.style.top = relativePosition.top + 'px';
+    movingClone.style.left = relativePosition.left + 'px';
+    movingClone.style.width = itemRect.width + 'px';
 }
 
 function handleMoveKeyDown(event) {
@@ -201,6 +228,7 @@ function handleMoveKeyDown(event) {
 }
 
 function stopItemMove() {
+    movingClone?.remove();
     activeEditItem?.classList.remove('moving');
     activeEditItem = null;
     document.removeEventListener('keydown', handleMoveKeyDown);
@@ -221,6 +249,7 @@ function moveItemDown() {
 
     const targetNextElementSibling = boardListItems[targetIndex + 1];
     list.insertBefore(activeEditItem, targetNextElementSibling);
+    moveClone();
 }
 
 function moveItemUp() {
@@ -238,6 +267,7 @@ function moveItemUp() {
 
     const targetNextElementSibling = boardListItems[targetIndex];
     list.insertBefore(activeEditItem, targetNextElementSibling);
+    moveClone();
 }
 
 function handleDeleteClick(boardId) {
