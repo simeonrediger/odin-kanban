@@ -292,6 +292,7 @@ function moveItemToIndex(targetIndex) {
 
     if (targetIndex === maxIndex) {
         list.append(activeEditItem);
+
     } else {
         let targetNextItem = boardListItems[targetIndex + 1];
 
