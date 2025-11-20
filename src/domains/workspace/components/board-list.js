@@ -227,12 +227,15 @@ function handleMoveKeyDown(event) {
 
         case 'Enter':
             submitItemMove();
+
         case 'Escape':
             stopItemMove();
             break;
+
         case 'ArrowUp':
             moveItemUp();
             break;
+
         case 'ArrowDown':
             moveItemDown();
             break;
