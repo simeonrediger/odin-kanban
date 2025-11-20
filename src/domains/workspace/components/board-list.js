@@ -4,8 +4,8 @@ import '../styles/board-list.css';
 import assert from '@/shared/validation/assert.js';
 import boardEditor from './board-editor.js';
 import boardListStore from '../board-list-store.js';
-import eventBus, { events } from '../event-bus.js';
 import boardOptionsMenu from '@/domains/board/components/options-menu.js';
+import eventBus, { events } from '../event-bus.js';
 
 import {
     createThreeDotsHorizontalIcon,
