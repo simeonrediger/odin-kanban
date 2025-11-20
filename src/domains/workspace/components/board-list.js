@@ -258,14 +258,13 @@ function moveItemDown() {
 
     const currentIndex = boardListItems.indexOf(activeEditItem);
     const targetIndex = currentIndex + 1;
-    const targetNextItemIndex = targetIndex + 1;
     const maxIndex = boardListItems.length - 1;
 
     if (targetIndex > maxIndex) {
         return;
     }
 
-    moveItemToIndex(targetIndex, targetNextItemIndex);
+    moveItemToIndex(targetIndex);
 }
 
 function moveItemUp() {
@@ -275,17 +274,16 @@ function moveItemUp() {
 
     const currentIndex = boardListItems.indexOf(activeEditItem);
     const targetIndex = currentIndex - 1;
-    const targetNextItemIndex = targetIndex;
     const minIndex = 0;
 
     if (targetIndex < minIndex) {
         return;
     }
 
-    moveItemToIndex(targetIndex, targetNextItemIndex);
+    moveItemToIndex(targetIndex);
 }
 
-function moveItemToIndex(targetIndex, targetNextItemIndex) {
+function moveItemToIndex(targetIndex) {
     const boardListItems = Array.from(
         list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
     );
@@ -295,7 +293,12 @@ function moveItemToIndex(targetIndex, targetNextItemIndex) {
     if (targetIndex === maxIndex) {
         list.append(activeEditItem);
     } else {
-        const targetNextItem = boardListItems[targetNextItemIndex];
+        let targetNextItem = boardListItems[targetIndex + 1];
+
+        if (targetNextItem === activeEditItem) {
+            targetNextItem = boardListItems[targetIndex];
+        }
+
         list.insertBefore(activeEditItem, targetNextItem);
     }
 
