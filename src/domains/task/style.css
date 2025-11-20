@@ -90,7 +90,7 @@
   display: inline-block;
 }
 
-.task-due-date:not(.hidden) {
+.task-due-date {
   color: var(--color-fg-secondary);
   font-size: 0.75rem;
   overflow-x: hidden;
