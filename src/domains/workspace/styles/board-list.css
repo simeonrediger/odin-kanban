@@ -77,6 +77,10 @@
   position: absolute;
 }
 
+.board-list-item.moving-clone .board-options-button {
+  display: none;
+}
+
 @keyframes flash {
 
   0%, 100% {
