@@ -1,12 +1,12 @@
-.move-controller-list {
+.has-moving-item {
   position: relative;
 }
 
-.move-controller-item {
+.moving-item {
   visibility: hidden;
 }
 
-.move-controller-item-clone {
+.moving-item-clone {
   animation: flash 1.2s ease-in-out infinite;
   position: absolute;
   transition: top 0.1s ease;

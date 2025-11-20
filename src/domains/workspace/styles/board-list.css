@@ -63,7 +63,7 @@
   color: var(--color-fg-highlight-2);
 }
 
-.board-list-item:not(.move-controller-item-clone):hover .board-options-button,
+.board-list-item:not(.moving-item-clone):hover .board-options-button,
 .board-list-item.is-menu-context .board-options-button {
   display: block;
 }

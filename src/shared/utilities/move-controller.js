@@ -1,4 +1,4 @@
-import '../styles/move-controller.css';
+import '../styles/moving-item.css';
 
 let list;
 let itemSelector;
@@ -27,7 +27,7 @@ function start({
     handlers.onSubmit = onSubmit;
     indexBeforeMove = getItems().indexOf(item);
 
-    list.classList.add('move-controller-list');
+    list.classList.add('has-moving-item');
     cloneItem();
     document.addEventListener('keydown', handleMoveKeyDown);
 }
@@ -58,8 +58,8 @@ function cloneItem() {
     delete itemClone.dataset.role;
     delete itemClone.dataset.id;
 
-    item.classList.add('move-controller-item');
-    itemClone.classList.add('move-controller-item-clone');
+    item.classList.add('moving-item');
+    itemClone.classList.add('moving-item-clone');
 
     moveClone();
 
@@ -119,12 +119,12 @@ function cancelItemMove() {
 }
 
 function stopItemMove() {
-    list?.classList.remove('move-controller-list');
+    list?.classList.remove('has-moving-item');
     list = null;
 
     itemSelector = null;
 
-    item?.classList.remove('move-controller-item');
+    item?.classList.remove('moving-item');
     item = null;
 
     indexBeforeMove = null;
