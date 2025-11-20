@@ -6,6 +6,7 @@ import boardEditor from './board-editor.js';
 import boardListStore from '../board-list-store.js';
 import boardOptionsMenu from '@/domains/board/components/options-menu.js';
 import eventBus, { events } from '../event-bus.js';
+import moveController from '@/shared/utilities/move-controller.js';
 
 import {
     createThreeDotsHorizontalIcon,
@@ -16,8 +17,6 @@ let list;
 let boardEditorContainer;
 
 let activeEditItem;
-let movingClone;
-let indexBeforeMove;
 
 const roles = {
     boardListItem: 'board-list-item',
@@ -77,13 +76,16 @@ function render() {
 
 function handleClick(event) {
 
-    if (!boardOptionsMenu.container.contains(event.target) && movingClone) {
-        stopItemMove();
+    if (
+        !boardOptionsMenu.container.contains(event.target)
+        && moveController.isActive
+    ) {
+        moveController.submit();
     }
 
     if (
         !container.contains(event.target)
-        || movingClone?.contains(event.target)
+        || moveController.itemContains(event.target)
     ) {
         return;
     }
@@ -122,7 +124,7 @@ function handleClick(event) {
             onOpen: () => highlightListItem(listItem),
             onCloseOrMove: () => unhighlightListItem(listItem),
             onEditClick: () => handleEditClick(boardName, listItem),
-            onMoveClick: () => handleMoveClick(boardId),
+            onMoveClick: () => handleMoveClick(boardId, event.timeStamp),
             onConfirmDeletionClick: () => handleDeleteClick(boardId),
         });
     }
@@ -190,179 +192,24 @@ function handleEditClick(boardName, listItem) {
     boardEditor.enterEditMode(boardId, boardName);
 }
 
-function handleMoveClick(boardId) {
-    stopItemMove();
-    activeEditItem = list.querySelector(`[data-id='${boardId}']`);
-    
-    const boardListItems = Array.from(
-        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
-    );
+function handleMoveClick(boardId, eventTimeStamp) {
 
-    indexBeforeMove = boardListItems.indexOf(activeEditItem);
-
-    createMovingClone();
-    document.addEventListener('keydown', handleMoveKeyDown);
+    moveController.start({
+        listElement: list,
+        itemSelectorString: `[data-role='${roles.boardListItem}']`,
+        itemToMove: list.querySelector(`[data-id='${boardId}']`),
+        onSubmit: handleMoveSubmit,
+        eventTimeStamp,
+    });
 }
 
-function createMovingClone() {
-    movingClone = activeEditItem.cloneNode(true);
-    delete movingClone.dataset.role;
-    delete movingClone.dataset.id;
-
-    moveClone();
-
-    list.append(movingClone);
-    activeEditItem.classList.add('moving');
-    movingClone.classList.add('moving-clone');
-}
-
-function moveClone() {
-    const listRect = list.getBoundingClientRect();
-    const itemRect = activeEditItem.getBoundingClientRect();
-
-    const relativePosition = {
-        top: itemRect.top - listRect.top,
-        left: itemRect.left - listRect.left,
-    };
-
-    movingClone.style.top = relativePosition.top + 'px';
-    movingClone.style.left = relativePosition.left + 'px';
-    movingClone.style.width = itemRect.width + 'px';
-}
-
-function handleMoveKeyDown(event) {
-
-    switch (event.key) {
-
-        case 'Enter':
-            submitItemMove();
-            break;
-
-        case 'Escape':
-            cancelItemMove();
-            break;
-
-        case 'ArrowUp':
-            moveItemUp();
-            break;
-
-        case 'ArrowDown':
-            moveItemDown();
-            break;
-    }
-}
-
-function submitItemMove() {
-    const boardListItems = Array.from(
-        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
-    );
-
-    const targetIndex = boardListItems.indexOf(activeEditItem);
-
-    if (targetIndex === indexBeforeMove) {
-        stopItemMove();
-        return;
-    }
-
-    const boardId = activeEditItem.dataset.id;
-
+function handleMoveSubmit(boardListItem, targetIndex) {
+    const boardId = boardListItem.dataset.id;
     eventBus.emit(events.BOARD_MOVE_REQUESTED, { boardId, targetIndex });
 }
 
-function cancelItemMove() {
-    moveItemToIndex(indexBeforeMove);
-    stopItemMove();
-}
-
-function stopItemMove() {
-    indexBeforeMove = null;
-
-    movingClone?.remove();
-    movingClone = null;
-
-    activeEditItem?.classList.remove('moving');
-    activeEditItem = null;
-
-    document.removeEventListener('keydown', handleMoveKeyDown);
-}
-
 function handleBoardMove({ boardId, newIndex }) {
-    const boardListItems = Array.from(
-        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
-    );
-
-    const activeEditItemId = activeEditItem.dataset.id;
-    const activeEditItemIndex = boardListItems.indexOf(activeEditItem);
-
-    if (boardId !== activeEditItemId) {
-        cancelItemMove();
-        throw new Error(`Unexpected 'boardId': ${boardId}`);
-    }
-
-    if (newIndex !== activeEditItemIndex) {
-        cancelItemMove();
-        throw new Error(`Unexpected 'newIndex': ${newIndex}`);
-    }
-
-    stopItemMove();
-}
-
-function moveItemDown() {
-    const boardListItems = Array.from(
-        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
-    );
-
-    const currentIndex = boardListItems.indexOf(activeEditItem);
-    const targetIndex = currentIndex + 1;
-    const maxIndex = boardListItems.length - 1;
-
-    if (targetIndex > maxIndex) {
-        return;
-    }
-
-    moveItemToIndex(targetIndex);
-}
-
-function moveItemUp() {
-    const boardListItems = Array.from(
-        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
-    );
-
-    const currentIndex = boardListItems.indexOf(activeEditItem);
-    const targetIndex = currentIndex - 1;
-    const minIndex = 0;
-
-    if (targetIndex < minIndex) {
-        return;
-    }
-
-    moveItemToIndex(targetIndex);
-}
-
-function moveItemToIndex(targetIndex) {
-    const boardListItems = Array.from(
-        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
-    );
-
-    const maxIndex = boardListItems.length - 1;
-
-    if (targetIndex === 0) {
-        list.prepend(activeEditItem);
-
-    } else if (targetIndex === maxIndex) {
-        list.append(activeEditItem);
-
-    } else {
-        let targetNextItem = boardListItems[targetIndex + 1];
-
-        if (targetNextItem === activeEditItem) {
-            targetNextItem = boardListItems[targetIndex];
-        }
-
-        list.insertBefore(activeEditItem, targetNextItem);
-    }
-
-    moveClone();
+    moveController.validateMove(boardId, newIndex);
 }
 
 function handleDeleteClick(boardId) {

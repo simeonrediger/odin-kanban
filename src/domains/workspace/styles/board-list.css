@@ -63,36 +63,9 @@
   color: var(--color-fg-highlight-2);
 }
 
-.board-list-item:hover .board-options-button,
+.board-list-item:not(.move-controller-item-clone):hover .board-options-button,
 .board-list-item.is-menu-context .board-options-button {
   display: block;
-}
-
-.board-list-item.moving {
-  visibility: hidden;
-}
-
-.board-list-item.moving-clone {
-  animation: flash 1.2s ease-in-out infinite;
-  position: absolute;
-  transition: top 0.1s ease;
-}
-
-.board-list-item.moving-clone .board-options-button {
-  display: none;
-}
-
-@keyframes flash {
-
-  0%, 100% {
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  50% {
-    background-color: var(--color-bg-highlight);
-    box-shadow: 0 0 8px var(--color-bg-highlight);
-  }
 }
 
 .board-options-button {

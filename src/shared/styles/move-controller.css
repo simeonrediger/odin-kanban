@@ -1,0 +1,27 @@
+.move-controller-list {
+  position: relative;
+}
+
+.move-controller-item {
+  visibility: hidden;
+}
+
+.move-controller-item-clone {
+  animation: flash 1.2s ease-in-out infinite;
+  position: absolute;
+  transition: top 0.1s ease;
+}
+
+@keyframes flash {
+
+  0%,
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  50% {
+    background-color: var(--color-bg-highlight);
+    box-shadow: 0 0 8px var(--color-bg-highlight);
+  }
+}
