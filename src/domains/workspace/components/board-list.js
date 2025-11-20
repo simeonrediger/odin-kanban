@@ -192,6 +192,13 @@ function handleEditClick(boardName, listItem) {
 function handleMoveClick(boardId) {
     stopItemMove();
     activeEditItem = list.querySelector(`[data-id='${boardId}']`);
+    
+    const boardListItems = Array.from(
+        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
+    );
+
+    indexBeforeMove = boardListItems.indexOf(activeEditItem);
+
     createMovingClone();
     document.addEventListener('keydown', handleMoveKeyDown);
 }
@@ -228,9 +235,10 @@ function handleMoveKeyDown(event) {
 
         case 'Enter':
             submitItemMove();
+            break;
 
         case 'Escape':
-            stopItemMove();
+            cancelItemMove();
             break;
 
         case 'ArrowUp':
@@ -243,7 +251,18 @@ function handleMoveKeyDown(event) {
     }
 }
 
+function submitItemMove() {
+    stopItemMove();
+    // TODO
+}
+
+function cancelItemMove() {
+    moveItemToIndex(indexBeforeMove);
+    stopItemMove();
+}
+
 function stopItemMove() {
+    indexBeforeMove = null;
     movingClone?.remove();
     movingClone = null;
     activeEditItem?.classList.remove('moving');
@@ -290,7 +309,10 @@ function moveItemToIndex(targetIndex) {
 
     const maxIndex = boardListItems.length - 1;
 
-    if (targetIndex === maxIndex) {
+    if (targetIndex === 0) {
+        list.prepend(activeEditItem);
+
+    } else if (targetIndex === maxIndex) {
         list.append(activeEditItem);
 
     } else {
