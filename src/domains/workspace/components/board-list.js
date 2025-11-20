@@ -298,7 +298,6 @@ function handleBoardMove({ boardId, newIndex }) {
         throw new Error(`Unexpected 'newIndex': ${newIndex}`);
     }
 
-    console.log('checks cleared');
     stopItemMove();
 }
 
