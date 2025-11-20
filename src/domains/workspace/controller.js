@@ -124,6 +124,8 @@ function updateBoardName({ boardId, boardName }) {
 function moveBoard({ boardId, targetIndex }) {
     const board = workspace.getBoard(boardId);
     workspace.moveBoard(board, targetIndex);
+    const newIndex = workspace.boards.indexOf(board);
+    eventBus.emit(events.BOARD_MOVED, { boardId, newIndex });
 }
 
 function handleBoardDeletionRequest({ boardId }) {

@@ -59,6 +59,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_SELECTED, highlightSelectedListItem);
     eventBus.on(events.BOARD_CREATED, handleBoardCreation);
     eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
+    eventBus.on(events.BOARD_MOVED, handleBoardMove);
     eventBus.on(events.BOARD_DELETED, handleBoardDeletion);
 
     document.addEventListener('click', handleClick);
@@ -277,6 +278,28 @@ function stopItemMove() {
     activeEditItem = null;
 
     document.removeEventListener('keydown', handleMoveKeyDown);
+}
+
+function handleBoardMove({ boardId, newIndex }) {
+    const boardListItems = Array.from(
+        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
+    );
+
+    const activeEditItemId = activeEditItem.dataset.id;
+    const activeEditItemIndex = boardListItems.indexOf(activeEditItem);
+
+    if (boardId !== activeEditItemId) {
+        cancelItemMove();
+        throw new Error(`Unexpected 'boardId': ${boardId}`);
+    }
+
+    if (newIndex !== activeEditItemIndex) {
+        cancelItemMove();
+        throw new Error(`Unexpected 'newIndex': ${newIndex}`);
+    }
+
+    console.log('checks cleared');
+    stopItemMove();
 }
 
 function moveItemDown() {

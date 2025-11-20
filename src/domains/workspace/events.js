@@ -40,6 +40,12 @@
  */
 
 /**
+ * @typedef {Object} BoardMovedDetail
+ * @property {string} boardId - Unique ID of the board.
+ * @property {number} newIndex - New index of the board.
+ */
+
+/**
  * @typedef {Object} BoardDeletionRequestedDetail
  * @property {string} boardId - Unique ID of the board.
  */
@@ -192,6 +198,14 @@ export const BOARD_NAME_UPDATED = 'board:name-updated';
  * @see {@link BoardMoveRequestedDetail}
  */
 export const BOARD_MOVE_REQUESTED = 'board:move-requested';
+
+/**
+ * @description Emitted when a board is moved.
+ * @event board:moved
+ * @type {string}
+ * @see {@link BoardMovedDetail}
+ */
+export const BOARD_MOVED = 'board:moved';
 
 /**
  * @description Emitted when board deletion is requested.
