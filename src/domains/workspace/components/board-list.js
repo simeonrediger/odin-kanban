@@ -60,7 +60,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_NAME_UPDATED, handleBoardNameUpdate);
     eventBus.on(events.BOARD_DELETED, handleBoardDeletion);
 
-    container.addEventListener('click', handleClick);
+    document.addEventListener('click', handleClick);
 }
 
 function render() {
@@ -74,6 +74,18 @@ function render() {
 }
 
 function handleClick(event) {
+
+    if (!boardOptionsMenu.container.contains(event.target) && movingClone) {
+        stopItemMove();
+    }
+
+    if (
+        !container.contains(event.target
+        || movingClone?.contains(event.target))
+    ) {
+        return;
+    }
+
     const button = event.target.closest('button');
 
     if (!button) {
@@ -229,6 +241,7 @@ function handleMoveKeyDown(event) {
 
 function stopItemMove() {
     movingClone?.remove();
+    movingClone = null;
     activeEditItem?.classList.remove('moving');
     activeEditItem = null;
     document.removeEventListener('keydown', handleMoveKeyDown);
