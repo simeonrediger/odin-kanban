@@ -263,10 +263,13 @@ function cancelItemMove() {
 
 function stopItemMove() {
     indexBeforeMove = null;
+
     movingClone?.remove();
     movingClone = null;
+
     activeEditItem?.classList.remove('moving');
     activeEditItem = null;
+
     document.removeEventListener('keydown', handleMoveKeyDown);
 }
 
