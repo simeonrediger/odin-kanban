@@ -82,8 +82,8 @@ function handleClick(event) {
     }
 
     if (
-        !container.contains(event.target
-        || movingClone?.contains(event.target))
+        !container.contains(event.target)
+        || movingClone?.contains(event.target)
     ) {
         return;
     }
