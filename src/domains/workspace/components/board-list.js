@@ -252,7 +252,7 @@ function stopItemMove() {
 
 function moveItemDown() {
     const boardListItems = Array.from(
-        document.querySelectorAll(`[data-role='${roles.boardListItem}']`)
+        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
     );
 
     const currentIndex = boardListItems.indexOf(activeEditItem);
@@ -275,7 +275,7 @@ function moveItemDown() {
 
 function moveItemUp() {
     const boardListItems = Array.from(
-        document.querySelectorAll(`[data-role='${roles.boardListItem}']`)
+        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
     );
 
     const currentIndex = boardListItems.indexOf(activeEditItem);
