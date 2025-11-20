@@ -251,9 +251,9 @@ function stopItemMove() {
 }
 
 function moveItemDown() {
-    const boardListItems = Array.from(document.querySelectorAll(
-        `[data-role='${roles.boardListItem}']`
-    ));
+    const boardListItems = Array.from(
+        document.querySelectorAll(`[data-role='${roles.boardListItem}']`)
+    );
 
     const currentIndex = boardListItems.indexOf(activeEditItem);
     const targetIndex = currentIndex + 1;
