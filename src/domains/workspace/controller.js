@@ -33,6 +33,7 @@ function bindEvents() {
     eventBus.on(events.BOARD_SELECTION_REQUESTED, handleBoardSelection);
     eventBus.on(events.BOARD_CREATION_REQUESTED, createBoard);
     eventBus.on(events.BOARD_NAME_UPDATE_REQUESTED, updateBoardName);
+    eventBus.on(events.BOARD_MOVE_REQUESTED, moveBoard);
     eventBus.on(events.BOARD_DELETION_REQUESTED, handleBoardDeletionRequest);
 
     eventBus.on(events.LIST_CREATION_REQUESTED, createList);
@@ -118,6 +119,11 @@ function updateBoardName({ boardId, boardName }) {
     const board = workspace.getBoard(boardId);
     board.name = boardName;
     eventBus.emit(events.BOARD_NAME_UPDATED, { boardId, boardName });
+}
+
+function moveBoard({ boardId, targetIndex }) {
+    const board = workspace.getBoard(boardId);
+    workspace.moveBoard(board, targetIndex);
 }
 
 function handleBoardDeletionRequest({ boardId }) {

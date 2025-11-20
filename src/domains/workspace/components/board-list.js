@@ -252,8 +252,14 @@ function handleMoveKeyDown(event) {
 }
 
 function submitItemMove() {
-    stopItemMove();
-    // TODO
+    const boardListItems = Array.from(
+        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
+    );
+
+    const targetIndex = boardListItems.indexOf(activeEditItem);
+    const boardId = activeEditItem.dataset.id;
+
+    eventBus.emit(events.BOARD_MOVE_REQUESTED, { boardId, targetIndex });
 }
 
 function cancelItemMove() {
