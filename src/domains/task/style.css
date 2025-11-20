@@ -47,7 +47,6 @@
 .task-details-container {
   display: flex;
   gap: 0.5rem;
-  justify-content: space-between;
 }
 
 .task-priority-level:not(.hidden) {
@@ -93,6 +92,7 @@
 .task-due-date {
   color: var(--color-fg-secondary);
   font-size: 0.75rem;
+  margin-inline-start: auto;
   overflow-x: hidden;
   text-overflow: ellipsis;
   text-wrap: nowrap;
