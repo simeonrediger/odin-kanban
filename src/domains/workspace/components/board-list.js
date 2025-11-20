@@ -17,6 +17,7 @@ let boardEditorContainer;
 
 let activeEditItem;
 let movingClone;
+let indexBeforeMove;
 
 const roles = {
     boardListItem: 'board-list-item',
@@ -257,20 +258,14 @@ function moveItemDown() {
 
     const currentIndex = boardListItems.indexOf(activeEditItem);
     const targetIndex = currentIndex + 1;
+    const targetNextItemIndex = targetIndex + 1;
     const maxIndex = boardListItems.length - 1;
 
-    if (currentIndex === maxIndex) {
+    if (targetIndex > maxIndex) {
         return;
     }
 
-    if (targetIndex === maxIndex) {
-        list.append(activeEditItem);
-    } else {
-        const targetNextItem = boardListItems[targetIndex + 1];
-        list.insertBefore(activeEditItem, targetNextItem);
-    }
-    
-    moveClone();
+    moveItemToIndex(targetIndex, targetNextItemIndex);
 }
 
 function moveItemUp() {
@@ -280,14 +275,30 @@ function moveItemUp() {
 
     const currentIndex = boardListItems.indexOf(activeEditItem);
     const targetIndex = currentIndex - 1;
+    const targetNextItemIndex = targetIndex;
     const minIndex = 0;
 
-    if (currentIndex === minIndex) {
+    if (targetIndex < minIndex) {
         return;
     }
 
-    const targetNextItem = boardListItems[targetIndex];
-    list.insertBefore(activeEditItem, targetNextItem);
+    moveItemToIndex(targetIndex, targetNextItemIndex);
+}
+
+function moveItemToIndex(targetIndex, targetNextItemIndex) {
+    const boardListItems = Array.from(
+        list.querySelectorAll(`[data-role='${roles.boardListItem}']`)
+    );
+
+    const maxIndex = boardListItems.length - 1;
+
+    if (targetIndex === maxIndex) {
+        list.append(activeEditItem);
+    } else {
+        const targetNextItem = boardListItems[targetNextItemIndex];
+        list.insertBefore(activeEditItem, targetNextItem);
+    }
+
     moveClone();
 }
 
