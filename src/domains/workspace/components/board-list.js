@@ -43,7 +43,7 @@ function init(containerElement) {
 
     container.append(boardOptionsMenu.container);
 }
- 
+
 function cacheElements() {
     list = container.querySelector("[data-role='board-list']");
     boardEditorContainer = container.querySelector(
