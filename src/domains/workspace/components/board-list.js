@@ -258,6 +258,12 @@ function submitItemMove() {
     );
 
     const targetIndex = boardListItems.indexOf(activeEditItem);
+
+    if (targetIndex === indexBeforeMove) {
+        stopItemMove();
+        return;
+    }
+
     const boardId = activeEditItem.dataset.id;
 
     eventBus.emit(events.BOARD_MOVE_REQUESTED, { boardId, targetIndex });
