@@ -75,6 +75,7 @@
 .board-list-item.moving-clone {
   animation: flash 1.2s ease-in-out infinite;
   position: absolute;
+  transition: top 0.1s ease;
 }
 
 .board-list-item.moving-clone .board-options-button {
