@@ -24,6 +24,6 @@ function run(workspace) {
 
 const demo = {
     run,
-}
+};
 
 export default demo;
