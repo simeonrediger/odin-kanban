@@ -2,7 +2,7 @@ import Board from '../model.js';
 import List from '@/domains/list/model.js';
 import Task from '@/domains/task/model.js';
 
-export default new Board('Board 1', [
+const defaultBoard = new Board('Board 1', [
     new List('List A', [
         new Task(
             'Task A1',
@@ -24,3 +24,5 @@ export default new Board('Board 1', [
         new Task('Task C3'),
     ]),
 ]);
+
+export default defaultBoard;
