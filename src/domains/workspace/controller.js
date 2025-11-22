@@ -126,12 +126,14 @@ function createBoard({ boardName }) {
     });
 
     setActiveBoard(board);
+    saveWorkspace();
 }
 
 function updateBoardName({ boardId, boardName }) {
     const board = workspace.getBoard(boardId);
     board.name = boardName;
     eventBus.emit(events.BOARD_NAME_UPDATED, { boardId, boardName });
+    saveWorkspace();
 }
 
 function handleBoardDeletionRequest({ boardId }) {
@@ -146,6 +148,7 @@ function handleBoardDeletionRequest({ boardId }) {
     }
 
     eventBus.emit(events.BOARD_DELETED, { boardId });
+    saveWorkspace();
 }
 
 function createList({ listName }) {
@@ -157,6 +160,8 @@ function createList({ listName }) {
         listId: list.id,
         listName: list.name,
     });
+
+    saveWorkspace();
 }
 
 function updateListName({ listId, listName }) {
@@ -165,12 +170,14 @@ function updateListName({ listId, listName }) {
     const listViewStore = boardViewStore.getListViewStore(listId);
     listViewStore.setListName(listName);
     eventBus.emit(events.LIST_NAME_UPDATED, { listId, listName });
+    saveWorkspace();
 }
 
 function handleListDeletionRequest({ listId }) {
     const list = activeBoard.getList(listId);
     activeBoard.removeList(list);
     eventBus.emit(events.LIST_DELETED, { listId });
+    saveWorkspace();
 }
 
 function createTask({
@@ -207,6 +214,8 @@ function createTask({
         taskPriorityLevel: task.priorityLevel,
         taskDueDate: task.dueDate,
     });
+
+    saveWorkspace();
 }
 
 function updateTask({
@@ -239,6 +248,8 @@ function updateTask({
         taskPriorityLevel: task.priorityLevel,
         taskDueDate: task.dueDate,
     });
+
+    saveWorkspace();
 }
 
 function handleTaskDeletionRequest({ listId, taskId }) {
@@ -246,6 +257,7 @@ function handleTaskDeletionRequest({ listId, taskId }) {
     const task = list.getTask(taskId);
     list.removeTask(task);
     eventBus.emit(events.TASK_DELETED, { listId, taskId });
+    saveWorkspace();
 }
 
 const workspaceController = {
