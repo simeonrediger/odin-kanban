@@ -43,13 +43,19 @@ export default function applyDefaultWorkspace(workspace) {
             new Task(
                 'Edit this task',
                 `To edit a task, hover over the task card, select the ⋮ icon, and select "Edit".`,
-                10,
+                20,
                 currentDate + 7 * oneDayInMs,
             ),
 
             new Task(
                 'Move this task',
                 "Oops, this feature isn't implemented yet.",
+            ),
+
+            new Task(
+                'Delete this task',
+                `To delete a task, hover over the task card, select the ⋮ icon, select "Delete", and then confirm.`,
+                10,
             ),
         ]),
 
