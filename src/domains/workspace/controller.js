@@ -22,7 +22,7 @@ function init(workspaceModel, workspaceJson) {
         workspace.fromJson(workspaceJson);
     } else {
         applyDefaultWorkspace(workspace);
-        storage.save(workspace.toJson());
+        saveWorkspace();
     }
 
     cacheElements();
@@ -52,6 +52,10 @@ function bindEvents() {
     eventBus.on(events.TASK_CREATION_REQUESTED, createTask);
     eventBus.on(events.TASK_UPDATE_REQUESTED, updateTask);
     eventBus.on(events.TASK_DELETION_REQUESTED, handleTaskDeletionRequest);
+}
+
+function saveWorkspace() {
+    storage.save(workspace.toJson());
 }
 
 function renderWorkspaceView(activeBoard) {
