@@ -21,7 +21,6 @@ function init(workspaceModel, workspaceJson) {
     if (workspaceJson) {
         workspace.fromJson(workspaceJson);
     } else {
-        // TODO
         applyDefaultWorkspace(workspace);
         storage.save(workspace.toJson());
     }
