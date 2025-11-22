@@ -1,1 +1,1 @@
-# Odin To-do List
+# Kanban Board (Odin to-do list)
