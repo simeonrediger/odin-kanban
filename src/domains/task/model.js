@@ -80,7 +80,11 @@ export default class Task {
     }
 
     set dueDate(dueDate) {
-        assert.validDate(new Date(dueDate));
+
+        if (dueDate !== undefined) {
+            assert.validDate(new Date(dueDate));
+        }
+
         this.#dueDate = dueDate;
     }
 
