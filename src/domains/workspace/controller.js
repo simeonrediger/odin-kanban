@@ -13,8 +13,15 @@ let workspaceContainer;
 
 let activeBoard;
 
-function init(workspaceModel) {
+function init(workspaceModel, workspaceJson) {
     workspace = workspaceModel;
+
+    if (workspaceJson) {
+        workspace.fromJson(workspaceJson);
+    } else {
+        // TODO
+    }
+
     cacheElements();
     bindEvents();
 

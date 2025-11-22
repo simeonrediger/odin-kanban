@@ -2,6 +2,17 @@ import assert from '@/shared/validation/assert.js';
 
 export default class Task {
 
+    static fromJson(taskJson) {
+
+        return new Task(
+            taskJson.name,
+            taskJson.description,
+            Number(taskJson.priorityLevel),
+            Number(taskJson.dueDate),
+            taskJson.id,
+        );
+    }
+
     static #PRIORITY = Object.freeze({
         OPTIONAL: 10,
         LOW: 20,
@@ -76,6 +87,7 @@ export default class Task {
     toObject() {
 
         return Object.freeze({
+            id: this.#id,
             name: this.name,
             description: this.description,
             dueDate: this.dueDate,

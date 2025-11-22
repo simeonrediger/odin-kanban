@@ -108,6 +108,15 @@ function toObject() {
     });
 }
 
+function fromJson(workspaceJson) {
+    const boardJsons = workspaceJson.boards;
+
+    for (const boardJson of boardJsons) {
+        const board = Board.fromJson(boardJson);
+        addBoard(board);
+    }
+}
+
 function toJson(replacer, space) {
     return JSON.stringify(toObject(), replacer, space);
 }
@@ -122,6 +131,7 @@ const workspace = {
     moveBoard,
     moveList,
     moveTask,
+    fromJson,
     toJson,
 
     get boards() {

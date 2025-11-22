@@ -3,6 +3,18 @@ import List from '@/domains/list/model.js';
 import Task from '@/domains/task/model.js';
 
 export default class Board {
+
+    static fromJson(boardJson) {
+        const board = new Board(boardJson.name, [], boardJson.id);
+
+        for (const listJson of boardJson.lists) {
+            const list = List.fromJson(listJson);
+            board.addList(list);
+        }
+
+        return board;
+    }
+
     #id;
     #name;
     #lists;
@@ -103,6 +115,7 @@ export default class Board {
         }
 
         return Object.freeze({
+            id: this.#id,
             name: this.#name,
             lists: Object.freeze(lists),
         });

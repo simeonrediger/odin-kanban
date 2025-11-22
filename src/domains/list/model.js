@@ -2,6 +2,18 @@ import assert from '@/shared/validation/assert.js';
 import Task from '@/domains/task/model.js';
 
 export default class List {
+
+    static fromJson(listJson) {
+        const list = new List(listJson.name, [], listJson.id);
+
+        for (const taskJson of listJson.tasks) {
+            const task = Task.fromJson(taskJson);
+            list.addTask(task);
+        }
+
+        return list;
+    }
+
     #id;
     #name;
     #tasks;
@@ -90,6 +102,7 @@ export default class List {
         }
 
         return Object.freeze({
+            id: this.#id,
             name: this.#name,
             tasks: Object.freeze(tasks),
         });
