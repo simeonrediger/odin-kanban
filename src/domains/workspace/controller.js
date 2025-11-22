@@ -3,8 +3,10 @@ import boardList from './components/board-list.js';
 import boardListStore from './board-list-store.js';
 import boardView from '@/domains/board/component.js';
 import boardViewStore from '@/domains/board/store.js';
+import applyDefaultWorkspace from './default.js';
 import eventBus, { events } from './event-bus.js';
 import ListViewStore from '@/domains/list/store.js';
+import storage from './storage.js';
 import TaskViewStore from '@/domains/task/store.js';
 import workspaceView from './component.js';
 
@@ -20,6 +22,8 @@ function init(workspaceModel, workspaceJson) {
         workspace.fromJson(workspaceJson);
     } else {
         // TODO
+        applyDefaultWorkspace(workspace);
+        storage.save(workspace.toJson());
     }
 
     cacheElements();
